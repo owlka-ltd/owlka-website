@@ -48,7 +48,12 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="mailto:hello@owlka.com" className="hover:text-text transition-colors">
+                  <Link href="/support" className="hover:text-text transition-colors">
+                    Support
+                  </Link>
+                </li>
+                <li>
+                  <Link href="mailto:support@owlka.com" className="hover:text-text transition-colors">
                     Contact
                   </Link>
                 </li>

@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/* ---------- Owlka brand tokens — P01 pink classic (locked 2026-05-15) ----------
+   Source of truth: ~/code/owlka-brand/BRAND.md §2
+------------------------------------------------------------------------------ */
+
+:root {
+  --color-mark: #FF2D7A;
+  --color-bg: #FAFAF7;
+  --color-accent: #FFB8D4;
+  --color-surface: #FFFFFF;
+  --color-text: #1A1A1F;
+  --color-muted: #98989D;
+  --color-border: #EFE9E5;
+  --color-tint-mark: #FFE0EC;
+  --color-tint-accent: #FFE8F1;
+}
+
+@theme inline {
+  --color-mark: var(--color-mark);
+  --color-bg: var(--color-bg);
+  --color-accent: var(--color-accent);
+  --color-surface: var(--color-surface);
+  --color-text: var(--color-text);
+  --color-muted: var(--color-muted);
+  --color-border: var(--color-border);
+  --color-tint-mark: var(--color-tint-mark);
+  --color-tint-accent: var(--color-tint-accent);
+
+  --font-sans: var(--font-jakarta);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --radius-card: 22px;
+  --radius-pill: 999px;
+}
+
+html, body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-mark);
+  color: var(--color-surface);
+}

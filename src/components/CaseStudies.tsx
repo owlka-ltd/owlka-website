@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { DeviceFrame } from "./DeviceFrame";
 import { GovernorsSessionScreen } from "./GovernorsSessionScreen";
+import { PrinterPilotSessionScreen } from "./PrinterPilotSessionScreen";
 
 type Visual =
   | { kind: "device"; src: string; alt: string; width: number; height: number }
-  | { kind: "deviceHtml"; screen: "governors" }
+  | { kind: "deviceHtml"; screen: "governors" | "printer" }
   | { kind: "notification"; preview: NotificationPreview }
   | { kind: "appcard"; icon: string; name: string; subtitle: string; build: string };
 
@@ -52,11 +53,8 @@ const studies: Study[] = [
     metric: "Saved 14 prints in the first month.",
     hue: "accent",
     visual: {
-      kind: "device",
-      src: "/screenshots/printer.png",
-      alt: "PrinterPilot — live speed and layer-complexity charts for a Voron print",
-      width: 1206,
-      height: 2622,
+      kind: "deviceHtml",
+      screen: "printer",
     },
   },
   {
@@ -222,6 +220,7 @@ function VisualRenderer({ visual }: { visual: Visual }) {
       <div className="@container">
         <DeviceFrame>
           {visual.screen === "governors" && <GovernorsSessionScreen />}
+          {visual.screen === "printer" && <PrinterPilotSessionScreen />}
         </DeviceFrame>
       </div>
     );

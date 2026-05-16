@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { AuroraBackground } from "./AuroraBackground";
-import { OwlkaConversation } from "./OwlkaConversation";
+import { DeviceFrame } from "./DeviceFrame";
 
 export function Hero() {
   return (
@@ -11,7 +11,7 @@ export function Hero() {
       <AuroraBackground intensity="vivid" />
 
       <div className="mx-auto max-w-7xl px-6 pt-16 pb-24 sm:pt-20 sm:pb-32 lg:pt-24 lg:pb-40">
-        <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-20 items-center">
           <div className="text-center lg:text-left">
             <motion.div
               initial={{ opacity: 0, y: -12 }}
@@ -107,16 +107,109 @@ export function Hero() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.92, y: 32 }}
+            initial={{ opacity: 0, scale: 0.95, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             className="relative mt-4 lg:mt-0"
           >
-            <OwlkaConversation />
+            {/* glow halo behind device */}
+            <div
+              aria-hidden
+              className="absolute inset-0 -m-12 rounded-[60px] blur-3xl opacity-60"
+              style={{
+                background:
+                  "radial-gradient(closest-side, rgba(255,45,122,0.35), transparent 70%)",
+              }}
+            />
+
+            <div className="relative mx-auto max-w-[300px] sm:max-w-[330px]">
+              <DeviceFrame
+                src="/screenshots/owlka.png"
+                alt="Owlka app on iPhone — voice-first interface for shipping software"
+                width={1206}
+                height={2622}
+                priority
+              />
+            </div>
+
+            <FloatingCard
+              className="absolute top-[8%] -left-4 sm:-left-12"
+              delay={0.9}
+            >
+              <span className="flex h-2 w-2 rounded-full bg-mark animate-pulse-dot" />
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-mark">
+                Memory
+              </span>
+              <span className="text-xs font-medium text-text/80">
+                47 sessions
+              </span>
+            </FloatingCard>
+
+            <FloatingCard
+              className="absolute bottom-[18%] -right-4 sm:-right-10"
+              delay={1.1}
+            >
+              <svg
+                viewBox="0 0 16 16"
+                className="w-3.5 h-3.5 text-green-600"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.4"
+                aria-hidden
+              >
+                <path d="M3 8.5l3 3 7-7" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-green-700">
+                Reviewer
+              </span>
+              <span className="text-xs font-medium text-text/80">APPROVE</span>
+            </FloatingCard>
+
+            <FloatingCard
+              className="absolute bottom-[42%] -left-6 sm:-left-16"
+              delay={1.3}
+            >
+              <svg
+                viewBox="0 0 16 16"
+                className="w-3.5 h-3.5 text-mark"
+                fill="currentColor"
+                aria-hidden
+              >
+                <path d="M8 1.5a4 4 0 0 0-4 4v3.5l-1.5 2v1h11v-1l-1.5-2V5.5a4 4 0 0 0-4-4Z" />
+                <path d="M6 13h4a2 2 0 0 1-4 0Z" />
+              </svg>
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-mark">
+                Push
+              </span>
+              <span className="text-xs font-medium text-text/80">
+                Build green
+              </span>
+            </FloatingCard>
           </motion.div>
         </div>
       </div>
     </section>
+  );
+}
+
+function FloatingCard({
+  children,
+  className = "",
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12, scale: 0.9 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
+      className={`hidden sm:inline-flex items-center gap-2 h-9 px-3.5 rounded-pill bg-surface/95 backdrop-blur-md border border-border shadow-xl shadow-black/5 ${className}`}
+    >
+      {children}
+    </motion.div>
   );
 }
 

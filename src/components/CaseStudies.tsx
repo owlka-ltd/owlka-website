@@ -1,7 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { PhoneMockup } from "./PhoneMockup";
+import Image from "next/image";
+import { DeviceFrame } from "./DeviceFrame";
+
+type Visual =
+  | { kind: "device"; src: string; alt: string; width: number; height: number }
+  | { kind: "notification"; preview: NotificationPreview }
+  | { kind: "appcard"; icon: string; name: string; subtitle: string; build: string };
+
+type NotificationPreview = {
+  app: string;
+  appColor: string;
+  time: string;
+  title: string;
+  body: string;
+};
 
 type Study = {
   tag: string;
@@ -10,7 +24,7 @@ type Study = {
   body: string;
   metric: string;
   hue: "mark" | "accent";
-  kind: "governors" | "printer" | "bgt" | "dragon";
+  visual: Visual;
 };
 
 const studies: Study[] = [
@@ -22,7 +36,13 @@ const studies: Study[] = [
       "A custom AI agent that reads the school's data alongside the latest Ofsted framework, drafts evidence-grade answers for inspection prep, and lets the governing body rehearse the real questions before they're asked.",
     metric: "Cuts inspection prep from weeks to an afternoon.",
     hue: "mark",
-    kind: "governors",
+    visual: {
+      kind: "device",
+      src: "/screenshots/governors.png",
+      alt: "Governors app — Castle Vale inspection prep on iPhone",
+      width: 1206,
+      height: 2622,
+    },
   },
   {
     tag: "Hardware",
@@ -32,7 +52,13 @@ const studies: Study[] = [
       "A native iOS app that talks to Klipper over the network, streams the toolhead, watches temperature curves, and pauses the print before a bad layer becomes a fire. Notifications when something needs a human.",
     metric: "Saved 14 prints in the first month.",
     hue: "accent",
-    kind: "printer",
+    visual: {
+      kind: "device",
+      src: "/screenshots/printer.png",
+      alt: "PrinterPilot — live speed and layer-complexity charts for a Voron print",
+      width: 1206,
+      height: 2622,
+    },
   },
   {
     tag: "Personal",
@@ -42,7 +68,17 @@ const studies: Study[] = [
       "A monitor that polls the ITV schedule, the show's social feeds, and the rumour mill, then pings the family group chat the moment audition dates and the final get confirmed. Persistent across months.",
     metric: "Caught the 2026 date 9 days before the press release.",
     hue: "mark",
-    kind: "bgt",
+    visual: {
+      kind: "notification",
+      preview: {
+        app: "BGT WATCHER",
+        appColor: "#FF2D7A",
+        time: "now",
+        title: "Final date confirmed",
+        body:
+          "Britain's Got Talent grand final: Sat 31 May, ITV1 8pm. Source: ITV schedule API · 9 days ahead of press release.",
+      },
+    },
   },
   {
     tag: "Games",
@@ -52,7 +88,13 @@ const studies: Study[] = [
       "A tile-shifting maze game with hand-drawn dragons, daily seeds, leaderboards and Game Center sync. Designed, built, signed and submitted to TestFlight without ever opening Xcode on a laptop.",
     metric: "Shipped a public beta in 11 evenings.",
     hue: "accent",
-    kind: "dragon",
+    visual: {
+      kind: "appcard",
+      icon: "/screenshots/dragon-icon.png",
+      name: "Dragon Maze",
+      subtitle: "Daily-seed maze puzzler",
+      build: "TestFlight · build 47",
+    },
   },
 ];
 
@@ -86,9 +128,7 @@ export function CaseStudies() {
                   duration: 0.7,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className={`relative overflow-hidden rounded-card border border-border bg-surface group hover:border-mark/40 transition-colors ${
-                  s.hue === "mark" ? "" : ""
-                }`}
+                className="relative overflow-hidden rounded-card border border-border bg-surface group hover:border-mark/40 transition-colors"
               >
                 <div
                   aria-hidden
@@ -102,7 +142,7 @@ export function CaseStudies() {
                 />
 
                 <div
-                  className={`relative grid grid-cols-1 lg:grid-cols-[1fr_320px] xl:grid-cols-[1fr_360px] gap-10 lg:gap-16 items-center p-8 sm:p-12 lg:p-16 ${
+                  className={`relative grid grid-cols-1 lg:grid-cols-[1fr_340px] xl:grid-cols-[1fr_380px] gap-10 lg:gap-16 items-center p-8 sm:p-12 lg:p-16 ${
                     phoneLeft ? "lg:[&>*:first-child]:order-2" : ""
                   }`}
                 >
@@ -137,24 +177,24 @@ export function CaseStudies() {
                   </div>
 
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.92, rotate: phoneLeft ? -3 : 3 }}
-                    whileInView={{ opacity: 1, scale: 1, rotate: phoneLeft ? -2 : 2 }}
+                    initial={{ opacity: 0, scale: 0.94, y: 16 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="relative mx-auto w-full max-w-[260px] sm:max-w-[300px] lg:max-w-[320px] transition-transform duration-700 group-hover:scale-[1.03] group-hover:rotate-0"
+                    transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative mx-auto w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[340px]"
                   >
                     <div
                       aria-hidden
-                      className="absolute -inset-8 rounded-[60px] blur-3xl opacity-60 group-hover:opacity-90 transition-opacity"
+                      className="absolute -inset-10 rounded-[60px] blur-3xl opacity-50 group-hover:opacity-80 transition-opacity"
                       style={{
                         background:
                           s.hue === "mark"
-                            ? "radial-gradient(closest-side, rgba(255,45,122,0.4), transparent 70%)"
-                            : "radial-gradient(closest-side, rgba(255,184,212,0.6), transparent 70%)",
+                            ? "radial-gradient(closest-side, rgba(255,45,122,0.35), transparent 70%)"
+                            : "radial-gradient(closest-side, rgba(255,184,212,0.55), transparent 70%)",
                       }}
                     />
                     <div className="relative">
-                      <PhoneMockup kind={s.kind} />
+                      <VisualRenderer visual={s.visual} />
                     </div>
                   </motion.div>
                 </div>
@@ -164,5 +204,167 @@ export function CaseStudies() {
         </div>
       </div>
     </section>
+  );
+}
+
+function VisualRenderer({ visual }: { visual: Visual }) {
+  if (visual.kind === "device") {
+    return (
+      <DeviceFrame
+        src={visual.src}
+        alt={visual.alt}
+        width={visual.width}
+        height={visual.height}
+      />
+    );
+  }
+  if (visual.kind === "notification") {
+    return <NotificationStack preview={visual.preview} />;
+  }
+  return <AppStoreCard {...visual} />;
+}
+
+function NotificationStack({ preview }: { preview: NotificationPreview }) {
+  return (
+    <div className="relative aspect-[9/14] w-full rounded-[36px] bg-gradient-to-b from-[#0d1216] via-[#11171c] to-[#1a2129] p-5 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.4)] overflow-hidden">
+      {/* faint wallpaper streaks */}
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-30"
+        style={{
+          background:
+            "radial-gradient(60% 40% at 20% 10%, rgba(255,45,122,0.25), transparent 70%), radial-gradient(50% 30% at 80% 90%, rgba(255,184,212,0.2), transparent 70%)",
+        }}
+      />
+
+      {/* status bar */}
+      <div className="relative flex items-center justify-between text-white/85 text-[11px] font-medium mb-4">
+        <span>9:41</span>
+        <div className="flex items-center gap-1.5 opacity-80">
+          <span className="block w-3 h-2 rounded-sm border border-white/80" />
+          <span className="block w-3.5 h-2 rounded-sm border border-white/80" />
+        </div>
+      </div>
+
+      {/* big clock */}
+      <div className="relative text-center text-white mb-6">
+        <div className="text-[11px] uppercase tracking-[0.2em] opacity-70">
+          Saturday, May 31
+        </div>
+        <div className="text-[64px] font-light leading-none mt-1">9:41</div>
+      </div>
+
+      {/* notification card */}
+      <div className="relative rounded-2xl bg-white/10 backdrop-blur-xl border border-white/15 p-3.5 shadow-lg">
+        <div className="flex items-start gap-2.5">
+          <div
+            className="shrink-0 w-7 h-7 rounded-md flex items-center justify-center text-[10px] font-bold text-white"
+            style={{ background: preview.appColor }}
+          >
+            BGT
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-[10px] font-semibold uppercase tracking-wider text-white/70 truncate">
+                {preview.app}
+              </span>
+              <span className="text-[10px] text-white/60 shrink-0">
+                {preview.time}
+              </span>
+            </div>
+            <div className="mt-1 text-[13px] font-semibold text-white leading-snug">
+              {preview.title}
+            </div>
+            <div className="mt-0.5 text-[12px] text-white/80 leading-snug">
+              {preview.body}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* second stacked card (fading) */}
+      <div className="relative mt-2 rounded-2xl bg-white/[0.06] backdrop-blur-xl border border-white/10 p-3 mx-2 opacity-80">
+        <div className="flex items-center gap-2 text-[11px] text-white/70">
+          <span className="w-1.5 h-1.5 rounded-full bg-white/70" />
+          <span className="truncate">3 earlier from BGT Watcher</span>
+        </div>
+      </div>
+
+      {/* dynamic island */}
+      <div
+        aria-hidden
+        className="absolute left-1/2 top-2 z-30 h-6 w-24 -translate-x-1/2 rounded-full bg-black"
+      />
+    </div>
+  );
+}
+
+function AppStoreCard({
+  icon,
+  name,
+  subtitle,
+  build,
+}: {
+  icon: string;
+  name: string;
+  subtitle: string;
+  build: string;
+}) {
+  return (
+    <div className="relative aspect-[9/14] w-full rounded-[36px] bg-gradient-to-b from-[#1c1530] via-[#2a1640] to-[#3b1855] p-6 shadow-[0_40px_80px_-20px_rgba(60,20,90,0.45)] overflow-hidden">
+      {/* twinkle stars */}
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-60"
+        style={{
+          backgroundImage:
+            "radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.6), transparent), radial-gradient(1px 1px at 70% 20%, rgba(255,255,255,0.5), transparent), radial-gradient(1px 1px at 40% 75%, rgba(255,255,255,0.6), transparent), radial-gradient(1px 1px at 85% 85%, rgba(255,255,255,0.5), transparent)",
+        }}
+      />
+
+      {/* TestFlight pill */}
+      <div className="relative flex justify-center mb-6">
+        <span className="inline-flex items-center gap-1.5 h-6 px-3 rounded-full bg-white/12 backdrop-blur-md border border-white/20 text-[10px] font-semibold uppercase tracking-wider text-white">
+          <span className="w-1.5 h-1.5 rounded-full bg-mark animate-pulse-dot" />
+          TestFlight Beta
+        </span>
+      </div>
+
+      {/* icon */}
+      <div className="relative mx-auto w-[150px] aspect-square rounded-[34px] overflow-hidden shadow-2xl shadow-black/40 ring-1 ring-white/10">
+        <Image
+          src={icon}
+          alt={`${name} app icon`}
+          width={300}
+          height={300}
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* title */}
+      <div className="relative text-center mt-6">
+        <div className="text-white text-[22px] font-bold tracking-tight">
+          {name}
+        </div>
+        <div className="text-white/70 text-[12px] mt-1">{subtitle}</div>
+      </div>
+
+      {/* CTA */}
+      <div className="relative mt-6 flex justify-center">
+        <span className="inline-flex items-center justify-center h-9 px-5 rounded-full bg-white text-[#1c1530] text-[12px] font-bold shadow-md">
+          Install
+        </span>
+      </div>
+
+      <div className="relative mt-4 text-center text-white/55 text-[10px] font-medium tracking-wide">
+        {build}
+      </div>
+
+      {/* dynamic island */}
+      <div
+        aria-hidden
+        className="absolute left-1/2 top-2 z-30 h-6 w-24 -translate-x-1/2 rounded-full bg-black"
+      />
+    </div>
   );
 }

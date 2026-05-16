@@ -1,8 +1,13 @@
+import { OwlkaMark } from "./OwlkaMark";
+
 /**
  * The Owlka iOS app is a tmux-terminal pane (not an iMessage-style chat).
  * Content here is REAL captured output from Tim's live Claude Code
  * session on the Mac Mini, rendered with the actual OwlkaTheme palette
  * (mint background, pink/grey tabs, monospace pane).
+ *
+ * Chrome elements (top bar, tab bar, input row) mirror the real
+ * SwiftUI sources in ~/code/TerminalApp/TerminalApp/Views/.
  */
 export function OwlkaSessionScreen() {
   return (
@@ -17,15 +22,15 @@ export function OwlkaSessionScreen() {
         </span>
       </div>
 
-      {/* Owlka top bar — logo + pink iconChip buttons */}
+      {/* Owlka top bar — real "OKa" brand mark + SF-Symbol iconChips */}
       <div className="relative shrink-0 px-[4%] pt-[0.5%] pb-[1%] flex items-center justify-between">
-        <div className="flex items-center gap-[2%]">
-          <OwlkaLogoMark />
+        <div className="flex items-center gap-[1.5%]">
+          <OwlkaMark transparent className="w-[12cqw] h-[12cqw]" />
           <span className="text-[5.4cqw] font-bold tracking-tight text-[#1A1A1F]">
             Owlka
           </span>
         </div>
-        <div className="flex items-center gap-[2.5%]">
+        <div className="flex items-center gap-[2cqw]">
           <IconChip glyph="search" />
           <IconChip glyph="doc" />
           <IconChip glyph="menu" />
@@ -54,9 +59,11 @@ export function OwlkaSessionScreen() {
         />
       </div>
 
-      {/* tmux pane content — REAL captured Claude session */}
-      <div className="relative flex-1 px-[3%] pt-[1%] overflow-hidden">
-        <div className="font-mono text-[2.4cqw] leading-[1.55] text-[#1A1A1F]/85 whitespace-pre">
+      {/* tmux pane content — REAL captured Claude session.
+          The todo footer at the end is part of the pane itself
+          (Claude renders it inline), not a separate iOS card. */}
+      <div className="relative flex-1 px-[3%] pt-[1%] overflow-hidden font-mono text-[2.4cqw] leading-[1.55]">
+        <div className="text-[#1A1A1F]/85 whitespace-pre">
 {`⏺ Update(scenarios/test_kill_switch_alert.py)
   ⎿  Added 7 lines, removed 4 lines
     41 +    # Point the kill-switch file constants
@@ -68,7 +75,7 @@ export function OwlkaSessionScreen() {
     49    for attr in ("KILL_MASTER", "KILL_TIER3",`}
         </div>
 
-        <div className="mt-[2%] font-mono text-[2.4cqw] leading-[1.55] whitespace-pre">
+        <div className="mt-[1.5%] whitespace-pre">
           <span className="text-[#FF6BA0] font-semibold">⏺ Bash</span>
           <span className="text-[#1A1A1F]/85">{`(cd ~/code/tim-claude-
       controlplane && python3.11 -m
@@ -79,47 +86,51 @@ export function OwlkaSessionScreen() {
      5 passed in 0.39s`}</span>
         </div>
 
-        <div className="mt-[2%] font-mono text-[2.4cqw] leading-[1.55] whitespace-pre">
+        <div className="mt-[1.5%] whitespace-pre">
           <span className="text-[#FF6BA0] font-semibold">⏺</span>
           <span className="text-[#1A1A1F]/85"> All 5 tests pass. Commit + push controlplane:</span>
         </div>
 
-        {/* active todo footer (mimics Claude Code's task spinner) */}
-        <div className="mt-[3%] rounded-[2cqw] border border-[#FFB8D4] bg-[#FFF8FA] px-[3%] py-[2%] font-mono text-[2.3cqw] leading-[1.65]">
-          <div className="flex items-center gap-[1.5%] text-[#FF6BA0] font-semibold">
+        {/* active todo footer — rendered as inline pane text, NOT a card.
+            This matches how Claude Code prints the "✻ ... ⎿ ◼/◻/✔" block
+            directly into the tmux pane. */}
+        <div className="mt-[2%] whitespace-pre">
+          <span className="text-[#FF6BA0] font-semibold inline-flex items-center gap-[1cqw]">
             <SpinnerGlyph />
-            Fixing kill-switch title + adding 30-min debounce…
-          </div>
-          <div className="mt-[1%] text-[#1A1A1F]/80">
-            ◼  Kill-switch alert title says &quot;tripped&quot;…
-          </div>
-          <div className="text-[#1A1A1F]/55">
-            ◻  Investigate enrich slot exhaustion (T4 ca…
-          </div>
-          <div className="text-[#1A1A1F]/55">
-            ◻  Scope: rename TerminalApp → Owlka everywh…
-          </div>
-          <div className="text-[#22A150]">
-            ✔  Extend response_quality_check.py with dec…
-          </div>
-          <div className="text-[#22A150]">
-            ✔  Add &quot;Decision-ask checklist&quot; section to r…
-          </div>
-          <div className="text-[#1A1A1F]/55 mt-[0.5%]">
-            … +32 completed
-          </div>
+            <span>✻ Fixing kill-switch title + adding 30-min debounce…</span>
+          </span>
+        </div>
+        <div className="whitespace-pre">
+          <span className="text-[#1A1A1F]/85">{`  ⎿ ◼ Kill-switch alert title says "tripped" wh…
+    ◻ Investigate enrich slot exhaustion (T4 ca…
+    ◻ Scope: rename TerminalApp → Owlka everywh…
+`}</span>
+          <span className="text-[#22A150]">{`    ✔ Extend response_quality_check.py with dec…
+    ✔ Add "Decision-ask checklist" section to r…
+`}</span>
+          <span className="text-[#1A1A1F]/55">     … +32 completed</span>
         </div>
       </div>
 
-      {/* input row — very-pale-pink wash matching OwlkaTheme.inputBg */}
+      {/* input row — mirrors SplitTerminalView.swift L2570-2663:
+          attach + ctrl + esc + text editor + circular send button */}
       <div className="relative shrink-0 px-[3%] pb-[1.5%] pt-[1.5%]">
-        <div className="flex items-center gap-[2%] h-[5.4%] rounded-[2.4cqw] bg-[#FFF8FA] border border-[#E5EEE8] px-[3%]">
-          <span className="text-[#1A1A1F]/45 text-[3.0cqw] flex-1 font-mono">
-            esc to interrupt · ctrl+t to hide tasks
-          </span>
-          <span className="shrink-0 w-[7cqw] h-[7cqw] rounded-[1.8cqw] bg-[#FF6BA0] flex items-center justify-center">
-            <ArrowUpGlyph />
-          </span>
+        <div className="flex items-stretch gap-[1.8cqw] bg-white/95 rounded-[2cqw] p-[1.8cqw]">
+          <ChipButton variant="attach" />
+          <ChipButton variant="ctrl" label="ctrl" />
+          <ChipButton variant="esc" label="esc" />
+          <div className="flex-1 min-w-0 rounded-[1.8cqw] bg-[#FFF8FA] border border-[#FF6BA0]/30 px-[2.5cqw] flex items-center">
+            <span className="text-[#1A1A1F]/40 text-[2.6cqw] truncate">
+              Ask anything · ⌘K for skills
+            </span>
+          </div>
+          <button
+            type="button"
+            className="shrink-0 w-[8.4cqw] h-[8.4cqw] rounded-full bg-[#FF6BA0] flex items-center justify-center"
+            aria-label="Send"
+          >
+            <SendGlyph />
+          </button>
         </div>
         <div className="mt-[1.5%] flex justify-center">
           <div className="w-[28%] h-[0.5%] rounded-full bg-black/60" />
@@ -140,6 +151,7 @@ function TmuxTab({
   status: "working" | "done";
   summary: string;
 }) {
+  const fg = active ? "#3A3A40" : "#FFFFFF";
   return (
     <div
       className={`flex-1 min-w-0 rounded-[1.6cqw] px-[2.5%] py-[1.4%] flex items-start gap-[3%] ${
@@ -148,28 +160,25 @@ function TmuxTab({
     >
       <div className="flex flex-col items-center gap-[1cqw] shrink-0">
         <span
-          className={`text-[2.6cqw] font-bold ${
-            active ? "text-[#3A3A40]" : "text-white"
-          }`}
+          className="text-[2.6cqw] font-bold"
+          style={{ color: fg }}
         >
           {number}
         </span>
-        <span
-          className={`w-[1.5cqw] h-[1.5cqw] rounded-full ${
-            status === "working"
-              ? "bg-[#3DC8D2]"
-              : active
-                ? "bg-[#3A3A40]/70"
-                : "bg-white/85"
-          }`}
-        />
+        {status === "working" ? (
+          <span
+            className="w-[1.6cqw] h-[1.6cqw] rounded-full bg-[#3DC8D2]"
+            aria-label="working"
+          />
+        ) : (
+          <CheckmarkCircleGlyph color={fg} />
+        )}
       </div>
       <span
         className={`text-[2.4cqw] leading-[1.25] line-clamp-3 ${
-          active
-            ? "text-[#3A3A40] font-semibold"
-            : "text-white font-medium"
+          active ? "font-semibold" : "font-medium"
         }`}
+        style={{ color: fg }}
       >
         {summary}
       </span>
@@ -177,67 +186,107 @@ function TmuxTab({
   );
 }
 
-function OwlkaLogoMark() {
-  return (
-    <svg viewBox="0 0 32 32" className="w-[10cqw] h-[10cqw]" aria-hidden>
-      <circle cx="16" cy="16" r="13" fill="#FF6BA0" />
-      <circle cx="11.5" cy="14" r="2.4" fill="#FAFAF7" />
-      <circle cx="20.5" cy="14" r="2.4" fill="#FAFAF7" />
-      <circle cx="11.5" cy="14" r="1.1" fill="#1A1A1F" />
-      <circle cx="20.5" cy="14" r="1.1" fill="#1A1A1F" />
-      <path
-        d="M 11 21 Q 16 24 21 21"
-        stroke="#1A1A1F"
-        strokeWidth="1.4"
-        fill="none"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
 function IconChip({ glyph }: { glyph: "search" | "doc" | "menu" }) {
   return (
-    <span className="w-[7.2cqw] h-[7.2cqw] rounded-[1.6cqw] bg-[#FFC1D9] flex items-center justify-center text-[#1A1A1F]">
+    <span className="w-[8cqw] h-[8cqw] rounded-[1.8cqw] bg-[#FFC1D9] flex items-center justify-center text-[#1A1A1F]">
       {glyph === "search" && (
         <svg
           viewBox="0 0 16 16"
-          className="w-[3.6cqw] h-[3.6cqw]"
+          className="w-[4.2cqw] h-[4.2cqw]"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           aria-hidden
         >
-          <circle cx="7" cy="7" r="4" />
-          <path d="M10 10l3 3" strokeLinecap="round" />
+          <circle cx="6.8" cy="6.8" r="4.2" />
+          <path d="M10.2 10.2 L13.5 13.5" />
         </svg>
       )}
       {glyph === "doc" && (
         <svg
           viewBox="0 0 16 16"
-          className="w-[3.6cqw] h-[3.6cqw]"
+          className="w-[4.2cqw] h-[4.2cqw]"
           fill="none"
           stroke="currentColor"
-          strokeWidth="1.8"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           aria-hidden
         >
-          <path d="M4 2h6l2 2v10H4z" />
-          <path d="M6 6h4M6 8.5h4M6 11h3" strokeLinecap="round" />
+          <path d="M3.6 2.2 H9.4 L12.4 5.2 V13.8 H3.6 Z" />
+          <path d="M9.4 2.2 V5.2 H12.4" />
+          <path d="M5.6 8.2 H10.4 M5.6 10.2 H10.4 M5.6 12.2 H8.4" />
         </svg>
       )}
       {glyph === "menu" && (
         <svg
           viewBox="0 0 16 16"
-          className="w-[3.6cqw] h-[3.6cqw]"
+          className="w-[4.2cqw] h-[4.2cqw]"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="1.8"
+          strokeLinecap="round"
           aria-hidden
         >
-          <path d="M3 5h10M3 8h10M3 11h10" strokeLinecap="round" />
+          <path d="M3 4.5 H13 M3 8 H13 M3 11.5 H13" />
         </svg>
       )}
     </span>
+  );
+}
+
+function ChipButton({
+  variant,
+  label,
+}: {
+  variant: "attach" | "ctrl" | "esc";
+  label?: string;
+}) {
+  if (variant === "attach") {
+    return (
+      <span className="shrink-0 w-[8cqw] h-[8cqw] rounded-[1.6cqw] bg-[#FFC1D9] flex items-center justify-center text-[#1A1A1F]">
+        <svg
+          viewBox="0 0 16 16"
+          className="w-[4.4cqw] h-[4.4cqw]"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden
+        >
+          <path d="M10.6 3.8 L4.6 9.8 a2.4 2.4 0 1 0 3.4 3.4 L13.4 7.8 a3.6 3.6 0 1 0 -5.1 -5.1 L3.5 7.5" />
+        </svg>
+      </span>
+    );
+  }
+  return (
+    <span className="shrink-0 px-[2.4cqw] h-[8cqw] rounded-[1.6cqw] bg-[#FFC1D9] flex items-center justify-center text-[#3A3A40] font-medium text-[2.6cqw] tracking-tight">
+      {label}
+    </span>
+  );
+}
+
+function CheckmarkCircleGlyph({ color }: { color: string }) {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      className="w-[2.2cqw] h-[2.2cqw]"
+      fill={color}
+      aria-hidden
+    >
+      <circle cx="8" cy="8" r="7" />
+      <path
+        d="M4.8 8.2 L7 10.4 L11.4 6"
+        fill="none"
+        stroke="#F5FBF7"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 
@@ -256,21 +305,19 @@ function SpinnerGlyph() {
   );
 }
 
-function ArrowUpGlyph() {
+function SendGlyph() {
   return (
     <svg
       viewBox="0 0 16 16"
-      className="w-[3.8cqw] h-[3.8cqw]"
+      className="w-[4.2cqw] h-[4.2cqw]"
       fill="none"
-      stroke="#1A1A1F"
-      strokeWidth="2.4"
+      stroke="#FFFFFF"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       aria-hidden
     >
-      <path
-        d="M8 12V4M4 8l4-4 4 4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M8 12.5 V3.5 M4 7.5 L8 3.5 L12 7.5" />
     </svg>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { PhoneMockup } from "./PhoneMockup";
 
 type Study = {
   tag: string;
@@ -9,6 +10,7 @@ type Study = {
   body: string;
   metric: string;
   hue: "mark" | "accent";
+  kind: "governors" | "printer" | "bgt" | "dragon";
 };
 
 const studies: Study[] = [
@@ -20,6 +22,7 @@ const studies: Study[] = [
       "A custom AI agent that reads the school's data alongside the latest Ofsted framework, drafts evidence-grade answers for inspection prep, and lets the governing body rehearse the real questions before they're asked.",
     metric: "Cuts inspection prep from weeks to an afternoon.",
     hue: "mark",
+    kind: "governors",
   },
   {
     tag: "Hardware",
@@ -29,6 +32,7 @@ const studies: Study[] = [
       "A native iOS app that talks to Klipper over the network, streams the toolhead, watches temperature curves, and pauses the print before a bad layer becomes a fire. Notifications when something needs a human.",
     metric: "Saved 14 prints in the first month.",
     hue: "accent",
+    kind: "printer",
   },
   {
     tag: "Personal",
@@ -38,6 +42,7 @@ const studies: Study[] = [
       "A monitor that polls the ITV schedule, the show's social feeds, and the rumour mill, then pings the family group chat the moment audition dates and the final get confirmed. Persistent across months.",
     metric: "Caught the 2026 date 9 days before the press release.",
     hue: "mark",
+    kind: "bgt",
   },
   {
     tag: "Games",
@@ -47,6 +52,7 @@ const studies: Study[] = [
       "A tile-shifting maze game with hand-drawn dragons, daily seeds, leaderboards and Game Center sync. Designed, built, signed and submitted to TestFlight without ever opening Xcode on a laptop.",
     metric: "Shipped a public beta in 11 evenings.",
     hue: "accent",
+    kind: "dragon",
   },
 ];
 
@@ -92,20 +98,28 @@ export function CaseStudies() {
                 }}
               />
 
-              <div className="relative">
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="inline-flex items-center h-7 px-3 rounded-pill bg-tint-mark text-mark text-xs font-medium">
-                    {s.tag}
-                  </span>
-                  <span className="text-xs text-muted">{s.who}</span>
+              <div className="relative grid grid-cols-1 sm:grid-cols-[1fr_140px] gap-8 items-start">
+                <div>
+                  <div className="flex items-center gap-3 mb-6 flex-wrap">
+                    <span className="inline-flex items-center h-7 px-3 rounded-pill bg-tint-mark text-mark text-xs font-medium">
+                      {s.tag}
+                    </span>
+                    <span className="text-xs text-muted">{s.who}</span>
+                  </div>
+                  <h3 className="text-2xl sm:text-[26px] font-semibold tracking-tight leading-snug">
+                    {s.title}
+                  </h3>
+                  <p className="mt-4 text-[15px] text-text/75 leading-relaxed">
+                    {s.body}
+                  </p>
+                  <p className="mt-6 text-sm font-medium text-mark">
+                    {s.metric}
+                  </p>
                 </div>
-                <h3 className="text-2xl sm:text-[28px] font-semibold tracking-tight leading-snug">
-                  {s.title}
-                </h3>
-                <p className="mt-4 text-[15px] text-text/75 leading-relaxed">
-                  {s.body}
-                </p>
-                <p className="mt-6 text-sm font-medium text-mark">{s.metric}</p>
+
+                <div className="hidden sm:block w-[140px] mx-auto transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-1">
+                  <PhoneMockup kind={s.kind} />
+                </div>
               </div>
             </motion.article>
           ))}

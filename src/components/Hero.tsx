@@ -2,39 +2,55 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { AuroraBackground } from "./AuroraBackground";
 import { OwlkaMark } from "./OwlkaMark";
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10"
-        style={{
-          background:
-            "radial-gradient(60% 50% at 50% 0%, var(--color-tint-mark) 0%, transparent 70%)",
-        }}
-      />
+      <AuroraBackground intensity="vivid" />
 
-      <div className="mx-auto max-w-5xl px-6 pt-24 pb-32 sm:pt-32 sm:pb-40 text-center">
+      <div className="mx-auto max-w-5xl px-6 pt-20 pb-32 sm:pt-28 sm:pb-40 text-center">
         <motion.div
-          initial={{ opacity: 0, scale: 0.92 }}
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-10 inline-flex items-center gap-2.5 h-8 pl-2.5 pr-4 rounded-pill bg-surface/80 border border-border backdrop-blur-md text-xs font-medium tracking-wide"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inset-0 rounded-full bg-mark animate-pulse-dot" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-mark" />
+          </span>
+          <span className="uppercase text-mark">Coming soon</span>
+          <span className="text-text/50">·</span>
+          <span className="text-text/80">Join the waitlist</span>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mx-auto mb-10"
         >
-          <OwlkaMark className="w-28 h-28 sm:w-32 sm:h-32 mx-auto" transparent />
+          <div className="animate-breathe">
+            <OwlkaMark
+              className="w-28 h-28 sm:w-36 sm:h-36 mx-auto"
+              transparent
+            />
+          </div>
         </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.05]"
+          className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.02]"
         >
           The full power of Claude Code.
           <br />
-          <span className="text-mark">On your phone.</span>
+          <span className="bg-gradient-to-r from-mark to-[#ff5e9d] bg-clip-text text-transparent">
+            On your phone.
+          </span>
         </motion.h1>
 
         <motion.p
@@ -56,28 +72,70 @@ export function Hero() {
         >
           <Link
             href="#waitlist"
-            className="inline-flex items-center justify-center h-12 px-7 rounded-pill bg-mark text-surface text-base font-medium hover:opacity-90 transition-opacity"
+            className="group inline-flex items-center justify-center gap-2 h-12 px-7 rounded-pill bg-mark text-surface text-base font-medium hover:opacity-90 transition-all shadow-lg shadow-mark/30 hover:shadow-xl hover:shadow-mark/40 hover:-translate-y-0.5"
           >
             Join the waitlist
+            <svg
+              className="w-4 h-4 transition-transform group-hover:translate-x-0.5"
+              viewBox="0 0 16 16"
+              fill="none"
+              aria-hidden
+            >
+              <path
+                d="M6 3l5 5-5 5"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </Link>
           <Link
-            href="#how"
-            className="inline-flex items-center justify-center h-12 px-7 rounded-pill border border-border text-base font-medium hover:bg-tint-mark/40 transition-colors"
+            href="#examples"
+            className="inline-flex items-center justify-center h-12 px-7 rounded-pill bg-surface/80 backdrop-blur-md border border-border text-base font-medium hover:border-mark/40 hover:bg-surface transition-colors"
           >
-            See how it works
+            See what people built
           </Link>
         </motion.div>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.6 }}
-          className="mt-16 text-sm text-muted"
+          transition={{ duration: 0.7, delay: 0.7 }}
+          className="mt-16 flex flex-wrap gap-x-6 gap-y-3 justify-center items-center text-sm text-muted"
         >
-          Persistent cross-session memory · Automated code reviewers ·
-          Environment protection
-        </motion.p>
+          <span className="inline-flex items-center gap-1.5">
+            <Check /> Persistent cross-session memory
+          </span>
+          <span className="hidden sm:inline text-border">·</span>
+          <span className="inline-flex items-center gap-1.5">
+            <Check /> Automated code reviewers
+          </span>
+          <span className="hidden sm:inline text-border">·</span>
+          <span className="inline-flex items-center gap-1.5">
+            <Check /> Environment protection
+          </span>
+        </motion.div>
       </div>
     </section>
+  );
+}
+
+function Check() {
+  return (
+    <svg
+      className="w-3.5 h-3.5 text-mark"
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden
+    >
+      <path
+        d="M3 8.5l3 3 7-7"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }

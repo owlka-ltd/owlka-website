@@ -46,7 +46,12 @@ export function HowItWorks() {
           </p>
         </div>
 
-        <ol className="space-y-4">
+        <ol className="relative space-y-4">
+          <div
+            aria-hidden
+            className="absolute left-[27px] sm:left-[35px] top-12 bottom-12 w-px bg-gradient-to-b from-mark/40 via-mark/15 to-transparent hidden sm:block"
+          />
+
           {steps.map((s, i) => (
             <motion.li
               key={s.n}
@@ -58,15 +63,14 @@ export function HowItWorks() {
                 delay: i * 0.1,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="flex gap-6 sm:gap-10 p-8 sm:p-10 rounded-card bg-bg border border-border hover:border-mark/40 transition-colors"
+              className="relative flex gap-6 sm:gap-10 p-8 sm:p-10 rounded-card bg-bg border border-border hover:border-mark/40 hover:shadow-lg hover:shadow-mark/5 transition-all group"
             >
-              <span
-                className="text-mark font-mono text-base font-medium shrink-0 mt-1"
-                aria-hidden
-              >
-                {s.n}
-              </span>
-              <div>
+              <div className="relative shrink-0 mt-0.5">
+                <div className="w-14 h-14 rounded-full bg-tint-mark text-mark font-semibold text-base flex items-center justify-center transition-transform group-hover:scale-110">
+                  <span className="font-mono">{s.n}</span>
+                </div>
+              </div>
+              <div className="flex-1">
                 <h3 className="text-xl sm:text-2xl font-semibold tracking-tight">
                   {s.title}
                 </h3>

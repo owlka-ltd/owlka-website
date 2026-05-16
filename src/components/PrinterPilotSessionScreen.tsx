@@ -40,84 +40,105 @@ export function PrinterPilotSessionScreen() {
       </div>
 
       {/* main scrollable pane */}
-      <div className="relative flex-1 overflow-hidden px-[4%] pt-[2.5%] flex flex-col gap-[2.2cqw]">
+      <div className="relative flex-1 overflow-hidden px-[4%] pt-[1.8%] flex flex-col gap-[1.6cqw]">
         {/* printer header — title + status pill + filename */}
         <div>
           <div className="flex items-center justify-between gap-[2cqw]">
-            <span className="text-[4.2cqw] font-bold text-white tracking-tight">
+            <span className="text-[3.8cqw] font-bold text-white tracking-tight">
               Sovol SV08 Max
             </span>
-            <span className="shrink-0 inline-flex items-center gap-[1cqw] h-[5.4cqw] px-[2cqw] rounded-full bg-[#1B3A2E] text-[#3DC88A] text-[2.4cqw] font-semibold">
-              <span className="w-[1.4cqw] h-[1.4cqw] rounded-full bg-[#3DC88A]" />
-              <PrinterIcon />
-              <span>printing</span>
+            <span className="shrink-0 inline-flex items-center gap-[1cqw] h-[4.8cqw] px-[1.6cqw] rounded-full bg-[#1B3A2E] text-[#3DC88A] text-[2.2cqw] font-semibold">
+              <span className="w-[1.2cqw] h-[1.2cqw] rounded-full bg-[#3DC88A]" />
+              printing
             </span>
           </div>
-          <div className="mt-[0.6cqw] font-mono text-[2.2cqw] text-[#888] truncate">
+          <div className="mt-[0.4cqw] font-mono text-[2cqw] text-[#888] truncate">
             275pct_Zephyros_PLA_0.2_1d4h35m.gcode
           </div>
         </div>
 
-        {/* webcam panel — stylized navy/print suggestion */}
-        <div className="relative w-full aspect-[16/9] rounded-[2.2cqw] overflow-hidden bg-[#0D1520]">
+        {/* webcam panel — clearly framed live feed */}
+        <div className="relative w-full aspect-[16/9] rounded-[2cqw] overflow-hidden bg-[#0D1520] ring-1 ring-white/8">
           <WebcamMock />
-          <span className="absolute top-[1.4cqw] left-[1.4cqw] inline-flex items-center gap-[0.8cqw] h-[3.4cqw] px-[1.4cqw] rounded-full bg-black/55 backdrop-blur text-[1.9cqw] font-semibold text-white">
+          <span className="absolute top-[1.2cqw] left-[1.2cqw] inline-flex items-center gap-[0.8cqw] h-[3.2cqw] px-[1.4cqw] rounded-full bg-black/65 backdrop-blur text-[1.8cqw] font-semibold text-white">
             <span className="w-[1cqw] h-[1cqw] rounded-full bg-[#FF4D6D] animate-pulse" />
             LIVE
           </span>
+          <span className="absolute top-[1.2cqw] right-[1.2cqw] inline-flex items-center gap-[0.6cqw] h-[3.2cqw] px-[1.2cqw] rounded-full bg-black/65 backdrop-blur text-[1.7cqw] font-medium text-white/85">
+            <CameraGlyph />
+            Webcam
+          </span>
         </div>
 
-        {/* progress bar + percentage */}
+        {/* progress strip — bar + percent + layers/ETA inline */}
         <div>
-          <div className="flex items-baseline justify-between">
-            <span className="text-[2.4cqw] text-[#AAA]">Progress</span>
-            <span className="text-[3.2cqw] font-bold text-[#C9A96E]">
-              91.0%
-            </span>
+          <div className="flex items-center justify-between text-[2cqw] text-[#AAA]">
+            <span>Layer 277 / 501</span>
+            <span>ETA <span className="text-[#C9A96E] font-semibold">02:57</span> · 3h 0m left</span>
           </div>
-          <div className="mt-[0.6cqw] h-[1.6cqw] rounded-full bg-[#0D1520] overflow-hidden">
+          <div className="mt-[0.6cqw] h-[1.4cqw] rounded-full bg-[#0D1520] overflow-hidden relative">
             <div
               className="h-full rounded-full bg-[#C9A96E]"
               style={{ width: "91%" }}
             />
+            <span className="absolute right-[0.6cqw] top-1/2 -translate-y-1/2 text-[1.6cqw] font-bold text-[#1A1A2E]">
+              91.0%
+            </span>
           </div>
         </div>
 
-        {/* metrics row — layers + ETA + remaining */}
-        <div className="grid grid-cols-3 gap-[1.4cqw] text-[2.1cqw]">
-          <MetricCell label="Layers" value="277 / 501" />
-          <MetricCell label="ETA" value="02:57" valueAccent />
-          <MetricCell label="Remaining" value="3h 0m" />
+        {/* temperature graphs — hotend + bed sparklines */}
+        <div className="rounded-[2cqw] bg-[#16213E] p-[1.8cqw]">
+          <div className="flex items-center justify-between mb-[1cqw]">
+            <span className="text-[2.2cqw] font-medium text-[#E0E0E0]">
+              Temperatures
+            </span>
+            <span className="text-[1.8cqw] text-[#888]">last 5 min</span>
+          </div>
+          <div className="grid grid-cols-2 gap-[1.4cqw]">
+            <TempCard
+              label="Hotend"
+              current="218.4"
+              target="220"
+              color="#FF6B6B"
+              path="M0,24 L6,22 L12,18 L18,15 L24,12 L30,10 L36,8 L42,7 L48,6.5 L54,6.5 L60,6 L66,6"
+            />
+            <TempCard
+              label="Bed"
+              current="60.1"
+              target="60"
+              color="#3DC8D2"
+              path="M0,22 L6,20 L12,17 L18,14 L24,12 L30,11 L36,10.5 L42,10 L48,10 L54,10 L60,10 L66,10"
+            />
+          </div>
         </div>
 
         {/* Speed Factor control panel */}
-        <div className="mt-[0.4cqw] rounded-[2.2cqw] bg-[#16213E] p-[2.2cqw]">
+        <div className="rounded-[2cqw] bg-[#16213E] p-[1.8cqw]">
           <div className="flex items-center justify-between">
-            <span className="inline-flex items-center gap-[1cqw] text-[2.6cqw] text-[#E0E0E0]">
+            <span className="inline-flex items-center gap-[1cqw] text-[2.4cqw] text-[#E0E0E0]">
               <GaugeGlyph />
               <span className="font-medium">Speed Factor</span>
             </span>
-            <span className="text-[3cqw] font-bold text-white">100%</span>
+            <span className="text-[2.8cqw] font-bold text-white">100%</span>
           </div>
-          <div className="mt-[1.2cqw] flex items-center gap-[1.4cqw]">
-            <span className="text-[1.9cqw] text-[#888]">50%</span>
-            <div className="flex-1 h-[1.4cqw] rounded-full bg-[#0D1520] overflow-hidden relative">
+          <div className="mt-[1cqw] flex items-center gap-[1.2cqw]">
+            <span className="text-[1.8cqw] text-[#888]">50%</span>
+            <div className="flex-1 h-[1.2cqw] rounded-full bg-[#0D1520] overflow-hidden relative">
               <div
                 className="absolute inset-y-0 left-0 bg-[#C9A96E]"
                 style={{ width: "25%" }}
               />
               <div
-                className="absolute top-1/2 -translate-y-1/2 w-[3.6cqw] h-[3.6cqw] rounded-full bg-white shadow"
-                style={{ left: "calc(25% - 1.8cqw)" }}
+                className="absolute top-1/2 -translate-y-1/2 w-[3.2cqw] h-[3.2cqw] rounded-full bg-white shadow"
+                style={{ left: "calc(25% - 1.6cqw)" }}
               />
             </div>
-            <span className="text-[1.9cqw] text-[#888]">250%</span>
+            <span className="text-[1.8cqw] text-[#888]">250%</span>
           </div>
-          <div className="mt-[1.4cqw] flex items-center justify-between text-[2.1cqw]">
+          <div className="mt-[0.8cqw] flex items-center justify-between text-[1.9cqw]">
             <span className="text-[#C9A96E]/80">Live Velocity</span>
-            <span className="font-mono font-semibold text-white">
-              22.7 mm/s
-            </span>
+            <span className="font-mono font-semibold text-white">22.7 mm/s</span>
           </div>
         </div>
       </div>
@@ -153,26 +174,51 @@ function PrinterTab({ label, active }: { label: string; active: boolean }) {
   );
 }
 
-function MetricCell({
+function TempCard({
   label,
-  value,
-  valueAccent,
+  current,
+  target,
+  color,
+  path,
 }: {
   label: string;
-  value: string;
-  valueAccent?: boolean;
+  current: string;
+  target: string;
+  color: string;
+  path: string;
 }) {
   return (
-    <div className="rounded-[1.6cqw] bg-[#16213E] px-[1.6cqw] py-[1.4cqw]">
-      <div className="text-[#888] text-[1.9cqw] tracking-tight">{label}</div>
-      <div
-        className={`mt-[0.4cqw] text-[2.4cqw] font-semibold ${
-          valueAccent ? "text-[#C9A96E]" : "text-white"
-        }`}
-      >
-        {value}
+    <div className="rounded-[1.4cqw] bg-[#0D1520] px-[1.2cqw] py-[1cqw]">
+      <div className="flex items-baseline justify-between">
+        <span className="text-[1.8cqw] font-medium text-[#AAA]">{label}</span>
+        <span className="text-[1.6cqw] text-[#666]">→ {target}°C</span>
       </div>
+      <div className="flex items-baseline gap-[0.6cqw] mt-[0.2cqw]">
+        <span className="text-[2.6cqw] font-bold" style={{ color }}>
+          {current}
+        </span>
+        <span className="text-[1.6cqw] text-[#888]">°C</span>
+      </div>
+      <svg viewBox="0 0 66 28" className="mt-[0.4cqw] w-full h-[7cqw]" preserveAspectRatio="none" aria-hidden>
+        <defs>
+          <linearGradient id={`tempFill-${label}`} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor={color} stopOpacity="0.35" />
+            <stop offset="1" stopColor={color} stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <path d={`${path} L66,28 L0,28 Z`} fill={`url(#tempFill-${label})`} />
+        <path d={path} stroke={color} strokeWidth="1.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
     </div>
+  );
+}
+
+function CameraGlyph() {
+  return (
+    <svg viewBox="0 0 16 12" className="w-[2.4cqw] h-[1.8cqw]" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden>
+      <rect x="1" y="2.5" width="10" height="7" rx="1.2" />
+      <path d="M11 4.5 L15 2.5 V9.5 L11 7.5 Z" />
+    </svg>
   );
 }
 

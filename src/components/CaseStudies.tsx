@@ -226,14 +226,26 @@ function VisualRenderer({ visual }: { visual: Visual }) {
     );
   }
   if (visual.kind === "notification") {
-    return <NotificationStack preview={visual.preview} />;
+    return (
+      <div className="@container">
+        <DeviceFrame>
+          <NotificationStack preview={visual.preview} />
+        </DeviceFrame>
+      </div>
+    );
   }
-  return <AppStoreCard {...visual} />;
+  return (
+    <div className="@container">
+      <DeviceFrame>
+        <AppStoreCard {...visual} />
+      </DeviceFrame>
+    </div>
+  );
 }
 
 function NotificationStack({ preview }: { preview: NotificationPreview }) {
   return (
-    <div className="relative aspect-[9/14] w-full rounded-[36px] bg-gradient-to-b from-[#0d1216] via-[#11171c] to-[#1a2129] p-5 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.4)] overflow-hidden">
+    <div className="relative h-full w-full bg-gradient-to-b from-[#0d1216] via-[#11171c] to-[#1a2129] overflow-hidden">
       {/* faint wallpaper streaks */}
       <div
         aria-hidden
@@ -244,45 +256,45 @@ function NotificationStack({ preview }: { preview: NotificationPreview }) {
         }}
       />
 
-      {/* status bar */}
-      <div className="relative flex items-center justify-between text-white/85 text-[11px] font-medium mb-4">
+      {/* iOS status bar */}
+      <div className="relative h-[5.6%] flex items-end justify-between pb-[1.5%] px-[8%] text-white/85 text-[3.6cqw] font-semibold tracking-tight">
         <span>9:41</span>
-        <div className="flex items-center gap-1.5 opacity-80">
-          <span className="block w-3 h-2 rounded-sm border border-white/80" />
-          <span className="block w-3.5 h-2 rounded-sm border border-white/80" />
+        <div className="flex items-center gap-[3px] opacity-90">
+          <span className="block w-[3.2cqw] h-[2.2cqw] rounded-[0.4cqw] border border-white/80" />
+          <span className="block w-[3.8cqw] h-[2.2cqw] rounded-[0.4cqw] border border-white/80" />
         </div>
       </div>
 
-      {/* big clock */}
-      <div className="relative text-center text-white mb-6">
-        <div className="text-[11px] uppercase tracking-[0.2em] opacity-70">
+      {/* lock-screen date + big clock */}
+      <div className="relative text-center text-white mt-[3%] px-[5%]">
+        <div className="text-[2.6cqw] uppercase tracking-[0.2em] opacity-70">
           Saturday, May 31
         </div>
-        <div className="text-[64px] font-light leading-none mt-1">9:41</div>
+        <div className="text-[18cqw] font-light leading-none mt-[1cqw]">9:41</div>
       </div>
 
       {/* notification card */}
-      <div className="relative rounded-2xl bg-white/10 backdrop-blur-xl border border-white/15 p-3.5 shadow-lg">
-        <div className="flex items-start gap-2.5">
+      <div className="relative mx-[4%] mt-[8%] rounded-[3cqw] bg-white/10 backdrop-blur-xl border border-white/15 p-[3.5cqw] shadow-lg">
+        <div className="flex items-start gap-[2.4cqw]">
           <div
-            className="shrink-0 w-7 h-7 rounded-md flex items-center justify-center text-[10px] font-bold text-white"
+            className="shrink-0 w-[7cqw] h-[7cqw] rounded-[1.4cqw] flex items-center justify-center text-[2.4cqw] font-bold text-white"
             style={{ background: preview.appColor }}
           >
             BGT
           </div>
           <div className="flex-1 min-w-0">
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-white/70 truncate">
+            <div className="flex items-center justify-between gap-[1.6cqw]">
+              <span className="text-[2.4cqw] font-semibold uppercase tracking-wider text-white/70 truncate">
                 {preview.app}
               </span>
-              <span className="text-[10px] text-white/60 shrink-0">
+              <span className="text-[2.4cqw] text-white/60 shrink-0">
                 {preview.time}
               </span>
             </div>
-            <div className="mt-1 text-[13px] font-semibold text-white leading-snug">
+            <div className="mt-[0.8cqw] text-[3.2cqw] font-semibold text-white leading-snug">
               {preview.title}
             </div>
-            <div className="mt-0.5 text-[12px] text-white/80 leading-snug">
+            <div className="mt-[0.4cqw] text-[2.9cqw] text-white/80 leading-snug">
               {preview.body}
             </div>
           </div>
@@ -290,19 +302,45 @@ function NotificationStack({ preview }: { preview: NotificationPreview }) {
       </div>
 
       {/* second stacked card (fading) */}
-      <div className="relative mt-2 rounded-2xl bg-white/[0.06] backdrop-blur-xl border border-white/10 p-3 mx-2 opacity-80">
-        <div className="flex items-center gap-2 text-[11px] text-white/70">
-          <span className="w-1.5 h-1.5 rounded-full bg-white/70" />
+      <div className="relative mx-[6%] mt-[1.8cqw] rounded-[2.4cqw] bg-white/[0.06] backdrop-blur-xl border border-white/10 p-[2.4cqw] opacity-80">
+        <div className="flex items-center gap-[1.6cqw] text-[2.6cqw] text-white/70">
+          <span className="w-[1.4cqw] h-[1.4cqw] rounded-full bg-white/70" />
           <span className="truncate">3 earlier from BGT Watcher</span>
         </div>
       </div>
 
-      {/* dynamic island */}
-      <div
-        aria-hidden
-        className="absolute left-1/2 top-2 z-30 h-6 w-24 -translate-x-1/2 rounded-full bg-black"
-      />
+      {/* lock-screen widgets row */}
+      <div className="absolute bottom-[8%] left-0 right-0 flex items-center justify-between px-[8%]">
+        <span className="w-[10cqw] h-[10cqw] rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">
+          <FlashlightGlyph />
+        </span>
+        <span className="w-[10cqw] h-[10cqw] rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">
+          <CameraSmallGlyph />
+        </span>
+      </div>
+
+      {/* home indicator */}
+      <div className="absolute bottom-[2%] left-0 right-0 flex justify-center">
+        <div className="w-[28%] h-[0.5%] rounded-full bg-white/60" />
+      </div>
     </div>
+  );
+}
+
+function FlashlightGlyph() {
+  return (
+    <svg viewBox="0 0 16 16" className="w-[4.4cqw] h-[4.4cqw]" fill="currentColor" aria-hidden>
+      <path d="M5 1h6l-0.6 3H5.6zM5.6 5h4.8l-0.5 2H6.1zM6.4 8h3.2v6.2c0 0.4-0.4 0.8-0.8 0.8H7.2c-0.4 0-0.8-0.4-0.8-0.8z" />
+    </svg>
+  );
+}
+
+function CameraSmallGlyph() {
+  return (
+    <svg viewBox="0 0 16 16" className="w-[4.4cqw] h-[4.4cqw]" fill="currentColor" aria-hidden>
+      <path d="M5 3 L4 5 H2 a1 1 0 0 0-1 1 v7 a1 1 0 0 0 1 1 h12 a1 1 0 0 0 1-1 V6 a1 1 0 0 0-1-1 h-2 L11 3 z" />
+      <circle cx="8" cy="9" r="2.6" fill="#0d1216" />
+    </svg>
   );
 }
 
@@ -318,7 +356,7 @@ function AppStoreCard({
   build: string;
 }) {
   return (
-    <div className="relative aspect-[9/14] w-full rounded-[36px] bg-gradient-to-b from-[#1c1530] via-[#2a1640] to-[#3b1855] p-6 shadow-[0_40px_80px_-20px_rgba(60,20,90,0.45)] overflow-hidden">
+    <div className="relative h-full w-full bg-gradient-to-b from-[#1c1530] via-[#2a1640] to-[#3b1855] overflow-hidden flex flex-col">
       {/* twinkle stars */}
       <div
         aria-hidden
@@ -329,16 +367,25 @@ function AppStoreCard({
         }}
       />
 
+      {/* iOS status bar */}
+      <div className="relative shrink-0 h-[5.6%] flex items-end justify-between pb-[1.5%] px-[8%] text-white text-[3.6cqw] font-semibold tracking-tight">
+        <span>9:41</span>
+        <span className="flex items-center gap-[3px]">
+          <span className="block w-[3.2cqw] h-[2.2cqw] rounded-[0.4cqw] border border-white/80" />
+          <span className="block w-[3.8cqw] h-[2.2cqw] rounded-[0.4cqw] border border-white/80" />
+        </span>
+      </div>
+
       {/* TestFlight pill */}
-      <div className="relative flex justify-center mb-6">
-        <span className="inline-flex items-center gap-1.5 h-6 px-3 rounded-full bg-white/12 backdrop-blur-md border border-white/20 text-[10px] font-semibold uppercase tracking-wider text-white">
-          <span className="w-1.5 h-1.5 rounded-full bg-mark animate-pulse-dot" />
+      <div className="relative flex justify-center mt-[3%]">
+        <span className="inline-flex items-center gap-[1.2cqw] h-[4.8cqw] px-[2.4cqw] rounded-full bg-white/12 backdrop-blur-md border border-white/20 text-[2.4cqw] font-semibold uppercase tracking-wider text-white">
+          <span className="w-[1.4cqw] h-[1.4cqw] rounded-full bg-mark animate-pulse-dot" />
           TestFlight Beta
         </span>
       </div>
 
       {/* icon */}
-      <div className="relative mx-auto w-[150px] aspect-square rounded-[34px] overflow-hidden shadow-2xl shadow-black/40 ring-1 ring-white/10">
+      <div className="relative mx-auto mt-[5%] w-[44%] aspect-square rounded-[6cqw] overflow-hidden shadow-2xl shadow-black/40 ring-1 ring-white/10">
         <Image
           src={icon}
           alt={`${name} app icon`}
@@ -349,29 +396,48 @@ function AppStoreCard({
       </div>
 
       {/* title */}
-      <div className="relative text-center mt-6">
-        <div className="text-white text-[22px] font-bold tracking-tight">
+      <div className="relative text-center mt-[4%] px-[5%]">
+        <div className="text-white text-[5cqw] font-bold tracking-tight">
           {name}
         </div>
-        <div className="text-white/70 text-[12px] mt-1">{subtitle}</div>
+        <div className="text-white/70 text-[2.8cqw] mt-[0.6cqw]">{subtitle}</div>
+      </div>
+
+      {/* feature row — Age / Category / Developer */}
+      <div className="relative mt-[5%] grid grid-cols-3 gap-[1cqw] px-[6%] text-center">
+        <FeatureCell label="Age" value="4+" />
+        <FeatureCell label="Category" value="Puzzle" />
+        <FeatureCell label="Developer" value="T. Trailor" />
       </div>
 
       {/* CTA */}
-      <div className="relative mt-6 flex justify-center">
-        <span className="inline-flex items-center justify-center h-9 px-5 rounded-full bg-white text-[#1c1530] text-[12px] font-bold shadow-md">
+      <div className="relative mt-[6%] flex justify-center">
+        <span className="inline-flex items-center justify-center h-[7cqw] px-[5cqw] rounded-full bg-white text-[#1c1530] text-[2.8cqw] font-bold shadow-md">
           Install
         </span>
       </div>
 
-      <div className="relative mt-4 text-center text-white/55 text-[10px] font-medium tracking-wide">
+      <div className="relative mt-[2.4cqw] text-center text-white/55 text-[2.4cqw] font-medium tracking-wide">
         {build}
       </div>
 
-      {/* dynamic island */}
-      <div
-        aria-hidden
-        className="absolute left-1/2 top-2 z-30 h-6 w-24 -translate-x-1/2 rounded-full bg-black"
-      />
+      {/* home indicator */}
+      <div className="mt-auto pb-[2%] flex justify-center">
+        <div className="w-[28%] h-[0.5%] rounded-full bg-white/70" />
+      </div>
+    </div>
+  );
+}
+
+function FeatureCell({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex flex-col items-center border-x border-white/10 first:border-l-0 last:border-r-0">
+      <span className="text-[2cqw] uppercase tracking-wider text-white/55">
+        {label}
+      </span>
+      <span className="text-[2.6cqw] font-semibold text-white mt-[0.4cqw]">
+        {value}
+      </span>
     </div>
   );
 }

@@ -86,29 +86,154 @@ export function OwlkaSessionScreen() {
         </div>
       </div>
 
-      {/* input row — VStack[attach, ctrl, esc] + tall editor + send
-          (SplitTerminalView.swift inputSection L2541-2663) */}
-      <div className="relative shrink-0 bg-white px-[3%] pb-[1.5%] pt-[2%]">
+      {/* input row — VStack[attach, ctrl, esc] + editor + send (compact
+          single-line height so the iOS keyboard fits below)
+          SplitTerminalView.swift inputSection L2541-2663 */}
+      <div className="relative shrink-0 bg-white px-[3%] pt-[1.5%] pb-[1.5%]">
         <div className="flex items-end gap-[1.6cqw]">
-          <div className="flex flex-col gap-[1.2cqw] shrink-0">
+          <div className="flex flex-col gap-[1cqw] shrink-0">
             <ChipButton variant="attach" />
             <ChipButton variant="pill" label="ctrl" />
             <ChipButton variant="pill" label="esc" />
           </div>
-          <div className="flex-1 min-w-0 h-[26cqw] rounded-[2.4cqw] bg-[#FFF8FA] border border-[#FF6BA0]/35" />
+          <div className="flex-1 min-w-0 h-[24cqw] rounded-[2.4cqw] bg-[#FFF8FA] border border-[#FF6BA0]/35 px-[2cqw] pt-[1.6cqw] text-[2.6cqw] text-[#1A1A1F]/55 leading-tight">
+            run the keyboard build and screenshot the hero|
+          </div>
           <button
             type="button"
-            className="shrink-0 self-end w-[10cqw] h-[10cqw] rounded-full bg-[#FF6BA0] flex items-center justify-center"
+            className="shrink-0 self-end w-[8.4cqw] h-[8.4cqw] rounded-full bg-[#FF6BA0] flex items-center justify-center"
             aria-label="Send"
           >
             <PaperPlaneGlyph />
           </button>
         </div>
-        <div className="mt-[2%] flex justify-center">
-          <div className="w-[28%] h-[0.5%] rounded-full bg-black/60" />
+      </div>
+
+      {/* iOS keyboard — stylized QWERTY band so the hero reads as
+          "actively being typed in" (real screenshot shows keyboard up) */}
+      <IosKeyboard />
+    </div>
+  );
+}
+
+function IosKeyboard() {
+  return (
+    <div className="relative shrink-0 bg-[#D1D5DB] pt-[1.8cqw] pb-[1cqw] px-[1.2cqw] flex flex-col gap-[1.4cqw]">
+      <KeyRow keys={["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"]} />
+      <KeyRow
+        keys={["a", "s", "d", "f", "g", "h", "j", "k", "l"]}
+        sidePad
+      />
+      <div className="flex items-stretch gap-[1.2cqw]">
+        <WideKey glyph="shift" />
+        <div className="flex-1 flex items-stretch gap-[1.2cqw]">
+          {["z", "x", "c", "v", "b", "n", "m"].map((k) => (
+            <KeyCap key={k} label={k} />
+          ))}
         </div>
+        <WideKey glyph="backspace" />
+      </div>
+      <div className="flex items-stretch gap-[1.2cqw]">
+        <BottomKey label="123" />
+        <BottomKey glyph="globe" />
+        <BottomKey grow label="space" />
+        <BottomKey wide label="return" accent />
+      </div>
+      <div className="mt-[0.4cqw] flex justify-center">
+        <div className="w-[28%] h-[0.6cqw] rounded-full bg-black/60" />
       </div>
     </div>
+  );
+}
+
+function KeyRow({ keys, sidePad }: { keys: string[]; sidePad?: boolean }) {
+  return (
+    <div
+      className={`flex items-stretch gap-[1.2cqw] ${
+        sidePad ? "px-[4.8cqw]" : ""
+      }`}
+    >
+      {keys.map((k) => (
+        <KeyCap key={k} label={k} />
+      ))}
+    </div>
+  );
+}
+
+function KeyCap({ label }: { label: string }) {
+  return (
+    <span className="flex-1 min-w-0 h-[8.4cqw] rounded-[1.2cqw] bg-white shadow-[0_1px_0_rgba(0,0,0,0.25)] flex items-center justify-center text-[3.4cqw] font-normal text-[#1A1A1F]">
+      {label}
+    </span>
+  );
+}
+
+function WideKey({ glyph }: { glyph: "shift" | "backspace" }) {
+  return (
+    <span className="w-[10.4cqw] h-[8.4cqw] rounded-[1.2cqw] bg-[#ADB1BA] shadow-[0_1px_0_rgba(0,0,0,0.25)] flex items-center justify-center text-[#1A1A1F]">
+      {glyph === "shift" ? <ShiftGlyph /> : <BackspaceGlyph />}
+    </span>
+  );
+}
+
+function BottomKey({
+  label,
+  glyph,
+  wide,
+  grow,
+  accent,
+}: {
+  label?: string;
+  glyph?: "globe";
+  wide?: boolean;
+  grow?: boolean;
+  accent?: boolean;
+}) {
+  const cls = grow
+    ? "flex-1"
+    : wide
+      ? "w-[16cqw]"
+      : "w-[10cqw]";
+  const bg = grow
+    ? "bg-white"
+    : accent
+      ? "bg-[#FF6BA0] text-white"
+      : "bg-[#ADB1BA]";
+  return (
+    <span
+      className={`${cls} ${bg} h-[8.4cqw] rounded-[1.2cqw] shadow-[0_1px_0_rgba(0,0,0,0.25)] flex items-center justify-center text-[2.8cqw] font-medium ${
+        accent ? "" : "text-[#1A1A1F]"
+      }`}
+    >
+      {glyph === "globe" ? <GlobeGlyph /> : label}
+    </span>
+  );
+}
+
+function ShiftGlyph() {
+  return (
+    <svg viewBox="0 0 16 16" className="w-[3.6cqw] h-[3.6cqw]" fill="currentColor" aria-hidden>
+      <path d="M8 2 L14 8 H11 V13 H5 V8 H2 Z" />
+    </svg>
+  );
+}
+
+function BackspaceGlyph() {
+  return (
+    <svg viewBox="0 0 18 14" className="w-[4.4cqw] h-[3.4cqw]" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden>
+      <path d="M5 1 L1 7 L5 13 H16 V1 Z" />
+      <path d="M8 5 L13 9 M13 5 L8 9" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function GlobeGlyph() {
+  return (
+    <svg viewBox="0 0 16 16" className="w-[3.6cqw] h-[3.6cqw]" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden>
+      <circle cx="8" cy="8" r="6" />
+      <ellipse cx="8" cy="8" rx="3" ry="6" />
+      <path d="M2 8h12" />
+    </svg>
   );
 }
 

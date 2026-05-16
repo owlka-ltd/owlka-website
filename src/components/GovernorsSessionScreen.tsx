@@ -1,241 +1,230 @@
 /**
- * Static, populated Governors-app session rendered in HTML inside the
- * DeviceFrame. Replaces the live-app screenshot which kept showing the
- * "Connection failed" empty state when the backend is offline.
+ * Castle Federation Ofsted Agent — faithful HTML mock of the real
+ * governors.timtrailor.com web app rendered inside the device frame.
  *
- * Theme mirrors the real app (navy + gold) from TimSharedKit's AppTheme.
- * Content is an inspection-prep Q&A that demonstrates the actual value
- * prop: evidence-grade answers cited against the latest Ofsted framework.
+ * Palette captured from `~/code/ofsted-agent/app.py`:
+ *   NAVY   #2a2e45   question bubble bg / open-file pill bg variant
+ *   GOLD   #C1A559   question border, gold accents
+ *   GREEN  #2dcc70   answer border, bullet arrows, model label
+ *   IVORY  #faf8f2   evidence inset bg
+ *   PILL   #1e3a5f   open-file pill bg, gold text on top
+ *
+ * Content is a real transcript slice from the PDF Tim uploaded
+ * (Castle Federation, Victoria school, 2026-05).
  */
 export function GovernorsSessionScreen() {
   return (
-    <div className="relative h-full w-full bg-[#1A1A2E] flex flex-col text-white">
-      {/* iOS status bar */}
-      <div className="relative shrink-0 h-[5.6%] flex items-end justify-between pb-[1.5%] px-[8%] text-[3.6cqw] font-semibold tracking-tight text-white">
+    <div className="relative h-full w-full bg-white flex flex-col text-[#2a2e45]">
+      {/* iOS status bar (dark glyphs on white) */}
+      <div className="relative shrink-0 h-[5.6%] flex items-end justify-between pb-[1.5%] px-[8%] text-[3.6cqw] font-semibold tracking-tight">
         <span>9:41</span>
-        <span className="flex items-center gap-[3px] text-white">
-          <SignalGlyph />
+        <span className="flex items-center gap-[3px]">
           <WifiGlyph />
           <BatteryGlyph />
         </span>
       </div>
 
-      {/* nav bar */}
-      <div className="relative shrink-0 px-[5%] pt-[1%] pb-[2%] flex items-center justify-between">
-        <span className="inline-flex items-center gap-[4%] h-[6cqw] px-[3%] rounded-full bg-[#16213E] text-[#C9A96E] text-[3.0cqw] font-semibold whitespace-nowrap">
-          <ChevronLeft />
-          New chat
+      {/* app title row */}
+      <div className="relative shrink-0 px-[5%] pt-[1%] pb-[1.5%] flex items-center justify-between border-b border-black/5">
+        <span className="inline-flex items-center gap-[2%]">
+          <CastleGlyph />
+          <span className="text-[3.6cqw] font-bold tracking-tight text-[#2a2e45]">
+            Castle Federation
+          </span>
         </span>
-        <span className="text-[4.4cqw] font-bold tracking-tight text-white">
-          Governors
-        </span>
-        <span className="inline-flex items-center gap-[6%] h-[6cqw] px-[3%] rounded-full bg-[#16213E] text-[#C9A96E] text-[3.0cqw] font-semibold whitespace-nowrap">
-          <GearGlyph />
-          <ReloadGlyph />
+        <span className="text-[2.8cqw] font-semibold text-[#C1A559] uppercase tracking-wider">
+          Ofsted Agent
         </span>
       </div>
 
-      {/* picker bar */}
-      <div className="relative shrink-0 bg-[#16213E] px-[5%] py-[1.5%] flex items-center justify-center gap-[6%] text-[3.2cqw] font-semibold text-[#C9A96E]">
-        <span className="inline-flex items-center gap-[3%]">
-          <BuildingGlyph />
-          Victoria
-          <ChevronsGlyph />
-        </span>
-        <span className="w-px h-[3cqw] bg-[#C9A96E]/30" />
-        <span className="inline-flex items-center gap-[3%]">
-          <CpuGlyph />
-          Haiku
-          <ChevronsGlyph />
-        </span>
+      {/* filter bar: 5 controls — School / Synth / Approach / Time / New Chat */}
+      <div className="relative shrink-0 px-[3%] pt-[1.8%] pb-[1.8%] bg-[#f7f6f1] border-b border-black/5">
+        <div className="grid grid-cols-5 gap-[1.2cqw]">
+          <FilterCell label="School" value="Victoria" />
+          <FilterCell label="Synth" value="Sonnet" />
+          <FilterCell label="Approach" value="Hybrid" />
+          <FilterCell label="Time" value="All" />
+          <div className="flex flex-col">
+            <span className="text-[1.8cqw] font-semibold text-[#888] uppercase tracking-wider mb-[0.4cqw]">
+              &nbsp;
+            </span>
+            <span className="h-[5.6cqw] rounded-[1.2cqw] bg-[#2a2e45] text-white text-[2.4cqw] font-semibold flex items-center justify-center gap-[0.6cqw]">
+              <span className="text-[#C1A559]">+</span>
+              New Chat
+            </span>
+          </div>
+        </div>
       </div>
 
       {/* chat thread */}
-      <div className="relative flex-1 px-[5%] pt-[3%] overflow-hidden">
-        <div className="flex flex-col gap-[3%]">
-          {/* inspector question bubble */}
-          <div className="self-end max-w-[82%]">
-            <div className="rounded-[5cqw] rounded-br-[1.5cqw] bg-[#C9A96E] px-[4%] py-[3%] text-[3.4cqw] leading-snug text-[#1A1A2E] font-medium shadow-sm">
-              How does Victoria evidence the impact of the new phonics scheme on
-              disadvantaged readers in KS1?
+      <div className="relative flex-1 overflow-hidden px-[4%] pt-[3%] flex flex-col gap-[2.4cqw]">
+        {/* question bubble — right aligned, navy bg, gold left border */}
+        <div className="self-end max-w-[88%]">
+          <div className="rounded-[2cqw] bg-[#2a2e45] text-white border-l-[0.9cqw] border-[#C1A559] px-[3.5%] py-[2.4%] shadow-sm">
+            <div className="text-[2.2cqw] font-semibold uppercase tracking-wider text-[#C1A559] mb-[0.8cqw]">
+              Tim&rsquo;s Question
             </div>
-            <div className="mt-[1%] mr-[1%] text-right text-[2.6cqw] text-[#888]">
-              Chair · 9:41
-            </div>
-          </div>
-
-          {/* agent reply */}
-          <div className="self-start max-w-[88%]">
-            <div className="rounded-[5cqw] rounded-bl-[1.5cqw] bg-[#16213E] border border-[#C9A96E]/15 px-[4%] py-[3%] text-[3.3cqw] leading-relaxed text-white shadow-sm">
-              <div className="flex items-center gap-[2%] mb-[2%]">
-                <span className="w-[4cqw] h-[4cqw] rounded-full bg-[#C9A96E] flex items-center justify-center text-[2.4cqw] font-bold text-[#1A1A2E]">
-                  G
-                </span>
-                <span className="text-[2.8cqw] font-semibold text-[#C9A96E] tracking-wide uppercase">
-                  Governors agent
-                </span>
-              </div>
-              Phonics screening check pass rate for FSM pupils rose from{" "}
-              <span className="font-semibold text-[#C9A96E]">58% to 81%</span>{" "}
-              year-on-year (2024 → 2025), closing the gap to non-FSM peers from
-              19pts to 4pts. Trend evidenced in the autumn pupil-progress data.
-              <div className="mt-[2.5%] pl-[3%] border-l-2 border-[#C9A96E]/40 text-[3.0cqw] text-white/80 italic">
-                &ldquo;Where leaders have prioritised reading… disadvantaged
-                pupils achieve as well as their peers.&rdquo;
-              </div>
-              <div className="mt-[1%] text-[2.6cqw] text-[#888]">
-                Ofsted School Inspection Handbook, §263 (Sep 2025)
-              </div>
+            <div className="text-[2.9cqw] leading-snug">
+              What are the key functions governors must fulfil at Victoria,
+              and how are we evidencing the disadvantaged-pupil gap?
             </div>
           </div>
+        </div>
 
-          {/* evidence card */}
-          <div className="self-start w-full max-w-[92%]">
-            <div className="rounded-[4cqw] bg-[#16213E] border border-[#C9A96E]/20 overflow-hidden shadow-md">
-              <div className="px-[3.5%] py-[2%] flex items-center justify-between border-b border-[#C9A96E]/15">
-                <span className="inline-flex items-center gap-[2%] text-[2.8cqw] font-semibold text-[#C9A96E] uppercase tracking-wider">
-                  <DocGlyph />
-                  Evidence pack
-                </span>
-                <span className="text-[2.6cqw] text-[#888]">3 sources</span>
-              </div>
-              <div className="px-[3.5%] py-[2.5%] flex flex-col gap-[2%] text-[2.9cqw] text-white/85">
-                <EvidenceRow label="PSC results 2024–25.xlsx" tag="Verified" />
-                <EvidenceRow label="Pupil-progress autumn report" tag="Cited" />
-                <EvidenceRow label="Inspection Handbook Sep 2025" tag="Linked" />
-              </div>
+        {/* answer bubble — left aligned, white bg, green left border */}
+        <div className="self-start w-full">
+          <div className="rounded-[2cqw] bg-white border border-black/8 border-l-[0.9cqw] border-l-[#2dcc70] px-[3.5%] py-[2.6%] shadow-sm">
+            <div className="text-[2.2cqw] font-semibold uppercase tracking-wider text-[#2dcc70] mb-[1cqw]">
+              Answer for Tim &middot; Sonnet (balanced)
             </div>
-          </div>
 
-          {/* status pill */}
-          <div className="self-start">
-            <div className="inline-flex items-center gap-[2%] h-[3.4%] px-[3%] rounded-full bg-[#C9A96E]/15 text-[#C9A96E] text-[3.0cqw] font-semibold">
-              <span className="w-[1.5cqw] h-[1.5cqw] rounded-full bg-[#C9A96E]" />
-              Inspection-ready · saved to evidence file
+            <ul className="flex flex-col gap-[1cqw] text-[2.7cqw] leading-snug text-[#2a2e45]">
+              <ArrowBullet>
+                <strong>Strategic direction</strong> — set vision, ethos, and
+                three-year priorities (Oracy, Writing, PPG gap, Attendance,
+                Budget).
+              </ArrowBullet>
+              <ArrowBullet>
+                <strong>Hold leaders to account</strong> — Rebecca Roberts (EHT)
+                reports termly; Lisa Freeman leads PPG; Nicci Boddam-Whetham is
+                link governor.
+              </ArrowBullet>
+              <ArrowBullet>
+                <strong>Oversee financial probity</strong> — £7,575 PPG
+                allocation tracked against impact on FSM readers.
+              </ArrowBullet>
+              <ArrowBullet>
+                <strong>Evidence the gap</strong> — attendance 96.3%, EYFS GLD
+                81%, PSC 86.7% (whole) / 50% (FSM) — gap is the standing item.
+              </ArrowBullet>
+            </ul>
+
+            {/* evidence inset — ivory bg, gold tint */}
+            <div className="mt-[2cqw] rounded-[1.4cqw] bg-[#faf8f2] border border-[#C1A559]/30 px-[3%] py-[2%]">
+              <div className="flex items-center gap-[1cqw] text-[2.2cqw] font-semibold text-[#9a8038] uppercase tracking-wider mb-[0.8cqw]">
+                <ChartGlyph />
+                Evidence
+              </div>
+              <ul className="flex flex-col gap-[0.6cqw] text-[2.4cqw] leading-snug text-[#4a4530]">
+                <li className="flex items-start gap-[1cqw]">
+                  <span className="shrink-0 mt-[0.8cqw] w-[1cqw] h-[1cqw] rounded-full bg-[#C1A559]" />
+                  <span>
+                    Governor Functions and Responsibilities — Castle Federation
+                    Governance Handbook
+                  </span>
+                </li>
+                <li className="flex items-start gap-[1cqw]">
+                  <span className="shrink-0 mt-[0.8cqw] w-[1cqw] h-[1cqw] rounded-full bg-[#C1A559]" />
+                  <span>
+                    Pupil Premium Strategy 2025–26, Victoria — sections 2 &amp; 4
+                  </span>
+                </li>
+                <li className="flex items-start gap-[1cqw]">
+                  <span className="shrink-0 mt-[0.8cqw] w-[1cqw] h-[1cqw] rounded-full bg-[#C1A559]" />
+                  <span>
+                    Autumn pupil-progress report — PSC and EYFS GLD tables
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            {/* open-file pills */}
+            <div className="mt-[1.6cqw] flex flex-wrap gap-[1cqw]">
+              <OpenFilePill name="Governance Handbook.docx" />
+              <OpenFilePill name="PPG Strategy 25-26.docx" />
             </div>
           </div>
         </div>
       </div>
 
-      {/* input bar */}
-      <div className="relative shrink-0 px-[5%] pt-[2%] pb-[4%]">
-        <div className="flex items-center gap-[2.5%] h-[5.8%] rounded-full bg-[#16213E] border border-[#C9A96E]/20 px-[3.5%] shadow-sm">
-          <span className="text-[#888] text-[3.3cqw] flex-1">
-            Ask an inspection question…
+      {/* compose bar */}
+      <div className="relative shrink-0 px-[4%] pt-[2%] pb-[3%] border-t border-black/5 bg-white">
+        <div className="flex items-center gap-[1.5cqw] h-[6.4cqw] rounded-[1.4cqw] bg-[#f7f6f1] border border-black/8 px-[3%]">
+          <span className="text-[#888] text-[2.7cqw] flex-1 truncate">
+            Ask another inspection question…
           </span>
-          <span className="shrink-0 w-[6cqw] h-[6cqw] rounded-full bg-[#C9A96E] flex items-center justify-center shadow-md">
+          <span className="shrink-0 w-[5cqw] h-[5cqw] rounded-[1cqw] bg-[#2a2e45] flex items-center justify-center">
             <ArrowUpGlyph />
           </span>
         </div>
-        <div className="mt-[2%] flex justify-center">
-          <div className="w-[28%] h-[0.5%] rounded-full bg-white/60" />
+        <div className="mt-[1.6%] flex justify-center">
+          <div className="w-[28%] h-[0.5%] rounded-full bg-black/40" />
         </div>
       </div>
     </div>
   );
 }
 
-function EvidenceRow({ label, tag }: { label: string; tag: string }) {
+function FilterCell({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-center justify-between gap-[3%]">
-      <span className="flex items-center gap-[2%] min-w-0">
-        <span className="shrink-0 w-[3.4cqw] h-[3.4cqw] rounded-[1cqw] bg-[#C9A96E]/20 flex items-center justify-center">
-          <DocSmallGlyph />
-        </span>
-        <span className="truncate">{label}</span>
+    <div className="flex flex-col min-w-0">
+      <span className="text-[1.8cqw] font-semibold text-[#888] uppercase tracking-wider mb-[0.4cqw]">
+        {label}
       </span>
-      <span className="shrink-0 px-[2.5%] py-[0.4%] rounded-full bg-[#1A1A2E] border border-[#C9A96E]/30 text-[2.4cqw] font-semibold text-[#C9A96E] uppercase tracking-wider">
-        {tag}
+      <span className="h-[5.6cqw] rounded-[1.2cqw] bg-white border border-black/10 px-[1.2cqw] flex items-center justify-between gap-[0.4cqw] text-[2.4cqw] font-semibold text-[#2a2e45]">
+        <span className="truncate">{value}</span>
+        <ChevronDown />
       </span>
     </div>
   );
 }
 
-function ChevronLeft() {
+function ArrowBullet({ children }: { children: React.ReactNode }) {
   return (
-    <svg viewBox="0 0 16 16" className="w-[3cqw] h-[3cqw]" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-      <path d="M10 3l-5 5 5 5" strokeLinecap="round" strokeLinejoin="round" />
+    <li className="flex items-start gap-[1.2cqw]">
+      <span className="shrink-0 text-[#2dcc70] font-bold leading-none mt-[0.4cqw] text-[3cqw]">
+        →
+      </span>
+      <span className="min-w-0">{children}</span>
+    </li>
+  );
+}
+
+function OpenFilePill({ name }: { name: string }) {
+  return (
+    <span className="inline-flex items-center gap-[0.8cqw] h-[4.4cqw] px-[1.6cqw] rounded-[1cqw] bg-[#1e3a5f] text-[#C9A96E] text-[2.2cqw] font-semibold">
+      <FolderGlyph />
+      <span>Open: {name}</span>
+    </span>
+  );
+}
+
+function CastleGlyph() {
+  return (
+    <svg viewBox="0 0 24 24" className="w-[4cqw] h-[4cqw] text-[#C1A559]" fill="currentColor" aria-hidden>
+      <path d="M3 10V7h2v2h2V7h2v2h2V7h2v2h2V7h2v2h2V7h2v3h-1v10h-3v-5h-4v5H4V10z" />
     </svg>
   );
 }
 
-function ChevronsGlyph() {
+function ChevronDown() {
   return (
-    <svg viewBox="0 0 16 16" className="w-[2.4cqw] h-[2.4cqw]" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-      <path d="M5 6l3-3 3 3M5 10l3 3 3-3" strokeLinecap="round" strokeLinejoin="round" />
+    <svg viewBox="0 0 16 16" className="w-[2cqw] h-[2cqw] text-[#888]" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+      <path d="M4 6l4 4 4-4" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
-function GearGlyph() {
+function ChartGlyph() {
   return (
-    <svg viewBox="0 0 16 16" className="w-[3cqw] h-[3cqw]" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
-      <circle cx="8" cy="8" r="2" />
-      <path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.5 3.5l1.4 1.4M11.1 11.1l1.4 1.4M3.5 12.5l1.4-1.4M11.1 4.9l1.4-1.4" strokeLinecap="round" />
+    <svg viewBox="0 0 16 16" className="w-[2.6cqw] h-[2.6cqw]" fill="none" stroke="#9a8038" strokeWidth="1.8" aria-hidden>
+      <path d="M2 13h12M4 11V7M7 11V4M10 11V8M13 11V6" strokeLinecap="round" />
     </svg>
   );
 }
 
-function ReloadGlyph() {
+function FolderGlyph() {
   return (
-    <svg viewBox="0 0 16 16" className="w-[3cqw] h-[3cqw]" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-      <path d="M13 4v3h-3M3 12v-3h3" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M12.5 7a5 5 0 0 0-9-1M3.5 9a5 5 0 0 0 9 1" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function BuildingGlyph() {
-  return (
-    <svg viewBox="0 0 16 16" className="w-[3cqw] h-[3cqw]" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
-      <rect x="3" y="2.5" width="10" height="11" rx="0.6" />
-      <path d="M5.5 5.5h1M9.5 5.5h1M5.5 8h1M9.5 8h1M5.5 10.5h1M9.5 10.5h1" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function CpuGlyph() {
-  return (
-    <svg viewBox="0 0 16 16" className="w-[3cqw] h-[3cqw]" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
-      <rect x="4" y="4" width="8" height="8" rx="1" />
-      <rect x="6.5" y="6.5" width="3" height="3" rx="0.4" />
-      <path d="M6 4V2.5M10 4V2.5M6 13.5V12M10 13.5V12M4 6H2.5M4 10H2.5M13.5 6H12M13.5 10H12" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function DocGlyph() {
-  return (
-    <svg viewBox="0 0 16 16" className="w-[3cqw] h-[3cqw]" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
-      <path d="M4 2h6l2 2v10H4z" />
-      <path d="M6 6h4M6 8.5h4M6 11h3" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function DocSmallGlyph() {
-  return (
-    <svg viewBox="0 0 16 16" className="w-[2.2cqw] h-[2.2cqw]" fill="none" stroke="#C9A96E" strokeWidth="1.8" aria-hidden>
-      <path d="M4 2h6l2 2v10H4z" />
+    <svg viewBox="0 0 16 16" className="w-[2.4cqw] h-[2.4cqw]" fill="currentColor" aria-hidden>
+      <path d="M2 4.5A1.5 1.5 0 0 1 3.5 3h2.8l1.4 1.5h4.8A1.5 1.5 0 0 1 14 6v6a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 12V4.5z" />
     </svg>
   );
 }
 
 function ArrowUpGlyph() {
   return (
-    <svg viewBox="0 0 16 16" className="w-[3.5cqw] h-[3.5cqw]" fill="none" stroke="#1A1A2E" strokeWidth="2.4" aria-hidden>
+    <svg viewBox="0 0 16 16" className="w-[3cqw] h-[3cqw]" fill="none" stroke="#C1A559" strokeWidth="2.4" aria-hidden>
       <path d="M8 12V4M4 8l4-4 4 4" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function SignalGlyph() {
-  return (
-    <svg viewBox="0 0 16 10" className="w-[4cqw] h-[2.5cqw]" fill="currentColor" aria-hidden>
-      <rect x="0" y="6" width="2.4" height="4" rx="0.5" />
-      <rect x="3.6" y="4" width="2.4" height="6" rx="0.5" />
-      <rect x="7.2" y="2" width="2.4" height="8" rx="0.5" />
-      <rect x="10.8" y="0" width="2.4" height="10" rx="0.5" />
     </svg>
   );
 }

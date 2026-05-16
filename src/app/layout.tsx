@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -29,7 +30,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${jakarta.variable} antialiased`}>
-      <body className="font-sans bg-bg text-text min-h-screen">{children}</body>
+      <body className="font-sans bg-bg text-text min-h-screen">
+        <SmoothScroll />
+        {children}
+      </body>
     </html>
   );
 }

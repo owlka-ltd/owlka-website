@@ -1,0 +1,82 @@
+import Link from "next/link";
+import { OwlkaMark } from "./OwlkaMark";
+
+export function Footer() {
+  return (
+    <footer className="border-t border-border bg-bg">
+      <div className="mx-auto max-w-7xl px-6 py-14">
+        <div className="flex flex-col sm:flex-row gap-10 sm:gap-16">
+          <div className="flex-1">
+            <Link href="/" className="flex items-center gap-2.5">
+              <OwlkaMark className="w-8 h-8" transparent />
+              <span className="text-[17px] font-semibold tracking-tight">
+                Owlka
+              </span>
+            </Link>
+            <p className="mt-4 text-sm text-text/70 leading-relaxed max-w-xs">
+              The full power of Claude Code. On your phone.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-10 text-sm">
+            <div>
+              <p className="font-semibold mb-3">Product</p>
+              <ul className="space-y-2 text-text/70">
+                <li>
+                  <Link href="#how" className="hover:text-text transition-colors">
+                    How it works
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#examples" className="hover:text-text transition-colors">
+                    Examples
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#pricing" className="hover:text-text transition-colors">
+                    Pricing
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-semibold mb-3">Company</p>
+              <ul className="space-y-2 text-text/70">
+                <li>
+                  <Link href="#waitlist" className="hover:text-text transition-colors">
+                    Waitlist
+                  </Link>
+                </li>
+                <li>
+                  <Link href="mailto:hello@owlka.com" className="hover:text-text transition-colors">
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-semibold mb-3">Legal</p>
+              <ul className="space-y-2 text-text/70">
+                <li>
+                  <Link href="/privacy" className="hover:text-text transition-colors">
+                    Privacy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms" className="hover:text-text transition-colors">
+                    Terms
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row justify-between gap-4 text-xs text-muted">
+          <p>© {new Date().getFullYear()} Owlka. All rights reserved.</p>
+          <p>Built with Owlka.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}

@@ -1,5 +1,11 @@
+import { CaseStudies } from "@/components/CaseStudies";
+import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
+import { HowItWorks } from "@/components/HowItWorks";
 import { Nav } from "@/components/Nav";
+import { Pricing } from "@/components/Pricing";
+import { Waitlist } from "@/components/Waitlist";
+import { WhyOwlka } from "@/components/WhyOwlka";
 
 export default function Home() {
   return (
@@ -7,7 +13,13 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <HowItWorks />
+        <CaseStudies />
+        <WhyOwlka />
+        <Pricing />
+        <Waitlist />
       </main>
+      <Footer />
     </>
   );
 }

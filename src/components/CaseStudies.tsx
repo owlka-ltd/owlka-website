@@ -3,9 +3,11 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { DeviceFrame } from "./DeviceFrame";
+import { GovernorsSessionScreen } from "./GovernorsSessionScreen";
 
 type Visual =
   | { kind: "device"; src: string; alt: string; width: number; height: number }
+  | { kind: "deviceHtml"; screen: "governors" }
   | { kind: "notification"; preview: NotificationPreview }
   | { kind: "appcard"; icon: string; name: string; subtitle: string; build: string };
 
@@ -37,11 +39,8 @@ const studies: Study[] = [
     metric: "Cuts inspection prep from weeks to an afternoon.",
     hue: "mark",
     visual: {
-      kind: "device",
-      src: "/screenshots/governors.png",
-      alt: "Governors app — Castle Vale inspection prep on iPhone",
-      width: 1206,
-      height: 2622,
+      kind: "deviceHtml",
+      screen: "governors",
     },
   },
   {
@@ -216,6 +215,15 @@ function VisualRenderer({ visual }: { visual: Visual }) {
         width={visual.width}
         height={visual.height}
       />
+    );
+  }
+  if (visual.kind === "deviceHtml") {
+    return (
+      <div className="@container">
+        <DeviceFrame>
+          {visual.screen === "governors" && <GovernorsSessionScreen />}
+        </DeviceFrame>
+      </div>
     );
   }
   if (visual.kind === "notification") {

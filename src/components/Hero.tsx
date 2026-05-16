@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { AuroraBackground } from "./AuroraBackground";
 import { DeviceFrame } from "./DeviceFrame";
+import { OwlkaSessionScreen } from "./OwlkaSessionScreen";
 
 export function Hero() {
   return (
@@ -122,18 +123,14 @@ export function Hero() {
               }}
             />
 
-            <div className="relative mx-auto max-w-[300px] sm:max-w-[330px]">
-              <DeviceFrame
-                src="/screenshots/owlka.png"
-                alt="Owlka app on iPhone — voice-first interface for shipping software"
-                width={1206}
-                height={2622}
-                priority
-              />
+            <div className="relative mx-auto max-w-[300px] sm:max-w-[330px] @container">
+              <DeviceFrame>
+                <OwlkaSessionScreen />
+              </DeviceFrame>
             </div>
 
             <FloatingCard
-              className="absolute top-[8%] -left-4 sm:-left-12"
+              className="absolute top-[6%] -left-2 sm:-left-12 scale-90 sm:scale-100 origin-left"
               delay={0.9}
             >
               <span className="flex h-2 w-2 rounded-full bg-mark animate-pulse-dot" />
@@ -146,7 +143,7 @@ export function Hero() {
             </FloatingCard>
 
             <FloatingCard
-              className="absolute bottom-[18%] -right-4 sm:-right-10"
+              className="absolute bottom-[16%] -right-2 sm:-right-10 scale-90 sm:scale-100 origin-right"
               delay={1.1}
             >
               <svg
@@ -166,7 +163,7 @@ export function Hero() {
             </FloatingCard>
 
             <FloatingCard
-              className="absolute bottom-[42%] -left-6 sm:-left-16"
+              className="absolute top-[44%] -left-3 sm:-left-16 scale-90 sm:scale-100 origin-left"
               delay={1.3}
             >
               <svg
@@ -206,7 +203,7 @@ function FloatingCard({
       initial={{ opacity: 0, y: 12, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
-      className={`hidden sm:inline-flex items-center gap-2 h-9 px-3.5 rounded-pill bg-surface/95 backdrop-blur-md border border-border shadow-xl shadow-black/5 ${className}`}
+      className={`inline-flex items-center gap-2 h-9 px-3.5 rounded-pill bg-surface/95 backdrop-blur-md border border-border shadow-xl shadow-black/5 ${className}`}
     >
       {children}
     </motion.div>

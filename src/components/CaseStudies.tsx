@@ -60,7 +60,7 @@ export function CaseStudies() {
   return (
     <section id="examples" className="relative py-32 sm:py-40">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="max-w-3xl mb-16 sm:mb-20">
+        <div className="max-w-3xl mb-20 sm:mb-24">
           <p className="text-sm font-medium text-mark uppercase tracking-wider mb-4">
             What people built
           </p>
@@ -73,56 +73,94 @@ export function CaseStudies() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {studies.map((s, i) => (
-            <motion.article
-              key={s.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{
-                duration: 0.6,
-                delay: i * 0.08,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="relative p-8 sm:p-10 rounded-card bg-surface border border-border overflow-hidden group hover:border-mark/40 transition-colors"
-            >
-              <div
-                aria-hidden
-                className="absolute -top-24 -right-24 w-56 h-56 rounded-full opacity-60 group-hover:opacity-90 transition-opacity"
-                style={{
-                  background:
-                    s.hue === "mark"
-                      ? "radial-gradient(closest-side, var(--color-tint-mark), transparent)"
-                      : "radial-gradient(closest-side, var(--color-tint-accent), transparent)",
+        <div className="space-y-6 sm:space-y-8">
+          {studies.map((s, i) => {
+            const phoneLeft = i % 2 === 1;
+            return (
+              <motion.article
+                key={s.title}
+                initial={{ opacity: 0, y: 48 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{
+                  duration: 0.7,
+                  ease: [0.16, 1, 0.3, 1],
                 }}
-              />
+                className={`relative overflow-hidden rounded-card border border-border bg-surface group hover:border-mark/40 transition-colors ${
+                  s.hue === "mark" ? "" : ""
+                }`}
+              >
+                <div
+                  aria-hidden
+                  className="absolute inset-0 opacity-70 group-hover:opacity-100 transition-opacity"
+                  style={{
+                    background:
+                      s.hue === "mark"
+                        ? `radial-gradient(80% 60% at ${phoneLeft ? "20%" : "80%"} 50%, var(--color-tint-mark), transparent 70%)`
+                        : `radial-gradient(80% 60% at ${phoneLeft ? "20%" : "80%"} 50%, var(--color-tint-accent), transparent 70%)`,
+                  }}
+                />
 
-              <div className="relative grid grid-cols-1 sm:grid-cols-[1fr_140px] gap-8 items-start">
-                <div>
-                  <div className="flex items-center gap-3 mb-6 flex-wrap">
-                    <span className="inline-flex items-center h-7 px-3 rounded-pill bg-tint-mark text-mark text-xs font-medium">
-                      {s.tag}
-                    </span>
-                    <span className="text-xs text-muted">{s.who}</span>
+                <div
+                  className={`relative grid grid-cols-1 lg:grid-cols-[1fr_320px] xl:grid-cols-[1fr_360px] gap-10 lg:gap-16 items-center p-8 sm:p-12 lg:p-16 ${
+                    phoneLeft ? "lg:[&>*:first-child]:order-2" : ""
+                  }`}
+                >
+                  <div>
+                    <div className="flex items-center gap-3 mb-6 flex-wrap">
+                      <span className="inline-flex items-center h-7 px-3 rounded-pill bg-tint-mark text-mark text-xs font-semibold uppercase tracking-wide">
+                        {s.tag}
+                      </span>
+                      <span className="text-xs text-muted">{s.who}</span>
+                    </div>
+                    <h3 className="text-3xl sm:text-[34px] font-semibold tracking-tight leading-tight">
+                      {s.title}
+                    </h3>
+                    <p className="mt-5 text-[17px] text-text/75 leading-relaxed max-w-xl">
+                      {s.body}
+                    </p>
+                    <div className="mt-7 inline-flex items-center gap-2 px-4 py-2.5 rounded-pill bg-mark/8 border border-mark/20">
+                      <svg
+                        viewBox="0 0 16 16"
+                        className="w-4 h-4 text-mark"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.2"
+                        aria-hidden
+                      >
+                        <path d="M3 8.5l3 3 7-7" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span className="text-sm font-semibold text-mark">
+                        {s.metric}
+                      </span>
+                    </div>
                   </div>
-                  <h3 className="text-2xl sm:text-[26px] font-semibold tracking-tight leading-snug">
-                    {s.title}
-                  </h3>
-                  <p className="mt-4 text-[15px] text-text/75 leading-relaxed">
-                    {s.body}
-                  </p>
-                  <p className="mt-6 text-sm font-medium text-mark">
-                    {s.metric}
-                  </p>
-                </div>
 
-                <div className="hidden sm:block w-[140px] mx-auto transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-1">
-                  <PhoneMockup kind={s.kind} />
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.92, rotate: phoneLeft ? -3 : 3 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: phoneLeft ? -2 : 2 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative mx-auto w-full max-w-[260px] sm:max-w-[300px] lg:max-w-[320px] transition-transform duration-700 group-hover:scale-[1.03] group-hover:rotate-0"
+                  >
+                    <div
+                      aria-hidden
+                      className="absolute -inset-8 rounded-[60px] blur-3xl opacity-60 group-hover:opacity-90 transition-opacity"
+                      style={{
+                        background:
+                          s.hue === "mark"
+                            ? "radial-gradient(closest-side, rgba(255,45,122,0.4), transparent 70%)"
+                            : "radial-gradient(closest-side, rgba(255,184,212,0.6), transparent 70%)",
+                      }}
+                    />
+                    <div className="relative">
+                      <PhoneMockup kind={s.kind} />
+                    </div>
+                  </motion.div>
                 </div>
-              </div>
-            </motion.article>
-          ))}
+              </motion.article>
+            );
+          })}
         </div>
       </div>
     </section>

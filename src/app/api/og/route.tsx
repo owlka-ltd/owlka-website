@@ -110,6 +110,12 @@ export async function GET(request: NextRequest): Promise<ImageResponse> {
     {
       width: WIDTH,
       height: HEIGHT,
+      headers: {
+        // Cache OG images at the edge for 1h; allow CDN to serve stale
+        // for 24h while revalidating in the background. Brand colours +
+        // copy are stable, so re-rendering on every unfurl is wasteful.
+        "cache-control": "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+      },
     },
   );
 }

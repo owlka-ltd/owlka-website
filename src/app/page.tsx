@@ -8,55 +8,63 @@ import { Nav } from "@/components/Nav";
 import { Pricing } from "@/components/Pricing";
 import { Waitlist } from "@/components/Waitlist";
 import { WhyOwlka } from "@/components/WhyOwlka";
+import {
+  DEFAULT_TITLE,
+  HOME_DESCRIPTION,
+  HOME_OG_IMAGE,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/seo";
 
-const HOME_TITLE = "Owlka — Claude Code on your phone";
-const HOME_DESCRIPTION =
-  "Owlka gives you the full power of Claude Code on your phone. Build websites, build apps, set up persistent monitoring, connect to APIs and databases, do anything a developer could do, all from the comfort of your sofa.";
-const OG_IMAGE = "/api/og?title=Owlka&subtitle=Claude+Code+on+your+phone";
+// Homepage overrides the layout description with a richer copy. Next 16
+// REPLACES (does not merge) the openGraph and twitter blocks when a
+// child route defines them, so we must spell out the full configs here
+// or the layout defaults silently drop. Constants come from
+// @/lib/seo to keep layout.tsx and page.tsx in lockstep.
 
 export const metadata: Metadata = {
-  title: {
-    absolute: HOME_TITLE,
-  },
   description: HOME_DESCRIPTION,
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: HOME_TITLE,
-    description: HOME_DESCRIPTION,
+    type: "website",
+    siteName: SITE_NAME,
     url: "/",
+    title: DEFAULT_TITLE,
+    description: HOME_DESCRIPTION,
+    locale: "en_US",
     images: [
       {
-        url: OG_IMAGE,
+        url: HOME_OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: HOME_TITLE,
+        alt: DEFAULT_TITLE,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: HOME_TITLE,
+    title: DEFAULT_TITLE,
     description: HOME_DESCRIPTION,
-    images: [OG_IMAGE],
+    images: [HOME_OG_IMAGE],
   },
 };
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Owlka",
-  url: "https://owlka.com",
-  logo: "https://owlka.com/owlka-mark.svg",
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: `${SITE_URL}/owlka-mark.svg`,
   description: HOME_DESCRIPTION,
 };
 
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Owlka",
-  url: "https://owlka.com",
+  name: SITE_NAME,
+  url: SITE_URL,
   description: HOME_DESCRIPTION,
 };
 

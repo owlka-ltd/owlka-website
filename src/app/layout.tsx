@@ -2,6 +2,13 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import {
+  DEFAULT_DESCRIPTION,
+  DEFAULT_OG_IMAGE,
+  DEFAULT_TITLE,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/seo";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -10,11 +17,6 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const SITE_URL = "https://owlka.com";
-const DEFAULT_TITLE = "Owlka — Claude Code on your phone";
-const DEFAULT_DESCRIPTION =
-  "Owlka gives you the full power of Claude Code on your phone. Build apps, websites, monitors, anything a developer could do, all from the comfort of your sofa.";
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -22,8 +24,8 @@ export const metadata: Metadata = {
     template: "%s | Owlka",
   },
   description: DEFAULT_DESCRIPTION,
-  applicationName: "Owlka",
-  authors: [{ name: "Owlka" }],
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME }],
   keywords: [
     "Owlka",
     "Claude Code",
@@ -35,17 +37,17 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    siteName: "Owlka",
+    siteName: SITE_NAME,
     url: SITE_URL,
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
     locale: "en_US",
     images: [
       {
-        url: "/api/og",
+        url: DEFAULT_OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "Owlka — Claude Code on your phone",
+        alt: DEFAULT_TITLE,
       },
     ],
   },
@@ -53,7 +55,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    images: ["/api/og"],
+    images: [DEFAULT_OG_IMAGE],
   },
   icons: {
     icon: "/icon.svg",

@@ -4,9 +4,10 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — Owlka",
+  title: "Terms of Service",
   description:
     "The terms that govern your use of Owlka. Plain English. Last updated 2026-05-17.",
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {
@@ -33,11 +34,12 @@ export default function TermsPage() {
               <p>
                 These Terms of Service (the &ldquo;Terms&rdquo;) are an
                 agreement between you and Owlka (&ldquo;we&rdquo;,
-                &ldquo;our&rdquo;). They cover your use of the Owlka iOS app,
-                the owlka.com website, and any companion software we offer
-                (together, the &ldquo;Service&rdquo;). By using the Service
-                you agree to these Terms. If you do not agree, do not use the
-                Service.
+                &ldquo;our&rdquo;). They cover your use of the Owlka Mac
+                app, the Owlka iPhone app, the owlka.com website, and the
+                encrypted middleman that lets the two apps talk to each
+                other (together, the &ldquo;Service&rdquo;). By using the
+                Service you agree to these Terms. If you do not agree, do
+                not use the Service.
               </p>
             </section>
 
@@ -48,11 +50,13 @@ export default function TermsPage() {
               <p>
                 We grant you a personal, limited, non-exclusive,
                 non-transferable, revocable licence to install and use the
-                Owlka iOS app on iOS devices you own or control, solely for
-                your own use and in accordance with these Terms and Apple&rsquo;s
-                App Store terms. You may not resell, sublicense, or
-                redistribute the app, and you may not reverse-engineer it
-                except where local law expressly permits.
+                Owlka Mac app on Macs you own or control, and the Owlka
+                iPhone app on iOS devices you own or control, solely for
+                your own use and in accordance with these Terms and
+                Apple&rsquo;s App Store terms. You may not resell,
+                sublicense, or redistribute the apps, and you may not
+                reverse-engineer them except where local law expressly
+                permits.
               </p>
             </section>
 
@@ -61,13 +65,14 @@ export default function TermsPage() {
                 3. Your Anthropic account
               </h2>
               <p>
-                Owlka relies on your own Anthropic (Claude) account to
-                generate model responses. You are responsible for keeping
-                your Anthropic credentials secure, for complying with
-                Anthropic&rsquo;s usage policies, and for any charges
-                Anthropic levies on your account. Owlka is not responsible
-                for outages, rate limits, or policy decisions made by
-                Anthropic.
+                Owlka wraps the official Claude Code app, which runs on
+                your Mac under your own Anthropic (Claude) account. Your
+                agreement with Anthropic governs that account directly.
+                You are responsible for keeping your Anthropic
+                credentials secure, for complying with Anthropic&rsquo;s
+                usage policies, and for any charges Anthropic levies on
+                your account. Owlka is not responsible for outages, rate
+                limits, or policy decisions made by Anthropic.
               </p>
             </section>
 
@@ -111,18 +116,17 @@ export default function TermsPage() {
                 5. Subscriptions and payment
               </h2>
               <p>
-                Owlka offers a free tier (&ldquo;Tier A&rdquo;) where you bring
-                your own Anthropic subscription, and a paid tier
-                (&ldquo;Tier B&rdquo; or &ldquo;Owlka Pro&rdquo;) billed
-                monthly. Paid subscriptions are processed through Stripe and
-                renew automatically until cancelled. You can cancel at any
-                time; cancellation takes effect at the end of the current
-                billing period and you keep paid features until then. We do
-                not refund the unused portion of a billing period except
-                where required by law, including the 14-day cooling-off
-                right for UK consumers under the Consumer Contracts
-                Regulations 2013 (which you waive when you begin using
-                Owlka Pro within the 14-day window).
+                Owlka is a single subscription, £5 per month, with the
+                first 30 days free. The subscription is sold and billed
+                by Apple through the App Store under Apple&rsquo;s standard
+                terms; you manage and cancel it in Settings on your
+                Apple device. Cancellation takes effect at the end of the
+                current billing period and you keep paid features until
+                then. Refund requests are handled by Apple under
+                Apple&rsquo;s refund policy. You also still need your own
+                Anthropic account to use Claude itself, the Owlka
+                subscription pays for the Owlka wrapper, not for the
+                underlying model.
               </p>
             </section>
 

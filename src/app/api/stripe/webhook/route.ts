@@ -81,17 +81,24 @@ function hashVoucher(voucher: string): string {
   return createHash("sha256").update(voucher, "utf8").digest("hex");
 }
 
+type RecordOutcome =
+  | { kind: "appended" }
+  | { kind: "replay"; priorHash: string | null }
+  | { kind: "hash_collision"; status: number; body: string }
+  | { kind: "transport_error"; error: string };
+
 async function recordVoucher(
   hash: string,
   tenantId: string,
-  status: "issued" | "redeemed" | "revoked"
-): Promise<{ ok: boolean; error?: string }> {
+  status: "issued" | "redeemed" | "revoked",
+  stripeEventId: string
+): Promise<RecordOutcome> {
   const recorderUrl =
     process.env.VOUCHER_RECORDER_URL ??
     "https://conv.owlka.com/internal/voucher-record";
   const recorderToken = process.env.VOUCHER_RECORDER_TOKEN;
   if (!recorderToken) {
-    return { ok: false, error: "VOUCHER_RECORDER_TOKEN not set" };
+    return { kind: "transport_error", error: "VOUCHER_RECORDER_TOKEN not set" };
   }
   // 10s timeout: the recorder is a single-disk-write Flask handler on the
   // Mac Mini behind cloudflared. Anything longer means something is wrong;
@@ -105,17 +112,43 @@ async function recordVoucher(
         "Content-Type": "application/json",
         Authorization: `Bearer ${recorderToken}`,
       },
-      body: JSON.stringify({ hash, tenant_id: tenantId, status }),
+      body: JSON.stringify({
+        hash,
+        tenant_id: tenantId,
+        status,
+        stripe_event_id: stripeEventId,
+      }),
       signal: controller.signal,
     });
     if (resp.status === 200) {
-      return { ok: true };
+      // The recorder distinguishes a fresh append from a replay-of-the-
+      // same-event by an optional `duplicate: true` field. Replay means
+      // the customer already received a voucher on the prior delivery
+      // attempt; we must NOT mint or email a new one.
+      const body = (await resp.json().catch(() => ({}))) as {
+        ok?: boolean;
+        duplicate?: boolean;
+        hash?: string | null;
+      };
+      if (body.duplicate === true) {
+        return { kind: "replay", priorHash: body.hash ?? null };
+      }
+      return { kind: "appended" };
     }
     const text = await resp.text();
-    return { ok: false, error: `recorder ${resp.status}: ${text.slice(0, 200)}` };
+    if (resp.status === 409) {
+      // Conflict on hash WITHOUT a matching event id. Either an upstream
+      // bug or a 2^-80 collision. Either way, surface to ops -- a retry
+      // would just collide again.
+      return { kind: "hash_collision", status: 409, body: text.slice(0, 200) };
+    }
+    return {
+      kind: "transport_error",
+      error: `recorder ${resp.status}: ${text.slice(0, 200)}`,
+    };
   } catch (err) {
     const msg = err instanceof Error ? err.message : "recorder request failed";
-    return { ok: false, error: msg };
+    return { kind: "transport_error", error: msg };
   } finally {
     clearTimeout(timeout);
   }
@@ -252,24 +285,64 @@ export async function POST(req: Request) {
   const voucher = generateVoucher();
   const hash = hashVoucher(voucher);
 
-  const recordResult = await recordVoucher(hash, tenantId, "issued");
-  if (!recordResult.ok) {
-    // Return 500 so Stripe retries. Recorder failure means the ledger
-    // doesn't yet have this customer; if we ack 200 here the customer's
-    // voucher would never be redeemable. Stripe's retry policy will hit
-    // us again every few minutes for 3 days.
-    console.error(
-      "[stripe/webhook] recorder failed for session",
-      session.id,
-      recordResult.error
-    );
-    return NextResponse.json(
-      { error: "voucher recorder unavailable" },
-      { status: 500 }
-    );
+  const outcome = await recordVoucher(hash, tenantId, "issued", event.id);
+
+  switch (outcome.kind) {
+    case "appended": {
+      // First successful delivery for this Stripe event. Email the
+      // plaintext voucher now. Email failure is logged but does NOT
+      // cause us to 500: a retry would mint a fresh voucher (because
+      // generateVoucher is random per attempt), and event-id dedupe
+      // on the recorder would return replay -> we still wouldn't email.
+      // The recovery path for a post-record email failure is therefore
+      // manual: ops marks the original hash status="revoked", issues a
+      // fresh voucher, and emails it. Documented in owlka-vouchers
+      // README. This is a known sharp edge of Tier B foundations.
+      await emailVoucher(customerEmail, voucher);
+      return NextResponse.json({ received: true, issued: true });
+    }
+    case "replay": {
+      // Stripe redelivered an event we've already provisioned. The
+      // customer already has their voucher from the previous delivery.
+      // Acknowledge 200; do not email a new one (we don't even know the
+      // plaintext of the original).
+      console.log(
+        "[stripe/webhook] replay event=%s session=%s prior_hash=%s",
+        event.id,
+        session.id,
+        outcome.priorHash ? outcome.priorHash.slice(0, 12) + "…" : "?"
+      );
+      return NextResponse.json({ received: true, replay: true });
+    }
+    case "hash_collision": {
+      // 2^-80 collision or upstream bug. Either way, retrying with the
+      // SAME random voucher won't help (it'll regenerate to a new hash
+      // on the retry, hitting either appended or another collision).
+      // Acknowledge 200 with a warning so Stripe stops retrying; the
+      // recorder logged a warning that ops will see.
+      console.error(
+        "[stripe/webhook] hash collision event=%s session=%s status=%s body=%s",
+        event.id,
+        session.id,
+        outcome.status,
+        outcome.body
+      );
+      return NextResponse.json({ received: true, warning: "hash_collision" });
+    }
+    case "transport_error": {
+      // Network failure or recorder 5xx. Return 500 so Stripe retries.
+      // The next delivery will be deduped by event id if the prior
+      // append actually landed, or will append cleanly if it didn't.
+      console.error(
+        "[stripe/webhook] recorder transport error event=%s session=%s err=%s",
+        event.id,
+        session.id,
+        outcome.error
+      );
+      return NextResponse.json(
+        { error: "voucher recorder unavailable" },
+        { status: 500 }
+      );
+    }
   }
-
-  await emailVoucher(customerEmail, voucher);
-
-  return NextResponse.json({ received: true, issued: true });
 }

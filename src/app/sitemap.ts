@@ -2,6 +2,14 @@ import type { MetadataRoute } from "next";
 
 const SITE_URL = "https://owlka.com";
 
+const SECONDARY_ROUTES = [
+  "/pricing",
+  "/privacy",
+  "/terms",
+  "/support",
+  "/docs",
+] as const;
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
@@ -9,38 +17,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${SITE_URL}/`,
       lastModified,
-      changeFrequency: "weekly",
+      changeFrequency: "monthly",
       priority: 1.0,
     },
-    {
-      url: `${SITE_URL}/pricing`,
+    ...SECONDARY_ROUTES.map((path) => ({
+      url: `${SITE_URL}${path}`,
       lastModified,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/waitlist`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/support`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/privacy`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
-      url: `${SITE_URL}/terms`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
   ];
 }

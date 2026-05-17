@@ -67,6 +67,11 @@ export function Footer() {
                     Terms
                   </Link>
                 </li>
+                <li>
+                  <Link href="/status" className="hover:text-text transition-colors">
+                    Status
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>

@@ -39,48 +39,82 @@ export function OwlkaSessionScreen() {
         </div>
       </div>
 
-      {/* tmux tab bar — 2 tabs + add button, real names from Tim's phone */}
+      {/* tmux tab bar — matches real app screenshot: tab 1 active pink */}
       <div className="relative shrink-0 px-[3%] pt-[1.5%] pb-[2%] flex items-stretch gap-[1.5cqw] overflow-hidden">
         <TmuxTab
           number={1}
-          active={false}
-          status="working"
+          active
+          status="done"
           summary="owlka app development"
         />
         <TmuxTab
           number={2}
-          active
-          status="done"
+          active={false}
+          status="working"
           summary="Owlka website development"
         />
         <AddTabButton />
       </div>
 
-      {/* pane content — WHITE background, real conversation rendering */}
+      {/* pane content — terminal output + structured approval card,
+          mirrors the real app flow when Claude needs your permission */}
       <div className="relative flex-1 overflow-hidden bg-white">
-        <div className="px-[4%] pt-[2.5%] pb-[2%]">
+        <div className="px-[3.5%] pt-[2%] pb-[1.5%]">
           {/* dim monospace command output */}
-          <div className="font-mono text-[2.5cqw] leading-[1.5] text-[#1A1A1F]/55 whitespace-pre">
-{` 1 file changed, 142 insertions(+), 95 deletion
-… +4 lines (ctrl+o to expand)`}
+          <div className="font-mono text-[2.4cqw] leading-[1.5] text-[#1A1A1F]/55 whitespace-pre">
+{`new_lines = content.count('\\n')
+print(f"Done. Lines: original={original_lines},
+new={new_lines}, removed={original_lines -
+new_lines}")
+ENDOFSCRIPT
+echo "script written"`}
           </div>
 
-          {/* Claude turn — owl avatar + sans-serif prose */}
-          <div className="mt-[3.5%] flex gap-[2.5cqw]">
-            <OwlAvatar />
-            <div className="flex-1 text-[2.9cqw] leading-[1.45] text-[#1A1A1F]/80">
-              Shipped as 38f8066. Vercel will rebuild.
+          {/* hook confirmation line */}
+          <div className="mt-[2.2cqw] text-[2.5cqw] leading-[1.4] text-[#1A1A1F]/85">
+            Hook PreToolUse:Bash requires confirmation for this command:
+          </div>
+          <div className="mt-[0.6cqw] text-[2.4cqw] leading-[1.35] text-[#1A1A1F]/70">
+            [T3 reviewer · ASK] throttle: 2 reviews already running
+            (cap 2); escalating to phone tap
+          </div>
+
+          {/* yes / no prompt */}
+          <div className="mt-[1.8cqw] text-[2.6cqw] font-semibold text-[#1A1A1F]">
+            Do you want to proceed?
+          </div>
+          <div className="mt-[0.6cqw] flex flex-col gap-[0.3cqw] text-[2.5cqw]">
+            <span className="text-[#FF6BA0] font-semibold">
+              ❯ 1. Yes
+            </span>
+            <span className="text-[#FF6BA0]/55 pl-[2.4cqw]">2. No</span>
+          </div>
+          <div className="mt-[1cqw] text-[2.2cqw] text-[#FF6BA0]/70">
+            Esc to cancel · Tab to amend · ctrl+e to explain
+          </div>
+
+          {/* EXTERNAL approval card */}
+          <div className="mt-[2cqw] rounded-[1.8cqw] border border-[#1A1A1F]/12 bg-white px-[2.6cqw] py-[2cqw] shadow-sm">
+            <span className="inline-flex items-center h-[3.6cqw] px-[1.4cqw] rounded-[0.6cqw] bg-[#FFD9B8] text-[#7A4A1A] text-[1.9cqw] font-bold uppercase tracking-wider">
+              External
+            </span>
+            <div className="mt-[1cqw] text-[2.8cqw] font-semibold text-[#1A1A1F] leading-tight">
+              throttle: 2 reviews already running
             </div>
-          </div>
-
-          {/* second Claude turn — the meta-recursive headline */}
-          <div className="mt-[3.5%] flex gap-[2.5cqw]">
-            <OwlAvatar />
-            <div className="flex-1 text-[2.9cqw] leading-[1.5] text-[#1A1A1F]/85">
-              <span className="font-semibold">Headline:</span> all 5
-              inaccuracies fixed in one commit, hero now diff-matches the
-              real SwiftUI sources for logo, input row, todo footer
-              rendering, tab status dots, and icon glyphs.
+            <div className="mt-[0.6cqw] font-mono text-[2.1cqw] text-[#1A1A1F]/55">
+              command:
+            </div>
+            <div className="mt-[0.8cqw] text-[2.3cqw] leading-snug text-[#1A1A1F]/75">
+              Approving sends data outside your machine (GitHub, the web,
+              shared services). Hard to undo.
+            </div>
+            <div className="mt-[1.6cqw] flex items-stretch gap-[1.4cqw]">
+              <button className="flex-1 h-[6.6cqw] rounded-[1.4cqw] bg-[#FFD9B8] text-[#1A1A1F] text-[2.6cqw] font-bold flex items-center justify-center">
+                Approve
+              </button>
+              <button className="flex-1 h-[6.6cqw] rounded-[1.4cqw] bg-white border border-[#1A1A1F]/18 text-[#1A1A1F] text-[2.6cqw] font-semibold flex items-center justify-center">
+                Deny
+              </button>
             </div>
           </div>
         </div>

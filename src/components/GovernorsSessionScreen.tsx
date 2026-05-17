@@ -40,7 +40,7 @@ export function GovernorsSessionScreen() {
       {/* filter bar: 5 controls — School / Synth / Approach / Time / New Chat */}
       <div className="relative shrink-0 px-[3%] pt-[1.8%] pb-[1.8%] bg-[#f7f6f1] border-b border-black/5">
         <div className="grid grid-cols-5 gap-[1.2cqw]">
-          <FilterCell label="School" value="Victoria" />
+          <FilterCell label="School" value="All" />
           <FilterCell label="Synth" value="Sonnet" />
           <FilterCell label="Approach" value="Hybrid" />
           <FilterCell label="Time" value="All" />
@@ -62,11 +62,11 @@ export function GovernorsSessionScreen() {
         <div className="self-end max-w-[88%]">
           <div className="rounded-[2cqw] bg-[#2a2e45] text-white border-l-[0.9cqw] border-[#C1A559] px-[3.5%] py-[2.4%] shadow-sm">
             <div className="text-[2.2cqw] font-semibold uppercase tracking-wider text-[#C1A559] mb-[0.8cqw]">
-              Tim&rsquo;s Question
+              Governor Question
             </div>
             <div className="text-[2.9cqw] leading-snug">
-              What are the key functions governors must fulfil at Victoria,
-              and how are we evidencing the disadvantaged-pupil gap?
+              What are the key functions governors must fulfil, and how are we
+              evidencing the disadvantaged-pupil gap?
             </div>
           </div>
         </div>
@@ -75,7 +75,7 @@ export function GovernorsSessionScreen() {
         <div className="self-start w-full">
           <div className="rounded-[2cqw] bg-white border border-black/8 border-l-[0.9cqw] border-l-[#2dcc70] px-[3.5%] py-[2.6%] shadow-sm">
             <div className="text-[2.2cqw] font-semibold uppercase tracking-wider text-[#2dcc70] mb-[1cqw]">
-              Answer for Tim &middot; Sonnet (balanced)
+              Answer &middot; Sonnet (balanced)
             </div>
 
             <ul className="flex flex-col gap-[1cqw] text-[2.7cqw] leading-snug text-[#2a2e45]">
@@ -85,22 +85,31 @@ export function GovernorsSessionScreen() {
                 Budget).
               </ArrowBullet>
               <ArrowBullet>
-                <strong>Hold leaders to account</strong> — Rebecca Roberts (EHT)
-                reports termly; Lisa Freeman leads PPG; Nicci Boddam-Whetham is
-                link governor.
+                <strong>Hold leaders to account</strong> — executive head reports
+                termly; named link governors lead PPG, SEND, safeguarding.
               </ArrowBullet>
               <ArrowBullet>
-                <strong>Oversee financial probity</strong> — £7,575 PPG
-                allocation tracked against impact on FSM readers.
-              </ArrowBullet>
-              <ArrowBullet>
-                <strong>Evidence the gap</strong> — attendance 96.3%, EYFS GLD
-                81%, PSC 86.7% (whole) / 50% (FSM) — gap is the standing item.
+                <strong>Oversee financial probity</strong> — PPG allocation
+                tracked against impact on FSM readers.
               </ArrowBullet>
             </ul>
 
+            {/* data table — anonymised, ~10% randomised from source */}
+            <div className="mt-[1.6cqw] rounded-[1.4cqw] border border-black/8 overflow-hidden">
+              <div className="grid grid-cols-[1.5fr_1fr_1fr_0.9fr] bg-[#f3f1ea] text-[#6a6450] text-[2cqw] font-semibold uppercase tracking-wider px-[2.4cqw] py-[1.1cqw]">
+                <span>Indicator</span>
+                <span className="text-right">Whole</span>
+                <span className="text-right">FSM</span>
+                <span className="text-right">Gap</span>
+              </div>
+              <TableRow indicator="Attendance" whole="94.7%" fsm="89.4%" gap="−5.3" />
+              <TableRow indicator="EYFS GLD" whole="79%" fsm="63%" gap="−16" alt />
+              <TableRow indicator="PSC pass" whole="83.5%" fsm="47%" gap="−36.5" />
+              <TableRow indicator="PPG allocation" whole="£8,120" fsm="—" gap="—" alt />
+            </div>
+
             {/* evidence inset — ivory bg, gold tint */}
-            <div className="mt-[2cqw] rounded-[1.4cqw] bg-[#faf8f2] border border-[#C1A559]/30 px-[3%] py-[2%]">
+            <div className="mt-[1.4cqw] rounded-[1.4cqw] bg-[#faf8f2] border border-[#C1A559]/30 px-[3%] py-[2%]">
               <div className="flex items-center gap-[1cqw] text-[2.2cqw] font-semibold text-[#9a8038] uppercase tracking-wider mb-[0.8cqw]">
                 <ChartGlyph />
                 Evidence
@@ -108,22 +117,15 @@ export function GovernorsSessionScreen() {
               <ul className="flex flex-col gap-[0.6cqw] text-[2.4cqw] leading-snug text-[#4a4530]">
                 <li className="flex items-start gap-[1cqw]">
                   <span className="shrink-0 mt-[0.8cqw] w-[1cqw] h-[1cqw] rounded-full bg-[#C1A559]" />
-                  <span>
-                    Governor Functions and Responsibilities — Castle Federation
-                    Governance Handbook
-                  </span>
+                  <span>Governor Functions — Federation Governance Handbook</span>
                 </li>
                 <li className="flex items-start gap-[1cqw]">
                   <span className="shrink-0 mt-[0.8cqw] w-[1cqw] h-[1cqw] rounded-full bg-[#C1A559]" />
-                  <span>
-                    Pupil Premium Strategy 2025–26, Victoria — sections 2 &amp; 4
-                  </span>
+                  <span>Pupil Premium Strategy 2025–26 — sections 2 &amp; 4</span>
                 </li>
                 <li className="flex items-start gap-[1cqw]">
                   <span className="shrink-0 mt-[0.8cqw] w-[1cqw] h-[1cqw] rounded-full bg-[#C1A559]" />
-                  <span>
-                    Autumn pupil-progress report — PSC and EYFS GLD tables
-                  </span>
+                  <span>Autumn pupil-progress report — PSC and EYFS GLD tables</span>
                 </li>
               </ul>
             </div>
@@ -164,6 +166,40 @@ function FilterCell({ label, value }: { label: string; value: string }) {
       <span className="h-[5.6cqw] rounded-[1.2cqw] bg-white border border-black/10 px-[1.2cqw] flex items-center justify-between gap-[0.4cqw] text-[2.4cqw] font-semibold text-[#2a2e45]">
         <span className="truncate">{value}</span>
         <ChevronDown />
+      </span>
+    </div>
+  );
+}
+
+function TableRow({
+  indicator,
+  whole,
+  fsm,
+  gap,
+  alt,
+}: {
+  indicator: string;
+  whole: string;
+  fsm: string;
+  gap: string;
+  alt?: boolean;
+}) {
+  const negative = gap.startsWith("−") || gap.startsWith("-");
+  return (
+    <div
+      className={`grid grid-cols-[1.5fr_1fr_1fr_0.9fr] items-center px-[2.4cqw] py-[1.2cqw] text-[2.3cqw] ${
+        alt ? "bg-[#faf8f2]" : "bg-white"
+      } border-t border-black/5`}
+    >
+      <span className="font-semibold text-[#2a2e45]">{indicator}</span>
+      <span className="text-right font-mono text-[#2a2e45]">{whole}</span>
+      <span className="text-right font-mono text-[#2a2e45]/75">{fsm}</span>
+      <span
+        className={`text-right font-mono font-semibold ${
+          negative ? "text-[#b8453a]" : "text-[#2a2e45]/55"
+        }`}
+      >
+        {gap}
       </span>
     </div>
   );

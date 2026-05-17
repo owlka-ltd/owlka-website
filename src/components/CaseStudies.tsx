@@ -59,11 +59,11 @@ const studies: Study[] = [
   },
   {
     tag: "Personal",
-    title: "Britain's Got Talent date watcher",
+    title: "Britain's Got Talent ticket watcher",
     who: "Built by a superfan who refused to miss the live finale again",
     body:
-      "A monitor that polls the ITV schedule, the show's social feeds, and the rumour mill, then pings the family group chat the moment audition dates and the final get confirmed. Persistent across months.",
-    metric: "Caught the 2026 date 9 days before the press release.",
+      "A persistent monitor that watches the Applause Store for the moment BGT audition tickets drop and pings the family group chat the instant they're reservable, so they're booked before anyone else even knows.",
+    metric: "Tickets reserved minutes before the rest of the public.",
     hue: "mark",
     visual: {
       kind: "notification",
@@ -71,9 +71,9 @@ const studies: Study[] = [
         app: "BGT WATCHER",
         appColor: "#FF2D7A",
         time: "now",
-        title: "Final date confirmed",
+        title: "Tickets just dropped",
         body:
-          "Britain's Got Talent grand final: Sat 31 May, ITV1 8pm. Source: ITV schedule API · 9 days ahead of press release.",
+          "Britain's Got Talent audition tickets live on Applause Store right now. Tap here to reserve before they go.",
       },
     },
   },
@@ -256,12 +256,13 @@ function NotificationStack({ preview }: { preview: NotificationPreview }) {
         }}
       />
 
-      {/* iOS status bar */}
-      <div className="relative h-[5.6%] flex items-end justify-between pb-[1.5%] px-[8%] text-white/85 text-[3.6cqw] font-semibold tracking-tight">
+      {/* iOS status bar — real signal + wifi + battery glyphs */}
+      <div className="relative h-[5.6%] flex items-end justify-between pb-[1.5%] px-[8%] text-white text-[3.6cqw] font-semibold tracking-tight">
         <span>9:41</span>
-        <div className="flex items-center gap-[3px] opacity-90">
-          <span className="block w-[3.2cqw] h-[2.2cqw] rounded-[0.4cqw] border border-white/80" />
-          <span className="block w-[3.8cqw] h-[2.2cqw] rounded-[0.4cqw] border border-white/80" />
+        <div className="flex items-center gap-[1.4cqw] text-white">
+          <SignalDots />
+          <WifiGlyphLight />
+          <BatteryGlyphLight />
         </div>
       </div>
 
@@ -327,6 +328,44 @@ function NotificationStack({ preview }: { preview: NotificationPreview }) {
   );
 }
 
+function SignalDots() {
+  return (
+    <svg viewBox="0 0 16 8" className="w-[4.4cqw] h-[2.4cqw]" fill="currentColor" aria-hidden>
+      <circle cx="1.4" cy="6.5" r="1" />
+      <circle cx="4.4" cy="6.5" r="1" />
+      <circle cx="1.4" cy="3.5" r="1" opacity="0.45" />
+      <circle cx="4.4" cy="3.5" r="1" opacity="0.45" />
+    </svg>
+  );
+}
+
+function WifiGlyphLight() {
+  return (
+    <svg viewBox="0 0 16 12" className="w-[4.4cqw] h-[3.2cqw]" fill="currentColor" aria-hidden>
+      <path d="M8 11.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM3 6.5c1.3-1.3 3.1-2 5-2s3.7.7 5 2l-1.2 1.2A5.4 5.4 0 0 0 8 6.2 5.4 5.4 0 0 0 4.2 7.7zM0 3.5C2.1 1.4 5 0.2 8 0.2s5.9 1.2 8 3.3L14.8 4.7A9.6 9.6 0 0 0 8 2 9.6 9.6 0 0 0 1.2 4.7z" />
+    </svg>
+  );
+}
+
+function BatteryGlyphLight() {
+  return (
+    <svg viewBox="0 0 26 12" className="w-[7cqw] h-[3.2cqw]" aria-hidden>
+      <rect x="0.5" y="0.5" width="22" height="11" rx="2.5" fill="currentColor" />
+      <rect x="23.5" y="3.5" width="1.6" height="5" rx="0.6" fill="currentColor" />
+      <text
+        x="11.5"
+        y="9"
+        fontSize="6"
+        fontWeight="700"
+        textAnchor="middle"
+        fill="#0d1216"
+      >
+        80
+      </text>
+    </svg>
+  );
+}
+
 function FlashlightGlyph() {
   return (
     <svg viewBox="0 0 16 16" className="w-[4.4cqw] h-[4.4cqw]" fill="currentColor" aria-hidden>
@@ -367,12 +406,13 @@ function AppStoreCard({
         }}
       />
 
-      {/* iOS status bar */}
+      {/* iOS status bar — real signal + wifi + battery glyphs */}
       <div className="relative shrink-0 h-[5.6%] flex items-end justify-between pb-[1.5%] px-[8%] text-white text-[3.6cqw] font-semibold tracking-tight">
         <span>9:41</span>
-        <span className="flex items-center gap-[3px]">
-          <span className="block w-[3.2cqw] h-[2.2cqw] rounded-[0.4cqw] border border-white/80" />
-          <span className="block w-[3.8cqw] h-[2.2cqw] rounded-[0.4cqw] border border-white/80" />
+        <span className="flex items-center gap-[1.4cqw] text-white">
+          <SignalDots />
+          <WifiGlyphLight />
+          <BatteryGlyphLight />
         </span>
       </div>
 
@@ -411,14 +451,32 @@ function AppStoreCard({
       </div>
 
       {/* CTA */}
-      <div className="relative mt-[6%] flex justify-center">
+      <div className="relative mt-[5%] flex justify-center">
         <span className="inline-flex items-center justify-center h-[7cqw] px-[5cqw] rounded-full bg-white text-[#1c1530] text-[2.8cqw] font-bold shadow-md">
           Install
         </span>
       </div>
 
-      <div className="relative mt-[2.4cqw] text-center text-white/55 text-[2.4cqw] font-medium tracking-wide">
+      <div className="relative mt-[1.8cqw] text-center text-white/55 text-[2.4cqw] font-medium tracking-wide">
         {build}
+      </div>
+
+      {/* Daily-seed leaderboard fills the lower half */}
+      <div className="relative mx-[5%] mt-[5%] rounded-[3cqw] bg-white/8 backdrop-blur-md border border-white/12 px-[3.2cqw] py-[2.4cqw] shadow-lg">
+        <div className="flex items-center justify-between mb-[1.4cqw]">
+          <span className="inline-flex items-center gap-[1cqw] text-white text-[2.6cqw] font-semibold">
+            <TrophyGlyph />
+            Daily seed · today
+          </span>
+          <span className="text-[2.2cqw] text-white/55 font-mono">seed #142</span>
+        </div>
+        <ol className="flex flex-col gap-[0.9cqw]">
+          <LeaderRow rank={1} name="MintDragon" score="14,820" you={false} medal="#FFD66B" />
+          <LeaderRow rank={2} name="EmberMaze" score="13,440" you={false} medal="#D7D7D7" />
+          <LeaderRow rank={3} name="PixelPlum" score="12,905" you={false} medal="#C58A5C" />
+          <LeaderRow rank={4} name="you" score="11,720" you={true} />
+          <LeaderRow rank={5} name="Lumen" score="10,488" you={false} />
+        </ol>
       </div>
 
       {/* home indicator */}
@@ -426,6 +484,53 @@ function AppStoreCard({
         <div className="w-[28%] h-[0.5%] rounded-full bg-white/70" />
       </div>
     </div>
+  );
+}
+
+function LeaderRow({
+  rank,
+  name,
+  score,
+  you,
+  medal,
+}: {
+  rank: number;
+  name: string;
+  score: string;
+  you: boolean;
+  medal?: string;
+}) {
+  return (
+    <li
+      className={`flex items-center gap-[1.4cqw] rounded-[1.6cqw] px-[1.6cqw] py-[1cqw] text-[2.5cqw] ${
+        you
+          ? "bg-mark/20 ring-1 ring-mark/45 text-white"
+          : "bg-white/4 text-white/85"
+      }`}
+    >
+      <span
+        className="shrink-0 w-[4.4cqw] h-[4.4cqw] rounded-full flex items-center justify-center text-[2.2cqw] font-bold"
+        style={
+          medal
+            ? { background: medal, color: "#1c1530" }
+            : { background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.7)" }
+        }
+      >
+        {rank}
+      </span>
+      <span className="flex-1 truncate font-semibold">
+        {you ? "You" : name}
+      </span>
+      <span className="font-mono font-semibold tracking-tight">{score}</span>
+    </li>
+  );
+}
+
+function TrophyGlyph() {
+  return (
+    <svg viewBox="0 0 16 16" className="w-[2.8cqw] h-[2.8cqw] text-[#FFD66B]" fill="currentColor" aria-hidden>
+      <path d="M4 2h8v3a4 4 0 0 1-4 4 4 4 0 0 1-4-4zm-2 1h2v2a2 2 0 0 1-2-2zm10 0h2a2 2 0 0 1-2 2zM7 10h2v2h2v2H5v-2h2z" />
+    </svg>
   );
 }
 

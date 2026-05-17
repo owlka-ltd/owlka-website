@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 export const revalidate = 30;
-export const dynamic = "force-dynamic";
 
 type ComponentStatus = "ok" | "degraded" | "down";
 
@@ -177,6 +176,14 @@ async function probeWebsite(): Promise<ComponentResult> {
         detail: `tunnel responding (HTTP ${res.status})`,
       };
     }
+    if (res.status === 405) {
+      // Some hosts disallow HEAD. A 405 response still proves the tunnel is up.
+      return {
+        name: "Cloudflare tunnel (owlka.com)",
+        status: "ok",
+        detail: "tunnel responding (HTTP 405, HEAD not allowed)",
+      };
+    }
     return {
       name: "Cloudflare tunnel (owlka.com)",
       status: "down",
@@ -271,12 +278,7 @@ export default async function StatusPage() {
                     {c.status}
                   </p>
                 </div>
-                <p className="mt-1 text-sm text-muted">
-                  {c.detail}
-                  <span className="ml-2 text-xs text-muted/80">
-                    checked {formatTimestamp(checkedAt)}
-                  </span>
-                </p>
+                <p className="mt-1 text-sm text-muted">{c.detail}</p>
                 {c.error && (
                   <details className="mt-2 text-xs text-muted">
                     <summary className="cursor-pointer">Error detail</summary>

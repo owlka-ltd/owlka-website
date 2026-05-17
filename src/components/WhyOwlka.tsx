@@ -6,7 +6,7 @@ const features = [
   {
     title: "Persistent cross-session memory",
     body:
-      "Owlka remembers what you're building across days, weeks, and reinstalls. Resume any project with one sentence.",
+      "Owlka remembers what you're building across days, weeks, and reinstalls. Memory lives on your Mac, not on our servers. Resume any project with one sentence.",
     span: "md:col-span-2",
     tone: "mark",
     icon: (
@@ -33,7 +33,7 @@ const features = [
   {
     title: "Environment protection",
     body:
-      "Four-tier permission model. Destructive commands need your tap. You cannot brick your machine.",
+      "Anything that could damage your Mac stops and asks. You tap once on your phone to allow it. You cannot brick your machine by accident.",
     span: "",
     tone: "surface",
     icon: (
@@ -44,9 +44,9 @@ const features = [
     ),
   },
   {
-    title: "Built-in deployment",
+    title: "Owl mode for long jobs",
     body:
-      "iOS, Vercel, Streamlit, Cloudflare — Owlka knows how to ship to all of them. Sign and deploy from the lock screen.",
+      "Hand Owlka a brief and walk away. It works overnight, posts a Live Activity to your lock screen when it's done, and only wakes you for decisions that need a human.",
     span: "md:col-span-2",
     tone: "accent",
     icon: (
@@ -70,8 +70,9 @@ export function WhyOwlka() {
             Claude Code, with the rough edges sanded off.
           </h2>
           <p className="mt-5 text-lg text-text/70 leading-relaxed">
-            The raw model is brilliant and dangerous. Owlka adds the guardrails
-            that let you trust it with real work.
+            Claude on its own is brilliant and a bit reckless. Owlka adds the
+            memory, the reviewers, and the safety net that let you trust it
+            with real work.
           </p>
         </div>
 

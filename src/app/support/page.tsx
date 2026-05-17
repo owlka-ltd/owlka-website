@@ -31,23 +31,18 @@ const faqs: FAQ[] = [
     ),
   },
   {
-    q: "What's the difference between Tier A and Tier B?",
+    q: "How much does Owlka cost?",
     a: (
       <>
-        <span className="font-medium">Tier A (Free)</span> is bring-your-own
-        Claude. You pay Anthropic for your Pro or Max plan, Owlka wraps that
-        Claude in a powerful iPhone experience, and Owlka takes nothing.
-        Limitations: one iOS device per Apple ID, no Mac companion app, no
-        skills marketplace. <br />
-        <br />
-        <span className="font-medium">Tier B (£5/month)</span> adds the Mac
-        companion app, home bridge access for working on your own machine
-        when you&rsquo;re away, priority support, and the future skills
-        marketplace as it lands. See{" "}
+        One plan, <span className="font-medium">£5 a month</span>, billed by
+        Apple through the App Store. That covers the iPhone app, the Mac
+        companion app, and the encrypted middleman that lets the two talk.
+        You also need your own Claude Pro or Max subscription from Anthropic,
+        which Owlka does not resell. See{" "}
         <Link href="/#pricing" className="text-mark hover:underline">
           pricing
         </Link>{" "}
-        for the full feature breakdown.
+        for the full picture.
       </>
     ),
   },
@@ -55,16 +50,12 @@ const faqs: FAQ[] = [
     q: "How do I cancel?",
     a: (
       <>
-        Subscriptions purchased through Stripe can be cancelled from the
-        billing portal link in your account email, or by replying to your
-        receipt with &ldquo;cancel&rdquo;. Cancellation takes effect at the
-        end of the current billing period and you keep paid features until
-        then. If you originally subscribed through the App Store, cancel
-        from{" "}
+        Cancel from{" "}
         <span className="font-medium">
           Settings &rarr; Apple ID &rarr; Subscriptions
         </span>{" "}
-        on your iPhone (Apple handles those refunds and renewals directly).
+        on your iPhone. Apple handles refunds and renewals directly. You keep
+        paid features until the end of the current billing period.
       </>
     ),
   },
@@ -73,8 +64,8 @@ const faqs: FAQ[] = [
     a: (
       <>
         Your Anthropic OAuth token never leaves your device. Your
-        conversations live on a machine you authorise (your own Mac, in
-        most cases) in a per-tenant directory. We do not train models on
+        conversations live on your own Mac and your iPhone. The encrypted
+        middleman in between cannot read them. We do not train models on
         your content. Full detail in our{" "}
         <Link href="/privacy" className="text-mark hover:underline">
           Privacy Policy

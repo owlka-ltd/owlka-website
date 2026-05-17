@@ -295,91 +295,30 @@ export default function DocsPage() {
 
             <section>
               <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-5">
-                Tier A vs Tier B
+                What you get
               </h2>
               <p className="mb-6 text-text/80">
-                Two plans. Tier A is free and uses your existing Anthropic
-                subscription. Tier B (Owlka Pro) adds the Mac companion and
-                bridge for £5 a month.
+                One plan, £5 a month, billed by Apple through the App Store.
+                That covers the iPhone app, the Mac companion app, and the
+                encrypted middleman that lets the two talk. You bring your
+                own Claude Pro or Max subscription from Anthropic.
               </p>
-              <div className="overflow-x-auto rounded-card border border-border bg-surface">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-b border-border text-left text-muted">
-                      <th className="px-4 py-3 font-semibold">Feature</th>
-                      <th className="px-4 py-3 font-semibold">Tier A — Free</th>
-                      <th className="px-4 py-3 font-semibold">
-                        Tier B — Owlka Pro (£5/mo)
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="text-text/85">
-                    <tr className="border-b border-border/60">
-                      <td className="px-4 py-3 font-medium">Owlka iPhone app</td>
-                      <td className="px-4 py-3">Included</td>
-                      <td className="px-4 py-3">Included</td>
-                    </tr>
-                    <tr className="border-b border-border/60">
-                      <td className="px-4 py-3 font-medium">
-                        Connect with your Anthropic OAuth
-                      </td>
-                      <td className="px-4 py-3">Included</td>
-                      <td className="px-4 py-3">Included</td>
-                    </tr>
-                    <tr className="border-b border-border/60">
-                      <td className="px-4 py-3 font-medium">
-                        Persistent on-device memory
-                      </td>
-                      <td className="px-4 py-3">Included</td>
-                      <td className="px-4 py-3">Included</td>
-                    </tr>
-                    <tr className="border-b border-border/60">
-                      <td className="px-4 py-3 font-medium">Code reviewer</td>
-                      <td className="px-4 py-3">Included</td>
-                      <td className="px-4 py-3">Included</td>
-                    </tr>
-                    <tr className="border-b border-border/60">
-                      <td className="px-4 py-3 font-medium">
-                        Environment protection
-                      </td>
-                      <td className="px-4 py-3">Included</td>
-                      <td className="px-4 py-3">Included</td>
-                    </tr>
-                    <tr className="border-b border-border/60">
-                      <td className="px-4 py-3 font-medium">Devices</td>
-                      <td className="px-4 py-3">
-                        One iOS device per Apple ID
-                      </td>
-                      <td className="px-4 py-3">
-                        iPhone plus Mac companion
-                      </td>
-                    </tr>
-                    <tr className="border-b border-border/60">
-                      <td className="px-4 py-3 font-medium">
-                        Home bridge access
-                      </td>
-                      <td className="px-4 py-3 text-muted">Not included</td>
-                      <td className="px-4 py-3">
-                        Work on your own machine, anywhere
-                      </td>
-                    </tr>
-                    <tr className="border-b border-border/60">
-                      <td className="px-4 py-3 font-medium">Priority support</td>
-                      <td className="px-4 py-3 text-muted">Standard</td>
-                      <td className="px-4 py-3">Priority</td>
-                    </tr>
-                    <tr>
-                      <td className="px-4 py-3 font-medium">
-                        Future skills marketplace
-                      </td>
-                      <td className="px-4 py-3 text-muted">Not included</td>
-                      <td className="px-4 py-3">Included as it lands</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <ul className="list-disc pl-6 space-y-2 text-text/80">
+                <li>Owlka iPhone app, paired with your Mac.</li>
+                <li>Owlka Mac companion app that runs Claude on your machine.</li>
+                <li>
+                  Encrypted middleman between phone and Mac. It cannot read
+                  what you send.
+                </li>
+                <li>
+                  Your Anthropic OAuth token stays on your devices. Owlka does
+                  not see it.
+                </li>
+                <li>Persistent on-device memory.</li>
+                <li>Priority email support.</li>
+              </ul>
               <p className="mt-4 text-sm text-text/65">
-                Full tier breakdown lives on the{" "}
+                More detail on the{" "}
                 <Link href="/#pricing" className="text-mark hover:underline">
                   pricing
                 </Link>{" "}
@@ -413,15 +352,15 @@ export default function DocsPage() {
                 Ready when you are.
               </h2>
               <p className="mt-3 text-text/75">
-                Get on the waitlist for early access, or send us a question if
-                anything here is unclear.
+                Download the Mac app, install it, and pair from your iPhone.
+                Or send us a question if anything here is unclear.
               </p>
               <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
                 <Link
-                  href="/#waitlist"
+                  href="/download"
                   className="inline-flex items-center justify-center h-11 px-6 rounded-pill bg-mark text-surface text-sm font-medium hover:opacity-90 transition"
                 >
-                  Get on the waitlist
+                  Download for Mac
                 </Link>
                 <Link
                   href="/support"

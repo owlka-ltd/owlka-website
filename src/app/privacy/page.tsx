@@ -92,7 +92,7 @@ const SECTIONS: Section[] = [
       {
         label: "Primary data centre",
         value:
-          "Hetzner Falkenstein (DE). Certified to ISO/IEC 27001:2013 (information security management) and built to DIN EN 50600 standards for data centre availability and physical security.",
+          "Hetzner Nuremberg (DE). Certified to ISO/IEC 27001:2013 (information security management) and built to DIN EN 50600 standards for data centre availability and physical security.",
       },
       {
         label: "Physical access",
@@ -140,7 +140,7 @@ const SECTIONS: Section[] = [
       {
         label: "Third-party processors",
         value:
-          "Stripe (payments — GDPR DPA in place), Cloudflare (edge — GDPR DPA in place), Hetzner (hosting — GDPR DPA in place), Anthropic (model inference — Zero Data Retention enabled on our API key, so prompts and completions are not retained by Anthropic beyond the request).",
+          "Stripe (payments, GDPR DPA in place), Cloudflare (edge, GDPR DPA in place), Hetzner (hosting, GDPR DPA in place), Anthropic (model inference, Zero Data Retention enabled on our API key, so prompts and completions are not retained by Anthropic beyond the request).",
       },
     ],
   },

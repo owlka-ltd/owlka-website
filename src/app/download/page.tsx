@@ -47,32 +47,21 @@ export default function DownloadPage() {
           </p>
 
           <div className="mt-12 flex flex-col items-center gap-4">
-            <a
-              href={MAC_DMG_URL}
-              className="group inline-flex items-center justify-center gap-3 h-14 px-9 rounded-pill bg-mark text-surface text-lg font-semibold shadow-lg shadow-mark/30 hover:shadow-xl hover:shadow-mark/40 hover:-translate-y-0.5 transition-all"
-            >
+            <div className="inline-flex items-center justify-center gap-3 h-14 px-9 rounded-pill bg-surface text-text/70 text-lg font-semibold border border-border">
               <AppleGlyph />
-              Download for Mac
-              <svg
-                className="w-5 h-5 transition-transform group-hover:translate-y-0.5"
-                viewBox="0 0 16 16"
-                fill="none"
-                aria-hidden
+              Mac app — coming this week
+            </div>
+            <p className="text-sm text-muted max-w-md text-center">
+              We&rsquo;re finishing notarisation. Leave your email
+              at{" "}
+              <a
+                href="mailto:support@owlka.com?subject=Notify%20me%20when%20Owlka%20for%20Mac%20is%20ready"
+                className="text-mark hover:underline"
               >
-                <path
-                  d="M8 3v8m0 0l3-3m-3 3L5 8"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
-            <p className="text-sm text-muted">
-              Apple-notarised .dmg, ~12 MB. Requires macOS 13 or later.
-            </p>
-            <p className="text-sm text-muted">
-              Windows coming soon. Linux is on the roadmap.
+                support@owlka.com
+              </a>{" "}
+              and we&rsquo;ll send the .dmg the moment it&rsquo;s
+              live. Windows + Linux to follow.
             </p>
           </div>
 

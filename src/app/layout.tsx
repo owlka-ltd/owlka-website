@@ -10,18 +10,60 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const SITE_URL = "https://owlka.com";
+const DEFAULT_TITLE = "Owlka — Claude Code on your phone";
+const DEFAULT_DESCRIPTION =
+  "Owlka gives you the full power of Claude Code on your phone. Build apps, websites, monitors, anything a developer could do, all from the comfort of your sofa.";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://owlka.com"),
-  title: "Owlka — Claude Code on your phone",
-  description:
-    "Owlka gives you the full power of Claude Code on your phone. Build apps, websites, monitors, anything a developer could do, all from the comfort of your sofa.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: DEFAULT_TITLE,
+    template: "%s | Owlka",
+  },
+  description: DEFAULT_DESCRIPTION,
+  applicationName: "Owlka",
+  authors: [{ name: "Owlka" }],
+  keywords: [
+    "Owlka",
+    "Claude Code",
+    "AI coding",
+    "mobile development",
+    "iOS",
+    "Anthropic",
+    "developer tools",
+  ],
   openGraph: {
-    title: "Owlka — Claude Code on your phone",
-    description:
-      "Build websites, build apps, set up persistent monitoring, connect to APIs and databases. From the comfort of your sofa.",
-    url: "https://owlka.com",
+    type: "website",
     siteName: "Owlka",
-    images: ["/owlka-mark.svg"],
+    url: SITE_URL,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    locale: "en_US",
+    images: [
+      {
+        url: "/api/og",
+        width: 1200,
+        height: 630,
+        alt: "Owlka — Claude Code on your phone",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: ["/api/og"],
+  },
+  icons: {
+    icon: "/icon.svg",
+  },
+  alternates: {
+    canonical: SITE_URL,
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

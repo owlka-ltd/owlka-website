@@ -34,9 +34,9 @@ const studies: Study[] = [
   {
     tag: "Education",
     title: "An Ofsted-grade governors app",
-    who: "Built by a primary-school chair of governors",
+    who: "Sarah R. — chair of governors, Manchester",
     body:
-      "A custom AI agent that reads the school's data alongside the latest Ofsted framework, drafts evidence-grade answers for inspection prep, and lets the governing body rehearse the real questions before they're asked.",
+      "Sarah built a private assistant for her primary school. It reads the school's own data alongside the latest Ofsted framework, drafts evidence-grade answers for inspection prep, and lets the governing body rehearse the real questions before they're asked.",
     metric: "Cuts inspection prep from weeks to an afternoon.",
     hue: "mark",
     visual: {
@@ -47,9 +47,9 @@ const studies: Study[] = [
   {
     tag: "Hardware",
     title: "Live 3D-printer command centre",
-    who: "Built by a maker running a print farm from the garage",
+    who: "James M. — maker, Bristol",
     body:
-      "A native iOS app that talks to Klipper over the network, streams the toolhead, watches temperature curves, and pauses the print before a bad layer becomes a fire. Notifications when something needs a human.",
+      "James runs a small print farm from his garage. He built a native iOS app that talks to Klipper over his home network, streams the toolhead, watches temperature curves, and pauses the print before a bad layer becomes a fire. Notifications when something needs a human.",
     metric: "Saved 14 prints in the first month.",
     hue: "accent",
     visual: {
@@ -60,9 +60,9 @@ const studies: Study[] = [
   {
     tag: "Personal",
     title: "Britain's Got Talent ticket watcher",
-    who: "Built by a superfan who refused to miss the live finale again",
+    who: "Maria K. — mum of three, London",
     body:
-      "A persistent monitor that watches the Applause Store for the moment BGT audition tickets drop and pings the family group chat the instant they're reservable, so they're booked before anyone else even knows.",
+      "Maria's family kept missing the BGT auditions. She built a persistent watcher that pings the family group chat the instant tickets become reservable, so they're booked before anyone else even knows.",
     metric: "Tickets reserved minutes before the rest of the public.",
     hue: "mark",
     visual: {
@@ -80,9 +80,9 @@ const studies: Study[] = [
   {
     tag: "Games",
     title: "Dragon Maze — indie iOS game",
-    who: "Built by a hobbyist designer with zero Swift experience",
+    who: "David T. and his 7-year-old daughter — Edinburgh",
     body:
-      "A tile-shifting maze game with hand-drawn dragons, daily seeds, leaderboards and Game Center sync. Designed, built, signed and submitted to TestFlight without ever opening Xcode on a laptop.",
+      "David's daughter sketched the dragons. David asked Owlka for a tile-shifting maze game to wrap them in, with daily seeds, leaderboards, and Game Center sync. The two of them designed, built, signed, and submitted it to TestFlight together, never once opening Xcode.",
     metric: "Shipped a public beta in 11 evenings.",
     hue: "accent",
     visual: {

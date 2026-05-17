@@ -8,31 +8,24 @@ type Kind = "voice" | "review" | "memory" | "ship";
 const steps: { n: string; title: string; body: string; kind: Kind }[] = [
   {
     n: "01",
-    title: "Open Owlka. Say what you want.",
+    title: "Your Claude on your Mac.",
     body:
-      "Voice or thumbs. \"Build me a Klipper monitor.\" \"Make me a Streamlit app for the school's data.\" \"Set up a watcher that pings me when the BBC publishes the schedule.\" Plain English. No syntax.",
-    kind: "voice",
+      "Owlka runs on your Mac. It launches the official Claude Code app under your own Anthropic login and keeps your code, your memory, and your work on your own machine. Nothing about your project lives on our servers.",
+    kind: "ship",
   },
   {
     n: "02",
-    title: "Owlka writes, reviews, and ships.",
+    title: "An encrypted middleman that can't read your messages.",
     body:
-      "Claude Code does the engineering. An automated reviewer challenges the diff before it lands. Environment protection blocks anything that could brick your machine. You watch it happen, or you don't — it works either way.",
+      "Your phone and your Mac talk through an encrypted middleman. We pass sealed messages back and forth. We can't open them. Only your phone and your Mac hold the keys, so the conversation stays between you and your Claude.",
     kind: "review",
   },
   {
     n: "03",
-    title: "It remembers everything.",
+    title: "Your iPhone, your conversation.",
     body:
-      "Persistent cross-session memory means Owlka knows what you're building, who you are, and what you decided last Tuesday. Pick up six weeks later with one sentence and it's right back in context.",
-    kind: "memory",
-  },
-  {
-    n: "04",
-    title: "From sofa to App Store.",
-    body:
-      "Sign it, ship it, deploy it. iOS apps, websites, Python services, hardware monitors, scheduled jobs. The same phone that scrolls TikTok ships production software.",
-    kind: "ship",
+      "The Owlka iPhone app is the front seat. Talk by voice or type. Watch what Claude is doing live. Approve a change, kick off a build, or pause it from the sofa. Same conversation on every paired phone.",
+    kind: "voice",
   },
 ];
 
@@ -45,15 +38,15 @@ export function HowItWorks() {
             How it works
           </p>
           <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
-            Four steps. Zero terminal.
+            Three pieces. One conversation.
           </h2>
           <p className="mt-5 text-lg text-text/70 leading-relaxed">
-            Owlka wraps Claude Code in everything a non-engineer needs to ship
-            real software from a phone.
+            Owlka runs Claude Code on your Mac, talks to your iPhone through
+            an encrypted middleman, and keeps the work on your own machine.
           </p>
         </div>
 
-        <ol className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <ol className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {steps.map((s, i) => (
             <motion.li
               key={s.n}
@@ -67,8 +60,8 @@ export function HowItWorks() {
               }}
               className="relative p-8 sm:p-10 rounded-card bg-bg border border-border hover:border-mark/40 hover:shadow-xl hover:shadow-mark/10 transition-all group overflow-hidden"
             >
-              <div className="flex items-start gap-6 sm:gap-8">
-                <div className="shrink-0 transition-transform duration-500 group-hover:scale-[1.04] group-hover:-rotate-2">
+              <div className="flex flex-col gap-6">
+                <div className="shrink-0 self-start transition-transform duration-500 group-hover:scale-[1.04] group-hover:-rotate-2">
                   <StepGraphic kind={s.kind} />
                 </div>
                 <div className="flex-1 min-w-0">

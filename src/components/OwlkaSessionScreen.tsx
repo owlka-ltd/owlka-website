@@ -39,81 +39,63 @@ export function OwlkaSessionScreen() {
         </div>
       </div>
 
-      {/* tmux tab bar — matches real app screenshot: tab 1 active pink */}
+      {/* tmux tab bar — two everyday jobs, plain English */}
       <div className="relative shrink-0 px-[3%] pt-[1.5%] pb-[2%] flex items-stretch gap-[1.5cqw] overflow-hidden">
         <TmuxTab
           number={1}
           active
           status="done"
-          summary="owlka app development"
+          summary="Thank-you emails to gallery visitors"
         />
         <TmuxTab
           number={2}
           active={false}
           status="working"
-          summary="Owlka website development"
+          summary="Watch for new tickets going on sale"
         />
         <AddTabButton />
       </div>
 
-      {/* pane content — terminal output + structured approval card,
-          mirrors the real app flow when Claude needs your permission */}
+      {/* pane content — plain-English conversation + approval card so a
+          non-technical visitor immediately understands what's happening */}
       <div className="relative flex-1 overflow-hidden bg-white">
-        <div className="px-[3.5%] pt-[2%] pb-[1.5%]">
-          {/* dim monospace command output */}
-          <div className="font-mono text-[2.4cqw] leading-[1.5] text-[#1A1A1F]/55 whitespace-pre">
-{`new_lines = content.count('\\n')
-print(f"Done. Lines: original={original_lines},
-new={new_lines}, removed={original_lines -
-new_lines}")
-ENDOFSCRIPT
-echo "script written"`}
+        <div className="px-[3.5%] pt-[2.4%] pb-[1.5%] flex flex-col gap-[2cqw]">
+          {/* user prompt */}
+          <div className="text-[2.7cqw] leading-[1.4] text-[#1A1A1F]">
+            Send a quick thank-you email to everyone who came to
+            the gallery on Saturday. The visitor sheet is in my
+            Google Drive.
           </div>
 
-          {/* hook confirmation line */}
-          <div className="mt-[2.2cqw] text-[2.5cqw] leading-[1.4] text-[#1A1A1F]/85">
-            Hook PreToolUse:Bash requires confirmation for this command:
-          </div>
-          <div className="mt-[0.6cqw] text-[2.4cqw] leading-[1.35] text-[#1A1A1F]/70">
-            [T3 reviewer · ASK] throttle: 2 reviews already running
-            (cap 2); escalating to phone tap
+          {/* Claude reply */}
+          <div className="flex gap-[1.4cqw]">
+            <OwlAvatar />
+            <div className="flex-1 text-[2.7cqw] leading-[1.4] text-[#1A1A1F]/85">
+              Found the sheet, 14 names. I drafted a short thank-you
+              to each, mentioning the piece they spent the longest
+              looking at. Sending the first one now so you can check
+              the tone before the rest go out.
+            </div>
           </div>
 
-          {/* yes / no prompt */}
-          <div className="mt-[1.8cqw] text-[2.6cqw] font-semibold text-[#1A1A1F]">
-            Do you want to proceed?
-          </div>
-          <div className="mt-[0.6cqw] flex flex-col gap-[0.3cqw] text-[2.5cqw]">
-            <span className="text-[#FF6BA0] font-semibold">
-              ❯ 1. Yes
+          {/* approval card — plain English, no jargon */}
+          <div className="rounded-[2cqw] border border-[#1A1A1F]/12 bg-white px-[2.8cqw] py-[2.2cqw] shadow-sm">
+            <span className="inline-flex items-center h-[4cqw] px-[1.6cqw] rounded-[0.8cqw] bg-[#FFD9B8] text-[#7A4A1A] text-[2cqw] font-bold uppercase tracking-wider">
+              Sending email
             </span>
-            <span className="text-[#FF6BA0]/55 pl-[2.4cqw]">2. No</span>
-          </div>
-          <div className="mt-[1cqw] text-[2.2cqw] text-[#FF6BA0]/70">
-            Esc to cancel · Tab to amend · ctrl+e to explain
-          </div>
-
-          {/* EXTERNAL approval card */}
-          <div className="mt-[2cqw] rounded-[1.8cqw] border border-[#1A1A1F]/12 bg-white px-[2.6cqw] py-[2cqw] shadow-sm">
-            <span className="inline-flex items-center h-[3.6cqw] px-[1.4cqw] rounded-[0.6cqw] bg-[#FFD9B8] text-[#7A4A1A] text-[1.9cqw] font-bold uppercase tracking-wider">
-              External
-            </span>
-            <div className="mt-[1cqw] text-[2.8cqw] font-semibold text-[#1A1A1F] leading-tight">
-              throttle: 2 reviews already running
+            <div className="mt-[1.2cqw] text-[2.9cqw] font-semibold text-[#1A1A1F] leading-tight">
+              Send 14 thank-you emails from your Gmail?
             </div>
-            <div className="mt-[0.6cqw] font-mono text-[2.1cqw] text-[#1A1A1F]/55">
-              command:
+            <div className="mt-[0.8cqw] text-[2.4cqw] leading-[1.35] text-[#1A1A1F]/70">
+              Real people will receive these in the next few minutes.
+              Once they're sent, they can't be pulled back.
             </div>
-            <div className="mt-[0.8cqw] text-[2.3cqw] leading-snug text-[#1A1A1F]/75">
-              Approving sends data outside your machine (GitHub, the web,
-              shared services). Hard to undo.
-            </div>
-            <div className="mt-[1.6cqw] flex items-stretch gap-[1.4cqw]">
-              <button className="flex-1 h-[6.6cqw] rounded-[1.4cqw] bg-[#FFD9B8] text-[#1A1A1F] text-[2.6cqw] font-bold flex items-center justify-center">
-                Approve
+            <div className="mt-[1.8cqw] flex items-stretch gap-[1.4cqw]">
+              <button className="flex-1 h-[7cqw] rounded-[1.6cqw] bg-[#FFD9B8] text-[#1A1A1F] text-[2.7cqw] font-bold flex items-center justify-center">
+                Send them
               </button>
-              <button className="flex-1 h-[6.6cqw] rounded-[1.4cqw] bg-white border border-[#1A1A1F]/18 text-[#1A1A1F] text-[2.6cqw] font-semibold flex items-center justify-center">
-                Deny
+              <button className="flex-1 h-[7cqw] rounded-[1.6cqw] bg-white border border-[#1A1A1F]/18 text-[#1A1A1F] text-[2.7cqw] font-semibold flex items-center justify-center">
+                Not yet
               </button>
             </div>
           </div>
@@ -131,7 +113,7 @@ echo "script written"`}
             <ChipButton variant="pill" label="esc" />
           </div>
           <div className="flex-1 min-w-0 h-[24cqw] rounded-[2.4cqw] bg-[#FFF8FA] border border-[#FF6BA0]/35 px-[2cqw] pt-[1.6cqw] text-[2.6cqw] text-[#1A1A1F]/55 leading-tight">
-            run the keyboard build and screenshot the hero|
+            ok send them, but cc me on the first one|
           </div>
           <button
             type="button"

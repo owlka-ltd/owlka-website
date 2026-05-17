@@ -149,6 +149,16 @@ export function Pricing() {
                     {t.cadence}
                   </span>
                 </div>
+                {t.id === "pro" && (
+                  <div
+                    className={`mt-1 text-sm ${
+                      t.featured ? "text-surface/70" : "text-muted"
+                    }`}
+                  >
+                    <p>£5/month (VAT included)</p>
+                    <p>Renews monthly. Cancel anytime.</p>
+                  </div>
+                )}
                 <p
                   className={`mt-4 text-[15px] leading-relaxed ${
                     t.featured ? "text-surface/85" : "text-text/75"

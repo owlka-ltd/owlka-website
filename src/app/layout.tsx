@@ -2,6 +2,13 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import {
+  DEFAULT_DESCRIPTION,
+  DEFAULT_OG_IMAGE,
+  DEFAULT_TITLE,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/seo";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -11,17 +18,54 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://owlka.com"),
-  title: "Owlka — Claude Code on your phone",
-  description:
-    "Owlka gives you the full power of Claude Code on your phone. Build apps, websites, monitors, anything a developer could do, all from the comfort of your sofa.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: DEFAULT_TITLE,
+    template: "%s | Owlka",
+  },
+  description: DEFAULT_DESCRIPTION,
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME }],
+  keywords: [
+    "Owlka",
+    "Claude Code",
+    "AI coding",
+    "mobile development",
+    "iOS",
+    "Anthropic",
+    "developer tools",
+  ],
   openGraph: {
-    title: "Owlka — Claude Code on your phone",
-    description:
-      "Build websites, build apps, set up persistent monitoring, connect to APIs and databases. From the comfort of your sofa.",
-    url: "https://owlka.com",
-    siteName: "Owlka",
-    images: ["/owlka-mark.svg"],
+    type: "website",
+    siteName: SITE_NAME,
+    url: SITE_URL,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    locale: "en_US",
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: DEFAULT_TITLE,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: [DEFAULT_OG_IMAGE],
+  },
+  icons: {
+    icon: "/icon.svg",
+  },
+  alternates: {
+    canonical: SITE_URL,
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

@@ -24,16 +24,14 @@ export function Hero() {
                 <span className="absolute inset-0 rounded-full bg-mark animate-pulse-dot" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-mark" />
               </span>
-              <span className="uppercase text-mark">Coming soon</span>
+              <span className="uppercase text-mark">New</span>
               <span className="text-text/50">·</span>
-              <span className="text-text/80">Join the waitlist</span>
+              <span className="text-text/80">Works with Claude Code</span>
             </motion.div>
 
             {/* H1 is the LCP element. Render it visible immediately (no
                 opacity-0 initial state) so it paints on first frame instead
-                of waiting for Framer Motion to mount and run the animation.
-                Removed initial/animate/transition props that previously
-                cost ~1s of LCP element-render-delay on mobile. */}
+                of waiting for Framer Motion to mount and run the animation. */}
             <h1 className="text-5xl sm:text-6xl lg:text-[5.25rem] font-semibold tracking-tight leading-[1.02]">
               The full power of Claude Code.
               <br />
@@ -48,9 +46,21 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
               className="mt-7 max-w-xl mx-auto lg:mx-0 text-lg sm:text-xl text-text/70 leading-relaxed"
             >
-              Build websites, build apps, set up persistent monitoring, connect
-              to APIs and databases. Do anything a developer could do, all from
-              the comfort of your sofa.
+              Owlka gives you the full power of Claude Code on your phone. Build
+              websites, build apps, set up persistent monitoring, connect to
+              APIs and databases, do anything a developer could do, all from the
+              comfort of your sofa.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-4 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg text-text/60 leading-relaxed"
+            >
+              Wrapped in persistent cross-session memory, automated code
+              reviewers, and environment protection so you can&rsquo;t destroy
+              your laptop.
             </motion.p>
 
             <motion.div
@@ -60,10 +70,11 @@ export function Hero() {
               className="mt-10 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
             >
               <Link
-                href="#waitlist"
+                href="/download"
                 className="group inline-flex items-center justify-center gap-2 h-12 px-7 rounded-pill bg-mark text-surface text-base font-medium hover:opacity-90 transition-all shadow-lg shadow-mark/30 hover:shadow-xl hover:shadow-mark/40 hover:-translate-y-0.5"
               >
-                Join the waitlist
+                <AppleGlyph />
+                Download for Mac
                 <svg
                   className="w-4 h-4 transition-transform group-hover:translate-x-0.5"
                   viewBox="0 0 16 16"
@@ -87,11 +98,21 @@ export function Hero() {
               </Link>
             </motion.div>
 
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.55 }}
+              className="mt-4 text-sm text-muted text-center lg:text-left"
+            >
+              Free for 30 days, then £5/month via the App Store. Windows coming
+              soon.
+            </motion.p>
+
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.7 }}
-              className="mt-12 flex flex-wrap gap-x-6 gap-y-3 justify-center lg:justify-start items-center text-sm text-muted"
+              className="mt-10 flex flex-wrap gap-x-6 gap-y-3 justify-center lg:justify-start items-center text-sm text-muted"
             >
               <span className="inline-flex items-center gap-1.5">
                 <Check /> Persistent memory
@@ -176,7 +197,7 @@ export function Hero() {
                 <path d="M6 13h4a2 2 0 0 1-4 0Z" />
               </svg>
               <span className="text-[11px] font-semibold uppercase tracking-wider text-mark">
-                Push
+                Live
               </span>
               <span className="text-xs font-medium text-text/80">
                 Build green
@@ -225,6 +246,19 @@ function Check() {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
+    </svg>
+  );
+}
+
+function AppleGlyph() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="w-4 h-4"
+      fill="currentColor"
+      aria-hidden
+    >
+      <path d="M17.05 12.04c-.03-2.9 2.37-4.3 2.48-4.37-1.36-1.98-3.47-2.25-4.22-2.28-1.8-.18-3.51 1.06-4.42 1.06-.93 0-2.32-1.04-3.82-1.01-1.96.03-3.78 1.14-4.78 2.89-2.05 3.56-.52 8.81 1.46 11.7.97 1.42 2.12 3 3.62 2.95 1.46-.06 2.01-.94 3.77-.94 1.76 0 2.26.94 3.79.91 1.57-.03 2.56-1.43 3.52-2.86 1.11-1.64 1.57-3.23 1.59-3.31-.04-.02-3.04-1.17-3.07-4.74zM14.34 3.97c.81-.98 1.35-2.34 1.2-3.69-1.16.05-2.57.78-3.4 1.75-.75.86-1.4 2.24-1.22 3.56 1.29.1 2.61-.66 3.42-1.62z" />
     </svg>
   );
 }

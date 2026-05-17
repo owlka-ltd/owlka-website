@@ -24,9 +24,6 @@ const WhyOwlka = dynamic(() =>
 const Pricing = dynamic(() =>
   import("@/components/Pricing").then((m) => ({ default: m.Pricing })),
 );
-const Waitlist = dynamic(() =>
-  import("@/components/Waitlist").then((m) => ({ default: m.Waitlist })),
-);
 const Footer = dynamic(() =>
   import("@/components/Footer").then((m) => ({ default: m.Footer })),
 );
@@ -102,7 +99,6 @@ export default function Home() {
         <CaseStudies />
         <WhyOwlka />
         <Pricing />
-        <Waitlist />
       </main>
       <Footer />
     </>

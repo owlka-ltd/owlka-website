@@ -1,18 +1,21 @@
 /**
- * PrinterPilot iOS app — faithful copy of the real "analytics" pane Tim
- * captured. Three stacked graphs: Speed Profile (green spikes), Layer
- * Complexity (red spikes), ETA History (gold ascending line). Top chrome
- * is "◀ Owlka" back affordance + status bar.
+ * PrinterPilot iOS app — faithful copy of the real dashboard order:
+ * camera snapshot at top, then progress / ETA / temps, then the manual
+ * speed slider with Apply button, then a Speed Profile sparkline as a
+ * hint of the deeper analytics view. Maps to DashboardView.swift body
+ * order (camera L116, progress L121, ETA L133, temps L155, speed L173,
+ * SpeedProfileChart L188).
  *
  * Palette = TimSharedKit AppTheme (navy bg #1A1A2E, card #16213E, chart
- * bg #0D1520, gold accent #C9A96E).
+ * bg #0D1520, gold accent #C9A96E, green #3DC88A, red #FF6B6B, teal
+ * #3DC8D2).
  */
 export function PrinterPilotSessionScreen() {
   return (
     <div className="relative h-full w-full bg-[#1A1A2E] flex flex-col text-[#E0E0E0]">
-      {/* iOS status bar — white glyphs on navy */}
+      {/* iOS status bar */}
       <div className="relative shrink-0 h-[5.6%] flex items-end justify-between pb-[1.5%] px-[8%] text-[3.6cqw] font-semibold tracking-tight text-white">
-        <span>9:41</span>
+        <span>22:26</span>
         <span className="flex items-center gap-[1.4cqw] text-white">
           <SignalDots />
           <WifiGlyph />
@@ -20,56 +23,55 @@ export function PrinterPilotSessionScreen() {
         </span>
       </div>
 
-      {/* "◀ Owlka" back affordance */}
-      <div className="relative shrink-0 px-[5%] pt-[0.6%] pb-[1.2%] flex items-center">
+      {/* "◀ Owlka" back affordance + printer name */}
+      <div className="relative shrink-0 px-[5%] pt-[0.6%] pb-[1%] flex items-center justify-between">
         <span className="inline-flex items-center gap-[1cqw] text-[3.4cqw] font-medium text-white/95">
           <BackChevron />
           Owlka
         </span>
+        <span className="inline-flex items-center gap-[1cqw] h-[4.2cqw] px-[1.6cqw] rounded-full bg-[#3DC88A]/18 text-[#3DC88A] text-[2.2cqw] font-bold uppercase tracking-wider">
+          <span className="w-[1.4cqw] h-[1.4cqw] rounded-full bg-[#3DC88A]" />
+          Printing
+        </span>
       </div>
 
-      {/* scrollable analytics pane — three graphs */}
-      <div className="relative flex-1 overflow-hidden px-[4%] flex flex-col gap-[2.4cqw]">
-        <GraphCard
-          title="Speed Profile"
-          legend={
-            <div className="flex items-center gap-[2.2cqw] text-[2cqw] mt-[1cqw]">
-              <LegendDot color="#3DC88A" label="Optimal %" />
-              <LegendDot color="#3DC8D2" label="Current" />
-              <LegendDot color="#C9A96E" label="Set: 80%" outlined />
-            </div>
-          }
-        >
-          <SpeedProfileGraph />
-        </GraphCard>
+      {/* scrollable pane */}
+      <div className="relative flex-1 overflow-hidden px-[3.5%] flex flex-col gap-[1.6cqw]">
+        <div className="text-[3.2cqw] font-semibold text-white tracking-tight pl-[0.5cqw]">
+          Sovol SV08 Max
+        </div>
 
-        <GraphCard
-          title="Layer Complexity"
-          legend={
-            <div className="flex items-center gap-[2.2cqw] text-[1.9cqw] mt-[1cqw] text-[#AAA]">
-              <span>Low α = simple</span>
-              <span className="text-[#FF6B6B]">High α = complex</span>
-            </div>
-          }
-        >
-          <LayerComplexityGraph />
-        </GraphCard>
+        {/* CAMERA frame — stylised live feed of the printer bed */}
+        <CameraSnapshot />
 
-        <GraphCard
-          title="ETA History"
-          badge={
-            <span className="inline-flex items-center gap-[0.6cqw] h-[3.6cqw] px-[1.4cqw] rounded-[1cqw] bg-[#3A1A1F] text-[#FF8A8A] text-[1.9cqw] font-semibold">
-              ↗ 40m late
-            </span>
-          }
-          footer={
-            <div className="mt-[1cqw] text-right text-[2cqw] text-[#C9A96E] font-semibold">
-              Current ETA: Fri 04:06
-            </div>
-          }
-        >
-          <EtaHistoryGraph />
-        </GraphCard>
+        {/* progress bar */}
+        <ProgressRow percent={62.3} />
+
+        {/* layer + ETA row */}
+        <div className="flex items-center justify-between text-[2.5cqw]">
+          <span className="inline-flex items-center gap-[1cqw] text-white/85">
+            <LayerGlyph />
+            <span className="text-white/60">Layers</span>
+            <span className="font-mono font-semibold text-white">218 / 350</span>
+          </span>
+          <span className="inline-flex items-center gap-[1cqw] text-white/85">
+            <ClockGlyph />
+            <span className="text-white/60">ETA</span>
+            <span className="font-mono font-semibold text-[#C9A96E]">Fri 04:06</span>
+          </span>
+        </div>
+
+        {/* temperatures: bed + nozzle */}
+        <div className="grid grid-cols-2 gap-[1.6cqw]">
+          <TempTile label="Bed" temp={65} target={65} color="#3DC8D2" />
+          <TempTile label="Nozzle" temp={228} target={230} color="#FF8A5A" />
+        </div>
+
+        {/* SPEED SLIDER — manual speed factor, 50-250%, with Apply */}
+        <SpeedSliderCard />
+
+        {/* Speed Profile sparkline — hint of the analytics view */}
+        <SpeedProfileSparkline />
       </div>
 
       {/* home indicator */}
@@ -82,32 +84,248 @@ export function PrinterPilotSessionScreen() {
   );
 }
 
-function GraphCard({
-  title,
-  badge,
-  legend,
-  footer,
-  children,
+function CameraSnapshot() {
+  // Stylised view of a printer bed mid-print: dark scene, partially
+  // printed teal object, gantry hint, "LIVE" pill + timestamp overlay.
+  return (
+    <div className="relative w-full aspect-[16/10] rounded-[1.6cqw] overflow-hidden border border-white/8 bg-[#0A0E18]">
+      <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 w-full h-full" aria-hidden>
+        {/* warm overhead glow */}
+        <defs>
+          <radialGradient id="cam-glow" cx="50%" cy="35%" r="65%">
+            <stop offset="0%" stopColor="#3A2A1A" stopOpacity="0.9" />
+            <stop offset="55%" stopColor="#161018" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="#070910" stopOpacity="1" />
+          </radialGradient>
+          <linearGradient id="bed-grad" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stopColor="#1B1F2A" />
+            <stop offset="100%" stopColor="#0A0D14" />
+          </linearGradient>
+          <linearGradient id="part-grad" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stopColor="#5BD4D8" />
+            <stop offset="100%" stopColor="#1F8A8E" />
+          </linearGradient>
+        </defs>
+        <rect width="320" height="200" fill="url(#cam-glow)" />
+        {/* build plate */}
+        <polygon points="35,170 285,170 305,135 15,135" fill="url(#bed-grad)" />
+        <polygon points="15,135 305,135 305,128 15,128" fill="#262C3A" />
+        {/* layer lines on the bed */}
+        {Array.from({ length: 7 }).map((_, i) => (
+          <line
+            key={i}
+            x1={30 + i * 10}
+            x2={290 - i * 10}
+            y1={170 - i * 5}
+            y2={170 - i * 5}
+            stroke="#1A2030"
+            strokeWidth="0.6"
+          />
+        ))}
+        {/* partially printed object — stepped teal block */}
+        <polygon
+          points="120,168 220,168 232,148 108,148"
+          fill="#0E2A30"
+        />
+        <polygon
+          points="115,148 225,148 235,124 105,124"
+          fill="url(#part-grad)"
+          opacity="0.92"
+        />
+        <polygon
+          points="105,124 235,124 232,118 108,118"
+          fill="#4FBABF"
+        />
+        {/* infill grid hint on top face */}
+        {Array.from({ length: 8 }).map((_, i) => (
+          <line
+            key={i}
+            x1={110 + i * 16}
+            x2={130 + i * 16}
+            y1={124}
+            y2={118}
+            stroke="#0E2A30"
+            strokeWidth="0.7"
+            opacity="0.8"
+          />
+        ))}
+        {/* nozzle + gantry */}
+        <line x1="0" y1="60" x2="320" y2="60" stroke="#22293A" strokeWidth="2.2" />
+        <line x1="0" y1="56" x2="320" y2="56" stroke="#3A4458" strokeWidth="0.8" />
+        <rect x="178" y="58" width="22" height="6" fill="#2F3848" />
+        <polygon points="184,64 194,64 192,76 186,76" fill="#C9A96E" />
+        <line x1="189" y1="76" x2="189" y2="118" stroke="#3DC88A" strokeWidth="0.6" opacity="0.5" />
+        {/* warm point-light blob near nozzle */}
+        <circle cx="189" cy="118" r="3.2" fill="#FFB066" opacity="0.85" />
+        <circle cx="189" cy="118" r="7" fill="#FFB066" opacity="0.18" />
+      </svg>
+
+      {/* LIVE pill */}
+      <div className="absolute top-[1.2cqw] left-[1.4cqw] inline-flex items-center gap-[0.8cqw] h-[3.4cqw] px-[1.2cqw] rounded-full bg-black/55 backdrop-blur text-white text-[1.9cqw] font-bold uppercase tracking-wider">
+        <span className="w-[1.2cqw] h-[1.2cqw] rounded-full bg-[#FF4D4D] animate-pulse" />
+        Live
+      </div>
+      {/* timestamp */}
+      <div className="absolute top-[1.2cqw] right-[1.4cqw] h-[3.4cqw] px-[1.2cqw] rounded-full bg-black/55 backdrop-blur text-white/85 text-[1.9cqw] font-mono">
+        22:26:14
+      </div>
+      {/* fps counter */}
+      <div className="absolute bottom-[1.2cqw] right-[1.4cqw] text-white/70 text-[1.8cqw] font-mono">
+        1 fps · garage cam
+      </div>
+    </div>
+  );
+}
+
+function ProgressRow({ percent }: { percent: number }) {
+  return (
+    <div className="flex flex-col gap-[0.8cqw]">
+      <div className="flex items-center justify-between text-[2.4cqw]">
+        <span className="text-white/60">Progress</span>
+        <span className="font-mono font-bold text-[#C9A96E] text-[2.8cqw]">
+          {percent.toFixed(1)}%
+        </span>
+      </div>
+      <div className="relative h-[1.8cqw] rounded-full bg-white/8 overflow-hidden">
+        <div
+          className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[#C9A96E]/85 to-[#C9A96E]"
+          style={{ width: `${percent}%` }}
+        />
+      </div>
+    </div>
+  );
+}
+
+function TempTile({
+  label,
+  temp,
+  target,
+  color,
 }: {
-  title: string;
-  badge?: React.ReactNode;
-  legend?: React.ReactNode;
-  footer?: React.ReactNode;
-  children: React.ReactNode;
+  label: string;
+  temp: number;
+  target: number;
+  color: string;
 }) {
   return (
-    <div className="rounded-[1.6cqw] bg-[#16213E] p-[1.6cqw]">
-      <div className="flex items-center justify-between mb-[1cqw]">
-        <span className="text-[2.6cqw] font-semibold text-white tracking-tight">
-          {title}
+    <div className="rounded-[1.4cqw] bg-[#16213E] px-[1.8cqw] py-[1.4cqw]">
+      <div className="flex items-center justify-between text-[2.1cqw]">
+        <span className="text-white/55">{label}</span>
+        <span className="text-white/45 font-mono text-[1.9cqw]">→ {target}°</span>
+      </div>
+      <div className="mt-[0.4cqw] font-mono text-[3.6cqw] font-bold tabular-nums" style={{ color }}>
+        {temp}°
+      </div>
+    </div>
+  );
+}
+
+function SpeedSliderCard() {
+  // Manual speed slider — DashboardView.swift L692, range 50-250 step 5.
+  // Shown at 78% so it matches the analytics "current" marker.
+  const pct = 78;
+  const min = 50;
+  const max = 250;
+  const ratio = (pct - min) / (max - min);
+  return (
+    <div className="rounded-[1.6cqw] bg-[#16213E] px-[1.8cqw] py-[1.6cqw]">
+      <div className="flex items-center justify-between text-[2.4cqw]">
+        <span className="inline-flex items-center gap-[1cqw] text-white/75">
+          <SpeedoGlyph />
+          <span>Speed factor</span>
         </span>
-        {badge}
+        <span className="font-mono font-bold text-white text-[3cqw]">
+          {pct}%
+        </span>
       </div>
-      <div className="rounded-[1cqw] bg-[#0D1520] p-[1cqw]">
-        {children}
+
+      {/* slider track */}
+      <div className="relative mt-[1.4cqw] h-[2.4cqw] flex items-center">
+        <div className="absolute inset-x-0 h-[0.7cqw] rounded-full bg-white/12" />
+        <div
+          className="absolute h-[0.7cqw] rounded-full bg-[#C9A96E]"
+          style={{ width: `${ratio * 100}%` }}
+        />
+        <div
+          className="absolute w-[3.4cqw] h-[3.4cqw] rounded-full bg-white shadow-[0_0_0_0.6cqw_rgba(201,169,110,0.18)]"
+          style={{ left: `calc(${ratio * 100}% - 1.7cqw)` }}
+        />
       </div>
-      {legend}
-      {footer}
+      <div className="mt-[0.4cqw] flex items-center justify-between text-[1.8cqw] text-white/45 font-mono">
+        <span>50%</span>
+        <span>250%</span>
+      </div>
+
+      <button className="mt-[1.4cqw] w-full h-[6.2cqw] rounded-[1.2cqw] bg-[#C9A96E] text-[#1A1A2E] text-[2.6cqw] font-bold flex items-center justify-center">
+        Apply {pct}%
+      </button>
+    </div>
+  );
+}
+
+function SpeedProfileSparkline() {
+  // Compressed Speed Profile chart — same green-spike shape as the
+  // analytics view but small enough to live below the slider.
+  const points: string[] = [];
+  const N = 200;
+  for (let i = 0; i < N; i++) {
+    const x = (i / N) * 1180;
+    const noise =
+      Math.sin(i * 2.13) * 120 + Math.cos(i * 0.71) * 80 + Math.sin(i * 4.7) * 60;
+    let y = 320 + noise;
+    if (i % 17 === 3) y = 60;
+    y = Math.max(20, Math.min(560, y));
+    points.push(`${(100 + x).toFixed(1)},${((600 - y) / 600) * 200 + 10}`);
+  }
+  return (
+    <div className="rounded-[1.6cqw] bg-[#16213E] px-[1.6cqw] py-[1.4cqw]">
+      <div className="flex items-center justify-between mb-[0.8cqw]">
+        <span className="text-[2.4cqw] font-semibold text-white">
+          Speed profile
+        </span>
+        <span className="text-[1.9cqw] text-white/45">layer 218</span>
+      </div>
+      <div className="rounded-[1cqw] bg-[#0D1520] px-[0.6cqw] py-[0.8cqw]">
+        <svg
+          viewBox="0 0 1300 240"
+          preserveAspectRatio="none"
+          className="w-full h-[16cqw]"
+          aria-hidden
+        >
+          <line
+            x1="100"
+            x2="1300"
+            y1={210 - (80 / 600) * 200}
+            y2={210 - (80 / 600) * 200}
+            stroke="#C9A96E"
+            strokeDasharray="10 8"
+            strokeWidth="1.4"
+            opacity="0.8"
+          />
+          <polyline
+            points={points.join(" ")}
+            fill="none"
+            stroke="#3DC88A"
+            strokeWidth="1.4"
+          />
+          <line
+            x1={100 + 0.78 * 1180}
+            x2={100 + 0.78 * 1180}
+            y1="0"
+            y2="240"
+            stroke="#3DC8D2"
+            strokeDasharray="5 4"
+            strokeWidth="1"
+            opacity="0.6"
+          />
+          <circle cx={100 + 0.78 * 1180} cy={210 - (200 / 600) * 200} r="6" fill="#3DC8D2" />
+        </svg>
+      </div>
+      <div className="mt-[0.8cqw] flex items-center gap-[2cqw] text-[1.9cqw] text-white/55">
+        <LegendDot color="#3DC88A" label="Actual" />
+        <LegendDot color="#3DC8D2" label="Current" />
+        <LegendDot color="#C9A96E" label="Set 80%" outlined />
+      </div>
     </div>
   );
 }
@@ -122,7 +340,7 @@ function LegendDot({
   outlined?: boolean;
 }) {
   return (
-    <span className="inline-flex items-center gap-[0.6cqw] text-[#CCC]">
+    <span className="inline-flex items-center gap-[0.6cqw]">
       <span
         className="w-[1.4cqw] h-[1.4cqw] rounded-full"
         style={
@@ -136,164 +354,31 @@ function LegendDot({
   );
 }
 
-function SpeedProfileGraph() {
-  // Generate a noisy green spike profile across width 0..1180, height 0..600.
-  // Most spikes 200-400, occasional drops to 50, target line at 80%.
-  const points: string[] = [];
-  const N = 240;
-  for (let i = 0; i < N; i++) {
-    const x = (i / N) * 1180;
-    // base ~300, ±150 noise, plus occasional dip
-    const noise = Math.sin(i * 2.13) * 120 + Math.cos(i * 0.71) * 80 + (Math.sin(i * 4.7) * 60);
-    let y = 320 + noise;
-    if (i % 17 === 3) y = 60;
-    y = Math.max(20, Math.min(560, y));
-    points.push(`${x.toFixed(1)},${(600 - y).toFixed(1)}`);
-  }
-  const yAxisLabels = [600, 400, 200, 0];
+function SpeedoGlyph() {
   return (
-    <svg viewBox="0 0 1280 720" className="w-full h-[34cqw]" preserveAspectRatio="none" aria-hidden>
-      {/* y axis labels */}
-      {yAxisLabels.map((v, i) => (
-        <g key={v}>
-          <text x="6" y={20 + i * 200} fontSize="34" fill="#666">
-            {v}
-          </text>
-          <line
-            x1="100"
-            x2="1280"
-            y1={i * 200 + 10}
-            y2={i * 200 + 10}
-            stroke="#1B2738"
-            strokeWidth="1"
-          />
-        </g>
-      ))}
-      {/* set: 80% dashed line (at y=600-80*7.5*… use proportional) */}
-      <line
-        x1="100"
-        x2="1280"
-        y1={720 - (80 / 600) * 720}
-        y2={720 - (80 / 600) * 720}
-        stroke="#C9A96E"
-        strokeDasharray="14 10"
-        strokeWidth="1.6"
-        opacity="0.85"
-      />
-      {/* y label rotated */}
-      <text x="10" y="380" fontSize="32" fill="#888" transform="rotate(-90, 10, 380)">
-        Speed %
-      </text>
-      {/* green spike chart */}
-      <polyline
-        points={points.map((p) => {
-          const [x, y] = p.split(",");
-          return `${100 + parseFloat(x)},${(parseFloat(y) / 600) * 720}`;
-        }).join(" ")}
-        fill="none"
-        stroke="#3DC88A"
-        strokeWidth="1.4"
-        strokeLinejoin="miter"
-      />
-      {/* current marker — blue dot near 85% across */}
-      <line x1={100 + 0.78 * 1180} x2={100 + 0.78 * 1180} y1="0" y2="720" stroke="#3DC8D2" strokeDasharray="6 4" strokeWidth="1" opacity="0.6" />
-      <circle cx={100 + 0.78 * 1180} cy={720 - (200 / 600) * 720} r="8" fill="#3DC8D2" />
-      {/* x axis labels */}
-      <text x="100" y="710" fontSize="30" fill="#666">0</text>
-      <text x="430" y="710" fontSize="30" fill="#666">300</text>
-      <text x="760" y="710" fontSize="30" fill="#666">600</text>
-      <text x="1090" y="710" fontSize="30" fill="#666">900</text>
-      <text x="640" y="710" fontSize="30" fill="#888" textAnchor="middle"></text>
+    <svg viewBox="0 0 16 16" className="w-[3.4cqw] h-[3.4cqw]" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M2.5 11.5 A6 6 0 1 1 13.5 11.5" />
+      <path d="M8 11.5 L11 6" />
+      <circle cx="8" cy="11.5" r="0.9" fill="currentColor" stroke="none" />
     </svg>
   );
 }
 
-function LayerComplexityGraph() {
-  // Red spike profile, y axis 0..0.8
-  const points: string[] = [];
-  const N = 240;
-  for (let i = 0; i < N; i++) {
-    const x = (i / N) * 1180;
-    let alpha = 0.25 + Math.sin(i * 0.31) * 0.05 + Math.cos(i * 1.7) * 0.12 + Math.sin(i * 3.1) * 0.08;
-    if (i > 70 && i < 200) alpha += 0.25; // mid section more complex
-    alpha = Math.max(0.05, Math.min(0.78, alpha));
-    const y = 720 - (alpha / 0.8) * 720;
-    points.push(`${100 + x.toFixed(1)},${y.toFixed(1)}`);
-  }
-  const labels = [0.8, 0.6, 0.4, 0.2, 0];
+function LayerGlyph() {
   return (
-    <svg viewBox="0 0 1280 720" className="w-full h-[34cqw]" preserveAspectRatio="none" aria-hidden>
-      {labels.map((v, i) => (
-        <g key={v}>
-          <text x="6" y={20 + i * 180} fontSize="34" fill="#666">
-            {v.toFixed(1)}
-          </text>
-          <line
-            x1="100"
-            x2="1280"
-            y1={i * 180 + 10}
-            y2={i * 180 + 10}
-            stroke="#1B2738"
-            strokeWidth="1"
-          />
-        </g>
-      ))}
-      <text x="10" y="380" fontSize="36" fill="#888" transform="rotate(-90, 10, 380)">
-        α
-      </text>
-      <polyline
-        points={points.join(" ")}
-        fill="none"
-        stroke="#FF6B6B"
-        strokeWidth="1.4"
-      />
-      {/* current marker (blue dot ~78%) */}
-      <line x1={100 + 0.78 * 1180} x2={100 + 0.78 * 1180} y1="0" y2="720" stroke="#3DC8D2" strokeDasharray="6 4" strokeWidth="1" opacity="0.6" />
-      <circle cx={100 + 0.78 * 1180} cy={720 - (0.18 / 0.8) * 720} r="8" fill="#3DC8D2" />
-      <text x="100" y="710" fontSize="30" fill="#666">0</text>
-      <text x="430" y="710" fontSize="30" fill="#666">300</text>
-      <text x="760" y="710" fontSize="30" fill="#666">600</text>
-      <text x="1090" y="710" fontSize="30" fill="#666">900</text>
+    <svg viewBox="0 0 16 16" className="w-[3.2cqw] h-[3.2cqw]" fill="none" stroke="#C9A96E" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M8 2 L14 5 L8 8 L2 5 Z" />
+      <path d="M2 8 L8 11 L14 8" />
+      <path d="M2 11 L8 14 L14 11" />
     </svg>
   );
 }
 
-function EtaHistoryGraph() {
-  // Gold ascending line — Sun 02:06 -> Sun 03:13 over elapsed 0..8h
-  const labels = ["Sun 03:13", "Sun 02:40", "Sun 02:06"];
+function ClockGlyph() {
   return (
-    <svg viewBox="0 0 1280 540" className="w-full h-[24cqw]" preserveAspectRatio="none" aria-hidden>
-      {labels.map((v, i) => (
-        <g key={v}>
-          <text x="6" y={40 + i * 220} fontSize="32" fill="#888">
-            {v}
-          </text>
-          <line
-            x1="240"
-            x2="1280"
-            y1={i * 220 + 30}
-            y2={i * 220 + 30}
-            stroke="#1B2738"
-            strokeWidth="1"
-          />
-        </g>
-      ))}
-      {/* gold ascending line */}
-      <polyline
-        points="240,440 380,400 540,360 720,300 880,250 1040,180 1200,100"
-        fill="none"
-        stroke="#C9A96E"
-        strokeWidth="3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      {/* x axis */}
-      <text x="240" y="525" fontSize="30" fill="#666">0</text>
-      <text x="480" y="525" fontSize="30" fill="#666">2</text>
-      <text x="720" y="525" fontSize="30" fill="#666">4</text>
-      <text x="960" y="525" fontSize="30" fill="#666">6</text>
-      <text x="1200" y="525" fontSize="30" fill="#666">8</text>
-      <text x="720" y="525" fontSize="30" fill="#888" textAnchor="middle"></text>
+    <svg viewBox="0 0 16 16" className="w-[3.2cqw] h-[3.2cqw]" fill="none" stroke="#C9A96E" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <circle cx="8" cy="8" r="6" />
+      <path d="M8 4.5 V8 L10.6 9.6" />
     </svg>
   );
 }

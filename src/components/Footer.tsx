@@ -23,17 +23,22 @@ export function Footer() {
               <p className="font-semibold mb-3">Product</p>
               <ul className="space-y-2 text-text/70">
                 <li>
-                  <Link href="#how" className="hover:text-text transition-colors">
+                  <Link href="/download" className="hover:text-text transition-colors">
+                    Download
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#how" className="hover:text-text transition-colors">
                     How it works
                   </Link>
                 </li>
                 <li>
-                  <Link href="#examples" className="hover:text-text transition-colors">
+                  <Link href="/#examples" className="hover:text-text transition-colors">
                     Examples
                   </Link>
                 </li>
                 <li>
-                  <Link href="#pricing" className="hover:text-text transition-colors">
+                  <Link href="/#pricing" className="hover:text-text transition-colors">
                     Pricing
                   </Link>
                 </li>
@@ -43,11 +48,6 @@ export function Footer() {
               <p className="font-semibold mb-3">Company</p>
               <ul className="space-y-2 text-text/70">
                 <li>
-                  <Link href="#waitlist" className="hover:text-text transition-colors">
-                    Waitlist
-                  </Link>
-                </li>
-                <li>
                   <Link href="/support" className="hover:text-text transition-colors">
                     Support
                   </Link>
@@ -55,6 +55,11 @@ export function Footer() {
                 <li>
                   <Link href="mailto:support@owlka.com" className="hover:text-text transition-colors">
                     Contact
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/status" className="hover:text-text transition-colors">
+                    Status
                   </Link>
                 </li>
               </ul>
@@ -75,11 +80,6 @@ export function Footer() {
                 <li>
                   <Link href="/terms" className="hover:text-text transition-colors">
                     Terms
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/status" className="hover:text-text transition-colors">
-                    Status
                   </Link>
                 </li>
               </ul>

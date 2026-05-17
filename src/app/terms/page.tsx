@@ -4,7 +4,7 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — Owlka",
+  title: "Terms of Service | Owlka",
   description:
     "The terms that govern your use of Owlka. Plain English. Last updated 2026-05-17.",
 };
@@ -38,6 +38,13 @@ export default function TermsPage() {
                 (together, the &ldquo;Service&rdquo;). By using the Service
                 you agree to these Terms. If you do not agree, do not use the
                 Service.
+              </p>
+              <p className="mt-3">
+                <strong>Eligibility.</strong> You must be at least 18 years
+                old to create an Owlka account and to enter into these Terms.
+                If you are under 18, do not use the Service. We may ask for
+                proof of age at any time, and we may terminate accounts that
+                we reasonably believe belong to a minor.
               </p>
             </section>
 
@@ -83,12 +90,38 @@ export default function TermsPage() {
                   harassing, or that infringes someone else&rsquo;s rights;
                 </li>
                 <li>
+                  generate sexual content involving minors, or any content
+                  that sexualises a real person without their consent;
+                </li>
+                <li>
                   attempt to gain unauthorised access to other users&rsquo;
-                  accounts, devices, or data;
+                  accounts, devices, or data, including by credential
+                  stuffing, brute-force attempts, or social-engineering;
                 </li>
                 <li>
                   probe, scan, or test the vulnerability of the Service or
-                  systems we connect to without our written permission;
+                  any third-party system without the system owner&rsquo;s
+                  written permission (this includes port scanning, network
+                  reconnaissance, and unauthorised penetration testing);
+                </li>
+                <li>
+                  mine, validate, or otherwise contribute compute to any
+                  cryptocurrency, blockchain, or distributed-ledger network
+                  from the Service;
+                </li>
+                <li>
+                  run mass automation against third-party services (scraping
+                  at scale, automated account creation, spam, comment-bot
+                  campaigns, fake-review generation, denial-of-service);
+                </li>
+                <li>
+                  build or operate command-and-control infrastructure,
+                  malware, ransomware, or botnets through the Service;
+                </li>
+                <li>
+                  process payment-card data, government-issued ID data, or
+                  protected health information through the Service unless
+                  you have a written agreement with us covering that data;
                 </li>
                 <li>
                   build a competing service by scraping our pages or
@@ -101,8 +134,22 @@ export default function TermsPage() {
                 </li>
               </ul>
               <p className="mt-3">
-                We may suspend or terminate accounts that breach this section
-                without notice.
+                We are building technical enforcement for this section:
+                per-user session isolation with CPU and memory limits,
+                outbound-traffic monitoring at the host, a per-user
+                network egress allowlist, and an automatic CPU-anomaly
+                detector for patterns such as cryptocurrency mining.
+                These controls are in active development and will be
+                enabled on the production host as they ship. Until each
+                control is live, enforcement of the bans above is
+                policy-based and reactive (review of outbound traffic,
+                response to reports).
+              </p>
+              <p className="mt-3">
+                We may suspend or terminate accounts that breach this
+                section without notice, and we may report serious abuse
+                (CSAM, threats to life, large-scale fraud) to the relevant
+                authorities.
               </p>
             </section>
 
@@ -183,7 +230,7 @@ export default function TermsPage() {
 
             <section>
               <h2 className="text-2xl font-semibold mb-4">
-                9. Account termination
+                9. Account termination and deletion
               </h2>
               <p>
                 You can stop using the Service at any time. We can suspend or
@@ -195,6 +242,26 @@ export default function TermsPage() {
                 Terms that by their nature should survive (ownership,
                 disclaimers, limitations of liability, governing law) will
                 survive.
+              </p>
+              <p className="mt-3">
+                <strong>Deleting your account.</strong> You can delete your
+                Owlka account, and all data associated with it, by emailing{" "}
+                <Link
+                  href="mailto:support@owlka.com"
+                  className="text-mark hover:underline"
+                >
+                  support@owlka.com
+                </Link>{" "}
+                from the address on file. We confirm deletion within seven
+                days. Encrypted session data on our infrastructure is purged
+                within thirty days. Backups containing your data are
+                overwritten on the next backup cycle and fully expire within
+                ninety days. We retain the minimum records that UK and EU
+                law require us to keep (for example, tax records for
+                completed payments), and nothing else. An in-app deletion
+                control will be added in a future version of the Owlka iOS
+                app; until then, the email path above is the supported
+                route.
               </p>
             </section>
 

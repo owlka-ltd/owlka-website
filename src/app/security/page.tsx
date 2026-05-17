@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const LAST_UPDATED = "2026-05-17";
@@ -7,22 +9,22 @@ const LAST_UPDATED = "2026-05-17";
 export const metadata: Metadata = {
   title: "Security",
   description:
-    "How Owlka protects your data: LUKS2 full-disk encryption, encrypted secrets, TLS 1.3, per-tenant isolation, Zero Data Retention on Anthropic, and honest disclosures about what we do not yet have.",
+    "How Owlka keeps your work private. Code, conversation, and memory live on your own Mac. Phone and Mac talk through an encrypted middleman we cannot read.",
   alternates: { canonical: "/security" },
   openGraph: {
     type: "article",
     siteName: SITE_NAME,
     url: `${SITE_URL}/security`,
-    title: "Security | Owlka",
+    title: "Security",
     description:
-      "Owlka's security architecture, supplier certifications, and honest disclosures about what we do not yet have.",
+      "How Owlka keeps your work private. Code, conversation, and memory live on your own Mac.",
     locale: "en_US",
   },
   twitter: {
     card: "summary",
-    title: "Security | Owlka",
+    title: "Security",
     description:
-      "Owlka's security architecture, supplier certifications, and honest disclosures about what we do not yet have.",
+      "How Owlka keeps your work private. Code, conversation, and memory live on your own Mac.",
   },
 };
 
@@ -38,111 +40,130 @@ type Section = {
 
 const SECTIONS: Section[] = [
   {
-    id: "our-work",
-    title: "What we do (our work)",
+    id: "shape",
+    title: "The shape of the product",
     intro:
-      "These are the controls Owlka operates directly. Everything here is something we build, configure, and are accountable for.",
+      "Owlka is a Mac app and an iPhone app. The Mac app runs the real work; the iPhone app is the front seat. The two talk to each other through an encrypted middleman that we operate but cannot read.",
     rows: [
       {
-        label: "Full-disk encryption",
+        label: "Your code stays on your Mac",
         value:
-          "LUKS2 with AES-256-XTS on the Hetzner server hosting your conversations. The disk is encrypted at rest. If someone stole it physically they would see random noise.",
+          "The Owlka Mac app launches the official Claude Code app under your own Anthropic login. Your files, your terminal, and your project memory all live on your Mac. We never copy them to a server.",
       },
       {
-        label: "Encrypted secrets at rest",
+        label: "Your conversation is end-to-end between phone and Mac",
         value:
-          "API keys, OAuth tokens, and Stripe keys live in encrypted files (sops + age) and are decrypted into memory only at service start. Rotated quarterly and on incident.",
+          "Every message and every reply is sealed on your phone or your Mac before it leaves the device. Only your paired devices hold the keys. The middleman just shuttles sealed packets back and forth.",
       },
       {
-        label: "SSH-key-only access",
+        label: "Pairing happens face to face",
         value:
-          "Password authentication on the server is disabled. Operator access is gated on hardware-bound keys.",
+          "The first time you pair a phone with your Mac, you scan a one-time QR code from the Mac app. That exchange is what hands the keys over. Nothing in the keys ever crosses our servers in the clear.",
       },
       {
-        label: "Admission control",
+        label: "We hold no master key",
         value:
-          'A "doorman" service refuses work before spawning anything, so a single noisy user cannot crash the box for everyone else.',
-      },
-      {
-        label: "Per-tenant data isolation",
-        value:
-          "Each user's conversation history, uploaded files, and audit logs live in a directory their session cannot leave. The boundary is enforced by the server, not by trust.",
-      },
-      {
-        label: "Kill switch",
-        value:
-          "A single file flips every Owlka-controlled service into a safe stopped state if anything looks wrong. We can revoke a tenant the same way without affecting anyone else.",
-      },
-      {
-        label: "Banned-use enforcement",
-        value:
-          "Section 4 of our Terms bans crypto mining, port scanning, credential stuffing, hosting illegal materials, regulated data (PCI, PHI, government ID), malware, mass automation, and Anthropic-prohibited use. We are building technical enforcement to back this (per-user egress allowlist, CPU-anomaly detector). Until each control is live, enforcement is policy-based and reactive.",
-      },
-      {
-        label: "Daily encrypted backups",
-        value:
-          "Hetzner-managed snapshots, retained 7 days minimum. Backups stay LUKS-encrypted on the snapshot volume.",
-      },
-      {
-        label: "Transport encryption",
-        value:
-          "TLS 1.3 end to end between your device and our servers.",
-      },
-      {
-        label: "Cloudflare in front",
-        value:
-          "Cloudflare sits in front of our server for DDoS protection, rate-limiting, and WAF (managed OWASP core ruleset).",
+          "If you lose your Mac and all your paired phones, we cannot recover your conversation history. There is no Owlka-side decryption key by design.",
       },
     ],
   },
   {
-    id: "suppliers",
-    title: "What our suppliers do (their certifications, not ours)",
+    id: "middleman",
+    title: "The encrypted middleman, in plain English",
     intro:
-      "These are controls operated by third parties we rely on. Their certifications are theirs, not Owlka's. We name them so you can verify the underlying providers independently.",
+      "The middleman is the only piece of Owlka infrastructure your devices talk to. Here is exactly what it does and does not do.",
     rows: [
       {
-        label: "Hetzner Cloud (Germany)",
+        label: "What it sees",
         value:
-          "Our server lives in Hetzner's Falkenstein data centre. Hetzner is ISO 27001 certified. Their facilities are 24/7 staffed, with biometric access control, redundant power, fire-suppression systems, environmental monitoring, and network-level DDoS mitigation. Hetzner does not have access to your encrypted data. They hold the hardware; we hold the disk encryption key.",
+          "Sealed packets, the IP addresses of the connecting phone and Mac, and the timing of each packet. It cannot open the packets.",
       },
       {
-        label: "Anthropic (Claude)",
+        label: "What it does",
         value:
-          "Anthropic is SOC 2 Type II certified. We use Anthropic's API with Zero Data Retention enabled on our account, which means your conversation content is not stored on Anthropic's servers and is not used to train Anthropic's models. ZDR is an account-level configuration we have requested from Anthropic, not a default. We confirm it before any paying user is onboarded.",
+          "Queues sealed packets so a phone that drops off Wi-Fi can pick up where it left off when it comes back. Typical queue depth is minutes.",
       },
       {
-        label: "Cloudflare",
+        label: "What it does not do",
         value:
-          "SOC 2 Type II, ISO 27001 certified. Handles edge TLS, DDoS, and WAF.",
+          "It does not store conversation history. It does not log packet contents. It does not have a key that would let it.",
       },
       {
-        label: "Stripe (payments)",
+        label: "Where it runs",
         value:
-          "PCI DSS Level 1 certified. We do not store payment card numbers ourselves; Stripe holds them.",
+          "On a small server we operate, fronted by Cloudflare for DDoS protection and TLS. The server stores no decryption key.",
       },
     ],
   },
   {
-    id: "disclosures",
-    title: "What we do NOT have (honest disclosures)",
+    id: "downloads",
+    title: "The Mac download",
+    intro:
+      "The Mac app is signed and notarised by Apple before it ever reaches you. Your Mac checks the signature on first launch and refuses to run a tampered build.",
+    rows: [
+      {
+        label: "Code signing",
+        value:
+          "The .dmg you download is signed with our Apple Developer certificate and notarised by Apple. macOS Gatekeeper checks both before opening it.",
+      },
+      {
+        label: "Auto-update",
+        value:
+          "Updates are downloaded over HTTPS and the same signature is checked again before the new build replaces the old one. An update with a broken or missing signature is refused.",
+      },
+      {
+        label: "What runs locally",
+        value:
+          "The Owlka Mac app, the official Claude Code app under your own Anthropic login, and a small local helper that maintains the encrypted channel to the middleman. Nothing else.",
+      },
+    ],
+  },
+  {
+    id: "iphone",
+    title: "The iPhone app",
+    rows: [
+      {
+        label: "Keys in the Keychain",
+        value:
+          "The keys that pair your phone to your Mac live in the iOS Keychain, protected by the device passcode and Face ID / Touch ID.",
+      },
+      {
+        label: "Cached messages",
+        value:
+          "The phone caches the messages you have already seen so the UI feels fast. The cache is encrypted at rest by iOS Data Protection.",
+      },
+      {
+        label: "Removing a phone",
+        value:
+          "Unpairing a phone from the Mac app invalidates that phone's key. After that, sealed packets from the unpaired phone are refused.",
+      },
+    ],
+  },
+  {
+    id: "honest",
+    title: "Honest disclosures",
     intro:
       "We would rather lose a sale than mislead you. The items below are limits of the product and the company as they stand today.",
     rows: [
       {
-        label: "Strict end-to-end encryption is not possible",
+        label: "We can see metadata, not content",
         value:
-          "Strict end-to-end encryption is not possible for an AI assistant in the conventional sense. End-to-end encryption (the kind WhatsApp uses) means the server cannot read the message. We cannot offer that, because Claude needs to read your message in order to reply to it. What we DO offer is the layered approach above: TLS in transit, full-disk encryption at rest, encrypted secrets, Zero Data Retention on Anthropic, and per-tenant isolation. If strict end-to-end is a hard requirement, an AI assistant is structurally not the product for you.",
+          "We can see that your phone and your Mac talked, when they talked, and how much data they exchanged. We cannot see what they said. If hiding even that metadata matters to you, an internet-based assistant is the wrong shape.",
+      },
+      {
+        label: "Anthropic sees what Claude sees",
+        value:
+          "Claude itself runs under your own Anthropic account, on your Mac, talking to Anthropic directly. Whatever you type to Claude reaches Anthropic. Their privacy terms govern that traffic, not ours. Anthropic is not an Owlka sub-processor because the data never passes through us.",
       },
       {
         label: "No SOC 2 or ISO 27001 in Owlka's own name yet",
         value:
-          "We do not yet hold SOC 2 or ISO 27001 in Owlka's own name. Both certifications cost five-figure sums and take six to twelve months minimum. Our infrastructure runs on Hetzner (ISO 27001) and Anthropic (SOC 2 Type II), so the underlying compute and AI layer are certified. We will publish our certification roadmap when we have one.",
+          "We do not yet hold SOC 2 or ISO 27001 in Owlka's own name. The middleman runs on Cloudflare's network (SOC 2 Type II, ISO 27001) and the App Store distribution is Apple's. We will publish our own certification roadmap when we have one.",
       },
       {
-        label: "Training-data discipline belongs to Anthropic",
+        label: "No model training on your work",
         value:
-          'The "your data is not used to train models" claim is about Anthropic, not us. We do not train AI models at all. What we DO do is enable Anthropic\'s Zero Data Retention setting on our account so that conversations are not retained on Anthropic\'s side and not used in their training. We are careful not to claim training-data discipline that belongs to our supplier as if it were ours.',
+          "Owlka does not train any model. Your code, your prompts, and the work Claude produces for you are not used to train anything by us. Your usage of Claude is governed by your agreement with Anthropic.",
       },
     ],
   },
@@ -157,13 +178,11 @@ const SECTIONS: Section[] = [
       },
       {
         label: "Response time",
-        value:
-          "We respond to verified reports within seven days.",
+        value: "We respond to verified reports within seven days.",
       },
       {
         label: "Credit",
-        value:
-          "We credit researchers publicly with permission.",
+        value: "We credit researchers publicly with permission.",
       },
     ],
   },
@@ -171,89 +190,98 @@ const SECTIONS: Section[] = [
 
 export default function SecurityPage() {
   return (
-    <main className="min-h-screen bg-bg text-text">
-      <div className="mx-auto max-w-3xl px-6 py-16">
-        <header className="mb-10">
-          <Link
-            href="/"
-            className="text-sm text-muted hover:text-text transition-colors"
-          >
-            &larr; Back to Owlka
-          </Link>
-          <h1 className="mt-4 text-4xl font-semibold tracking-tight">
-            Security
-          </h1>
-          <p className="mt-3 text-muted">
-            Last updated {LAST_UPDATED}. This page describes the security
-            architecture in place for paying users, the certifications of the
-            suppliers we depend on, and the things we honestly do not yet
-            have.
-          </p>
-        </header>
-
-        <nav
-          aria-label="On this page"
-          className="mb-12 rounded-[18px] border border-border bg-surface p-5 text-sm"
-        >
-          <p className="mb-3 font-medium">On this page</p>
-          <ul className="space-y-1.5">
-            {SECTIONS.map((s) => (
-              <li key={s.id}>
-                <a
-                  href={`#${s.id}`}
-                  className="text-muted hover:text-text transition-colors"
-                >
-                  {s.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {SECTIONS.map((section) => (
-          <section key={section.id} id={section.id} className="mb-14 scroll-mt-16">
-            <h2 className="text-2xl font-semibold tracking-tight">
-              {section.title}
-            </h2>
-            {section.intro && (
-              <p className="mt-3 text-muted leading-relaxed">{section.intro}</p>
-            )}
-
-            <dl className="mt-6 rounded-[18px] border border-border bg-surface">
-              {section.rows.map((row, i) => (
-                <div
-                  key={row.label}
-                  className={`grid gap-2 p-6 sm:grid-cols-[14rem_1fr] sm:gap-8 ${
-                    i > 0 ? "border-t border-border" : ""
-                  }`}
-                >
-                  <dt className="font-medium">{row.label}</dt>
-                  <dd className="text-muted leading-relaxed">{row.value}</dd>
-                </div>
-              ))}
-            </dl>
-
-            {section.footnote && (
-              <p className="mt-3 text-xs text-muted leading-relaxed">
-                {section.footnote}
-              </p>
-            )}
-          </section>
-        ))}
-
-        <footer className="mt-16 border-t border-border pt-6 text-sm text-muted">
-          <p>
-            Questions about anything on this page? Email{" "}
-            <a
-              href="mailto:security@owlka.com"
-              className="underline hover:text-text transition-colors"
+    <>
+      <Nav />
+      <main className="min-h-screen bg-bg text-text">
+        <div className="mx-auto max-w-3xl px-6 pt-32 pb-24 sm:pt-40 sm:pb-32">
+          <header className="mb-10">
+            <Link
+              href="/"
+              className="text-sm text-muted hover:text-text transition-colors"
             >
-              security@owlka.com
-            </a>
-            .
-          </p>
-        </footer>
-      </div>
-    </main>
+              &larr; Back to Owlka
+            </Link>
+            <h1 className="mt-4 text-4xl font-semibold tracking-tight">
+              Security
+            </h1>
+            <p className="mt-3 text-muted">
+              Last updated {LAST_UPDATED}. This page describes how Owlka keeps
+              your work private: what lives on your Mac, what crosses the
+              encrypted middleman, and what we honestly cannot do.
+            </p>
+          </header>
+
+          <nav
+            aria-label="On this page"
+            className="mb-12 rounded-[18px] border border-border bg-surface p-5 text-sm"
+          >
+            <p className="mb-3 font-medium">On this page</p>
+            <ul className="space-y-1.5">
+              {SECTIONS.map((s) => (
+                <li key={s.id}>
+                  <a
+                    href={`#${s.id}`}
+                    className="text-muted hover:text-text transition-colors"
+                  >
+                    {s.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {SECTIONS.map((section) => (
+            <section
+              key={section.id}
+              id={section.id}
+              className="mb-14 scroll-mt-16"
+            >
+              <h2 className="text-2xl font-semibold tracking-tight">
+                {section.title}
+              </h2>
+              {section.intro && (
+                <p className="mt-3 text-muted leading-relaxed">
+                  {section.intro}
+                </p>
+              )}
+
+              <dl className="mt-6 rounded-[18px] border border-border bg-surface">
+                {section.rows.map((row, i) => (
+                  <div
+                    key={row.label}
+                    className={`grid gap-2 p-6 sm:grid-cols-[14rem_1fr] sm:gap-8 ${
+                      i > 0 ? "border-t border-border" : ""
+                    }`}
+                  >
+                    <dt className="font-medium">{row.label}</dt>
+                    <dd className="text-muted leading-relaxed">{row.value}</dd>
+                  </div>
+                ))}
+              </dl>
+
+              {section.footnote && (
+                <p className="mt-3 text-xs text-muted leading-relaxed">
+                  {section.footnote}
+                </p>
+              )}
+            </section>
+          ))}
+
+          <footer className="mt-16 border-t border-border pt-6 text-sm text-muted">
+            <p>
+              Questions about anything on this page? Email{" "}
+              <a
+                href="mailto:security@owlka.com"
+                className="underline hover:text-text transition-colors"
+              >
+                security@owlka.com
+              </a>
+              .
+            </p>
+          </footer>
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }

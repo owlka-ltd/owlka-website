@@ -298,7 +298,7 @@ export default function DocsPage() {
                 What you get
               </h2>
               <p className="mb-6 text-text/80">
-                One plan, £5 a month, billed by Apple through the App Store.
+                One plan, £9.99 a month, billed by Apple through the App Store.
                 That covers the iPhone app, the Mac companion app, and the
                 encrypted middleman that lets the two talk. You bring your
                 own Claude Pro or Max subscription from Anthropic.

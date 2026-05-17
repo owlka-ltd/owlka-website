@@ -34,7 +34,7 @@ const faqs: FAQ[] = [
     q: "How much does Owlka cost?",
     a: (
       <>
-        One plan, <span className="font-medium">£5 a month</span>, billed by
+        One plan, <span className="font-medium">£9.99 a month</span>, billed by
         Apple through the App Store. That covers the iPhone app, the Mac
         companion app, and the encrypted middleman that lets the two talk.
         You also need your own Claude Pro or Max subscription from Anthropic,

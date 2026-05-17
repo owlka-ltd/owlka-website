@@ -9,7 +9,7 @@ const MAC_DMG_URL = "https://download.owlka.com/mac/latest.dmg";
 export const metadata: Metadata = {
   title: "Download Owlka for Mac",
   description:
-    "Download Owlka for Mac. The Owlka desktop app runs on your Mac, talks to Claude Code under your own login, and pairs with the Owlka iPhone app. Free for 30 days, then £5/month via the App Store.",
+    "Download Owlka for Mac. The Owlka desktop app runs on your Mac, talks to Claude Code under your own login, and pairs with the Owlka iPhone app. Free for 30 days, then £9.99/month via the App Store.",
   alternates: { canonical: "/download" },
   openGraph: {
     type: "website",
@@ -17,14 +17,14 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/download`,
     title: "Download Owlka for Mac",
     description:
-      "Owlka for Mac. Free for 30 days, then £5/month via the App Store.",
+      "Owlka for Mac. Free for 30 days, then £9.99/month via the App Store.",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: "Download Owlka for Mac",
     description:
-      "Owlka for Mac. Free for 30 days, then £5/month via the App Store.",
+      "Owlka for Mac. Free for 30 days, then £9.99/month via the App Store.",
   },
 };
 

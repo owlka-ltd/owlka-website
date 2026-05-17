@@ -12,7 +12,7 @@ export function Pricing() {
             Pricing
           </p>
           <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
-            Free for 30 days. Then £5 a month.
+            Free for 30 days. Then £9.99 a month.
           </h2>
           <p className="mt-5 text-lg text-text/70 leading-relaxed">
             One simple price, billed by Apple. No tiers, no usage meters, no
@@ -36,7 +36,7 @@ export function Pricing() {
 
             <div className="mt-4 flex items-baseline gap-2">
               <span className="text-5xl font-semibold tracking-tight text-surface">
-                £5
+                £9.99
               </span>
               <span className="text-sm text-surface/70">/month</span>
             </div>

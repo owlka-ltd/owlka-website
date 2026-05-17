@@ -116,7 +116,7 @@ export default function TermsPage() {
                 5. Subscriptions and payment
               </h2>
               <p>
-                Owlka is a single subscription, £5 per month, with the
+                Owlka is a single subscription, £9.99 per month, with the
                 first 30 days free. The subscription is sold and billed
                 by Apple through the App Store under Apple&rsquo;s standard
                 terms; you manage and cancel it in Settings on your

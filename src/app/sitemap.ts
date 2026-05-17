@@ -4,6 +4,7 @@ import { SITE_URL } from "@/lib/seo";
 const SECONDARY_ROUTES = [
   "/pricing",
   "/privacy",
+  "/security",
   "/terms",
   "/support",
   "/docs",

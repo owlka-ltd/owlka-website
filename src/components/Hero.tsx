@@ -29,18 +29,18 @@ export function Hero() {
               <span className="text-text/80">Join the waitlist</span>
             </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-5xl sm:text-6xl lg:text-[5.25rem] font-semibold tracking-tight leading-[1.02]"
-            >
+            {/* H1 is the LCP element. Render it visible immediately (no
+                opacity-0 initial state) so it paints on first frame instead
+                of waiting for Framer Motion to mount and run the animation.
+                Removed initial/animate/transition props that previously
+                cost ~1s of LCP element-render-delay on mobile. */}
+            <h1 className="text-5xl sm:text-6xl lg:text-[5.25rem] font-semibold tracking-tight leading-[1.02]">
               The full power of Claude Code.
               <br />
               <span className="bg-gradient-to-r from-mark to-[#ff5e9d] bg-clip-text text-transparent">
                 On your phone.
               </span>
-            </motion.h1>
+            </h1>
 
             <motion.p
               initial={{ opacity: 0, y: 24 }}

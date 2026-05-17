@@ -56,7 +56,7 @@ const SECTIONS: Section[] = [
       {
         label: "Operator access",
         value:
-          "Tailscale (WireGuard). Curve25519 key exchange, ChaCha20-Poly1305 for the data channel. No password-based or unencrypted SSH is exposed to the public internet.",
+          "SSH with key-only authentication, fronted by Cloudflare Access (single sign-on, MFA enforced). Password authentication is disabled. The SSH port is not exposed to the public internet.",
       },
     ],
   },

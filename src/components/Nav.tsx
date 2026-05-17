@@ -40,6 +40,9 @@ export function Nav() {
             <Link href="#pricing" className="hover:text-text transition-colors">
               Pricing
             </Link>
+            <Link href="/docs" className="hover:text-text transition-colors">
+              Docs
+            </Link>
           </nav>
 
           <Link

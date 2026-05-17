@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
-import { CaseStudies } from "@/components/CaseStudies";
-import { Footer } from "@/components/Footer";
+import dynamic from "next/dynamic";
 import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Marquee } from "@/components/Marquee";
 import { Nav } from "@/components/Nav";
-import { Pricing } from "@/components/Pricing";
-import { Waitlist } from "@/components/Waitlist";
-import { WhyOwlka } from "@/components/WhyOwlka";
 import {
   DEFAULT_TITLE,
   HOME_DESCRIPTION,
@@ -15,6 +11,25 @@ import {
   SITE_NAME,
   SITE_URL,
 } from "@/lib/seo";
+
+// Below-the-fold sections are loaded lazily to keep the initial JS
+// hydration bundle small. Each is still SSR'd (no `ssr: false`) so the
+// HTML is present for SEO; only the JS chunk is split off.
+const CaseStudies = dynamic(() =>
+  import("@/components/CaseStudies").then((m) => ({ default: m.CaseStudies })),
+);
+const WhyOwlka = dynamic(() =>
+  import("@/components/WhyOwlka").then((m) => ({ default: m.WhyOwlka })),
+);
+const Pricing = dynamic(() =>
+  import("@/components/Pricing").then((m) => ({ default: m.Pricing })),
+);
+const Waitlist = dynamic(() =>
+  import("@/components/Waitlist").then((m) => ({ default: m.Waitlist })),
+);
+const Footer = dynamic(() =>
+  import("@/components/Footer").then((m) => ({ default: m.Footer })),
+);
 
 // Homepage overrides the layout description with a richer copy. Next 16
 // REPLACES (does not merge) the openGraph and twitter blocks when a

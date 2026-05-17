@@ -118,8 +118,11 @@ export default function TermsPage() {
                 renew automatically until cancelled. You can cancel at any
                 time; cancellation takes effect at the end of the current
                 billing period and you keep paid features until then. We do
-                not refund the unused portion of a billing period unless we
-                are legally required to.
+                not refund the unused portion of a billing period except
+                where required by law, including the 14-day cooling-off
+                right for UK consumers under the Consumer Contracts
+                Regulations 2013 (which you waive when you begin using
+                Owlka Pro within the 14-day window).
               </p>
             </section>
 

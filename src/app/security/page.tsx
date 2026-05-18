@@ -71,12 +71,12 @@ const SECTIONS: Section[] = [
     id: "crypto",
     title: "End-to-end encryption, in detail",
     intro:
-      "Owlka uses the same crypto building blocks that the Signal protocol is built on. They are open, small, and have been independently audited for over a decade.",
+      "Owlka uses well-known, open, public-key authenticated encryption primitives. The exact algorithms are listed below.",
     rows: [
       {
         label: "Library",
         value:
-          "TweetNaCl, the audited NaCl crypto library used in Signal and many other privacy-focused products. The desktop and iPhone apps use the standard public-key authenticated encryption primitive (crypto_box) for every sealed packet.",
+          "TweetNaCl, an open-source implementation of the NaCl cryptography library. The desktop and iPhone apps use the standard public-key authenticated encryption primitive (crypto_box) for every sealed packet.",
       },
       {
         label: "Key exchange",

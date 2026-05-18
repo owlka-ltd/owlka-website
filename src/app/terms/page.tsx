@@ -258,12 +258,16 @@ export default function TermsPage() {
                 or for any loss of profits, revenue, data, or goodwill,
                 arising out of or in connection with your use of the
                 Service. Our total aggregate liability for any claim
-                relating to the Service is limited to the greater of (a)
-                the amount you paid us in the twelve months preceding the
-                event giving rise to the claim, or (b) £50. Nothing in
-                these Terms excludes liability that cannot lawfully be
-                excluded, including liability for death or personal injury
-                caused by our negligence or for fraud.
+                relating to the Service is limited to the total amount
+                you paid us for the Service in the twelve months
+                preceding the event giving rise to the claim. Nothing in
+                these Terms excludes or limits liability that cannot
+                lawfully be excluded or limited, including liability for
+                death or personal injury caused by our negligence, for
+                fraud or fraudulent misrepresentation, and your
+                non-excludable rights as a consumer under the Consumer
+                Rights Act 2015 or other applicable consumer-protection
+                law.
               </p>
             </section>
 

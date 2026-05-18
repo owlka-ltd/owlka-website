@@ -4,7 +4,7 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Support, Owlka",
+  title: "Support",
   description:
     "Help, FAQs, system requirements, and how to reach the Owlka team. support@owlka.com.",
   alternates: { canonical: "/support" },
@@ -28,7 +28,7 @@ const faqs: FAQ[] = [
         the QR code. The two devices exchange public keys directly; the
         keys never leave the devices in the clear. Once paired, your phone
         can start a Claude session on that desktop. You also need an
-        active Claude Pro or Max subscription installed on the desktop.
+        active Claude Pro or Max subscription signed in on the desktop.
       </>
     ),
   },
@@ -240,8 +240,8 @@ export default function SupportPage() {
                 <li>
                   <span className="font-semibold">Claude subscription:</span>{" "}
                   an active Claude Pro or Max subscription from Anthropic,
-                  installed on your desktop. Owlka does not resell
-                  Anthropic.
+                  signed in on your desktop through Anthropic&rsquo;s own
+                  tools. Owlka does not resell Anthropic.
                 </li>
                 <li>
                   <span className="font-semibold">Network:</span> an

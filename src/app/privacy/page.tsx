@@ -240,6 +240,51 @@ export default function PrivacyPage() {
 
             <section>
               <h2 className="text-2xl font-semibold mb-4">
+                Data controller
+              </h2>
+              <p>
+                The data controller for the small amount of personal data
+                Owlka processes is Owlka (a project run by Tim Trailor,
+                United Kingdom). For data-protection enquiries, email{" "}
+                <Link
+                  href="mailto:support@owlka.com"
+                  className="text-mark hover:underline"
+                >
+                  support@owlka.com
+                </Link>
+                .
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">
+                Lawful bases we rely on (UK and EU GDPR)
+              </h2>
+              <ul className="list-disc pl-6 space-y-2 mt-3">
+                <li>
+                  <strong>Contract.</strong> Processing your device
+                  identifiers and subscription receipt so we can deliver
+                  the paid Service you have signed up for.
+                </li>
+                <li>
+                  <strong>Legitimate interests.</strong> Processing relay
+                  metadata to keep the relay working and to detect abuse;
+                  processing opt-in crash logs to fix bugs.
+                </li>
+                <li>
+                  <strong>Consent.</strong> Crash reporting and any
+                  optional analytics are processed only if you switch
+                  them on. You can switch them off again at any time.
+                </li>
+                <li>
+                  <strong>Legal obligation.</strong> Where we are required
+                  to retain or disclose data under applicable law.
+                </li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">
                 Your rights under UK GDPR and EU GDPR
               </h2>
               <p>
@@ -296,9 +341,11 @@ export default function PrivacyPage() {
             <section>
               <h2 className="text-2xl font-semibold mb-4">Children</h2>
               <p>
-                Owlka is rated 17+ and is not directed at children. We do not
-                knowingly collect personal data from anyone under 17. If you
-                believe a minor has provided us with personal data, email{" "}
+                Owlka is rated 17+ on the App Store and is not directed at
+                children. We do not knowingly collect personal data from
+                children under 13 (or under 16 where local law sets the
+                higher floor). If you believe a child has provided us with
+                personal data, email{" "}
                 <Link
                   href="mailto:support@owlka.com"
                   className="text-mark hover:underline"

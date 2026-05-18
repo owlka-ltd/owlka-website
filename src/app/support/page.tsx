@@ -4,9 +4,10 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Support — Owlka",
+  title: "Support, Owlka",
   description:
-    "Help, FAQs, and how to reach the Owlka team. support@owlka.com.",
+    "Help, FAQs, system requirements, and how to reach the Owlka team. support@owlka.com.",
+  alternates: { canonical: "/support" },
 };
 
 type FAQ = {
@@ -16,17 +17,51 @@ type FAQ = {
 
 const faqs: FAQ[] = [
   {
-    q: "How do I connect my Claude account?",
+    q: "How do I pair my iPhone with a desktop?",
     a: (
       <>
-        Open the Owlka iOS app and tap{" "}
-        <span className="font-medium">Connect Claude</span> on the first-run
-        screen. You&rsquo;ll be redirected to Anthropic to sign in and
-        authorise Owlka, then bounced back into the app. The token Anthropic
-        issues is stored in the iOS Keychain on your device and is never
-        transmitted to Owlka servers. If the bounce-back fails (rare,
-        usually a Safari content-blocker), force-quit the app and tap
-        Connect again.
+        Install the Owlka desktop app on your Mac or Windows PC and the
+        Owlka iPhone app from the App Store. On the desktop app, click{" "}
+        <span className="font-medium">Pair a phone</span>. A one-time QR
+        code appears. On the iPhone app, tap{" "}
+        <span className="font-medium">Pair a new desktop</span> and scan
+        the QR code. The two devices exchange public keys directly; the
+        keys never leave the devices in the clear. Once paired, your phone
+        can start a Claude session on that desktop. You also need an
+        active Claude Pro or Max subscription installed on the desktop.
+      </>
+    ),
+  },
+  {
+    q: "How do I switch between pairs?",
+    a: (
+      <>
+        One phone can be paired with several desktops at once (home Mac
+        mini and work laptop, for example), and one desktop can be paired
+        with several phones (two members of a household). On the iPhone
+        app, tap the desktop name at the top of the screen to open the
+        desktop picker, then choose the desktop you want to talk to.
+        Switching desktops switches the whole context, including memory,
+        skills, and connected accounts, because each pair is partitioned.
+        The wife&rsquo;s phone never sees the husband&rsquo;s sessions
+        even when both are paired with the same household Mac.
+      </>
+    ),
+  },
+  {
+    q: "What is the difference between Owl Claude and Raw Claude?",
+    a: (
+      <>
+        Owlka has two modes you can switch between in Settings.{" "}
+        <span className="font-medium">Owl Claude</span> is the default. It
+        adds a safety layer: a four-tier permission classifier that asks
+        you before letting Claude run anything irreversible, a kill
+        switch, plain-English decision prompts, and the rest of the Owlka
+        shell. <span className="font-medium">Raw Claude</span> is a
+        direct passthrough to the Claude tools on your desktop with the
+        safety layer switched off. Raw is for power users who want every
+        keystroke to land verbatim; turning it on shows a confirmation
+        screen first.
       </>
     ),
   },
@@ -34,15 +69,12 @@ const faqs: FAQ[] = [
     q: "How much does Owlka cost?",
     a: (
       <>
-        One plan, <span className="font-medium">£9.99 a month</span>, billed by
-        Apple through the App Store. That covers the iPhone app, the Mac
-        companion app, and the encrypted middleman that lets the two talk.
-        You also need your own Claude Pro or Max subscription from Anthropic,
-        which Owlka does not resell. See{" "}
-        <Link href="/#pricing" className="text-mark hover:underline">
-          pricing
-        </Link>{" "}
-        for the full picture.
+        One plan, <span className="font-medium">£9.99 a month</span>,
+        billed by Apple through the App Store. New users get a 30-day
+        free trial. The subscription is opted into Apple Family Sharing,
+        so one paid subscription covers up to six members of an Apple
+        Family. You also need your own Claude Pro or Max subscription
+        from Anthropic, which Owlka does not resell.
       </>
     ),
   },
@@ -52,10 +84,44 @@ const faqs: FAQ[] = [
       <>
         Cancel from{" "}
         <span className="font-medium">
-          Settings &rarr; Apple ID &rarr; Subscriptions
+          Settings, Apple ID, Subscriptions
         </span>{" "}
-        on your iPhone. Apple handles refunds and renewals directly. You keep
-        paid features until the end of the current billing period.
+        on your iPhone. Apple handles renewals and refunds directly. You
+        keep paid features until the end of the current billing period.
+      </>
+    ),
+  },
+  {
+    q: "What happens to my data if I cancel?",
+    a: (
+      <>
+        Cancellation stops the next bill. It does not delete anything by
+        itself. Your local data on your desktop (Claude memory, project
+        files) stays exactly where it was. The keys on your phone stay in
+        the iOS Keychain. The desktop and phone apps remain installed.
+        If you want a clean wipe, use the in-app Delete account flow
+        before cancelling, or after, and the app will wipe the local
+        data and tell the relay to drop your device records.
+      </>
+    ),
+  },
+  {
+    q: "How do I delete my account?",
+    a: (
+      <>
+        Open the iPhone app, tap{" "}
+        <span className="font-medium">Settings, Account, Delete account</span>
+        . The app will wipe local data on your phone, send a delete
+        signal to the relay so the relay forgets your device records, and
+        walk you through cancelling the £9.99 subscription in Apple
+        Settings. If the in-app flow is unavailable, email{" "}
+        <Link
+          href="mailto:support@owlka.com"
+          className="text-mark hover:underline"
+        >
+          support@owlka.com
+        </Link>{" "}
+        and we will delete the relay-side records for you.
       </>
     ),
   },
@@ -63,14 +129,19 @@ const faqs: FAQ[] = [
     q: "Is my data safe?",
     a: (
       <>
-        Your Anthropic OAuth token never leaves your device. Your
-        conversations live on your own Mac and your iPhone. The encrypted
-        middleman in between cannot read them. We do not train models on
-        your content. Full detail in our{" "}
+        Your Claude login lives on your desktop and never leaves it. Your
+        conversations and code live on your desktop. The encrypted relay
+        between your desktop and your phone cannot read what passes
+        through it. We do not train models on your content. Full detail
+        in our{" "}
         <Link href="/privacy" className="text-mark hover:underline">
           Privacy Policy
-        </Link>
-        .
+        </Link>{" "}
+        and{" "}
+        <Link href="/security" className="text-mark hover:underline">
+          Security
+        </Link>{" "}
+        pages.
       </>
     ),
   },
@@ -85,10 +156,10 @@ const faqs: FAQ[] = [
         >
           support@owlka.com
         </Link>{" "}
-        with: what you tried, what you expected, what happened instead, your
-        iOS version, and the Owlka build number (Settings &rarr; About in
-        the app). We aim to acknowledge within one working day. For known
-        incidents, check{" "}
+        with: what you tried, what you expected, what happened instead,
+        your iOS version, your desktop OS version, and the Owlka build
+        number (Settings, About in the app). We aim to acknowledge within
+        one working day. For known incidents, check{" "}
         <a
           href="https://status.owlka.com"
           className="text-mark hover:underline"
@@ -146,6 +217,40 @@ export default function SupportPage() {
               </a>{" "}
               (status page launches alongside the app).
             </p>
+          </div>
+
+          <div className="mb-16">
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-6">
+              System requirements
+            </h2>
+            <div className="rounded-card border border-border bg-surface p-6 sm:p-8">
+              <ul className="space-y-3 text-text/85 leading-relaxed">
+                <li>
+                  <span className="font-semibold">iPhone:</span> iOS 17 or
+                  later.
+                </li>
+                <li>
+                  <span className="font-semibold">Mac desktop:</span> macOS
+                  12 (Monterey) or later, Apple Silicon or Intel.
+                </li>
+                <li>
+                  <span className="font-semibold">Windows desktop:</span>{" "}
+                  Windows 10 (64-bit) or later.
+                </li>
+                <li>
+                  <span className="font-semibold">Claude subscription:</span>{" "}
+                  an active Claude Pro or Max subscription from Anthropic,
+                  installed on your desktop. Owlka does not resell
+                  Anthropic.
+                </li>
+                <li>
+                  <span className="font-semibold">Network:</span> an
+                  internet connection on both the desktop and the phone,
+                  so the encrypted relay can shuttle sealed packets
+                  between them.
+                </li>
+              </ul>
+            </div>
           </div>
 
           <div className="mb-10">

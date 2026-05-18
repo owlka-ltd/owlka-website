@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Owlka handles your data. Plain English. Last updated 2026-05-17.",
+    "How Owlka handles your data. Plain English. Last updated 2026-05-18.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -23,7 +23,7 @@ export default function PrivacyPage() {
             <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
               Privacy Policy
             </h1>
-            <p className="mt-4 text-sm text-muted">Last updated 2026-05-17</p>
+            <p className="mt-4 text-sm text-muted">Last updated 2026-05-18</p>
           </header>
 
           <div className="prose prose-neutral max-w-none text-text/85 leading-relaxed space-y-8">
@@ -32,89 +32,131 @@ export default function PrivacyPage() {
                 The short version
               </h2>
               <p>
-                Owlka is a desktop app for your Mac and a companion app for
-                your iPhone. The conversation, the code, and the memory all
-                live on your own Mac. The two apps talk through an encrypted
-                middleman that cannot read what passes through it. We do not
-                sell or share your data. We do not run ad trackers. We do not
-                train any model on what you build.
+                Owlka is a desktop app for your Mac or Windows PC and a
+                companion app for your iPhone. Your conversations, code, and
+                memory live on your own desktop. The two apps talk through an
+                encrypted relay that we cannot read. We do not sell or share
+                your data. We do not run advertising trackers. We do not use
+                anything you build to train any model.
+              </p>
+              <p className="mt-4">
+                Owlka wraps your own Claude subscription on your desktop.
+                Owlka does not resell Anthropic. You bring your own Claude
+                Pro or Max subscription, and your desktop talks to Anthropic
+                directly under your own login. We never see your Claude
+                traffic.
               </p>
             </section>
 
             <section>
               <h2 className="text-2xl font-semibold mb-4">
-                What lives where
+                What Owlka collects
               </h2>
-
-              <h3 className="text-lg font-semibold mt-6 mb-2">
-                On your Mac
-              </h3>
               <p>
-                Owlka for Mac launches the official Claude Code app under
-                your own Anthropic login. Your code, your terminal output,
-                your project files, and your Owlka memory all stay on your
-                Mac. We never copy any of it to a server.
+                We try to collect as little as possible. The full list is:
               </p>
-
-              <h3 className="text-lg font-semibold mt-6 mb-2">
-                On your iPhone
-              </h3>
-              <p>
-                The Owlka iPhone app stores the keys it needs to talk to
-                your Mac in the iOS Keychain. It caches the messages you
-                have already seen in your phone so the app feels fast. None
-                of that is sent to us.
-              </p>
-
-              <h3 className="text-lg font-semibold mt-6 mb-2">
-                Between Mac and phone
-              </h3>
-              <p>
-                Messages between your Mac and your phone go through an
-                encrypted middleman that we operate. The middleman passes
-                sealed packets back and forth. Only your Mac and your
-                paired phones hold the keys, so we cannot read the
-                contents. We keep a short queue of undelivered packets
-                (typically minutes) so a phone that comes back online can
-                pick up where it left off, then we discard them.
-              </p>
-
-              <h3 className="text-lg font-semibold mt-6 mb-2">
-                Account info
-              </h3>
-              <p>
-                We do not run an Owlka account system. Your Apple ID
-                handles the subscription. We see only what Apple shares
-                with developers (an anonymised subscription identifier and
-                whether the subscription is active).
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">
-                What we do not do
-              </h2>
-              <ul className="list-disc pl-6 space-y-2">
+              <ul className="list-disc pl-6 space-y-2 mt-3">
                 <li>
-                  We do not sell, rent, or share your personal data with
-                  third parties.
+                  <strong>Device identifiers for pairing.</strong> When you
+                  pair your phone with a desktop, Owlka generates a random
+                  identifier for each device and a public key for each
+                  pairing. We use these to route encrypted packets to the
+                  right device. They are not linked to your name, your Apple
+                  ID, or any other identity.
                 </li>
                 <li>
-                  We do not run advertising or ad-targeting pixels.
+                  <strong>Apple subscription receipt.</strong> Apple sends us
+                  an anonymised receipt that tells us your subscription is
+                  active. We never see your card details, your Apple ID, or
+                  your name.
                 </li>
                 <li>
-                  We do not run third-party analytics that identify you
-                  personally.
+                  <strong>Crash logs, only if you opt in.</strong> If you
+                  switch on crash reporting in iOS Settings, Apple may share
+                  anonymised crash data with us so we can fix bugs. You can
+                  switch it off at any time in Settings, Privacy and
+                  Security, Analytics and Improvements.
                 </li>
                 <li>
-                  We do not use your conversations or anything you build to
-                  train any model.
+                  <strong>Relay metadata.</strong> Our encrypted relay sees
+                  the IP addresses of the devices currently connecting, the
+                  size of each sealed packet, and the timing of packets. The
+                  relay cannot open the packets.
                 </li>
                 <li>
-                  We cannot read what your phone sends to your Mac, or what
-                  your Mac sends back, because we do not hold the keys.
+                  <strong>Support correspondence.</strong> If you email
+                  support@owlka.com or security@owlka.com, we keep that
+                  email thread so we can help you.
                 </li>
               </ul>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">
+                What Owlka does not collect
+              </h2>
+              <ul className="list-disc pl-6 space-y-2 mt-3">
+                <li>
+                  <strong>Message content.</strong> Every message between
+                  your phone and your desktop is end-to-end encrypted with
+                  keys that only your devices hold. The relay carries sealed
+                  bytes. We cannot read them.
+                </li>
+                <li>
+                  <strong>Speech audio.</strong> When you dictate to Owlka,
+                  the audio is transcribed on the device using Apple&rsquo;s
+                  on-device Speech framework. The audio never leaves your
+                  phone, and we never receive a recording.
+                </li>
+                <li>
+                  <strong>Location.</strong> Owlka does not track your
+                  location. Your phone only sends a location when you
+                  explicitly ask a location-aware question (for example
+                  &ldquo;what coffee shops are nearby&rdquo;). In that case
+                  the location is included in the encrypted message to your
+                  desktop and is not visible to us.
+                </li>
+                <li>
+                  <strong>Your Anthropic OAuth token.</strong> Owlka never
+                  sees, copies, or stores your Claude login. It lives where
+                  the Claude desktop tools put it on your machine, under
+                  your operating system&rsquo;s user permissions.
+                </li>
+                <li>
+                  <strong>Your code, files, or project memory.</strong> All
+                  of that lives on your own desktop. We never copy any of it
+                  to a server.
+                </li>
+                <li>
+                  <strong>Third-party advertising or tracking pixels.</strong>{" "}
+                  Owlka runs none. We do not use third-party analytics that
+                  identify you personally.
+                </li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">
+                Per-pair partitioning
+              </h2>
+              <p>
+                Owlka is built around the idea that one desktop can pair with
+                many phones, and one phone can pair with many desktops. A
+                household Mac mini might be paired with two people&rsquo;s
+                phones. One person&rsquo;s phone might be paired with both a
+                home desktop and a work laptop. Each phone-and-desktop pair
+                is a separate boundary.
+              </p>
+              <p className="mt-4">
+                Memory, skills, connected accounts, and credentials are
+                partitioned by pair. The first person&rsquo;s phone sees only
+                their own memory and their own connected accounts. The second
+                person&rsquo;s phone sees only theirs. Switching active
+                desktops on the phone switches the whole context to the
+                memory and connectors for that pair. The desktop owner can
+                grant cross-pair sharing for a specific topic if they choose,
+                but the default is full isolation.
+              </p>
             </section>
 
             <section>
@@ -123,43 +165,127 @@ export default function PrivacyPage() {
               </h2>
               <p>
                 Owlka relies on a small number of named providers to deliver
-                the product. Each one only sees the slice of data its job
+                the product. Each one sees only the slice of data its job
                 requires.
               </p>
               <ul className="list-disc pl-6 space-y-2 mt-4">
                 <li>
-                  <strong>Apple</strong> distributes the iPhone app, handles
-                  the subscription, and processes payment. Apple sees your
-                  Apple ID and your billing details under its own privacy
-                  policy.
+                  <strong>Apple.</strong> Apple distributes the iPhone app,
+                  handles the £9.99 monthly subscription, and processes
+                  payment. Apple sees your Apple ID and your billing details
+                  under its own privacy policy.
                 </li>
                 <li>
-                  <strong>Cloudflare</strong> serves the encrypted middleman
-                  endpoint. It sees connection metadata (IP address,
-                  timing) and sealed bytes it cannot decrypt.
+                  <strong>Cloudflare.</strong> Cloudflare fronts the
+                  encrypted relay. It sees connection metadata such as IP
+                  addresses and timing, plus sealed bytes it cannot decrypt.
                 </li>
                 <li>
-                  <strong>Vercel</strong> hosts this website. It logs
-                  standard request metadata.
+                  <strong>Vercel.</strong> Vercel hosts owlka.com. It logs
+                  standard request metadata for the public pages.
                 </li>
                 <li>
-                  <strong>The middleman host</strong> runs the small server
-                  that queues sealed packets between your phone and your
-                  Mac. It cannot read packet contents.
+                  <strong>The relay host.</strong> A small server that
+                  shuttles sealed packets between phones and desktops. It
+                  cannot read packet contents.
+                </li>
+                <li>
+                  <strong>Your chosen Claude subscription.</strong> Your
+                  desktop talks to Anthropic directly under your own
+                  Anthropic account. Your usage is governed by your own
+                  agreement with Anthropic. Anthropic is not an Owlka
+                  sub-processor, because none of your Claude traffic ever
+                  passes through us.
                 </li>
               </ul>
-              <p className="mt-4">
-                Your Claude model usage is governed by your own agreement
-                with Anthropic. Anthropic is not an Owlka sub-processor,
-                because we never send your Claude traffic through our
-                servers, your Mac talks to Anthropic directly under your
-                own login.
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">
+                Account deletion
+              </h2>
+              <p>
+                You can delete your Owlka account from inside the app. Open
+                Settings, Account, and tap Delete account. The app will:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 mt-3">
+                <li>
+                  Wipe the local data on your phone (cached messages, paired
+                  device records, keys in the iOS Keychain).
+                </li>
+                <li>
+                  Send a delete signal to the relay so the relay drops any
+                  queued packets for your device identifiers and forgets
+                  your device fingerprints.
+                </li>
+                <li>
+                  Walk you through cancelling the £9.99 subscription in
+                  Apple Settings. Apple handles the actual cancellation and
+                  any refund.
+                </li>
+              </ul>
+              <p className="mt-3">
+                If the in-app flow is unavailable, you can also email{" "}
+                <Link
+                  href="mailto:support@owlka.com"
+                  className="text-mark hover:underline"
+                >
+                  support@owlka.com
+                </Link>{" "}
+                and we will delete the relay-side device records for you.
+                Anything stored locally on your own desktop is yours to
+                manage on your machine.
               </p>
             </section>
 
             <section>
               <h2 className="text-2xl font-semibold mb-4">
-                Your rights under UK GDPR
+                Data controller
+              </h2>
+              <p>
+                The data controller for the small amount of personal data
+                Owlka processes is Owlka (a project run by Tim Trailor,
+                United Kingdom). For data-protection enquiries, email{" "}
+                <Link
+                  href="mailto:support@owlka.com"
+                  className="text-mark hover:underline"
+                >
+                  support@owlka.com
+                </Link>
+                .
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">
+                Lawful bases we rely on (UK and EU GDPR)
+              </h2>
+              <ul className="list-disc pl-6 space-y-2 mt-3">
+                <li>
+                  <strong>Contract.</strong> Processing your device
+                  identifiers and subscription receipt so we can deliver
+                  the paid Service you have signed up for.
+                </li>
+                <li>
+                  <strong>Legitimate interests.</strong> Processing relay
+                  metadata to keep the relay working and to detect abuse;
+                  processing opt-in crash logs to fix bugs.
+                </li>
+                <li>
+                  <strong>Consent.</strong> Crash reporting and any
+                  optional analytics are processed only if you switch
+                  them on. You can switch them off again at any time.
+                </li>
+                <li>
+                  <strong>Legal obligation.</strong> Where we are required
+                  to retain or disclose data under applicable law.
+                </li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">
+                Your rights under UK GDPR and EU GDPR
               </h2>
               <p>
                 If you are in the United Kingdom or the European Economic
@@ -167,7 +293,7 @@ export default function PrivacyPage() {
                 hold about you, to ask us to correct or delete it, to
                 object to or restrict our processing of it, and to data
                 portability. You also have the right to complain to the UK
-                Information Commissioner&rsquo;s Office (ICO) at{" "}
+                Information Commissioner&rsquo;s Office at{" "}
                 <a
                   href="https://ico.org.uk"
                   className="text-mark hover:underline"
@@ -184,18 +310,42 @@ export default function PrivacyPage() {
                   support@owlka.com
                 </Link>
                 . Because the conversation, code, and memory all live on
-                your own Mac, the data we hold on you is limited to your
-                support correspondence and Apple&rsquo;s anonymised
-                subscription identifier.
+                your own desktop, the data we hold on you is limited to the
+                items listed in &ldquo;What Owlka collects&rdquo; above.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">
+                Your rights under California privacy law (CCPA and CPRA)
+              </h2>
+              <p>
+                If you are a California resident, you have the right to know
+                what personal information we collect about you, the right to
+                request deletion, the right to correct inaccurate
+                information, and the right not to be discriminated against
+                for exercising these rights. We do not sell or share
+                personal information for cross-context behavioural
+                advertising. To make a request, email{" "}
+                <Link
+                  href="mailto:support@owlka.com"
+                  className="text-mark hover:underline"
+                >
+                  support@owlka.com
+                </Link>
+                . We will verify your request before acting on it and will
+                respond within the timeframes the law sets.
               </p>
             </section>
 
             <section>
               <h2 className="text-2xl font-semibold mb-4">Children</h2>
               <p>
-                Owlka is not aimed at children under 13 and we do not
-                knowingly collect personal data from children. If you
-                believe a child has provided us with personal data, email{" "}
+                Owlka is rated 17+ on the App Store and is not directed at
+                children. We do not knowingly collect personal data from
+                children under 13 (or under 16 where local law sets the
+                higher floor). If you believe a child has provided us with
+                personal data, email{" "}
                 <Link
                   href="mailto:support@owlka.com"
                   className="text-mark hover:underline"

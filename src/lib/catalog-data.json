@@ -1,0 +1,85 @@
+{
+  "version": "2026-05-19",
+  "connectors": [
+    {
+      "slug": "shell",
+      "name": "Shell",
+      "description": "Run shell commands on your Mac",
+      "icon": "shell",
+      "status": "live",
+      "pair": { "type": "builtin", "payload": {} }
+    },
+    {
+      "slug": "github",
+      "name": "GitHub",
+      "description": "Connect a GitHub repo",
+      "icon": "github",
+      "status": "coming-soon",
+      "pair": { "type": "sheet", "payload": { "message": "Coming after launch" } }
+    },
+    {
+      "slug": "linear",
+      "name": "Linear",
+      "description": "Track Linear issues",
+      "icon": "linear",
+      "status": "coming-soon",
+      "pair": { "type": "sheet", "payload": { "message": "Coming after launch" } }
+    },
+    {
+      "slug": "slack",
+      "name": "Slack",
+      "description": "Read your DMs and channels",
+      "icon": "slack",
+      "status": "coming-soon",
+      "pair": { "type": "sheet", "payload": { "message": "Coming after launch" } }
+    },
+    {
+      "slug": "gmail",
+      "name": "Gmail",
+      "description": "Read and draft emails",
+      "icon": "gmail",
+      "status": "coming-soon",
+      "pair": { "type": "sheet", "payload": { "message": "Coming after launch" } }
+    },
+    {
+      "slug": "gcal",
+      "name": "Google Calendar",
+      "description": "Manage your calendar",
+      "icon": "gcal",
+      "status": "coming-soon",
+      "pair": { "type": "sheet", "payload": { "message": "Coming after launch" } }
+    },
+    {
+      "slug": "gdrive",
+      "name": "Google Drive",
+      "description": "Search and edit Drive files",
+      "icon": "gdrive",
+      "status": "coming-soon",
+      "pair": { "type": "sheet", "payload": { "message": "Coming after launch" } }
+    },
+    {
+      "slug": "notion",
+      "name": "Notion",
+      "description": "Search Notion pages",
+      "icon": "notion",
+      "status": "coming-soon",
+      "pair": { "type": "sheet", "payload": { "message": "Coming after launch" } }
+    },
+    {
+      "slug": "klipper",
+      "name": "Klipper",
+      "description": "Talk to a 3D printer",
+      "icon": "klipper",
+      "status": "coming-soon",
+      "pair": { "type": "sheet", "payload": { "message": "Coming after launch" } }
+    },
+    {
+      "slug": "homeassistant",
+      "name": "Home Assistant",
+      "description": "Run Home Assistant scenes",
+      "icon": "homeassistant",
+      "status": "coming-soon",
+      "pair": { "type": "sheet", "payload": { "message": "Coming after launch" } }
+    }
+  ]
+}

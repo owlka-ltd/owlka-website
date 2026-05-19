@@ -11,7 +11,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { isValidEmail, RateLimiter } from "../waitlist.ts";
+import { isValidEmail, isValidName, RateLimiter } from "../waitlist.ts";
 
 // ──────────────────────────────────────────────────────────────────────
 // isValidEmail
@@ -77,6 +77,45 @@ test("isValidEmail accepts strings exactly at the 254-character limit", () => {
   const address = `${local}@a.co`;
   assert.equal(address.length, 254);
   assert.equal(isValidEmail(address), true);
+});
+
+// ──────────────────────────────────────────────────────────────────────
+// isValidName
+// ──────────────────────────────────────────────────────────────────────
+
+test("isValidName accepts a plain ASCII name", () => {
+  assert.equal(isValidName("Tim"), true);
+});
+
+test("isValidName accepts diacritics, apostrophes, non-Latin scripts", () => {
+  assert.equal(isValidName("Renée"), true);
+  assert.equal(isValidName("O'Brien"), true);
+  assert.equal(isValidName("王芳"), true);
+  assert.equal(isValidName("مريم"), true);
+});
+
+test("isValidName trims surrounding whitespace before validating", () => {
+  assert.equal(isValidName("  Tim  "), true);
+});
+
+test("isValidName rejects a non-string", () => {
+  assert.equal(isValidName(undefined), false);
+  assert.equal(isValidName(null), false);
+  assert.equal(isValidName(42), false);
+  assert.equal(isValidName({}), false);
+});
+
+test("isValidName rejects empty and whitespace-only strings", () => {
+  assert.equal(isValidName(""), false);
+  assert.equal(isValidName("   "), false);
+});
+
+test("isValidName rejects strings longer than 80 characters", () => {
+  assert.equal(isValidName("a".repeat(81)), false);
+});
+
+test("isValidName accepts strings exactly at the 80-character limit", () => {
+  assert.equal(isValidName("a".repeat(80)), true);
 });
 
 // ──────────────────────────────────────────────────────────────────────

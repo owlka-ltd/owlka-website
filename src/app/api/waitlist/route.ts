@@ -1,8 +1,9 @@
 // Waitlist capture route.
 //
-// Accepts POST { email, source?, referrer? }, validates email shape,
-// rate-limits per-IP (4 req / 60s), then forwards the row to a Google
-// Apps Script web app whose URL lives in WAITLIST_SHEET_WEBHOOK.
+// Accepts POST { email, firstName, lastName, source? }, validates
+// shape, rate-limits per-IP (4 req / 60s), then forwards the row to
+// a Google Apps Script web app whose URL lives in
+// WAITLIST_SHEET_WEBHOOK.
 //
 // If the env var is unset the route returns { ok: true, mode: "no-op" }
 // so a deploy without the secret still functions (Tim sets the URL after
@@ -13,7 +14,7 @@
 // serverless container and resets on cold start.
 
 import { NextResponse } from "next/server";
-import { isValidEmail, RateLimiter } from "@/lib/waitlist";
+import { isValidEmail, isValidName, RateLimiter } from "@/lib/waitlist";
 
 const limiter = new RateLimiter();
 
@@ -45,10 +46,15 @@ function clientIp(request: Request): string {
 // Handler
 // ──────────────────────────────────────────────────────────────────────
 
+// All four fields are `unknown` because the request body is untrusted
+// JSON. `email`, `firstName`, `lastName` are required at runtime
+// (validated below); `source` is the only genuinely optional field
+// and defaults to "owlka.com" if missing.
 type WaitlistBody = {
   email?: unknown;
+  firstName?: unknown;
+  lastName?: unknown;
   source?: unknown;
-  referrer?: unknown;
 };
 
 export async function POST(request: Request): Promise<NextResponse> {
@@ -85,23 +91,33 @@ export async function POST(request: Request): Promise<NextResponse> {
       { status: 400 },
     );
   }
+  if (!isValidName(body.firstName)) {
+    return NextResponse.json(
+      { ok: false, error: "invalid_first_name" },
+      { status: 400 },
+    );
+  }
+  if (!isValidName(body.lastName)) {
+    return NextResponse.json(
+      { ok: false, error: "invalid_last_name" },
+      { status: 400 },
+    );
+  }
 
   const email = (body.email as string).trim();
+  const firstName = (body.firstName as string).trim();
+  const lastName = (body.lastName as string).trim();
   const source =
     typeof body.source === "string" && body.source.trim()
       ? body.source.trim()
       : "owlka.com";
-  const headerReferer = request.headers.get("referer") ?? "";
-  const referrer =
-    typeof body.referrer === "string" && body.referrer.trim()
-      ? body.referrer.trim()
-      : headerReferer;
 
   const row = {
     timestamp: new Date().toISOString(),
     email,
+    firstName,
+    lastName,
     source,
-    referrer,
   };
 
   const webhook = process.env.WAITLIST_SHEET_WEBHOOK;

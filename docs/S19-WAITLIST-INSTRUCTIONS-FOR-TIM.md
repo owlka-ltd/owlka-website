@@ -15,11 +15,12 @@ You will do this once. After step 4 you send me the URL and I wire it up.
 1. Open https://sheets.google.com in a browser signed in to the Google account you want to own this list.
 2. Click the big coloured "Blank spreadsheet" tile.
 3. Click the file name top-left ("Untitled spreadsheet") and rename it to: `Owlka waitlist`.
-4. In row 1, type these four headers, one per cell, in columns A to D:
+4. In row 1, type these five headers, one per cell, in columns A to E:
    - A1: `timestamp`
    - B1: `email`
-   - C1: `source`
-   - D1: `referrer`
+   - C1: `firstName`
+   - D1: `lastName`
+   - E1: `source`
 5. That's it for the Sheet. Leave it open.
 
 ---
@@ -81,3 +82,9 @@ If we change the script you will need to:
 4. The URL stays the same, no need to resend it.
 
 If you ever create a brand-new deployment instead of editing the existing one, the URL changes and you would need to send me the new one.
+
+---
+
+## After every deploy (or schema change): verify
+
+Submit one row from the website. Open the Sheet and confirm columns A-E land in this order: timestamp, email, firstName, lastName, source. If any column is empty or shifted, the script's `appendRow` order is out of sync with the headers — re-paste `src/lib/waitlist-script.gs.txt` into the Apps Script editor and redeploy.

@@ -1,20 +1,27 @@
 /**
  * Owlka waitlist webhook — Google Apps Script.
  *
+ * Writes a row to the active sheet for each POSTed signup. Column
+ * order is:
+ *   A  timestamp   (ISO8601 from the website, falls back to now)
+ *   B  email
+ *   C  firstName
+ *   D  lastName
+ *   E  source      (e.g. "owlka.com")
+ *
  * Deploy instructions:
- *  1. Open the target Google Sheet (header row:
- *     [timestamp, email, source, referrer]).
+ *  1. Open the target Google Sheet. Row 1 headers should match the
+ *     column order above.
  *  2. Extensions -> Apps Script. Replace the default Code.gs contents
- *     with this file, save (Cmd+S), name the project
- *     "Owlka waitlist webhook".
- *  3. Deploy -> New deployment -> Type: Web app.
- *     Execute as: Me (your Google account).
- *     Who has access: Anyone.
- *     Click Deploy, authorise, copy the Web app URL.
- *  4. Paste the URL into Vercel as env var WAITLIST_SHEET_WEBHOOK
+ *     with this file, save (Cmd+S).
+ *  3. Deploy -> Manage deployments -> pencil on the existing
+ *     deployment -> Version: New version -> Deploy. The web app URL
+ *     does not change.
+ *  4. If this is the first deployment instead: Deploy -> New
+ *     deployment -> Type: Web app. Execute as: Me. Who has access:
+ *     Anyone. Click Deploy, authorise, copy the Web app URL.
+ *  5. Paste the URL into Vercel as env var WAITLIST_SHEET_WEBHOOK
  *     (Production + Preview) and redeploy owlka-website.
- *  5. POST a test row from the owlka.com waitlist form; confirm the
- *     row appears in the sheet.
  */
 function doPost(e) {
   const payload = JSON.parse(e.postData.contents);
@@ -22,8 +29,9 @@ function doPost(e) {
   sheet.appendRow([
     payload.timestamp || new Date().toISOString(),
     payload.email || "",
+    payload.firstName || "",
+    payload.lastName || "",
     payload.source || "",
-    payload.referrer || "",
   ]);
   return ContentService.createTextOutput(
     JSON.stringify({ ok: true })

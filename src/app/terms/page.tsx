@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description:
-    "The terms that govern your use of Owlka. Plain English. Last updated 2026-05-18.",
+    "The terms that govern your use of Owlka. Plain English. Last updated 2026-05-19.",
   alternates: { canonical: "/terms" },
 };
 
@@ -23,7 +23,7 @@ export default function TermsPage() {
             <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
               Terms of Service
             </h1>
-            <p className="mt-4 text-sm text-muted">Last updated 2026-05-18</p>
+            <p className="mt-4 text-sm text-muted">Last updated 2026-05-19</p>
           </header>
 
           <div className="prose prose-neutral max-w-none text-text/85 leading-relaxed space-y-8">
@@ -132,35 +132,38 @@ export default function TermsPage() {
 
             <section>
               <h2 className="text-2xl font-semibold mb-4">
-                5. Subscription and payment
+                5. Beta period and future paid subscription
               </h2>
               <p>
-                Owlka is a single subscription, £9.99 per month, with a
-                30-day free trial for new users. The subscription is sold
-                and billed by Apple through the App Store under
-                Apple&rsquo;s standard terms. It auto-renews each month
-                until you cancel. Cancellation is in Settings, Apple ID,
-                Subscriptions on your iPhone. Cancellation takes effect at
-                the end of the current billing period and you keep paid
-                features until then.
+                Owlka is currently in a public beta. There is no charge to
+                use the Service during the beta. We do not collect a
+                payment method, and there is no auto-renewal. We reserve
+                the right to end the beta and switch to a paid
+                subscription, and we will tell beta users by email and
+                in-app message well before any switch takes effect.
               </p>
               <p className="mt-3">
-                The subscription is opted into Apple Family Sharing, so one
-                paid subscription covers up to six members of an Apple
-                Family. Each family member uses their own Apple ID, their
-                own iPhone, and their own pairing to a desktop.
+                The intended paid plan after the beta is £9.99 per month,
+                with a 30-day free trial for new users, sold and billed by
+                Apple through the App Store under Apple&rsquo;s standard
+                terms. The paid plan is intended to be opted into Apple
+                Family Sharing, so one paid subscription would cover up to
+                six members of an Apple Family. We may change these terms
+                before launching the paid plan; the price and trial above
+                are the current intention, not a commitment.
               </p>
               <p className="mt-3">
-                Refunds are handled by Apple under Apple&rsquo;s refund
-                policy for the App Store. We do not process refunds
-                directly. To request a refund, use the Report a Problem
-                flow in your Apple ID purchase history.
+                When the paid plan is live, Apple will handle billing,
+                renewal, and refunds under Apple&rsquo;s policy. To
+                request a refund at that time, you would use the Report a
+                Problem flow in your Apple ID purchase history. We do not
+                process refunds directly.
               </p>
               <p className="mt-3">
-                You also still need your own Claude subscription from
-                Anthropic to use the wrapped Claude tools. The £9.99
-                monthly pays for the Owlka wrapper and relay only, not for
-                the underlying model.
+                You still need your own Claude subscription from Anthropic
+                to use the wrapped Claude tools. The Owlka beta — and any
+                future Owlka subscription — covers the Owlka wrapper and
+                relay only, not the underlying model.
               </p>
             </section>
 

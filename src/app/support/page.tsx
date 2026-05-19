@@ -69,11 +69,12 @@ const faqs: FAQ[] = [
     q: "How much does Owlka cost?",
     a: (
       <>
-        One plan, <span className="font-medium">£9.99 a month</span>,
-        billed by Apple through the App Store. New users get a 30-day
-        free trial. The subscription is opted into Apple Family Sharing,
-        so one paid subscription covers up to six members of an Apple
-        Family. You also need your own Claude Pro or Max subscription
+        Owlka is in <span className="font-medium">public beta</span> and
+        is free to use. No card on file, no charge, no usage meter on
+        you. The intended price after the beta is £9.99 a month via the
+        App Store, with Apple Family Sharing for up to six members of an
+        Apple Family. We&rsquo;ll email beta users well before switching
+        on paid. You also need your own Claude Pro or Max subscription
         from Anthropic, which Owlka does not resell.
       </>
     ),
@@ -82,12 +83,16 @@ const faqs: FAQ[] = [
     q: "How do I cancel?",
     a: (
       <>
-        Cancel from{" "}
+        Owlka is free during the public beta — there is no Owlka
+        subscription to cancel today. If you also want to remove the app,
+        delete it from your iPhone home screen. When the paid plan is
+        live, cancellation will be in{" "}
         <span className="font-medium">
           Settings, Apple ID, Subscriptions
         </span>{" "}
-        on your iPhone. Apple handles renewals and refunds directly. You
-        keep paid features until the end of the current billing period.
+        on your iPhone; Apple will handle renewals and refunds directly,
+        and you would keep features until the end of the current billing
+        period.
       </>
     ),
   },
@@ -113,7 +118,7 @@ const faqs: FAQ[] = [
         <span className="font-medium">Settings, Account, Delete account</span>
         . The app will wipe local data on your phone, send a delete
         signal to the relay so the relay forgets your device records, and
-        walk you through cancelling the £9.99 subscription in Apple
+        walk you through cancelling any active Owlka subscription in Apple
         Settings. If the in-app flow is unavailable, email{" "}
         <Link
           href="mailto:support@owlka.com"

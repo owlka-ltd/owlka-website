@@ -140,7 +140,7 @@ const faqs: FAQ[] = [
       <>
         Coming in v1.1. The Mac companion app lets you point Owlka at a Mac you
         own so sessions run on your hardware, with the iPhone as a thin client.
-        Owlka Pro subscribers will get access first when it lands.
+        Beta users will get access first when it lands.
       </>
     ),
   },
@@ -148,8 +148,9 @@ const faqs: FAQ[] = [
     q: "How do I cancel?",
     a: (
       <>
-        Two subscriptions, two places to cancel. Cancel your Anthropic plan from
-        the Anthropic billing portal at{" "}
+        Owlka is free during the public beta — no subscription to cancel on
+        the Owlka side today. Your Anthropic plan is separate and you cancel
+        it from the Anthropic billing portal at{" "}
         <a
           href="https://console.anthropic.com"
           className="text-mark hover:underline"
@@ -158,12 +159,12 @@ const faqs: FAQ[] = [
         >
           console.anthropic.com
         </a>
-        . Cancel Owlka Pro from Owlka&rsquo;s billing portal — instructions on
-        our{" "}
+        . When Owlka switches to paid, instructions for cancelling on the
+        Owlka side will be on our{" "}
         <Link href="/support" className="text-mark hover:underline">
           support page
         </Link>
-        . Cancelling one does not cancel the other.
+        .
       </>
     ),
   },
@@ -234,9 +235,9 @@ export default function DocsPage() {
                 Owlka never sees your API key. Anthropic issues an OAuth token
                 to your device, the token sits in the iOS Keychain, and every
                 model call is billed to your Anthropic account — not ours. If
-                you cancel your Anthropic plan, your sessions stop. If you
-                cancel Owlka Pro, your free tier still works as long as your
-                Anthropic plan is active.
+                you cancel your Anthropic plan, your sessions stop. Owlka
+                itself is free during the public beta, so there is nothing
+                to cancel on the Owlka side today.
               </p>
               <p>
                 This means Apple&rsquo;s reviewer, your IT team, and you all
@@ -298,10 +299,12 @@ export default function DocsPage() {
                 What you get
               </h2>
               <p className="mb-6 text-text/80">
-                One plan, £9.99 a month, billed by Apple through the App Store.
-                That covers the iPhone app, the Mac companion app, and the
-                encrypted middleman that lets the two talk. You bring your
-                own Claude Pro or Max subscription from Anthropic.
+                Owlka is in public beta and is free to use. No card on file,
+                no charge, no usage meter on you. The intended price after
+                the beta is £9.99 a month, billed by Apple through the App
+                Store, and we&rsquo;ll email beta users well before any
+                switch. You bring your own Claude Pro or Max subscription
+                from Anthropic.
               </p>
               <ul className="list-disc pl-6 space-y-2 text-text/80">
                 <li>Owlka iPhone app, paired with your Mac.</li>

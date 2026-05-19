@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Owlka handles your data. Plain English. Last updated 2026-05-18.",
+    "How Owlka handles your data. Plain English. Last updated 2026-05-19.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -23,7 +23,7 @@ export default function PrivacyPage() {
             <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
               Privacy Policy
             </h1>
-            <p className="mt-4 text-sm text-muted">Last updated 2026-05-18</p>
+            <p className="mt-4 text-sm text-muted">Last updated 2026-05-19</p>
           </header>
 
           <div className="prose prose-neutral max-w-none text-text/85 leading-relaxed space-y-8">
@@ -78,10 +78,39 @@ export default function PrivacyPage() {
                   Security, Analytics and Improvements.
                 </li>
                 <li>
-                  <strong>Relay metadata.</strong> Our encrypted relay sees
-                  the IP addresses of the devices currently connecting, the
-                  size of each sealed packet, and the timing of packets. The
-                  relay cannot open the packets.
+                  <strong>Connection metadata.</strong> Our encrypted relay
+                  records connection metadata so we can keep the service
+                  running and measure load on it. The relay cannot decrypt
+                  sealed packets — message contents, file contents, tool
+                  arguments, and tool output are end-to-end encrypted and
+                  never visible to us.
+                  <ul className="list-[circle] pl-6 space-y-2 mt-3">
+                    <li>
+                      <em>What we record today.</em> The public-key
+                      identifiers of the devices currently connecting (the
+                      per-pair keys you generated when you paired, never
+                      your name or your Apple ID), the IP address of each
+                      connection, the byte size of each sealed packet, and
+                      the timing of packets.
+                    </li>
+                    <li>
+                      <em>What we plan to add later.</em> As the beta
+                      grows we intend to record the device type from the
+                      User-Agent string the desktop app sends when it
+                      connects, and a per-tool-start ping from the desktop
+                      app that names the tool you invoked (for example
+                      &ldquo;bash&rdquo; or &ldquo;edit&rdquo;) without
+                      its arguments or output. Neither of these is live
+                      today. Before either is turned on, this policy will
+                      be updated with a new &ldquo;Last updated&rdquo;
+                      date.
+                    </li>
+                    <li>
+                      <em>What we use it for.</em> Product analytics
+                      (daily, weekly, and monthly active devices, message
+                      volume, retention cohorts) and abuse detection.
+                    </li>
+                  </ul>
                 </li>
                 <li>
                   <strong>Support correspondence.</strong> If you email
@@ -170,10 +199,12 @@ export default function PrivacyPage() {
               </p>
               <ul className="list-disc pl-6 space-y-2 mt-4">
                 <li>
-                  <strong>Apple.</strong> Apple distributes the iPhone app,
-                  handles the £9.99 monthly subscription, and processes
-                  payment. Apple sees your Apple ID and your billing details
-                  under its own privacy policy.
+                  <strong>Apple.</strong> Apple distributes the iPhone app.
+                  Owlka is currently in a public beta with no charge; if
+                  and when we switch on a paid subscription, Apple will
+                  handle billing and payment, and at that point Apple sees
+                  your Apple ID and your billing details under its own
+                  privacy policy.
                 </li>
                 <li>
                   <strong>Cloudflare.</strong> Cloudflare fronts the
@@ -219,9 +250,10 @@ export default function PrivacyPage() {
                   your device fingerprints.
                 </li>
                 <li>
-                  Walk you through cancelling the £9.99 subscription in
-                  Apple Settings. Apple handles the actual cancellation and
-                  any refund.
+                  Walk you through cancelling any active Owlka subscription
+                  in Apple Settings (none exists during the public beta).
+                  When the paid plan is live, Apple handles the actual
+                  cancellation and any refund.
                 </li>
               </ul>
               <p className="mt-3">

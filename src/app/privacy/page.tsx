@@ -65,10 +65,15 @@ export default function PrivacyPage() {
                   ID, or any other identity.
                 </li>
                 <li>
-                  <strong>Apple subscription receipt.</strong> Apple sends us
-                  an anonymised receipt that tells us your subscription is
-                  active. We never see your card details, your Apple ID, or
-                  your name.
+                  <strong>Apple subscription receipt, not collected during
+                  the public beta.</strong> Owlka is free during the public
+                  beta, so Apple does not send us a receipt. If and when we
+                  switch on a paid subscription, Apple will send us an
+                  anonymised receipt that confirms your subscription is
+                  active; we never see your card details, your Apple ID, or
+                  your name. This policy will be updated with a new
+                  &ldquo;Last updated&rdquo; date before that change goes
+                  live.
                 </li>
                 <li>
                   <strong>Crash logs, only if you opt in.</strong> If you
@@ -295,8 +300,10 @@ export default function PrivacyPage() {
               <ul className="list-disc pl-6 space-y-2 mt-3">
                 <li>
                   <strong>Contract.</strong> Processing your device
-                  identifiers and subscription receipt so we can deliver
-                  the paid Service you have signed up for.
+                  identifiers so we can deliver the Service you have signed
+                  up for. If and when we switch on a paid subscription, we
+                  will also process the anonymised Apple receipt on this
+                  basis.
                 </li>
                 <li>
                   <strong>Legitimate interests.</strong> Processing relay

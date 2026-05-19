@@ -1,0 +1,31 @@
+/**
+ * Owlka waitlist webhook — Google Apps Script.
+ *
+ * Deploy instructions:
+ *  1. Open the target Google Sheet (header row:
+ *     [timestamp, email, source, referrer]).
+ *  2. Extensions -> Apps Script. Replace the default Code.gs contents
+ *     with this file, save (Cmd+S), name the project
+ *     "Owlka waitlist webhook".
+ *  3. Deploy -> New deployment -> Type: Web app.
+ *     Execute as: Me (your Google account).
+ *     Who has access: Anyone.
+ *     Click Deploy, authorise, copy the Web app URL.
+ *  4. Paste the URL into Vercel as env var WAITLIST_SHEET_WEBHOOK
+ *     (Production + Preview) and redeploy owlka-website.
+ *  5. POST a test row from the owlka.com waitlist form; confirm the
+ *     row appears in the sheet.
+ */
+function doPost(e) {
+  const payload = JSON.parse(e.postData.contents);
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  sheet.appendRow([
+    payload.timestamp || new Date().toISOString(),
+    payload.email || "",
+    payload.source || "",
+    payload.referrer || "",
+  ]);
+  return ContentService.createTextOutput(
+    JSON.stringify({ ok: true })
+  ).setMimeType(ContentService.MimeType.JSON);
+}

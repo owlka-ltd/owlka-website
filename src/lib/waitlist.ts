@@ -21,6 +21,24 @@ export function isValidEmail(raw: unknown): raw is string {
 }
 
 // ──────────────────────────────────────────────────────────────────────
+// Name validation
+// ──────────────────────────────────────────────────────────────────────
+//
+// Names are intentionally permissive: any non-empty trimmed string up
+// to 80 chars is accepted. No alphabetic constraint, no diacritic
+// stripping — that would reject legitimate names (O'Brien, Renée,
+// مريم, 王芳).
+
+export const NAME_MAX_LEN = 80;
+
+export function isValidName(raw: unknown): raw is string {
+  if (typeof raw !== "string") return false;
+  const trimmed = raw.trim();
+  if (trimmed.length === 0 || trimmed.length > NAME_MAX_LEN) return false;
+  return true;
+}
+
+// ──────────────────────────────────────────────────────────────────────
 // Rate limiter
 // ──────────────────────────────────────────────────────────────────────
 

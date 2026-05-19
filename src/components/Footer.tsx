@@ -42,6 +42,11 @@ export function Footer() {
                     Pricing
                   </Link>
                 </li>
+                <li>
+                  <Link href="/#waitlist" className="hover:text-text transition-colors">
+                    Waitlist
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>

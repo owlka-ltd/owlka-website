@@ -12,11 +12,11 @@ export function Pricing() {
             Pricing
           </p>
           <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
-            Free for 30 days. Then £9.99 a month.
+            Free during the beta.
           </h2>
           <p className="mt-5 text-lg text-text/70 leading-relaxed">
-            One simple price, billed by Apple. No tiers, no usage meters, no
-            credit card forms on this site.
+            Owlka is in public beta. No charge, no card on file. We&rsquo;ll
+            tell you well before we ever switch on paid.
           </p>
         </div>
 
@@ -29,26 +29,31 @@ export function Pricing() {
             className="relative p-8 sm:p-10 rounded-card border bg-mark text-surface border-mark shadow-2xl shadow-mark/20"
           >
             <span className="absolute -top-3 left-8 inline-flex h-6 px-3 items-center rounded-pill bg-surface text-mark text-[11px] font-semibold uppercase tracking-wider">
-              30-day free trial
+              Public beta
             </span>
 
             <h3 className="text-xl font-semibold text-surface">Owlka</h3>
 
             <div className="mt-4 flex items-baseline gap-2">
               <span className="text-5xl font-semibold tracking-tight text-surface">
-                £9.99
+                Free
               </span>
-              <span className="text-sm text-surface/70">/month</span>
+              <span className="text-sm text-surface/70">during the beta</span>
             </div>
             <div className="mt-1 text-sm text-surface/70 space-y-1">
-              <p>VAT included. Billed monthly through the App Store.</p>
-              <p>Free for the first 30 days. Cancel anytime in Settings.</p>
+              <p>No card on file. No usage meter on you.</p>
+              <p>
+                We&rsquo;ll email beta users well before any switch to paid,
+                and the intended price after the beta is £9.99/month via the
+                App Store.
+              </p>
             </div>
 
             <p className="mt-6 text-[15px] leading-relaxed text-surface/85">
-              One subscription covers the Owlka Mac app and the Owlka iPhone
-              app. Use your own Claude Pro or Max login on the Mac for the
-              underlying model.
+              The Owlka Mac app and the Owlka iPhone app, the encrypted
+              relay between them, and persistent on-device memory — all free
+              during the beta. Use your own Claude Pro or Max login on the
+              Mac for the underlying model.
             </p>
 
             <ul className="mt-8 space-y-3 text-sm text-surface/90">

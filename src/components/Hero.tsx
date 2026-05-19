@@ -104,8 +104,7 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.55 }}
               className="mt-4 text-sm text-muted text-center lg:text-left"
             >
-              Free for 30 days, then £9.99/month via the App Store. Windows coming
-              soon.
+              Free during the public beta. Windows coming soon.
             </motion.p>
 
             <motion.div

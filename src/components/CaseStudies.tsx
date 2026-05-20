@@ -23,7 +23,6 @@ type NotificationPreview = {
 type Study = {
   tag: string;
   title: string;
-  who: string;
   body: string;
   metric: string;
   hue: "mark" | "accent";
@@ -34,9 +33,8 @@ const studies: Study[] = [
   {
     tag: "Education",
     title: "An Ofsted-grade governors app",
-    who: "Sarah R. — chair of governors, Manchester",
     body:
-      "Sarah built a private assistant for her primary school. It reads the school's own data alongside the latest Ofsted framework, drafts evidence-grade answers for inspection prep, and lets the governing body rehearse the real questions before they're asked.",
+      "A school governor built a private assistant for their primary school. It reads the school's own data alongside the latest Ofsted framework, drafts evidence-grade answers for inspection prep, and lets the governing body rehearse the real questions before they're asked.",
     metric: "Cuts inspection prep from weeks to an afternoon.",
     hue: "mark",
     visual: {
@@ -47,9 +45,8 @@ const studies: Study[] = [
   {
     tag: "Hardware",
     title: "Live 3D-printer command centre",
-    who: "James M. — maker, Bristol",
     body:
-      "James runs a small print farm from his garage. He built a native iOS app that talks to Klipper over his home network, streams the toolhead, watches temperature curves, and pauses the print before a bad layer becomes a fire. Notifications when something needs a human.",
+      "A maker runs a small print farm from a garage. They built a native iOS app that talks to Klipper over the home network, streams the toolhead, watches temperature curves, and pauses the print before a bad layer becomes a fire. Notifications when something needs a human.",
     metric: "Saved 14 prints in the first month.",
     hue: "accent",
     visual: {
@@ -60,9 +57,8 @@ const studies: Study[] = [
   {
     tag: "Personal",
     title: "Britain's Got Talent ticket watcher",
-    who: "Maria K. — mum of three, London",
     body:
-      "Maria's family kept missing the BGT auditions. She built a persistent watcher that pings the family group chat the instant tickets become reservable, so they're booked before anyone else even knows.",
+      "A family kept missing the BGT auditions. They built a persistent watcher that pings the family group chat the instant tickets become reservable, so they're booked before anyone else even knows.",
     metric: "Tickets reserved minutes before the rest of the public.",
     hue: "mark",
     visual: {
@@ -80,9 +76,8 @@ const studies: Study[] = [
   {
     tag: "Games",
     title: "Dragon Maze — indie iOS game",
-    who: "David T. and his 7-year-old daughter — Edinburgh",
     body:
-      "David's daughter sketched the dragons. David asked Owlka for a tile-shifting maze game to wrap them in, with daily seeds, leaderboards, and Game Center sync. The two of them designed, built, signed, and submitted it to TestFlight together, never once opening Xcode.",
+      "A parent and their young child built a tile-shifting maze game together. The child sketched the dragons; the parent asked Owlka for a game to wrap them in, with daily seeds, leaderboards, and Game Center sync. They designed, built, signed, and submitted it to TestFlight without ever opening Xcode.",
     metric: "Shipped a public beta in 11 evenings.",
     hue: "accent",
     visual: {
@@ -148,7 +143,6 @@ export function CaseStudies() {
                       <span className="inline-flex items-center h-7 px-3 rounded-pill bg-tint-mark text-mark text-xs font-semibold uppercase tracking-wide">
                         {s.tag}
                       </span>
-                      <span className="text-xs text-muted">{s.who}</span>
                     </div>
                     <h3 className="text-3xl sm:text-[34px] font-semibold tracking-tight leading-tight">
                       {s.title}

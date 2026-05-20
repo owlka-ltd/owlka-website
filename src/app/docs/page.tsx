@@ -159,11 +159,6 @@ const faqs: FAQ[] = [
         >
           console.anthropic.com
         </a>
-        . When Owlka switches to paid, instructions for cancelling on the
-        Owlka side will be on our{" "}
-        <Link href="/support" className="text-mark hover:underline">
-          support page
-        </Link>
         .
       </>
     ),
@@ -236,8 +231,7 @@ export default function DocsPage() {
                 to your device, the token sits in the iOS Keychain, and every
                 model call is billed to your Anthropic account — not ours. If
                 you cancel your Anthropic plan, your sessions stop. Owlka
-                itself is free during the public beta, so there is nothing
-                to cancel on the Owlka side today.
+                itself is free during the public beta.
               </p>
               <p>
                 This means Apple&rsquo;s reviewer, your IT team, and you all
@@ -300,11 +294,8 @@ export default function DocsPage() {
               </h2>
               <p className="mb-6 text-text/80">
                 Owlka is in public beta and is free to use. No card on file,
-                no charge, no usage meter on you. The intended price after
-                the beta is £9.99 a month, billed by Apple through the App
-                Store, and we&rsquo;ll email beta users well before any
-                switch. You bring your own Claude Pro or Max subscription
-                from Anthropic.
+                no charge, no usage meter on you. You bring your own Claude
+                Pro or Max subscription from Anthropic.
               </p>
               <ul className="list-disc pl-6 space-y-2 text-text/80">
                 <li>Owlka iPhone app, paired with your Mac.</li>

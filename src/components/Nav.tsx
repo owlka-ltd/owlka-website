@@ -28,9 +28,6 @@ export function Nav() {
           <Link href="/#why" className="hover:text-text transition-colors">
             Why Owlka
           </Link>
-          <Link href="/#pricing" className="hover:text-text transition-colors">
-            Pricing
-          </Link>
           <Link href="/security" className="hover:text-text transition-colors">
             Security
           </Link>

@@ -15,8 +15,7 @@ export function Pricing() {
             Free during the beta.
           </h2>
           <p className="mt-5 text-lg text-text/70 leading-relaxed">
-            Owlka is in public beta. No charge, no card on file. We&rsquo;ll
-            tell you well before we ever switch on paid.
+            Owlka is in public beta. No charge, no card on file.
           </p>
         </div>
 
@@ -42,11 +41,6 @@ export function Pricing() {
             </div>
             <div className="mt-1 text-sm text-surface/70 space-y-1">
               <p>No card on file. No usage meter on you.</p>
-              <p>
-                We&rsquo;ll email beta users well before any switch to paid,
-                and the intended price after the beta is £9.99/month via the
-                App Store.
-              </p>
             </div>
 
             <p className="mt-6 text-[15px] leading-relaxed text-surface/85">
@@ -83,8 +77,7 @@ export function Pricing() {
             </Link>
 
             <p className="mt-4 text-xs text-surface/70 text-center">
-              You only need an Anthropic account for Claude itself. We charge
-              for the Owlka wrapper, not for Claude.
+              You only need an Anthropic account for Claude itself.
             </p>
           </motion.div>
         </div>

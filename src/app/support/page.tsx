@@ -71,11 +71,8 @@ const faqs: FAQ[] = [
       <>
         Owlka is in <span className="font-medium">public beta</span> and
         is free to use. No card on file, no charge, no usage meter on
-        you. The intended price after the beta is £9.99 a month via the
-        App Store, with Apple Family Sharing for up to six members of an
-        Apple Family. We&rsquo;ll email beta users well before switching
-        on paid. You also need your own Claude Pro or Max subscription
-        from Anthropic, which Owlka does not resell.
+        you. You also need your own Claude Pro or Max subscription from
+        Anthropic, which Owlka does not resell.
       </>
     ),
   },
@@ -85,14 +82,7 @@ const faqs: FAQ[] = [
       <>
         Owlka is free during the public beta — there is no Owlka
         subscription to cancel today. If you also want to remove the app,
-        delete it from your iPhone home screen. When the paid plan is
-        live, cancellation will be in{" "}
-        <span className="font-medium">
-          Settings, Apple ID, Subscriptions
-        </span>{" "}
-        on your iPhone; Apple will handle renewals and refunds directly,
-        and you would keep features until the end of the current billing
-        period.
+        delete it from your iPhone home screen.
       </>
     ),
   },

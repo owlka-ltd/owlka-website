@@ -38,11 +38,6 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#pricing" className="hover:text-text transition-colors">
-                    Pricing
-                  </Link>
-                </li>
-                <li>
                   <Link href="/#waitlist" className="hover:text-text transition-colors">
                     Waitlist
                   </Link>
@@ -85,6 +80,11 @@ export function Footer() {
                 <li>
                   <Link href="/terms" className="hover:text-text transition-colors">
                     Terms
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#pricing" className="hover:text-text transition-colors">
+                    Pricing
                   </Link>
                 </li>
               </ul>

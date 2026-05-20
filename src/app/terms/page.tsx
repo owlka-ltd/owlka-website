@@ -139,25 +139,8 @@ export default function TermsPage() {
                 use the Service during the beta. We do not collect a
                 payment method, and there is no auto-renewal. We reserve
                 the right to end the beta and switch to a paid
-                subscription, and we will tell beta users by email and
-                in-app message well before any switch takes effect.
-              </p>
-              <p className="mt-3">
-                The intended paid plan after the beta is £9.99 per month,
-                with a 30-day free trial for new users, sold and billed by
-                Apple through the App Store under Apple&rsquo;s standard
-                terms. The paid plan is intended to be opted into Apple
-                Family Sharing, so one paid subscription would cover up to
-                six members of an Apple Family. We may change these terms
-                before launching the paid plan; the price and trial above
-                are the current intention, not a commitment.
-              </p>
-              <p className="mt-3">
-                When the paid plan is live, Apple will handle billing,
-                renewal, and refunds under Apple&rsquo;s policy. To
-                request a refund at that time, you would use the Report a
-                Problem flow in your Apple ID purchase history. We do not
-                process refunds directly.
+                subscription. If we do, we will update these Terms before
+                any switch takes effect.
               </p>
               <p className="mt-3">
                 You still need your own Claude subscription from Anthropic

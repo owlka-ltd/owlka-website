@@ -116,13 +116,6 @@ export default function DownloadPage() {
             </Link>
             <span className="hidden sm:inline text-border">·</span>
             <Link
-              href="/#pricing"
-              className="text-mark hover:underline underline-offset-4"
-            >
-              Pricing
-            </Link>
-            <span className="hidden sm:inline text-border">·</span>
-            <Link
               href="/support"
               className="text-mark hover:underline underline-offset-4"
             >

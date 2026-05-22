@@ -45,21 +45,25 @@ export default function DownloadPage() {
           </p>
 
           <div className="mt-12 flex flex-col items-center gap-4">
-            <div className="inline-flex items-center justify-center gap-3 h-14 px-9 rounded-pill bg-surface text-text/70 text-lg font-semibold border border-border">
+            <a
+              href={MAC_DMG_URL}
+              className="inline-flex items-center justify-center gap-3 h-14 px-9 rounded-pill bg-mark text-bg text-lg font-semibold shadow-sm hover:opacity-95 transition"
+              data-testid="download-mac-dmg"
+            >
               <AppleGlyph />
-              Mac app — coming this week
-            </div>
+              Download for Mac
+            </a>
             <p className="text-sm text-muted max-w-md text-center">
-              We&rsquo;re finishing notarisation. Leave your email
-              at{" "}
+              Universal binary, signed and notarised by Apple. Runs on
+              Apple Silicon and Intel Macs (macOS 13+). Free during
+              the public beta. Windows and Linux to follow. Questions
+              to{" "}
               <a
-                href="mailto:support@owlka.com?subject=Notify%20me%20when%20Owlka%20for%20Mac%20is%20ready"
+                href="mailto:support@owlka.com"
                 className="text-mark hover:underline"
               >
                 support@owlka.com
-              </a>{" "}
-              and we&rsquo;ll send the .dmg the moment it&rsquo;s
-              live. Windows + Linux to follow.
+              </a>.
             </p>
           </div>
 

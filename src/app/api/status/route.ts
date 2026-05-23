@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import incidents from "@/content/incidents.json";
+import { INCIDENTS } from "@/content/incidents";
 
 // Polled live every request. Cached at the edge for 30s with SWR so a burst
 // of refreshes (Tim's iOS link, a status check from the homepage footer)
@@ -202,8 +202,7 @@ function partitionIncidents(all: Incident[]): {
 export async function GET(): Promise<NextResponse<StatusResponse>> {
   const components = await Promise.all(PROBES.map(probe));
   const overall = rollUp(components);
-  const parsedIncidents = (incidents as { incidents: Incident[] }).incidents;
-  const incidentBuckets = partitionIncidents(parsedIncidents);
+  const incidentBuckets = partitionIncidents(INCIDENTS);
 
   const payload: StatusResponse = {
     overall,

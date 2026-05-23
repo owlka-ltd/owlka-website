@@ -57,33 +57,32 @@ Tailscale or LAN addresses.
 
 ## Recording an incident
 
-Incidents live in `src/content/incidents.json`. The file is checked in
-and ships with the next Vercel deploy.
+Incidents live in `src/content/incidents.ts` as a typed array. The file
+is checked in and ships with the next Vercel deploy. TypeScript checks
+the shape of every entry at build time, so a malformed incident cannot
+ship.
 
-```json
-{
-  "$schema_version": 1,
-  "incidents": [
-    {
-      "id": "2026-05-23-relay-flap",
-      "title": "Relay restart after deploy",
-      "status": "resolved",
-      "started_at": "2026-05-23T07:12:00Z",
-      "resolved_at": "2026-05-23T07:18:00Z",
-      "components": ["relay"],
-      "updates": [
-        {
-          "ts": "2026-05-23T07:12:00Z",
-          "body": "Relay restarted after a config push; reconnects observed."
-        },
-        {
-          "ts": "2026-05-23T07:18:00Z",
-          "body": "All clients reconnected, health check green."
-        }
-      ]
-    }
-  ]
-}
+```typescript
+export const INCIDENTS: Incident[] = [
+  {
+    id: "2026-05-23-relay-flap",
+    title: "Relay restart after deploy",
+    status: "resolved",
+    started_at: "2026-05-23T07:12:00Z",
+    resolved_at: "2026-05-23T07:18:00Z",
+    components: ["relay"],
+    updates: [
+      {
+        ts: "2026-05-23T07:12:00Z",
+        body: "Relay restarted after a config push; reconnects observed.",
+      },
+      {
+        ts: "2026-05-23T07:18:00Z",
+        body: "All clients reconnected, health check green.",
+      },
+    ],
+  },
+];
 ```
 
 Fields:
@@ -104,7 +103,7 @@ record but are not rendered.
 To file a new incident:
 
 1. Branch from `main`.
-2. Append an entry to `src/content/incidents.json`.
+2. Append an entry to `src/content/incidents.ts`.
 3. Commit and push. Vercel auto-deploys; the next page load shows it.
 
 To update an open incident: edit the entry's `status` and append a new

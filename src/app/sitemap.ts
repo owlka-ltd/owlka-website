@@ -5,6 +5,7 @@ const SECONDARY_ROUTES = [
   "/pricing",
   "/privacy",
   "/security",
+  "/how-it-works",
   "/terms",
   "/support",
   "/docs",

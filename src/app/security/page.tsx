@@ -4,12 +4,12 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 
-const LAST_UPDATED = "2026-05-18";
+const LAST_UPDATED = "2026-05-25";
 
 export const metadata: Metadata = {
   title: "Security",
   description:
-    "How Owlka keeps your work private. Code, conversation, and memory live on your own desktop. Phone and desktop talk through an encrypted relay we cannot read.",
+    "How Owlka keeps your work private. Code, conversation, and memory live on your own desktop. Phone and desktop talk through an end-to-end encrypted relay that Owlka Ltd cannot read.",
   alternates: { canonical: "/security" },
   openGraph: {
     type: "article",
@@ -43,7 +43,7 @@ const SECTIONS: Section[] = [
     id: "shape",
     title: "The shape of the product",
     intro:
-      "Owlka is a desktop app (Mac or Windows) and an iPhone app. The desktop app does the real work; the iPhone app is the front seat. The two talk to each other through an encrypted relay that we operate but cannot read.",
+      "Owlka is a desktop app for your Mac and an iPhone app. The desktop app does the real work; the iPhone app is the front seat. The two talk to each other through an end-to-end encrypted relay that Owlka Ltd operates but cannot read. For a longer walkthrough of the three pieces, see how it works.",
     rows: [
       {
         label: "Your code stays on your desktop",
@@ -58,7 +58,7 @@ const SECTIONS: Section[] = [
       {
         label: "Pairing happens face to face",
         value:
-          "The first time you pair a phone with your desktop, you scan a one-time QR code from the desktop app. That exchange is what hands the keys over. Nothing in the keys ever crosses our servers in the clear.",
+          "The first time you pair a phone with your desktop, you scan a one-time QR code from the desktop app. That exchange is what hands the keys over. No private key ever crosses our servers.",
       },
       {
         label: "We hold no master key",
@@ -71,32 +71,37 @@ const SECTIONS: Section[] = [
     id: "crypto",
     title: "End-to-end encryption, in detail",
     intro:
-      "Owlka uses well-known, open, public-key authenticated encryption primitives. The exact algorithms are listed below.",
+      "Owlka uses standard, open public-key authenticated encryption. Three independent implementations (the iPhone app in Apple CryptoKit, the Mac desktop in Rust, and the bridge daemon in Python) are pinned together by known-answer tests so the exact same bytes round-trip on all three. The relay has no crypto code at all.",
     rows: [
-      {
-        label: "Library",
-        value:
-          "TweetNaCl, an open-source implementation of the NaCl cryptography library. The desktop and iPhone apps use the standard public-key authenticated encryption primitive (crypto_box) for every sealed packet.",
-      },
       {
         label: "Key exchange",
         value:
-          "Curve25519 elliptic-curve Diffie-Hellman. Each paired device pair derives a shared secret without that secret ever travelling over the wire.",
+          "Curve25519 elliptic-curve Diffie-Hellman (X25519). Each paired phone-and-desktop pair derives a shared secret without that secret ever travelling over the wire.",
+      },
+      {
+        label: "Key derivation",
+        value:
+          "HKDF-SHA256 turns the shared secret into the symmetric key used for sealing. The salt and info strings are versioned (owlka.relay.v1 and owlka.relay.envelope.v1) so an old and a new client cannot be tricked into talking past each other if the envelope format ever changes.",
       },
       {
         label: "Bulk encryption",
         value:
-          "XSalsa20 stream cipher with a 192-bit random nonce per packet. Nonces are never reused for a given key pair.",
+          "ChaCha20-Poly1305 authenticated encryption with a 12-byte random nonce per packet and a 16-byte Poly1305 tag. Tampered packets are rejected on the receiving device.",
       },
       {
-        label: "Integrity",
+        label: "Relay authentication",
         value:
-          "Poly1305 message authentication code. A tampered packet is rejected on the receiving device; the relay has no way to forge a packet that would be accepted.",
+          "Every paired device holds a separate ed25519 signing keypair. When a device connects to the relay, the relay sends a random 32-byte challenge; the device signs it and the relay verifies. The ed25519 public key doubles as the routing address on the to: field of every envelope. The relay never sees any private key.",
       },
       {
         label: "Per-pair keypairs",
         value:
-          "Every phone-and-desktop pair generates its own keypair. Tim's phone paired with his home Mac has a different keypair from Tim's phone paired with his work laptop, and a different keypair again from his wife's phone paired with the same home Mac. Revoking one pair does not affect any other pair.",
+          "Every phone-and-desktop pair generates its own keypairs. Your phone paired with your home Mac has a different keypair from your phone paired with your work laptop, and a different keypair again from your partner's phone paired with the same home Mac. Revoking one pair does not affect any other pair.",
+      },
+      {
+        label: "Open libraries",
+        value:
+          "iPhone uses Apple CryptoKit (Curve25519.KeyAgreement, ChaChaPoly, HKDF<SHA256>). Desktop uses chacha20poly1305, x25519_dalek, ed25519-dalek, and hkdf from the Rust ecosystem. Bridge uses Python's cryptography library (X25519PrivateKey, ChaCha20Poly1305, HKDF). All three are open source and widely used.",
       },
     ],
   },
@@ -104,12 +109,12 @@ const SECTIONS: Section[] = [
     id: "relay",
     title: "The content-blind relay, in plain English",
     intro:
-      "The relay is the only piece of Owlka infrastructure your devices talk to. Here is exactly what it does and does not do.",
+      "The relay is the only piece of Owlka infrastructure your devices talk to. Here is exactly what it does and does not do. The relay code has no crypto routines; envelope bodies are opaque bytes to it.",
     rows: [
       {
         label: "What it sees",
         value:
-          "Sealed packets, the IP addresses of the connecting phone and desktop, and the timing of each packet. It cannot open the packets.",
+          "The recipient's routing address (the ed25519 public key on the to: field), the sender's routing address after the relay verifies the signed challenge, the byte size of each sealed packet, and the timing of packets. It also sees the IP address of each connecting device.",
       },
       {
         label: "What it does",
@@ -119,12 +124,12 @@ const SECTIONS: Section[] = [
       {
         label: "What it does not do",
         value:
-          "It does not store conversation history. It does not log packet contents. It does not have a key that would let it.",
+          "It does not open envelopes. It does not store conversation history. It does not log packet contents. It does not have any key that would let it do any of those things.",
       },
       {
         label: "Where it runs",
         value:
-          "On a small server we operate, fronted by Cloudflare for DDoS protection and TLS. The server stores no decryption key.",
+          "On a Hetzner Cloud server in Germany operated by Owlka Ltd, fronted by Cloudflare for DDoS protection and TLS. The server stores no decryption key. State on the server is limited to a small SQLite of paired-user routing addresses, connection metrics counters, and a short-lived challenge cache.",
       },
     ],
   },
@@ -137,12 +142,12 @@ const SECTIONS: Section[] = [
       {
         label: "On-device transcription",
         value:
-          "Owlka uses Apple's on-device Speech framework. Your phone transcribes your voice locally and produces text. The audio recording is never sent to Apple, to Owlka, or to anyone else.",
+          "Owlka uses Apple's on-device Speech framework. Your phone transcribes your voice locally and produces text. The audio recording is never sent to Apple, to Owlka Ltd, or to anyone else.",
       },
       {
         label: "Only the text travels",
         value:
-          "Once the transcript exists on your phone, it is sealed with your pair's keypair and sent to your desktop, exactly like a typed message. We see the same sealed bytes we would see for typed input.",
+          "Once the transcript exists on your phone, it is sealed with your pair's keypair and sent to your desktop, exactly like a typed message. The relay sees the same opaque bytes it would see for typed input.",
       },
       {
         label: "Permission",
@@ -163,11 +168,6 @@ const SECTIONS: Section[] = [
           "The .dmg you download is signed with our Apple Developer certificate and notarised by Apple. macOS Gatekeeper checks both before opening it.",
       },
       {
-        label: "Windows code signing",
-        value:
-          "The .exe is Authenticode-signed. Windows SmartScreen verifies the signature before running.",
-      },
-      {
         label: "Auto-update",
         value:
           "Updates are downloaded over HTTPS and the same signature is checked again before the new build replaces the old one. An update with a broken or missing signature is refused.",
@@ -175,7 +175,12 @@ const SECTIONS: Section[] = [
       {
         label: "What runs locally",
         value:
-          "The Owlka desktop app, the Claude tools under your own Anthropic subscription, and a small local helper that maintains the encrypted channel to the relay. Nothing else.",
+          "The Owlka desktop app, the Claude tools under your own Anthropic subscription, and a small local helper (the bridge daemon) that maintains the encrypted channel to the relay. Nothing else.",
+      },
+      {
+        label: "Windows",
+        value:
+          "There is no Owlka Windows desktop at launch. We will publish a build-from-source path for technical users who want to run the bridge on Windows; a signed Windows installer is on the roadmap.",
       },
     ],
   },
@@ -196,7 +201,7 @@ const SECTIONS: Section[] = [
       {
         label: "Removing a phone",
         value:
-          "Unpairing a phone from the desktop app invalidates that phone's key. After that, sealed packets from the unpaired phone are refused.",
+          "Unpairing a phone from the desktop app invalidates that phone's routing address. After that, envelopes signed by the unpaired phone are refused at the relay.",
       },
     ],
   },
@@ -214,17 +219,17 @@ const SECTIONS: Section[] = [
       {
         label: "Anthropic sees what Claude sees",
         value:
-          "Claude itself runs under your own Anthropic account, on your desktop, talking to Anthropic directly. Whatever you type to Claude reaches Anthropic. Their privacy terms govern that traffic, not ours. Anthropic is not an Owlka sub-processor because the data never passes through us, and Owlka has no partnership with Anthropic.",
+          "Claude itself runs under your own Anthropic account, on your desktop, talking to Anthropic directly. Whatever you type to Claude reaches Anthropic. Their privacy terms govern that traffic, not ours. Anthropic is not an Owlka sub-processor because the data never passes through us, and Owlka Ltd has no partnership with Anthropic.",
       },
       {
-        label: "No SOC 2 or ISO 27001 in Owlka's own name yet",
+        label: "No SOC 2 or ISO 27001 in our own name yet",
         value:
-          "We do not yet hold SOC 2 or ISO 27001 in Owlka's own name. The relay runs on Cloudflare's network (SOC 2 Type II, ISO 27001) and the App Store distribution is Apple's. We will publish our own certification roadmap when we have one.",
+          "Owlka Ltd does not yet hold SOC 2 or ISO 27001 in its own name. The relay runs on Hetzner Cloud (ISO 27001 certified) fronted by Cloudflare (SOC 2 Type II, ISO 27001) and the App Store distribution is Apple's. We will publish our own certification roadmap when we have one.",
       },
       {
         label: "No model training on your work",
         value:
-          "Owlka does not train any model. Your code, your prompts, and the work Claude produces for you are not used to train anything by us. Your usage of Claude is governed by your agreement with Anthropic.",
+          "Owlka Ltd does not train any model. Your code, your prompts, and the work Claude produces for you are not used to train anything by us. Your usage of Claude is governed by your agreement with Anthropic.",
       },
     ],
   },
@@ -266,9 +271,17 @@ export default function SecurityPage() {
               Security
             </h1>
             <p className="mt-3 text-muted">
-              Last updated {LAST_UPDATED}. This page describes how Owlka keeps
-              your work private: what lives on your desktop, what crosses
-              the encrypted relay, and what we honestly cannot do.
+              Last updated {LAST_UPDATED}. This page describes how Owlka Ltd
+              keeps your work private: what lives on your desktop, what
+              crosses the encrypted relay, and what we honestly cannot do.
+              See also{" "}
+              <Link
+                href="/how-it-works"
+                className="underline hover:text-text transition-colors"
+              >
+                how it works
+              </Link>
+              {" "}for the plain-English tour of the three pieces.
             </p>
           </header>
 

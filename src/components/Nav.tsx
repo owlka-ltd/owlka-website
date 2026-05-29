@@ -19,7 +19,7 @@ export function Nav() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8 text-sm text-text/80">
-          <Link href="/#how" className="hover:text-text transition-colors">
+          <Link href="/how-it-works" className="hover:text-text transition-colors">
             How it works
           </Link>
           <Link href="/#examples" className="hover:text-text transition-colors">

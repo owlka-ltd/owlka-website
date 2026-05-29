@@ -28,7 +28,7 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#how" className="hover:text-text transition-colors">
+                  <Link href="/how-it-works" className="hover:text-text transition-colors">
                     How it works
                   </Link>
                 </li>
@@ -80,6 +80,11 @@ export function Footer() {
                 <li>
                   <Link href="/terms" className="hover:text-text transition-colors">
                     Terms
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/ai-use" className="hover:text-text transition-colors">
+                    AI Use
                   </Link>
                 </li>
                 <li>

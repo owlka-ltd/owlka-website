@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo";
 
 const SECONDARY_ROUTES = [
+  "/how-it-works",
+  "/ai-use",
   "/pricing",
   "/privacy",
   "/security",

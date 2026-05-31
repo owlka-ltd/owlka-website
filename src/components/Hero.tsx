@@ -33,12 +33,31 @@ export function Hero() {
                 opacity-0 initial state) so it paints on first frame instead
                 of waiting for Framer Motion to mount and run the animation. */}
             <h1 className="text-5xl sm:text-6xl lg:text-[5.25rem] font-semibold tracking-tight leading-[1.02]">
-              The full power of Claude Code.
+              The most powerful iPhone app
               <br />
               <span className="bg-gradient-to-r from-mark to-[#ff5e9d] bg-clip-text text-transparent">
-                On your phone.
+                in the world.
               </span>
             </h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-6 max-w-xl mx-auto lg:mx-0 text-xl sm:text-2xl text-text/85 font-medium leading-snug"
+            >
+              The full power of Claude Code, in your pocket.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-3 max-w-xl mx-auto lg:mx-0 text-lg sm:text-xl text-text/75 leading-relaxed"
+            >
+              Built so non-developers get production-grade development
+              capability.
+            </motion.p>
 
             <motion.p
               initial={{ opacity: 0, y: 24 }}

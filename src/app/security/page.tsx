@@ -155,7 +155,7 @@ const SECTIONS: Section[] = [
     id: "downloads",
     title: "The desktop download",
     intro:
-      "The Mac app is signed and notarised by Apple before it ever reaches you. Your Mac checks the signature on first launch and refuses to run a tampered build.",
+      "The Mac app is signed and notarised by Apple before it ever reaches you. Your Mac checks the signature on first launch and refuses to run a tampered build. The Windows build is not code-signed yet, so we tell you plainly what to expect, below.",
     rows: [
       {
         label: "Mac code signing",
@@ -163,14 +163,14 @@ const SECTIONS: Section[] = [
           "The .dmg you download is signed with our Apple Developer certificate and notarised by Apple. macOS Gatekeeper checks both before opening it.",
       },
       {
-        label: "Windows code signing",
+        label: "Windows is not signed yet",
         value:
-          "The .exe is Authenticode-signed. Windows SmartScreen verifies the signature before running.",
+          "The Windows .exe is not code-signed at the moment. Because of that, Windows SmartScreen will show a blue \"Windows protected your PC\" warning the first time you run it. To continue, click \"More info\" and then \"Run anyway\". This is the same step you take for any new app from a small publisher. Code signing for Windows is on our list, and we will update this page the day it ships.",
       },
       {
-        label: "Auto-update",
+        label: "Auto-update (Mac)",
         value:
-          "Updates are downloaded over HTTPS and the same signature is checked again before the new build replaces the old one. An update with a broken or missing signature is refused.",
+          "Mac updates are downloaded over HTTPS and the Apple signature is checked again before the new build replaces the old one. An update with a broken or missing signature is refused.",
       },
       {
         label: "What runs locally",

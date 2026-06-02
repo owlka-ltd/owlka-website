@@ -5,6 +5,12 @@ import { Footer } from "@/components/Footer";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const MAC_DMG_URL = "https://download.owlka.com/mac/latest.dmg";
+// TODO: the Windows .exe is not hosted yet. This points at the intended
+// path (download.owlka.com/windows/latest.exe) but that file does not
+// exist — do not announce the Windows build as available until the .exe
+// is uploaded AND this placeholder is replaced with a real, tested link.
+const WINDOWS_EXE_URL = "https://download.owlka.com/windows/latest.exe";
+const WINDOWS_AVAILABLE = false;
 
 export const metadata: Metadata = {
   title: "Download Owlka for Mac",
@@ -56,7 +62,7 @@ export default function DownloadPage() {
             <p className="text-sm text-muted max-w-md text-center">
               Universal binary, signed and notarised by Apple. Runs on
               Apple Silicon and Intel Macs (macOS 13+). Free during
-              the public beta. Windows and Linux to follow. Questions
+              the public beta. Linux to follow. Questions
               to{" "}
               <a
                 href="mailto:support@owlka.com"
@@ -66,6 +72,37 @@ export default function DownloadPage() {
               </a>.
             </p>
           </div>
+
+          <div className="mt-10 flex flex-col items-center gap-4">
+            {WINDOWS_AVAILABLE ? (
+              <a
+                href={WINDOWS_EXE_URL}
+                className="inline-flex items-center justify-center gap-3 h-14 px-9 rounded-pill border border-border bg-surface text-text text-lg font-semibold shadow-sm hover:opacity-95 transition"
+                data-testid="download-windows-exe"
+              >
+                <WindowsGlyph />
+                Download for Windows
+              </a>
+            ) : (
+              <button
+                type="button"
+                disabled
+                aria-disabled="true"
+                className="inline-flex items-center justify-center gap-3 h-14 px-9 rounded-pill border border-border bg-surface text-text/50 text-lg font-semibold cursor-not-allowed"
+                data-testid="download-windows-exe"
+              >
+                <WindowsGlyph />
+                Download for Windows
+              </button>
+            )}
+            <p className="text-sm text-muted max-w-md text-center">
+              {WINDOWS_AVAILABLE
+                ? "64-bit Windows 10 and 11. Free during the public beta."
+                : "Coming soon. The Windows build is in final testing. Read the note below so the first launch holds no surprises."}
+            </p>
+          </div>
+
+          <WindowsSmartScreenNote />
 
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
             <Step
@@ -164,6 +201,59 @@ function Feature({ children }: { children: React.ReactNode }) {
       </svg>
       <span>{children}</span>
     </li>
+  );
+}
+
+function WindowsSmartScreenNote() {
+  return (
+    <div
+      className="mt-8 mx-auto max-w-xl rounded-card border border-border bg-surface p-6 text-left"
+      data-testid="windows-smartscreen-note"
+    >
+      <h2 className="text-base font-semibold tracking-tight">
+        A note about the Windows warning
+      </h2>
+      <p className="mt-3 text-sm text-text/75 leading-relaxed">
+        The Windows version is not code-signed yet, so the first time you
+        run it Windows SmartScreen shows a blue{" "}
+        <span className="font-medium text-text">
+          &ldquo;Windows protected your PC&rdquo;
+        </span>{" "}
+        screen. That is expected, and the app is safe. To open it:
+      </p>
+      <ol className="mt-4 space-y-2 text-sm text-text/75 leading-relaxed list-decimal pl-5">
+        <li>
+          Click{" "}
+          <span className="font-medium text-text">More info</span> on the
+          warning.
+        </li>
+        <li>
+          Click{" "}
+          <span className="font-medium text-text">Run anyway</span>.
+        </li>
+      </ol>
+      <p className="mt-4 text-sm text-text/75 leading-relaxed">
+        It is the same one-time step you take for any new app from a smaller
+        publisher. We are working on a Windows signature so this warning goes
+        away; until then we would rather tell you the truth than dress it up.
+        The same approach is on our{" "}
+        <Link
+          href="/security"
+          className="text-mark hover:underline underline-offset-4"
+        >
+          security page
+        </Link>
+        .
+      </p>
+    </div>
+  );
+}
+
+function WindowsGlyph() {
+  return (
+    <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor" aria-hidden>
+      <path d="M3 5.1l7.5-1.02v7.23H3V5.1zm0 13.8l7.5 1.02v-7.14H3v6.12zm8.4 1.14L21 21.5v-8.55h-9.6v7.09zM11.4 3.96L21 2.5v8.55h-9.6V3.96z" />
+    </svg>
   );
 }
 

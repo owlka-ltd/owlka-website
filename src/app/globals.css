@@ -27,7 +27,7 @@
   --color-tint-mark: var(--color-tint-mark);
   --color-tint-accent: var(--color-tint-accent);
 
-  --font-sans: var(--font-jakarta);
+  --font-sans: var(--font-montserrat);
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --radius-card: 22px;

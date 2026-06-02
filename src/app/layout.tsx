@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import {
@@ -10,8 +10,8 @@ import {
   SITE_URL,
 } from "@/lib/seo";
 
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
@@ -73,7 +73,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${jakarta.variable} antialiased`}>
+    <html lang="en" className={`${montserrat.variable} antialiased`}>
       <body className="font-sans bg-bg text-text min-h-screen">
         <SmoothScroll />
         {children}

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { INCIDENTS } from "@/content/incidents";
+import { WINDOWS_AVAILABLE } from "@/lib/flags";
 
 // Polled live every request. Cached at the edge for 30s with SWR so a burst
 // of refreshes (Tim's iOS link, a status check from the homepage footer)
@@ -153,7 +154,7 @@ function describeOk(id: string, latency_ms: number): string {
     case "relay":
       return `Passing sealed packets between phones and Macs. ${latency_ms} ms.`;
     case "downloads":
-      return `Mac DMG and Windows EXE are reachable. ${latency_ms} ms.`;
+      return `${WINDOWS_AVAILABLE ? "Mac DMG and Windows EXE are" : "Mac DMG is"} reachable. ${latency_ms} ms.`;
     case "website":
       return `Serving this page and the marketing site. ${latency_ms} ms.`;
     default:

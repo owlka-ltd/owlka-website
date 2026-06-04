@@ -4,7 +4,7 @@
 **Effective date:** 2026-05-23
 **Last updated:** 2026-05-23
 
-These Terms of Service (the "Terms") form a legal agreement between you ("you", "your") and Owlka ("Owlka", "we", "us", "our"). They govern your access to and use of the Owlka iPhone app, the Owlka desktop app for macOS and Windows, the owlka.com website, the encrypted relay that links the apps, and any other software, services, or content we make available (together, the "Service").
+These Terms of Service (the "Terms") form a legal agreement between you ("you", "your") and Owlka ("Owlka", "we", "us", "our"). They govern your access to and use of the Owlka iPhone app, the Owlka desktop app for macOS, the owlka.com website, the encrypted relay that links the apps, and any other software, services, or content we make available (together, the "Service").
 
 BY DOWNLOADING, INSTALLING, ACCESSING, OR USING THE SERVICE YOU AGREE TO THESE TERMS. IF YOU DO NOT AGREE, DO NOT USE THE SERVICE AND UNINSTALL THE APPS.
 
@@ -14,7 +14,7 @@ The Service is provided to you free of charge during a public beta. The disclaim
 
 ## 1. The agreement and who we are
 
-Owlka is operated by an individual sole trader based in England, United Kingdom. Correspondence: support@owlka.com. These Terms, together with our Privacy Policy at https://owlka.com/privacy and any product-specific terms we link to from inside the Service, are the entire agreement between you and Owlka regarding the Service. They supersede every prior or contemporaneous proposal, agreement, or communication on the same subject.
+Owlka is operated by Owlka Ltd, a company registered in England, United Kingdom. Correspondence: support@owlka.com. These Terms, together with our Privacy Policy at https://owlka.com/privacy and any product-specific terms we link to from inside the Service, are the entire agreement between you and Owlka regarding the Service. They supersede every prior or contemporaneous proposal, agreement, or communication on the same subject.
 
 If you use the Service on behalf of an organisation, you represent that you have authority to bind that organisation, and "you" includes that organisation.
 
@@ -202,7 +202,7 @@ Nothing in these Terms is intended to exclude or limit any non-excludable statut
 
 ## 20. Contact
 
-Owlka, sole trader, England, United Kingdom.
+Owlka Ltd, England, United Kingdom.
 
 General and legal: support@owlka.com.
 

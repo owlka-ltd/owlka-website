@@ -3,14 +3,9 @@ import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
-
-const MAC_DMG_URL = "https://download.owlka.com/mac/latest.dmg";
-// TODO: the Windows .exe is not hosted yet. This points at the intended
-// path (download.owlka.com/windows/latest.exe) but that file does not
-// exist — do not announce the Windows build as available until the .exe
-// is uploaded AND this placeholder is replaced with a real, tested link.
-const WINDOWS_EXE_URL = "https://download.owlka.com/windows/latest.exe";
-const WINDOWS_AVAILABLE = false;
+import { WINDOWS_AVAILABLE, WINDOWS_EXE_URL, MAC_DMG_URL } from "@/lib/flags";
+// Windows availability + URLs are the single source of truth in @/lib/flags.
+// Day-1 is Mac-only; WINDOWS_AVAILABLE is false until the signed .exe is hosted.
 
 export const metadata: Metadata = {
   title: "Download Owlka for Mac",
@@ -98,11 +93,11 @@ export default function DownloadPage() {
             <p className="text-sm text-muted max-w-md text-center">
               {WINDOWS_AVAILABLE
                 ? "64-bit Windows 10 and 11. Free during the public beta."
-                : "Coming soon. The Windows build is in final testing. Read the note below so the first launch holds no surprises."}
+                : "Windows is coming later. We'll announce it here when the build is ready."}
             </p>
           </div>
 
-          <WindowsSmartScreenNote />
+          {WINDOWS_AVAILABLE && <WindowsSmartScreenNote />}
 
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
             <Step

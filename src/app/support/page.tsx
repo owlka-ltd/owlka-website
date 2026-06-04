@@ -20,7 +20,7 @@ const faqs: FAQ[] = [
     q: "How do I pair my iPhone with a desktop?",
     a: (
       <>
-        Install the Owlka desktop app on your Mac or Windows PC and the
+        Install the Owlka desktop app on your Mac and the
         Owlka iPhone app from the App Store. On the desktop app, click{" "}
         <span className="font-medium">Pair a phone</span>. A one-time QR
         code appears. On the iPhone app, tap{" "}
@@ -227,10 +227,6 @@ export default function SupportPage() {
                 <li>
                   <span className="font-semibold">Mac desktop:</span> macOS
                   12 (Monterey) or later, Apple Silicon or Intel.
-                </li>
-                <li>
-                  <span className="font-semibold">Windows desktop:</span>{" "}
-                  Windows 10 (64-bit) or later.
                 </li>
                 <li>
                   <span className="font-semibold">Claude subscription:</span>{" "}

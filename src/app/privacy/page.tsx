@@ -32,7 +32,7 @@ export default function PrivacyPage() {
                 The short version
               </h2>
               <p>
-                Owlka is a desktop app for your Mac or Windows PC and a
+                Owlka is a desktop app for your Mac and a
                 companion app for your iPhone. Your conversations, code, and
                 memory live on your own desktop. The two apps talk through an
                 encrypted relay that we cannot read. We do not sell or share
@@ -86,7 +86,7 @@ export default function PrivacyPage() {
                   <strong>Connection metadata.</strong> Our encrypted relay
                   records connection metadata so we can keep the service
                   running and measure load on it. The relay cannot decrypt
-                  sealed packets — message contents, file contents, tool
+                  sealed packets. Message contents, file contents, tool
                   arguments, and tool output are end-to-end encrypted and
                   never visible to us.
                   <ul className="list-[circle] pl-6 space-y-2 mt-3">
@@ -281,8 +281,8 @@ export default function PrivacyPage() {
               </h2>
               <p>
                 The data controller for the small amount of personal data
-                Owlka processes is Owlka (a project run by Tim Trailor,
-                United Kingdom). For data-protection enquiries, email{" "}
+                Owlka processes is Owlka Ltd (United Kingdom). For
+                data-protection enquiries, email{" "}
                 <Link
                   href="mailto:support@owlka.com"
                   className="text-mark hover:underline"

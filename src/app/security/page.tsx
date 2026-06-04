@@ -43,7 +43,7 @@ const SECTIONS: Section[] = [
     id: "shape",
     title: "The shape of the product",
     intro:
-      "Owlka is a desktop app (Mac or Windows) and an iPhone app. The desktop app does the real work; the iPhone app is the front seat. The two talk to each other through an encrypted relay that we operate but cannot read.",
+      "Owlka is a Mac desktop app and an iPhone app. The desktop app does the real work; the iPhone app is the front seat. The two talk to each other through an encrypted relay that we operate but cannot read.",
     rows: [
       {
         label: "Your code stays on your desktop",
@@ -155,17 +155,12 @@ const SECTIONS: Section[] = [
     id: "downloads",
     title: "The desktop download",
     intro:
-      "The Mac app is signed and notarised by Apple before it ever reaches you. Your Mac checks the signature on first launch and refuses to run a tampered build. The Windows build is not code-signed yet, so we tell you plainly what to expect, below.",
+      "The Mac app is signed and notarised by Apple before it ever reaches you. Your Mac checks the signature on first launch and refuses to run a tampered build.",
     rows: [
       {
         label: "Mac code signing",
         value:
           "The .dmg you download is signed with our Apple Developer certificate and notarised by Apple. macOS Gatekeeper checks both before opening it.",
-      },
-      {
-        label: "Windows is not signed yet",
-        value:
-          "The Windows .exe is not code-signed at the moment. Because of that, Windows SmartScreen will show a blue \"Windows protected your PC\" warning the first time you run it. To continue, click \"More info\" and then \"Run anyway\". This is the same step you take for any new app from a small publisher. Code signing for Windows is on our list, and we will update this page the day it ships.",
       },
       {
         label: "Auto-update (Mac)",

@@ -13,7 +13,9 @@ type Step = {
   n: number;
   title: string;
   body: React.ReactNode;
-  screenshot: string;
+  // Optional: a real screenshot path. Absent until real screenshots exist —
+  // we do NOT ship "[Screenshot placeholder: …]" text as visible page content.
+  screenshot?: string;
 };
 
 const steps: Step[] = [
@@ -36,8 +38,6 @@ const steps: Step[] = [
         whenever you authorise a new device.
       </>
     ),
-    screenshot:
-      "[Screenshot placeholder: step 1 — Anthropic console sign-up screen]",
   },
   {
     n: 2,
@@ -58,8 +58,6 @@ const steps: Step[] = [
         for current plans and pricing. Pro and Max both include Claude Code.
       </>
     ),
-    screenshot:
-      "[Screenshot placeholder: step 2 — Anthropic pricing page with Claude Code plans]",
   },
   {
     n: 3,
@@ -71,8 +69,6 @@ const steps: Step[] = [
         Owlka will hand off to Safari to start the OAuth flow.
       </>
     ),
-    screenshot:
-      "[Screenshot placeholder: step 3 — Owlka first-run Connect Anthropic account button]",
   },
   {
     n: 4,
@@ -85,8 +81,6 @@ const steps: Step[] = [
         key.
       </>
     ),
-    screenshot:
-      "[Screenshot placeholder: step 4 — Anthropic OAuth consent screen for Owlka]",
   },
   {
     n: 5,
@@ -99,8 +93,6 @@ const steps: Step[] = [
         still there.
       </>
     ),
-    screenshot:
-      "[Screenshot placeholder: step 5 — Owlka first session running in the app]",
   },
 ];
 
@@ -259,11 +251,13 @@ export default function DocsPage() {
                       </h3>
                     </div>
                     <div className="mt-3 ml-12 text-text/80">{s.body}</div>
-                    <figure className="mt-5 ml-12 rounded-card border border-dashed border-border bg-surface px-5 py-8 text-center">
-                      <figcaption className="text-xs font-medium uppercase tracking-wider text-muted">
-                        {s.screenshot}
-                      </figcaption>
-                    </figure>
+                    {s.screenshot && (
+                      <figure className="mt-5 ml-12 rounded-card border border-dashed border-border bg-surface px-5 py-8 text-center">
+                        <figcaption className="text-xs font-medium uppercase tracking-wider text-muted">
+                          {s.screenshot}
+                        </figcaption>
+                      </figure>
+                    )}
                   </li>
                 ))}
               </ol>

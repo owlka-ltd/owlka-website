@@ -1,5 +1,11 @@
 import Link from "next/link";
 import { OwlkaMark } from "./OwlkaMark";
+import {
+  COMPANY_NAME,
+  COMPANY_NUMBER,
+  COMPANY_JURISDICTION,
+  REGISTERED_OFFICE,
+} from "@/lib/company";
 
 export function Footer() {
   return (
@@ -97,9 +103,16 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row justify-between gap-4 text-xs text-muted">
-          <p>© {new Date().getFullYear()} Owlka. All rights reserved.</p>
-          <p>Built with Owlka.</p>
+        <div className="mt-12 pt-8 border-t border-border flex flex-col gap-3 text-xs text-muted">
+          <p className="leading-relaxed">
+            {COMPANY_NAME}, a company registered in {COMPANY_JURISDICTION}{" "}
+            (Company No. {COMPANY_NUMBER}). Registered office:{" "}
+            {REGISTERED_OFFICE}.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-between gap-4">
+            <p>© {new Date().getFullYear()} Owlka Ltd. All rights reserved.</p>
+            <p>Built with Owlka.</p>
+          </div>
         </div>
       </div>
     </footer>

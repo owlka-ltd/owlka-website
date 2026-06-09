@@ -281,8 +281,11 @@ export default function PrivacyPage() {
               </h2>
               <p>
                 The data controller for the small amount of personal data
-                Owlka processes is Owlka Ltd (United Kingdom). For
-                data-protection enquiries, email{" "}
+                Owlka processes is Owlka Ltd (United Kingdom), a company
+                registered in England and Wales under company number 17266868,
+                with its registered office at Singleton Court Business Park,
+                Wonastow Road, Monmouth, Monmouthshire, NP25 5JA, United
+                Kingdom. For data-protection enquiries, email{" "}
                 <Link
                   href="mailto:support@owlka.com"
                   className="text-mark hover:underline"

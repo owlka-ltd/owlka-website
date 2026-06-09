@@ -14,7 +14,7 @@ The Service is provided to you free of charge during a public beta. The disclaim
 
 ## 1. The agreement and who we are
 
-Owlka is operated by Owlka Ltd, a company registered in England, United Kingdom. Correspondence: support@owlka.com. These Terms, together with our Privacy Policy at https://owlka.com/privacy and any product-specific terms we link to from inside the Service, are the entire agreement between you and Owlka regarding the Service. They supersede every prior or contemporaneous proposal, agreement, or communication on the same subject.
+Owlka is operated by Owlka Ltd, a company registered in England and Wales under company number 17266868, with its registered office at Singleton Court Business Park, Wonastow Road, Monmouth, Monmouthshire, NP25 5JA, United Kingdom. Correspondence: support@owlka.com. These Terms, together with our Privacy Policy at https://owlka.com/privacy and any product-specific terms we link to from inside the Service, are the entire agreement between you and Owlka regarding the Service. They supersede every prior or contemporaneous proposal, agreement, or communication on the same subject.
 
 If you use the Service on behalf of an organisation, you represent that you have authority to bind that organisation, and "you" includes that organisation.
 
@@ -202,7 +202,7 @@ Nothing in these Terms is intended to exclude or limit any non-excludable statut
 
 ## 20. Contact
 
-Owlka Ltd, England, United Kingdom.
+Owlka Ltd, a company registered in England and Wales under company number 17266868. Registered office: Singleton Court Business Park, Wonastow Road, Monmouth, Monmouthshire, NP25 5JA, United Kingdom.
 
 General and legal: support@owlka.com.
 

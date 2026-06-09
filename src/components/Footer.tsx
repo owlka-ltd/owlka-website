@@ -97,9 +97,16 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row justify-between gap-4 text-xs text-muted">
-          <p>© {new Date().getFullYear()} Owlka. All rights reserved.</p>
-          <p>Built with Owlka.</p>
+        <div className="mt-12 pt-8 border-t border-border flex flex-col gap-4 text-xs text-muted">
+          <div className="flex flex-col sm:flex-row justify-between gap-4">
+            <p>© {new Date().getFullYear()} Owlka. All rights reserved.</p>
+            <p>Built with Owlka.</p>
+          </div>
+          <p>
+            Owlka Ltd, registered in England and Wales, company number 17266868.
+            Registered office: Singleton Court Business Park, Wonastow Road,
+            Monmouth, Monmouthshire, NP25 5JA, United Kingdom.
+          </p>
         </div>
       </div>
     </footer>

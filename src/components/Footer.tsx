@@ -59,6 +59,11 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/faq" className="hover:text-text transition-colors">
+                    FAQ
+                  </Link>
+                </li>
+                <li>
                   <Link href="mailto:support@owlka.com" className="hover:text-text transition-colors">
                     Contact
                   </Link>

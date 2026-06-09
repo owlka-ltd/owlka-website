@@ -9,6 +9,7 @@ const SECONDARY_ROUTES = [
   "/security",
   "/terms",
   "/support",
+  "/faq",
   "/docs",
 ] as const;
 

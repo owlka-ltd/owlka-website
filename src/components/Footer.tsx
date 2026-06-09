@@ -1,5 +1,11 @@
 import Link from "next/link";
 import { OwlkaMark } from "./OwlkaMark";
+import {
+  COMPANY_NAME,
+  COMPANY_NUMBER,
+  COMPANY_JURISDICTION,
+  REGISTERED_OFFICE,
+} from "@/lib/company";
 
 export function Footer() {
   return (
@@ -99,9 +105,9 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-border flex flex-col gap-3 text-xs text-muted">
           <p className="leading-relaxed">
-            Owlka Ltd, a company registered in England and Wales (Company No.
-            17266868). Registered office: Singleton Court Business Park,
-            Wonastow Road, Monmouth, Monmouthshire, United Kingdom, NP25 5JA.
+            {COMPANY_NAME}, a company registered in {COMPANY_JURISDICTION}{" "}
+            (Company No. {COMPANY_NUMBER}). Registered office:{" "}
+            {REGISTERED_OFFICE}.
           </p>
           <div className="flex flex-col sm:flex-row justify-between gap-4">
             <p>© {new Date().getFullYear()} Owlka Ltd. All rights reserved.</p>

@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import {
+  COMPANY_NAME,
+  COMPANY_NUMBER,
+  COMPANY_JURISDICTION,
+  REGISTERED_OFFICE,
+} from "@/lib/company";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -281,10 +287,10 @@ export default function PrivacyPage() {
               </h2>
               <p>
                 The data controller for the small amount of personal data
-                Owlka processes is Owlka Ltd, a company registered in England
-                and Wales (Company No. 17266868), registered office Singleton
-                Court Business Park, Wonastow Road, Monmouth, Monmouthshire,
-                United Kingdom, NP25 5JA. For data-protection enquiries, email{" "}
+                Owlka processes is {COMPANY_NAME}, a company registered in{" "}
+                {COMPANY_JURISDICTION} (Company No. {COMPANY_NUMBER}),
+                registered office {REGISTERED_OFFICE}. For data-protection
+                enquiries, email{" "}
                 <Link
                   href="mailto:support@owlka.com"
                   className="text-mark hover:underline"

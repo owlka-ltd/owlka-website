@@ -5,6 +5,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import {
+  COMPANY_NAME,
+  COMPANY_NUMBER,
+  COMPANY_JURISDICTION,
+  REGISTERED_OFFICE,
+} from "@/lib/company";
 
 // Canonical Terms of Service text. Single source of truth.
 // The iOS app bundles an identical copy of this file at
@@ -194,6 +200,16 @@ export default async function TermsPage() {
           <div className="prose prose-neutral max-w-none">
             {renderMarkdown(text)}
           </div>
+          <section className="mt-12 border-t border-border pt-8">
+            <h2 className="text-2xl font-semibold mb-4">
+              Registered company details
+            </h2>
+            <p className="leading-relaxed text-text/85">
+              {COMPANY_NAME} is a company registered in {COMPANY_JURISDICTION}{" "}
+              (Company No. {COMPANY_NUMBER}). Registered office:{" "}
+              {REGISTERED_OFFICE}.
+            </p>
+          </section>
           <p className="mt-16 text-xs text-muted">
             Document integrity (SHA-256): <code>{sha256.slice(0, 16)}…</code>
             . The Owlka iPhone app bundles a byte-identical copy of this

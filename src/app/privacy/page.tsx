@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Owlka handles your data. Plain English. Last updated 2026-05-19.",
+    "How Owlka handles your data. Plain English. Last updated 2026-06-09.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -29,7 +29,7 @@ export default function PrivacyPage() {
             <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
               Privacy Policy
             </h1>
-            <p className="mt-4 text-sm text-muted">Last updated 2026-05-19</p>
+            <p className="mt-4 text-sm text-muted">Last updated 2026-06-09</p>
           </header>
 
           <div className="prose prose-neutral max-w-none text-text/85 leading-relaxed space-y-8">

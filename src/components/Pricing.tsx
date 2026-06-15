@@ -12,10 +12,11 @@ export function Pricing() {
             Pricing
           </p>
           <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
-            Free during the beta.
+            Free to download.
           </h2>
           <p className="mt-5 text-lg text-text/70 leading-relaxed">
-            Owlka is in public beta. No charge, no card on file.
+            No charge for Owlka, no card on file. You bring your own Claude plan
+            for the model.
           </p>
         </div>
 
@@ -28,7 +29,7 @@ export function Pricing() {
             className="relative p-8 sm:p-10 rounded-card border bg-mark text-surface border-mark shadow-2xl shadow-mark/20"
           >
             <span className="absolute -top-3 left-8 inline-flex h-6 px-3 items-center rounded-pill bg-surface text-mark text-[11px] font-semibold uppercase tracking-wider">
-              Public beta
+              Owlka
             </span>
 
             <h3 className="text-xl font-semibold text-surface">Owlka</h3>
@@ -37,17 +38,17 @@ export function Pricing() {
               <span className="text-5xl font-semibold tracking-tight text-surface">
                 Free
               </span>
-              <span className="text-sm text-surface/70">during the beta</span>
+              <span className="text-sm text-surface/70">to download</span>
             </div>
             <div className="mt-1 text-sm text-surface/70 space-y-1">
               <p>No card on file. No usage meter on you.</p>
             </div>
 
             <p className="mt-6 text-[15px] leading-relaxed text-surface/85">
-              The Owlka Mac app and the Owlka iPhone app, the encrypted
-              relay between them, and persistent on-device memory — all free
-              during the beta. Use your own Claude Pro or Max login on the
-              Mac for the underlying model.
+              The Owlka Mac app and the Owlka iPhone app, the encrypted relay
+              between them, and persistent on-device memory, all free to
+              download. Use your own Claude Pro or Max login on the Mac for the
+              underlying model.
             </p>
 
             <ul className="mt-8 space-y-3 text-sm text-surface/90">

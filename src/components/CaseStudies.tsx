@@ -75,7 +75,7 @@ const studies: Study[] = [
   },
   {
     tag: "Games",
-    title: "Dragon Maze — indie iOS game",
+    title: "Dragon Maze, an indie iOS game",
     body:
       "A parent and their young child built a tile-shifting maze game together. The child sketched the dragons; the parent asked Owlka for a game to wrap them in, with daily seeds, leaderboards, and Game Center sync. They designed, built, signed, and submitted it to TestFlight without ever opening Xcode.",
     metric: "Shipped a public beta in 11 evenings.",
@@ -102,8 +102,8 @@ export function CaseStudies() {
             Real products, shipped from a phone.
           </h2>
           <p className="mt-5 text-lg text-text/70 leading-relaxed">
-            Every one of these was designed, built, debugged and deployed with
-            Owlka. No laptop required.
+            Every one of these was built with Owlka by someone who is not a
+            developer. No laptop required.
           </p>
         </div>
 

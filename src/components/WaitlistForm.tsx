@@ -97,7 +97,7 @@ export function WaitlistForm() {
       }
       setStatus("success");
       setMessage(
-        "You're on the list. We'll email you the moment your invite is ready.",
+        "You're on the list. We'll email you when there is something worth your time.",
       );
       setInvalidField(null);
       setEmail("");
@@ -130,16 +130,16 @@ export function WaitlistForm() {
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-mark" />
             </span>
             <span className="uppercase text-mark tracking-wider">
-              Public beta
+              Stay in the loop
             </span>
           </div>
 
           <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
-            Get an invite to the beta.
+            Be first to hear what is new.
           </h2>
           <p className="mt-5 text-lg text-text/70 leading-relaxed max-w-xl mx-auto">
-            Owlka is in public beta. Drop your name and email and we&rsquo;ll
-            send your invite as soon as a slot opens.
+            Drop your name and email and we&rsquo;ll let you know when big new
+            features land. Owlka is free to download now.
           </p>
 
           {status === "success" ? (
@@ -253,7 +253,7 @@ export function WaitlistForm() {
                     disabled={status === "submitting"}
                     className="h-12 px-7 rounded-pill bg-mark text-surface text-base font-medium shadow-lg shadow-mark/25 hover:opacity-90 hover:shadow-xl hover:shadow-mark/35 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0 transition-all"
                   >
-                    {status === "submitting" ? "Sending..." : "Join waitlist"}
+                    {status === "submitting" ? "Sending..." : "Notify me"}
                   </button>
                 </div>
               </form>
@@ -272,7 +272,7 @@ export function WaitlistForm() {
           )}
 
           <p className="mt-8 text-xs text-muted">
-            No spam. One email when your invite is ready.
+            No spam. Just the occasional email when something matters.
           </p>
         </motion.div>
       </div>

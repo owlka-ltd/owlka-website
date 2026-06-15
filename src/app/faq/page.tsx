@@ -46,9 +46,9 @@ const SECTIONS: Section[] = [
         q: "What is Owlka?",
         a: (
           <>
-            Owlka is an iPhone app that lets you drive Claude Code running on
-            your own Mac. The Mac does the real work and the phone is the front
-            seat. The two talk to each other through an end-to-end encrypted
+            Owlka is an iPhone app that lets you drive Claude running on
+            your own Mac, no terminal and no coding background needed. The Mac
+            does the real work and the phone is the front seat. The two talk to each other through an end-to-end encrypted
             relay that we operate but cannot read. Your code, your terminal,
             and your project memory stay on your own machine. Want the longer
             version? See{" "}
@@ -245,9 +245,9 @@ const SECTIONS: Section[] = [
         q: "How much does Owlka cost?",
         a: (
           <>
-            Owlka is in public beta and is free to use. No card on file, no
-            charge, no usage meter on you. You do need your own Claude Pro or
-            Max subscription from Anthropic, which Owlka does not resell. See the{" "}
+            Owlka is free to download and use. No card on file, no charge, no
+            usage meter on you. You do need your own Claude Pro or Max
+            subscription from Anthropic, which Owlka does not resell. See the{" "}
             <Link
               href="/#pricing"
               className="underline hover:text-text transition-colors"

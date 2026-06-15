@@ -20,7 +20,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-4 text-sm text-text/70 leading-relaxed max-w-xs">
-              The full power of Claude Code. On your phone.
+              The power of Claude. In your pocket.
             </p>
           </div>
 
@@ -45,7 +45,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link href="/#waitlist" className="hover:text-text transition-colors">
-                    Waitlist
+                    Stay in the loop
                   </Link>
                 </li>
               </ul>

@@ -44,7 +44,7 @@ const STEPS: Step[] = [
     tag: "Setup",
     title: "Install Owlka for Mac",
     body:
-      "Download the signed Mac app from owlka.com/download. Drag it into Applications and launch it. Owlka launches the official Claude Code tools under your own Anthropic login and keeps your code, terminal, and project memory on your Mac.",
+      "Download the signed Mac app from owlka.com/download. Drag it into Applications and launch it. Owlka launches the official Claude tools under your own Anthropic login and keeps your code, terminal, and project memory on your Mac.",
   },
   {
     n: "2",
@@ -56,7 +56,7 @@ const STEPS: Step[] = [
   {
     n: "3",
     tag: "Setup",
-    title: "Use Claude Code anywhere",
+    title: "Use Claude anywhere",
     body:
       "Your phone is now a thin client for the Mac. Talk by voice or type, watch what Claude is doing live, approve a change, kick off a build, or pause it, all from the sofa. Pick up the same conversation on every paired phone.",
   },
@@ -81,7 +81,7 @@ const SECTIONS: Section[] = [
       {
         label: "Your Claude, on your Mac",
         value:
-          "Owlka runs on your Mac and launches the official Claude Code tools under your own Anthropic login. Your code, your memory, and your work stay on your own machine. Nothing about your project lives on our servers.",
+          "Owlka runs on your Mac and launches the official Claude tools under your own Anthropic login. Your code, your memory, and your work stay on your own machine. Nothing about your project lives on our servers.",
       },
       {
         label: "Your iPhone, your conversation",
@@ -153,7 +153,7 @@ export default function HowItWorksPage() {
               How it works
             </h1>
             <p className="mt-3 text-muted">
-              Last updated {LAST_UPDATED}. Owlka runs Claude Code on your Mac,
+              Last updated {LAST_UPDATED}. Owlka runs Claude on your Mac,
               talks to your iPhone through an encrypted middleman, and keeps
               the work on your own machine. Here is the whole thing, start to
               finish.
@@ -252,7 +252,7 @@ export default function HowItWorksPage() {
                   Claude has deep control of your Mac
                 </dt>
                 <dd className="text-muted leading-relaxed">
-                  Claude Code can run real commands on your Mac: it can
+                  Claude can run real commands on your Mac: it can
                   create, edit, and delete files and run programs. A
                   misunderstood instruction can damage your work, including
                   deleting files. You use Owlka at your own risk, so keep

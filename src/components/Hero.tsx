@@ -26,7 +26,7 @@ export function Hero() {
               </span>
               <span className="uppercase text-mark">New</span>
               <span className="text-text/50">·</span>
-              <span className="text-text/80">Works with Claude Code</span>
+              <span className="text-text/80">Powered by Claude</span>
             </motion.div>
 
             {/* H1 is the LCP element. Render it visible immediately (no
@@ -46,7 +46,7 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
               className="mt-6 max-w-xl mx-auto lg:mx-0 text-xl sm:text-2xl text-text/85 font-medium leading-snug"
             >
-              The full power of Claude Code, in your pocket.
+              The power of Claude, in your pocket.
             </motion.p>
 
             <motion.p
@@ -55,8 +55,7 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
               className="mt-3 max-w-xl mx-auto lg:mx-0 text-lg sm:text-xl text-text/75 leading-relaxed"
             >
-              Built so non-developers get production-grade development
-              capability.
+              Made easy and safer for people who are not developers.
             </motion.p>
 
             <motion.p
@@ -65,10 +64,9 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
               className="mt-7 max-w-xl mx-auto lg:mx-0 text-lg sm:text-xl text-text/70 leading-relaxed"
             >
-              Owlka gives you the full power of Claude Code on your phone. Build
-              websites, build apps, set up persistent monitoring, connect to
-              APIs and databases, do anything a developer could do, all from the
-              comfort of your sofa.
+              Owlka puts the power of Claude on your phone. Build websites, build
+              apps, set up monitors, connect your tools and data, get the thing
+              in your head actually built, all from the comfort of your sofa.
             </motion.p>
 
             <motion.p
@@ -77,9 +75,9 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
               className="mt-4 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg text-text/60 leading-relaxed"
             >
-              Wrapped in persistent cross-session memory, automated code
-              reviewers, and environment protection so you can&rsquo;t destroy
-              your laptop.
+              Wrapped in memory that lasts across sessions, automatic reviewers
+              that check the work, and guardrails that ask before anything risky
+              touches your Mac.
             </motion.p>
 
             <motion.div
@@ -123,7 +121,7 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.55 }}
               className="mt-4 text-sm text-muted text-center lg:text-left"
             >
-              Free during the public beta. Windows coming soon.
+              Free to download. Bring your own Claude plan. Windows coming soon.
             </motion.p>
 
             <motion.div

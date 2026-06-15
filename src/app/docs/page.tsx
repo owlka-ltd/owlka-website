@@ -4,9 +4,9 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Docs — Owlka",
+  title: "Docs",
   description:
-    "How Owlka works, getting started, and FAQ. Build with Claude Code from your phone.",
+    "How Owlka works, getting started, and FAQ. Build with Claude from your phone, no coding background needed.",
 };
 
 type Step = {
@@ -41,12 +41,12 @@ const steps: Step[] = [
   },
   {
     n: 2,
-    title: "Enable Claude Code on your account",
+    title: "Enable Claude on your account",
     body: (
       <>
-        Claude Code is Anthropic&rsquo;s coding-focused plan. Owlka runs on top
-        of your Claude Code subscription, so you need an active plan before you
-        can start a session. See{" "}
+        Owlka runs on top of your own Claude plan from Anthropic, so you need
+        an active Pro or Max subscription before you can start a session.
+        See{" "}
         <a
           href="https://www.anthropic.com/pricing"
           className="text-mark hover:underline"
@@ -55,7 +55,7 @@ const steps: Step[] = [
         >
           anthropic.com/pricing
         </a>{" "}
-        for current plans and pricing. Pro and Max both include Claude Code.
+        for current plans and pricing. Pro and Max both work with Owlka.
       </>
     ),
   },
@@ -89,7 +89,7 @@ const steps: Step[] = [
       <>
         You are in. Type a prompt, ask Claude to build something, and watch it
         work. Your session runs on Owlka&rsquo;s secure host and streams output
-        live to your phone. Close the app and reopen it later — the session is
+        live to your phone. Close the app and reopen it later, the session is
         still there.
       </>
     ),
@@ -107,8 +107,8 @@ const faqs: FAQ[] = [
     a: (
       <>
         No. You do not need an Apple Developer account, an AWS account, or any
-        cloud provider. You do need an Anthropic account with Claude Code
-        enabled — that is the one prerequisite.
+        cloud provider. You do need an Anthropic account with Claude
+        enabled, that is the one prerequisite.
       </>
     ),
   },
@@ -140,7 +140,7 @@ const faqs: FAQ[] = [
     q: "How do I cancel?",
     a: (
       <>
-        Owlka is free during the public beta — no subscription to cancel on
+        Owlka is free to download, so there is no subscription to cancel on
         the Owlka side today. Your Anthropic plan is separate and you cancel
         it from the Anthropic billing portal at{" "}
         <a
@@ -191,16 +191,17 @@ export default function DocsPage() {
                 What is Owlka?
               </h2>
               <p className="mb-4">
-                Owlka gives you the full power of Claude Code on your phone.
-                Build websites, build apps, set up persistent monitoring,
-                connect to APIs and databases, do anything a developer could do,
-                all from the comfort of your sofa.
+                Owlka puts the power of Claude in your pocket. Build websites,
+                build apps, set up monitors, connect your tools and data, and
+                build the thing in your head, all from the comfort of your
+                sofa, no coding background needed.
               </p>
               <p>
-                Wrapped in a powerful app with persistent cross-session memory,
-                automated code reviewers, environment protection so you cannot
-                destroy your laptop, and so much more. Owlka turns a phone into
-                a real engineering surface, not a chat toy.
+                Wrapped in a powerful app with memory that lasts across
+                sessions, automatic reviewers that check the work, guardrails
+                that ask before anything risky touches your Mac, and much more.
+                Owlka turns a phone into a place where real things get built,
+                not a chat toy.
               </p>
             </section>
 
@@ -212,23 +213,23 @@ export default function DocsPage() {
                 Owlka is{" "}
                 <span className="font-medium">bring-your-own Anthropic</span>.
                 You already have, or will sign up for, an Anthropic account with
-                Claude Code enabled. You authorise Owlka against that account
+                Claude enabled. You authorise Owlka against that account
                 using Anthropic&rsquo;s OAuth flow, the same kind of
                 &ldquo;Sign in with&rdquo; screen you have seen for Google or
                 GitHub.
               </p>
               <p className="mb-4">
-                Your Claude Code subscription is what powers your sessions.
+                Your Claude subscription is what powers your sessions.
                 Owlka never sees your API key. Anthropic issues an OAuth token
                 to your device, the token sits in the iOS Keychain, and every
-                model call is billed to your Anthropic account — not ours. If
+                model call is billed to your Anthropic account, not ours. If
                 you cancel your Anthropic plan, your sessions stop. Owlka
-                itself is free during the public beta.
+                itself is free to download.
               </p>
               <p>
                 This means Apple&rsquo;s reviewer, your IT team, and you all
-                have a clear answer to &ldquo;where does the AI bill go?&rdquo;
-                — straight to Anthropic, on your account, under your control.
+                have a clear answer to &ldquo;where does the AI bill go?&rdquo;,
+                straight to Anthropic, on your account, under your control.
               </p>
             </section>
 
@@ -268,15 +269,16 @@ export default function DocsPage() {
                 What can I do with Owlka?
               </h2>
               <p className="mb-4 text-text/80">
-                Anything a developer could do. A non-exhaustive list:
+                The kind of things you used to need a developer for. A
+                non-exhaustive list:
               </p>
               <ul className="list-disc pl-6 space-y-2 text-text/80">
                 <li>Build websites.</li>
                 <li>Build apps.</li>
-                <li>Set up persistent monitoring.</li>
-                <li>Connect to APIs and databases.</li>
+                <li>Set up monitors that watch things for you.</li>
+                <li>Connect your tools and data.</li>
                 <li>
-                  Do anything a developer could do, all from the comfort of your
+                  Build the thing in your head, all from the comfort of your
                   sofa.
                 </li>
               </ul>
@@ -287,9 +289,9 @@ export default function DocsPage() {
                 What you get
               </h2>
               <p className="mb-6 text-text/80">
-                Owlka is in public beta and is free to use. No card on file,
-                no charge, no usage meter on you. You bring your own Claude
-                Pro or Max subscription from Anthropic.
+                Owlka is free to download and use. No card on file, no charge,
+                no usage meter on you. You bring your own Claude Pro or Max
+                subscription from Anthropic.
               </p>
               <ul className="list-disc pl-6 space-y-2 text-text/80">
                 <li>Owlka iPhone app, paired with your Mac.</li>

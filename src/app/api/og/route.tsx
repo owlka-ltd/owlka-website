@@ -15,7 +15,7 @@ export async function GET(request: NextRequest): Promise<ImageResponse> {
   const { searchParams } = new URL(request.url);
   const title = (searchParams.get("title") ?? "Owlka").slice(0, 120);
   const subtitle = (
-    searchParams.get("subtitle") ?? "Claude Code on your phone"
+    searchParams.get("subtitle") ?? "The power of Claude in your pocket"
   ).slice(0, 180);
 
   return new ImageResponse(

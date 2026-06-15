@@ -69,10 +69,10 @@ const faqs: FAQ[] = [
     q: "How much does Owlka cost?",
     a: (
       <>
-        Owlka is in <span className="font-medium">public beta</span> and
-        is free to use. No card on file, no charge, no usage meter on
-        you. You also need your own Claude Pro or Max subscription from
-        Anthropic, which Owlka does not resell.
+        Owlka is <span className="font-medium">free to download</span> and
+        use. No card on file, no charge, no usage meter on you. You also
+        need your own Claude Pro or Max subscription from Anthropic, which
+        Owlka does not resell.
       </>
     ),
   },
@@ -80,9 +80,9 @@ const faqs: FAQ[] = [
     q: "How do I cancel?",
     a: (
       <>
-        Owlka is free during the public beta — there is no Owlka
-        subscription to cancel today. If you also want to remove the app,
-        delete it from your iPhone home screen.
+        Owlka is free to download, so there is no Owlka subscription to
+        cancel today. If you also want to remove the app, delete it from
+        your iPhone home screen.
       </>
     ),
   },

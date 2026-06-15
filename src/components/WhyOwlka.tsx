@@ -67,12 +67,12 @@ export function WhyOwlka() {
             Why Owlka
           </p>
           <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
-            Claude Code, with the rough edges sanded off.
+            The power of Claude, with the rough edges sanded off.
           </h2>
           <p className="mt-5 text-lg text-text/70 leading-relaxed">
             Claude on its own is brilliant and a bit reckless. Owlka adds the
-            memory, the reviewers, and the safety net that let you trust it
-            with real work.
+            memory, the reviewers, and the safety net that let you hand it real
+            work without needing to be a developer.
           </p>
         </div>
 

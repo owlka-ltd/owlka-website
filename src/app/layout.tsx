@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   authors: [{ name: SITE_NAME }],
   keywords: [
     "Owlka",
-    "Claude Code",
+    "Claude",
     "AI coding",
     "mobile development",
     "iOS",

@@ -10,20 +10,20 @@ import { WINDOWS_AVAILABLE, WINDOWS_EXE_URL, MAC_DMG_URL } from "@/lib/flags";
 export const metadata: Metadata = {
   title: "Download Owlka for Mac",
   description:
-    "Download Owlka for Mac. The Owlka desktop app runs on your Mac, talks to Claude Code under your own login, and pairs with the Owlka iPhone app. Free during the public beta.",
+    "Download Owlka for Mac. The Owlka desktop app runs on your Mac, talks to Claude under your own login, and pairs with the Owlka iPhone app. Free to download.",
   alternates: { canonical: "/download" },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
     url: `${SITE_URL}/download`,
     title: "Download Owlka for Mac",
-    description: "Owlka for Mac. Free during the public beta.",
+    description: "Owlka for Mac. Free to download.",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: "Download Owlka for Mac",
-    description: "Owlka for Mac. Free during the public beta.",
+    description: "Owlka for Mac. Free to download.",
   },
 };
 
@@ -56,8 +56,8 @@ export default function DownloadPage() {
             </a>
             <p className="text-sm text-muted max-w-md text-center">
               Universal binary, signed and notarised by Apple. Runs on
-              Apple Silicon and Intel Macs (macOS 13+). Free during
-              the public beta. Linux to follow. Questions
+              Apple Silicon and Intel Macs (macOS 13+). Free to
+              download. Linux to follow. Questions
               to{" "}
               <a
                 href="mailto:support@owlka.com"
@@ -92,7 +92,7 @@ export default function DownloadPage() {
             )}
             <p className="text-sm text-muted max-w-md text-center">
               {WINDOWS_AVAILABLE
-                ? "64-bit Windows 10 and 11. Free during the public beta."
+                ? "64-bit Windows 10 and 11. Free to download."
                 : "Windows is coming later. We'll announce it here when the build is ready."}
             </p>
           </div>
@@ -108,7 +108,7 @@ export default function DownloadPage() {
             <Step
               n="2"
               title="Sign in to Claude"
-              body="Owlka uses the official Claude Code app on your Mac. The app walks you through it if you don't have it yet."
+              body="Owlka uses the official Claude app on your Mac. The app walks you through it if you don't have it yet."
             />
             <Step
               n="3"
@@ -123,7 +123,7 @@ export default function DownloadPage() {
             </h2>
             <ul className="mt-5 space-y-3 text-text/80">
               <Feature>
-                A real Claude Code session running on your Mac, under your own
+                A real Claude session running on your Mac, under your own
                 login.
               </Feature>
               <Feature>

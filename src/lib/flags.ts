@@ -13,4 +13,4 @@ export const WINDOWS_EXE_URL = "https://download.owlka.com/windows/latest.exe";
 // stays masked by the cached old dmg until the query string changes. Bump this
 // to the new build's sha8 on every release so the button serves the new file
 // immediately. See memory dmg-publish-gotchas.
-export const MAC_DMG_URL = "https://download.owlka.com/mac/latest.dmg?v=358fff87";
+export const MAC_DMG_URL = "https://download.owlka.com/mac/latest.dmg?v=9711e83d";

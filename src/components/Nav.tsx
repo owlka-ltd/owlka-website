@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { OwlkaMark } from "./OwlkaMark";
+import { MAC_DMG_URL } from "@/lib/flags";
 
 export function Nav() {
   return (
@@ -33,12 +34,17 @@ export function Nav() {
           </Link>
         </nav>
 
-        <Link
-          href="/download"
+        {/* Nav CTA downloads the Mac dmg directly (matching the middle button
+            on /download). A plain <Link href="/download"> was a no-op when the
+            user was already on /download, so it appeared "dead". Mac-first
+            launch => link the nav CTA straight to the Mac dmg. */}
+        <a
+          href={MAC_DMG_URL}
+          download
           className="inline-flex items-center h-9 px-4 rounded-pill bg-mark text-surface text-sm font-medium shadow-md shadow-mark/20 hover:shadow-lg hover:shadow-mark/30 hover:-translate-y-0.5 transition-all"
         >
           Download
-        </Link>
+        </a>
       </div>
     </header>
   );

@@ -18,4 +18,4 @@ export const WINDOWS_EXE_URL = "https://download.owlka.com/windows/latest.exe";
 // On every release, the publish pipeline (owlka-desktop scripts/sign-and-
 // notarise.sh) rewrites THIS constant to the just-published versioned URL and
 // pushes, so the button always points at the new build. New release => new URL.
-export const MAC_DMG_URL = "https://download.owlka.com/mac/owlka-0.1.0-4b85f3d.dmg";
+export const MAC_DMG_URL = "https://download.owlka.com/mac/owlka-0.1.0-e7fc9ad.dmg";

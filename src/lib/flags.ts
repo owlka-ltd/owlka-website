@@ -8,14 +8,20 @@
 // Until then, no surface may assert that a Windows app exists or is reachable.
 export const WINDOWS_AVAILABLE = false;
 export const WINDOWS_EXE_URL = "https://download.owlka.com/windows/latest.exe";
-// Immutable per-build download URL. The dmg filename itself carries the
-// version + git sha (owlka-<version>-<sha>.dmg), so the URL changes on every
-// release and never collides with a previously-cached file. download.owlka.com
-// sits behind Cloudflare with a ~4h browser TTL and the publish pipeline has no
-// purge rights; the old static `latest.dmg?v=...` scheme went stale because
-// Cloudflare kept re-serving the cached old (crashing) dmg even after the query
-// string changed. nginx serves /mac/owlka-*.dmg with Cache-Control: immutable.
-// On every release, the publish pipeline (owlka-desktop scripts/sign-and-
-// notarise.sh) rewrites THIS constant to the just-published versioned URL and
-// pushes, so the button always points at the new build. New release => new URL.
-export const MAC_DMG_URL = "https://download.owlka.com/mac/owlka-0.1.0-6a85f34.dmg";
+// Stable, always-current Mac download pointer. This URL never changes between
+// releases, which is the whole point: a browser- or CDN-cached /download page
+// can no longer hand a returning visitor an old versioned link (the Jun 2026
+// stale-install bug, where the cache moved from the artifact to the pointer).
+//
+// How freshness is guaranteed:
+//   1. On every release the publish pipeline (owlka-desktop scripts/sign-and-
+//      notarise.sh) atomically swaps /mac/latest.dmg to the newest signed dmg
+//      AND uploads an immutable per-build copy at /mac/owlka-<version>-<sha>.dmg.
+//   2. nginx serves latest.dmg with Cache-Control: no-cache, must-revalidate.
+//   3. The Cloudflare zone (only download.owlka.com is proxied) has Browser
+//      Cache TTL set to "Respect Existing Headers", so that no-cache reaches the
+//      client and the browser revalidates the pointer on every click.
+// The big immutable per-build files stay CDN-cached (Cache-Control: immutable),
+// so bandwidth is unaffected. The pipeline keeps this constant pointed at
+// latest.dmg and does NOT rewrite it per release.
+export const MAC_DMG_URL = "https://download.owlka.com/mac/latest.dmg";

@@ -73,6 +73,11 @@ export function Footer() {
                     Status
                   </Link>
                 </li>
+                <li>
+                  <Link href="/enterprise" className="hover:text-text transition-colors">
+                    For IT teams
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>

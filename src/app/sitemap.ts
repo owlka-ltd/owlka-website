@@ -11,6 +11,7 @@ const SECONDARY_ROUTES = [
   "/support",
   "/faq",
   "/docs",
+  "/enterprise",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

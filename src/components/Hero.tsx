@@ -38,6 +38,9 @@ export function Hero() {
               <span className="bg-gradient-to-r from-mark to-[#ff5e9d] bg-clip-text text-transparent">
                 in the world.
               </span>
+              <span className="ml-2 align-baseline text-2xl sm:text-3xl font-normal text-text/40">
+                (possibly)
+              </span>
             </h1>
 
             <motion.p

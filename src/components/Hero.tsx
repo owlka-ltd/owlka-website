@@ -38,6 +38,9 @@ export function Hero() {
               <span className="bg-gradient-to-r from-mark to-[#ff5e9d] bg-clip-text text-transparent">
                 in the world.
               </span>
+              <span className="ml-2 align-baseline text-2xl sm:text-3xl font-normal text-text/40">
+                (possibly)
+              </span>
             </h1>
 
             <motion.p
@@ -76,8 +79,8 @@ export function Hero() {
               className="mt-4 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg text-text/60 leading-relaxed"
             >
               Wrapped in memory that lasts across sessions, automatic reviewers
-              that check the work, and guardrails that ask before anything risky
-              touches your Mac.
+              that check the work, and guardrails that pause and ask, in plain
+              English, before risky actions touch your Mac.
             </motion.p>
 
             <motion.div
@@ -139,7 +142,7 @@ export function Hero() {
               </span>
               <span className="hidden sm:inline text-border">·</span>
               <span className="inline-flex items-center gap-1.5">
-                <Check /> Environment safe
+                <Check /> Asks before risky actions
               </span>
             </motion.div>
           </div>

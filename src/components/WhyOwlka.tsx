@@ -7,7 +7,7 @@ const features = [
     title: "Persistent cross-session memory",
     body:
       "Owlka remembers what you're building across days, weeks, and reinstalls. Memory lives on your Mac, not on our servers. Resume any project with one sentence.",
-    span: "md:col-span-2",
+    span: "",
     tone: "mark",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -31,28 +31,15 @@ const features = [
     ),
   },
   {
-    title: "Environment protection",
+    title: "Guardrails before risky actions",
     body:
-      "Anything that could damage your Mac stops and asks. You tap once on your phone to allow it. You cannot brick your machine by accident.",
+      "Risky actions pause and ask first, explained in plain English so you know what you're allowing before you tap. It's not foolproof, but it makes an accidental mess far less likely.",
     span: "",
     tone: "surface",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
         <path d="M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6l8-3z" strokeLinejoin="round" />
         <path d="m9 12 2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    title: "Owl mode for long jobs",
-    body:
-      "Hand Owlka a brief and walk away. It works overnight, posts a Live Activity to your lock screen when it's done, and only wakes you for decisions that need a human.",
-    span: "md:col-span-2",
-    tone: "accent",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <path d="M5 15c0-3 2-7 7-7s7 4 7 7M5 15l3-1M19 15l-3-1M9 19h6" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="12" cy="11" r="1.5" fill="currentColor" />
       </svg>
     ),
   },

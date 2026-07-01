@@ -138,7 +138,8 @@ export default function DownloadPage() {
                 lands.
               </Feature>
               <Feature>
-                Environment protection so you can&rsquo;t brick your machine.
+                Guardrails that pause on risky actions and ask first, in plain
+                English, so accidents are far less likely.
               </Feature>
             </ul>
           </div>

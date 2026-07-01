@@ -57,8 +57,7 @@ export function Pricing() {
                 "Owlka for iPhone (pair as many phones as you like)",
                 "Persistent cross-session memory on your Mac",
                 "Automated code reviewer",
-                "Environment protection",
-                "Owl mode for overnight work",
+                "Guardrails that ask before risky actions",
               ].map((f) => (
                 <li key={f} className="flex gap-2.5 items-start">
                   <span

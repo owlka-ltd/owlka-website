@@ -58,7 +58,6 @@ export function Pricing() {
                 "Persistent cross-session memory on your Mac",
                 "Automated code reviewer",
                 "Guardrails that ask before risky actions",
-                "Owl mode for overnight work",
               ].map((f) => (
                 <li key={f} className="flex gap-2.5 items-start">
                   <span

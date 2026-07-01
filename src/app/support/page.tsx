@@ -54,10 +54,11 @@ const faqs: FAQ[] = [
       <>
         Owlka has two modes you can switch between in Settings.{" "}
         <span className="font-medium">Owl Claude</span> is the default. It
-        adds a safety layer: a four-tier permission classifier that asks
-        you before letting Claude run anything irreversible, a kill
+        adds a safety layer: a permission classifier that pauses on
+        risky and irreversible actions and asks you first, a kill
         switch, plain-English decision prompts, and the rest of the Owlka
-        shell. <span className="font-medium">Raw Claude</span> is a
+        shell. It reduces the chance of a bad action slipping through, but
+        it does not catch everything, so keep an eye on what you approve. <span className="font-medium">Raw Claude</span> is a
         direct passthrough to the Claude tools on your desktop with the
         safety layer switched off. Raw is for power users who want every
         keystroke to land verbatim; turning it on shows a confirmation

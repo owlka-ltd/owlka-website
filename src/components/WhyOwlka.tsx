@@ -31,9 +31,9 @@ const features = [
     ),
   },
   {
-    title: "Environment protection",
+    title: "Guardrails before risky actions",
     body:
-      "Anything that could damage your Mac stops and asks. You tap once on your phone to allow it. You cannot brick your machine by accident.",
+      "Risky actions pause and ask first, explained in plain English so you know what you're allowing before you tap. It's not foolproof, but it makes an accidental mess far less likely.",
     span: "",
     tone: "surface",
     icon: (

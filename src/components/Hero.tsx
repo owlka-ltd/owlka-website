@@ -26,7 +26,7 @@ export function Hero() {
               </span>
               <span className="uppercase text-mark">New</span>
               <span className="text-text/50">·</span>
-              <span className="text-text/80">Powered by Claude</span>
+              <span className="text-text/80">Works with Claude Code</span>
             </motion.div>
 
             {/* H1 is the LCP element. Render it visible immediately (no

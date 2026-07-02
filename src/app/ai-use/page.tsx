@@ -4,7 +4,7 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 
-const LAST_UPDATED = "2026-05-29";
+const LAST_UPDATED = "2026-07-03";
 
 export const metadata: Metadata = {
   title: "AI Use",

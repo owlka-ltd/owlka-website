@@ -4,7 +4,7 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 
-const LAST_UPDATED = "2026-05-29";
+const LAST_UPDATED = "2026-07-03";
 
 export const metadata: Metadata = {
   title: "AI Use",
@@ -184,8 +184,8 @@ export default function AIUsePage() {
               AI Use
             </h1>
             <p className="mt-3 text-muted">
-              Last updated {LAST_UPDATED}. Owlka is powered by Claude, an AI
-              model. This page explains, in plain English, what that means
+              Last updated {LAST_UPDATED}. Owlka works with Claude Code, an
+              AI coding agent. This page explains, in plain English, what that means
               for you: where the AI can get things wrong, and how much
               control it has over your Mac. Please read it before you start.
             </p>

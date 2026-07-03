@@ -85,7 +85,7 @@ function GovernorsScreen() {
 
       <rect x="22" y="252" width="176" height="100" rx="14" fill="#FFE8F1" />
       <text x="34" y="274" fill="#FF2D7A" fontSize="8" fontWeight="700">INSPECTOR Q</text>
-      <text x="34" y="290" fill="#1A1A1F" fontSize="9" fontWeight="600">How do you know it's working?</text>
+      <text x="34" y="290" fill="#1A1A1F" fontSize="9" fontWeight="600">How do you know it&apos;s working?</text>
       <rect x="34" y="302" width="152" height="36" rx="8" fill="#FFFFFF" />
       <text x="42" y="316" fill="#1A1A1F" fontSize="7">Evidence chain: data → action</text>
       <text x="42" y="328" fill="#1A1A1F" fontSize="7">→ outcome · 3 governors saw</text>
@@ -159,7 +159,7 @@ function BgtScreen() {
       <rect x="22" y="320" width="176" height="84" rx="14" fill="#FFE8F1" />
       <text x="34" y="340" fill="#FF2D7A" fontSize="8" fontWeight="700">FAMILY GROUP CHAT</text>
       <rect x="34" y="352" width="152" height="40" rx="10" fill="#FFFFFF" />
-      <text x="44" y="368" fill="#1A1A1F" fontSize="8">"Date locked · 16 Jan"</text>
+      <text x="44" y="368" fill="#1A1A1F" fontSize="8">&quot;Date locked · 16 Jan&quot;</text>
       <text x="44" y="382" fill="#98989D" fontSize="7">Sent · 1 min ago · 5 read</text>
     </g>
   );

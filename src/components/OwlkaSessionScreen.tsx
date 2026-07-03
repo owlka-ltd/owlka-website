@@ -88,7 +88,7 @@ export function OwlkaSessionScreen() {
             </div>
             <div className="mt-[0.8cqw] text-[2.4cqw] leading-[1.35] text-[#1A1A1F]/70">
               Real people will receive these in the next few minutes.
-              Once they're sent, they can't be pulled back.
+              Once they&apos;re sent, they can&apos;t be pulled back.
             </div>
             <div className="mt-[1.8cqw] flex items-stretch gap-[1.4cqw]">
               <button className="flex-1 h-[7cqw] rounded-[1.6cqw] bg-[#FFD9B8] text-[#1A1A1F] text-[2.7cqw] font-bold flex items-center justify-center">

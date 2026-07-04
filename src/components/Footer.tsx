@@ -43,11 +43,6 @@ export function Footer() {
                     Examples
                   </Link>
                 </li>
-                <li>
-                  <Link href="/#waitlist" className="hover:text-text transition-colors">
-                    Stay in the loop
-                  </Link>
-                </li>
               </ul>
             </div>
             <div>

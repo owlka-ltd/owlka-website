@@ -168,85 +168,10 @@ export function Hero() {
                 <OwlkaSessionScreen />
               </DeviceFrame>
             </div>
-
-            <FloatingCard
-              className="absolute top-[6%] -left-2 sm:-left-12 scale-90 sm:scale-100 origin-left"
-              delay={0.9}
-            >
-              <span className="flex h-2 w-2 rounded-full bg-mark animate-pulse-dot" />
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-mark">
-                Memory
-              </span>
-              <span className="text-xs font-medium text-text/80">
-                47 sessions
-              </span>
-            </FloatingCard>
-
-            <FloatingCard
-              className="absolute bottom-[16%] -right-2 sm:-right-10 scale-90 sm:scale-100 origin-right"
-              delay={1.1}
-            >
-              <svg
-                viewBox="0 0 16 16"
-                className="w-3.5 h-3.5 text-green-600"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.4"
-                aria-hidden
-              >
-                <path d="M3 8.5l3 3 7-7" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-green-700">
-                Reviewer
-              </span>
-              <span className="text-xs font-medium text-text/80">APPROVE</span>
-            </FloatingCard>
-
-            <FloatingCard
-              className="absolute top-[44%] -left-3 sm:-left-16 scale-90 sm:scale-100 origin-left"
-              delay={1.3}
-            >
-              <svg
-                viewBox="0 0 16 16"
-                className="w-3.5 h-3.5 text-mark"
-                fill="currentColor"
-                aria-hidden
-              >
-                <path d="M8 1.5a4 4 0 0 0-4 4v3.5l-1.5 2v1h11v-1l-1.5-2V5.5a4 4 0 0 0-4-4Z" />
-                <path d="M6 13h4a2 2 0 0 1-4 0Z" />
-              </svg>
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-mark">
-                Live
-              </span>
-              <span className="text-xs font-medium text-text/80">
-                Build green
-              </span>
-            </FloatingCard>
           </motion.div>
         </div>
       </div>
     </section>
-  );
-}
-
-function FloatingCard({
-  children,
-  className = "",
-  delay = 0,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  delay?: number;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 12, scale: 0.9 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
-      className={`inline-flex items-center gap-2 h-9 px-3.5 rounded-pill bg-surface/95 backdrop-blur-md border border-border shadow-xl shadow-black/5 ${className}`}
-    >
-      {children}
-    </motion.div>
   );
 }
 

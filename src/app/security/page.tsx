@@ -76,7 +76,7 @@ const SECTIONS: Section[] = [
       {
         label: "Library",
         value:
-          "TweetNaCl, an open-source implementation of the NaCl cryptography library. The desktop and iPhone apps use the standard public-key authenticated encryption primitive (crypto_box) for every sealed packet.",
+          "Apple's CryptoKit on iPhone, and the audited x25519-dalek, chacha20poly1305, and hkdf Rust crates on the desktop. Both sides implement the same authenticated public-key sealed-box scheme, byte for byte, for every sealed packet.",
       },
       {
         label: "Key exchange",
@@ -86,7 +86,7 @@ const SECTIONS: Section[] = [
       {
         label: "Bulk encryption",
         value:
-          "XSalsa20 stream cipher with a 192-bit random nonce per packet. Nonces are never reused for a given key pair.",
+          "ChaCha20-Poly1305 authenticated encryption with a fresh 96-bit random nonce per packet. Nonces are never reused for a given key.",
       },
       {
         label: "Integrity",

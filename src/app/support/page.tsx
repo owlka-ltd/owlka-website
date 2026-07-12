@@ -175,7 +175,7 @@ export default function SupportPage() {
     <>
       <Nav />
       <main className="bg-bg">
-        <section className="mx-auto max-w-3xl px-6 pt-32 pb-24 sm:pt-40 sm:pb-32">
+        <section className="mx-auto max-w-3xl px-6 pt-16 pb-24 sm:pt-20 sm:pb-32">
           <header className="mb-12">
             <p className="text-sm font-medium text-mark uppercase tracking-wider mb-4">
               Support

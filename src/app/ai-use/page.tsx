@@ -172,7 +172,7 @@ export default function AIUsePage() {
     <>
       <Nav />
       <main className="min-h-screen bg-bg text-text">
-        <div className="mx-auto max-w-3xl px-6 pt-32 pb-24 sm:pt-40 sm:pb-32">
+        <div className="mx-auto max-w-3xl px-6 pt-16 pb-24 sm:pt-20 sm:pb-32">
           <header className="mb-10">
             <Link
               href="/"

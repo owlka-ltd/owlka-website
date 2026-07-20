@@ -1,12 +1,13 @@
 // Single source of truth for platform availability.
 //
-// Day-1 is Mac-only (HARD product rule: no Windows claims until the Windows
-// build actually ships and is hosted). To enable Windows everywhere at once:
-//   1. host the signed .exe at WINDOWS_EXE_URL,
-//   2. flip WINDOWS_AVAILABLE to true,
-//   3. update the Mac-only copy on /security, /privacy, /support, /terms.
-// Until then, no surface may assert that a Windows app exists or is reachable.
-export const WINDOWS_AVAILABLE = false;
+// Windows shipped as a BETA on 2026-07-20 (0.1.57): the .exe is hosted and
+// reachable at WINDOWS_EXE_URL, so WINDOWS_AVAILABLE is true. The Windows build
+// is code-signed (Azure Trusted Signing, "Owlka ltd", Microsoft-timestamped),
+// so there is no SmartScreen "unknown publisher" warning. The download surface
+// still labels it "Beta" because Windows support is new and less battle-tested;
+// the Mac build stays the stable, signed default. When Windows leaves beta,
+// drop the beta labelling.
+export const WINDOWS_AVAILABLE = true;
 export const WINDOWS_EXE_URL = "https://download.owlka.com/windows/latest.exe";
 // Stable, always-current Mac download pointer. This URL never changes between
 // releases, which is the whole point: a browser- or CDN-cached /download page

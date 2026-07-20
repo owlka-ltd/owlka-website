@@ -124,7 +124,7 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.55 }}
               className="mt-4 text-sm text-muted text-center lg:text-left"
             >
-              Free to download. Bring your own Claude plan. Windows coming soon.
+              Free to download. Bring your own Claude plan. Mac, plus Windows in beta.
             </motion.p>
 
             <motion.div

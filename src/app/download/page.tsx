@@ -4,10 +4,9 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { PlatformDownloads } from "@/components/PlatformDownloads";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
-import { WINDOWS_AVAILABLE } from "@/lib/flags";
 // Windows availability + URLs are the single source of truth in @/lib/flags.
-// Windows is a hosted BETA (unsigned); the Mac build is the stable, signed
-// default. The download buttons themselves live in the PlatformDownloads client
+// Windows is a code-signed BETA; the Mac build is the stable, signed default.
+// The download buttons themselves live in the PlatformDownloads client
 // component so we can auto-highlight the visitor's OS without hiding either one.
 
 export const metadata: Metadata = {
@@ -50,8 +49,6 @@ export default function DownloadPage() {
           </p>
 
           <PlatformDownloads />
-
-          {WINDOWS_AVAILABLE && <WindowsSmartScreenNote />}
 
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
             <Step
@@ -154,48 +151,4 @@ function Feature({ children }: { children: React.ReactNode }) {
   );
 }
 
-function WindowsSmartScreenNote() {
-  return (
-    <div
-      className="mt-8 mx-auto max-w-xl rounded-card border border-border bg-surface p-6 text-left"
-      data-testid="windows-smartscreen-note"
-    >
-      <h2 className="text-base font-semibold tracking-tight">
-        A note about the Windows warning
-      </h2>
-      <p className="mt-3 text-sm text-text/75 leading-relaxed">
-        The Windows version is not code-signed yet, so the first time you
-        run it Windows SmartScreen shows a blue{" "}
-        <span className="font-medium text-text">
-          &ldquo;Windows protected your PC&rdquo;
-        </span>{" "}
-        screen. That is expected, and the app is safe. To open it:
-      </p>
-      <ol className="mt-4 space-y-2 text-sm text-text/75 leading-relaxed list-decimal pl-5">
-        <li>
-          Click{" "}
-          <span className="font-medium text-text">More info</span> on the
-          warning.
-        </li>
-        <li>
-          Click{" "}
-          <span className="font-medium text-text">Run anyway</span>.
-        </li>
-      </ol>
-      <p className="mt-4 text-sm text-text/75 leading-relaxed">
-        It is the same one-time step you take for any new app from a smaller
-        publisher. We are working on a Windows signature so this warning goes
-        away; until then we would rather tell you the truth than dress it up.
-        The same approach is on our{" "}
-        <Link
-          href="/security"
-          className="text-mark hover:underline underline-offset-4"
-        >
-          security page
-        </Link>
-        .
-      </p>
-    </div>
-  );
-}
 

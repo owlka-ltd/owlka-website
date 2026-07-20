@@ -60,7 +60,7 @@ export function PlatformDownloads() {
         </p>
       </div>
 
-      {/* Windows: beta, unsigned */}
+      {/* Windows: beta, code-signed */}
       <div className="mt-10 flex flex-col items-center gap-3">
         <a
           href={WINDOWS_EXE_URL}
@@ -82,9 +82,8 @@ export function PlatformDownloads() {
           {windowsRecommended ? (
             <span className="font-medium text-mark">Recommended for your PC. </span>
           ) : null}
-          Windows support is new, so you may see a Windows SmartScreen
-          &ldquo;unknown publisher&rdquo; warning on first run. It is expected,
-          and the app is safe. 64-bit Windows 10 and 11. Free to download.
+          Beta. Windows support is new. Signed and ready for 64-bit Windows 10
+          and 11. Free to download.
         </p>
       </div>
     </>

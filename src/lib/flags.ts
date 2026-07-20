@@ -2,11 +2,11 @@
 //
 // Windows shipped as a BETA on 2026-07-20 (0.1.57): the .exe is hosted and
 // reachable at WINDOWS_EXE_URL, so WINDOWS_AVAILABLE is true. The Windows build
-// is NOT code-signed yet, so the download surface labels it "Beta" and warns
-// about the first-run SmartScreen "unknown publisher" prompt (see the
-// WindowsSmartScreenNote on /download). The Mac build stays the stable, signed
-// default. When Windows code-signing lands, drop the beta labelling and the
-// SmartScreen note.
+// is code-signed (Azure Trusted Signing, "Owlka ltd", Microsoft-timestamped),
+// so there is no SmartScreen "unknown publisher" warning. The download surface
+// still labels it "Beta" because Windows support is new and less battle-tested;
+// the Mac build stays the stable, signed default. When Windows leaves beta,
+// drop the beta labelling.
 export const WINDOWS_AVAILABLE = true;
 export const WINDOWS_EXE_URL = "https://download.owlka.com/windows/latest.exe";
 // Stable, always-current Mac download pointer. This URL never changes between

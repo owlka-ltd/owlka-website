@@ -222,9 +222,9 @@ const SECTIONS: Section[] = [
           <>
             A Mac desktop app, a Windows desktop app (beta), and an iPhone app.
             The Mac app is signed and notarised by Apple and runs on Apple
-            Silicon and Intel Macs. The Windows build is new and not code-signed
-            yet, so it is labelled beta and you may see a first-run SmartScreen
-            warning. The iPhone app comes from the App Store. Grab either desktop
+            Silicon and Intel Macs. The Windows build is code-signed and runs on
+            64-bit Windows 10 and 11; it is labelled beta because Windows support
+            is new. The iPhone app comes from the App Store. Grab either desktop
             build on the{" "}
             <Link
               href="/download"

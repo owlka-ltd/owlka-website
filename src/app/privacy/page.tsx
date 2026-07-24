@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Owlka handles your data. Plain English. Last updated 2026-07-23.",
+    "How Owlka handles your data. Plain English. Last updated 2026-07-25.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -29,7 +29,7 @@ export default function PrivacyPage() {
             <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
               Privacy Policy
             </h1>
-            <p className="mt-4 text-sm text-muted">Last updated 2026-07-23</p>
+            <p className="mt-4 text-sm text-muted">Last updated 2026-07-25</p>
           </header>
 
           <div className="prose prose-neutral max-w-none text-text/85 leading-relaxed space-y-8">
@@ -38,9 +38,10 @@ export default function PrivacyPage() {
                 The short version
               </h2>
               <p>
-                Owlka is a desktop app for your Mac and a companion app for
-                your iPhone. Your conversations, code, and memory live on your
-                own desktop. The two apps talk through an encrypted relay that
+                Owlka is a desktop app for your Mac or Windows PC and a
+                companion app for your iPhone. Your conversations, code, and
+                memory live on your own desktop. The two apps talk through an
+                encrypted relay that
                 we cannot read. We do not sell or share your data. We do not
                 run advertising trackers. We do not use anything you build to
                 train any model.
@@ -86,16 +87,19 @@ export default function PrivacyPage() {
                   not derived from your name or your Apple ID.
                 </li>
                 <li>
-                  <strong>Usage analytics, optional and off by default in
-                  the App Store app.</strong> Owlka can record which screens
-                  and features you use (for example that the chat screen was
-                  opened), tagged with a random per-install identifier and the
-                  app version, so we can see which parts of the app people
-                  actually use. These events never contain your messages, your
-                  files, or your commands, only fixed screen and feature
-                  names. In the App Store build this is off unless you turn it
-                  on; in beta builds it may be on by default with a one-time
-                  notice and an off switch. You control it any time in Settings.
+                  <strong>Usage analytics. Off by default in the App Store
+                  app. On by default in a TestFlight beta build.</strong> Owlka
+                  can record which screens and features you use (for example
+                  that the chat screen was opened), tagged with a random
+                  per-install identifier and the app version, so we can see
+                  which parts of the app people actually use. These events never
+                  contain your messages, your files, or your commands, only
+                  fixed screen and feature names. In the App Store build this is
+                  off until you switch it on. In a TestFlight beta build it
+                  starts switched on, and the first time you open the app we
+                  show a notice saying so with a one-tap off switch. Either way
+                  you control it any time in Settings, and we keep these events
+                  for 90 days.
                 </li>
                 <li>
                   <strong>Crash and diagnostic reports, opt-in and off by
@@ -207,14 +211,47 @@ export default function PrivacyPage() {
                 a separate boundary.
               </p>
               <p className="mt-4">
-                Memory, skills, connected accounts, and credentials are
-                partitioned by pair. The first person&rsquo;s phone sees only
-                their own memory and their own connected accounts. The second
-                person&rsquo;s phone sees only theirs. Switching active desktops
-                on the phone switches the whole context to the memory and
-                connectors for that pair. The desktop owner can grant cross-pair
-                sharing for a specific topic if they choose, but the default is
-                full isolation.
+                What Owlka keeps per pair: your Owlka memory, the accounts you
+                connect through Owlka and the credentials for them, and the
+                per-pair settings and skills Owlka stores itself. Each of those
+                is filed under the pair it belongs to. The first person&rsquo;s
+                phone sees their own memory and their own connected accounts.
+                The second person&rsquo;s phone sees theirs. Switching active
+                desktops on the phone switches that context to the pair you
+                switched to.
+              </p>
+              <p className="mt-4">
+                Two limits on that, stated plainly because they are how the
+                software actually behaves today.
+              </p>
+              <ul className="list-disc pl-6 space-y-2 mt-3">
+                <li>
+                  <strong>Anything that is simply a file on the desktop is
+                  shared by everyone who uses that desktop.</strong> Claude runs
+                  on your computer as your computer&rsquo;s user. Your projects,
+                  your code, your Claude configuration, and Claude&rsquo;s own
+                  memory and skills are ordinary files under your operating
+                  system account, so every pair on that machine reaches the same
+                  ones. Owlka partitions the records Owlka keeps. It does not,
+                  and cannot, partition your hard disk. If two people share a
+                  desktop, treat that desktop as shared.
+                </li>
+                <li>
+                  <strong>If Owlka cannot work out which pair a session belongs
+                  to, it falls back to a shared default rather than
+                  stopping.</strong> In that case the session reads and writes a
+                  single default memory store instead of a pair-specific one, so
+                  a session that lost its pair identity can see memory written
+                  by another session that also lost its pair identity on the same
+                  desktop. It fails open, not closed. We chose availability over
+                  isolation there, and you should know it.
+                </li>
+              </ul>
+              <p className="mt-4">
+                There is no cross-pair sharing control. Owlka has no setting that
+                lets a desktop owner grant one pair access to another
+                pair&rsquo;s memory or connected accounts, and no such feature
+                ships today.
               </p>
             </section>
 
@@ -242,10 +279,11 @@ export default function PrivacyPage() {
                   timing, plus sealed bytes it cannot decrypt.
                 </li>
                 <li>
-                  <strong>Our relay host.</strong> A small server that shuttles
-                  sealed packets between phones and desktops and stores the
-                  account data described above (name, email, device tokens,
-                  session tokens). It cannot read packet contents.
+                  <strong>Our relay host, Hetzner.</strong> A single small
+                  server rented from Hetzner Online GmbH in Nuremberg, Germany.
+                  It shuttles sealed packets between phones and desktops and
+                  stores the account data described above (name, email, device
+                  tokens, session tokens). It cannot read packet contents.
                 </li>
                 <li>
                   <strong>ElevenLabs.</strong> Only if you turn on Live voice.
@@ -265,6 +303,131 @@ export default function PrivacyPage() {
                   Claude traffic ever passes through us.
                 </li>
               </ul>
+            </section>
+
+            {/*
+              Retention periods below are the ones the relay actually enforces
+              in code, not aspirations. Verified 2026-07-25 against
+              owlka-relay: diag.rs (30 day diagnostics sweep), telemetry.rs
+              (90 day ui_events sweep), admin.rs (90 day events sweep,
+              OWLKA_METRICS_RETENTION_DAYS), logging.rs (14 day log rotation
+              sweep), parking.rs (31 day PARK_MAX_AGE).
+
+              Two rows are NOT enforced in code today and are a commitment
+              rather than a description: support correspondence, and the
+              inactivity clean-up of dormant accounts. Do not merge this page
+              without Tim confirming both periods.
+            */}
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">
+                How long we keep things
+              </h2>
+              <p>
+                We delete on a schedule rather than keeping things
+                indefinitely. The periods below are the ones our servers
+                actually enforce.
+              </p>
+              <ul className="list-disc pl-6 space-y-2 mt-3">
+                <li>
+                  <strong>Your account (name, email, device tokens, session
+                  token): for as long as you have an Owlka account.</strong> We
+                  do not put a timer on it because it is what keeps your account
+                  working. Delete your account and it goes, immediately and
+                  permanently. If an account has not connected for 24 months we
+                  will delete it and tell you first at the email address we hold.
+                </li>
+                <li>
+                  <strong>Device pairing identifiers: until you unpair or delete
+                  your account.</strong> Re-pairing generates new ones and the
+                  old ones stop being used.
+                </li>
+                <li>
+                  <strong>Usage analytics events: 90 days.</strong> Deleted
+                  automatically after that.
+                </li>
+                <li>
+                  <strong>Crash reports: we keep the most recent 500.</strong>{" "}
+                  Older ones are dropped as new ones arrive.
+                </li>
+                <li>
+                  <strong>Diagnostic log uploads: 30 days.</strong> This covers
+                  both the ones you send by switching on &ldquo;Share
+                  diagnostics&rdquo; and the one-off pulls you agree to when you
+                  report a problem.
+                </li>
+                <li>
+                  <strong>Connection metadata (device public-key identifiers, IP
+                  address, packet size, timing): 90 days.</strong>
+                </li>
+                <li>
+                  <strong>Relay server logs: 14 days.</strong>
+                </li>
+                <li>
+                  <strong>A sealed message waiting for a device that is offline:
+                  deleted as soon as it is delivered, and in any case after 31
+                  days.</strong> We cannot read it while it waits.
+                </li>
+                <li>
+                  <strong>Support correspondence: 24 months from the last
+                  message in the thread.</strong> We keep it that long so we can
+                  pick up a recurring problem, then delete it.
+                </li>
+              </ul>
+              <p className="mt-3">
+                Where the law requires us to keep something for longer, for
+                example a record we need to defend a legal claim, we keep only
+                that record and only for as long as the law requires.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">
+                Where your data is, and transfers out of the UK and EEA
+              </h2>
+              <p>
+                The account data and relay metadata described above are stored
+                on a single server in <strong>Nuremberg, Germany</strong>, rented
+                from Hetzner Online GmbH. Germany is in the European Economic
+                Area, so for readers in the EEA this is not an international
+                transfer at all, and for readers in the United Kingdom it is
+                covered by the UK&rsquo;s adequacy regulations for the EEA.
+              </p>
+              <p className="mt-4">
+                Three of the providers named above may process data outside the
+                UK and the EEA in the course of doing their job:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 mt-3">
+                <li>
+                  <strong>Cloudflare</strong> fronts the relay from whichever of
+                  its locations is nearest to you, so it may see your IP address
+                  and sealed bytes outside the UK and EEA.
+                </li>
+                <li>
+                  <strong>Apple</strong> operates Sign in with Apple and the push
+                  notification service from its own global infrastructure, which
+                  includes the United States.
+                </li>
+                <li>
+                  <strong>Vercel</strong> serves owlka.com, the public website,
+                  from a global network. This affects page requests only, not
+                  your account data or your messages.
+                </li>
+              </ul>
+              <p className="mt-4">
+                Where those transfers happen, they rely on the transfer
+                safeguards in each provider&rsquo;s own terms, which is an
+                adequacy decision where one applies and otherwise the UK
+                International Data Transfer Addendum or the EU Standard
+                Contractual Clauses. You can ask us for the detail by emailing{" "}
+                <Link
+                  href="mailto:support@owlka.com"
+                  className="text-mark hover:underline"
+                >
+                  support@owlka.com
+                </Link>
+                . Your conversations, code, and memory are not part of any of
+                this: they never leave your own devices.
+              </p>
             </section>
 
             <section>
@@ -348,14 +511,22 @@ export default function PrivacyPage() {
                 <li>
                   <strong>Legitimate interests.</strong> Processing relay
                   metadata to keep the relay working and to detect abuse, and
-                  handling support correspondence you send us.
+                  handling support correspondence you send us. Also the usage
+                  analytics that a TestFlight beta build starts with switched
+                  on, described in the next bullet.
                 </li>
                 <li>
-                  <strong>Consent.</strong> Usage analytics and
-                  crash/diagnostics reporting are processed only if you switch
-                  them on (analytics is off by default in the App Store app;
-                  diagnostics is off by default everywhere). You can switch them
-                  off again at any time in Settings.
+                  <strong>Consent.</strong> Crash and diagnostics reporting is
+                  off everywhere until you switch it on, and is processed only
+                  on your consent. Usage analytics is off by default in the App
+                  Store app and is likewise processed only on your consent
+                  there. We will not claim consent where we do not have it: a
+                  TestFlight beta build starts with usage analytics switched on,
+                  so for beta testers who have not switched it off we are
+                  relying on our legitimate interest in finding out whether a
+                  pre-release build works, not on consent. You are told at first
+                  run and can switch it off in Settings at any time, and you can
+                  object to that processing by emailing us.
                 </li>
                 <li>
                   <strong>Legal obligation.</strong> Where we are required to

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { IPhoneAppNote } from "@/components/IPhoneAppLink";
 
 export const metadata: Metadata = {
   title: "Support",
@@ -20,8 +21,8 @@ const faqs: FAQ[] = [
     q: "How do I pair my iPhone with a desktop?",
     a: (
       <>
-        Install the Owlka desktop app on your Mac and the
-        Owlka iPhone app from the App Store. On the desktop app, click{" "}
+        Install the Owlka desktop app on your Mac or PC, then get the phone
+        app. <IPhoneAppNote /> On the desktop app, click{" "}
         <span className="font-medium">Pair a phone</span>. A one-time QR
         code appears. On the iPhone app, tap{" "}
         <span className="font-medium">Pair a new desktop</span> and scan
@@ -228,6 +229,12 @@ export default function SupportPage() {
                 <li>
                   <span className="font-semibold">Mac desktop:</span> macOS
                   12 (Monterey) or later, Apple Silicon or Intel.
+                </li>
+                <li>
+                  <span className="font-semibold">Windows desktop (beta):</span>{" "}
+                  64-bit Windows 10 or 11. The Windows build is code-signed. It
+                  does not auto-update yet, so you update it by downloading the
+                  current installer again.
                 </li>
                 <li>
                   <span className="font-semibold">Claude subscription:</span>{" "}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { IPhoneAppNote } from "@/components/IPhoneAppLink";
 
 export const metadata: Metadata = {
   title: "Docs",
@@ -64,9 +65,9 @@ const steps: Step[] = [
     title: "Open Owlka and tap Connect Anthropic account",
     body: (
       <>
-        Install Owlka from the App Store, open it, and on the first-run screen
-        tap <span className="font-medium">Connect Anthropic account</span>.
-        Owlka will hand off to Safari to start the OAuth flow.
+        <IPhoneAppNote /> Install it, open it, and on the first-run screen tap{" "}
+        <span className="font-medium">Connect Anthropic account</span>. Owlka
+        will hand off to Safari to start the OAuth flow.
       </>
     ),
   },

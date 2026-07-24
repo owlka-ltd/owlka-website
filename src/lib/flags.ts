@@ -26,3 +26,26 @@ export const WINDOWS_EXE_URL = "https://download.owlka.com/windows/latest.exe";
 // so bandwidth is unaffected. The pipeline keeps this constant pointed at
 // latest.dmg and does NOT rewrite it per release.
 export const MAC_DMG_URL = "https://download.owlka.com/mac/latest.dmg";
+
+// The Owlka iPhone app is NOT on the App Store yet.
+//
+// Verified 2026-07-25: `itunes.apple.com/lookup?bundleId=com.owlkaltd.app`
+// returns zero results in both the GB and US storefronts, and an App Store
+// search for "owlka" returns nothing of ours. The app ships to testers through
+// TestFlight. Until 2026-07-25 six pages told visitors to "install from the App
+// Store" and not one of them carried a link, because there is nothing to link
+// to. That is worse than a missing link: it is an instruction the visitor
+// cannot follow.
+//
+// TO GO LIVE, two lines: set IOS_APP_STORE_URL to the real listing URL and flip
+// IOS_APP_STORE_AVAILABLE to true. Every page that talks about getting the
+// iPhone app renders <IPhoneAppNote> / <IPhoneAppCta> from
+// src/components/IPhoneAppLink.tsx, which read these two constants, so no page
+// copy needs touching. Do NOT guess or construct the URL before Apple has
+// issued the listing: a dead App Store link on the download page is a
+// conversion hole that looks like a working button.
+//
+// Typed `boolean` rather than left as the literal `false` so the "available"
+// branches type-check and stay compiled while the flag is off.
+export const IOS_APP_STORE_AVAILABLE: boolean = false;
+export const IOS_APP_STORE_URL: string | null = null;

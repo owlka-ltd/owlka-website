@@ -7,7 +7,7 @@ import { StatusBoard } from "@/components/StatusBoard";
 export const metadata: Metadata = {
   title: "Status",
   description:
-    "Live operational status for Owlka. The encrypted middleman, the Mac app downloads, and this website.",
+    "Live operational status for Owlka. The encrypted middleman, the Mac and Windows app downloads, and this website.",
   alternates: { canonical: "/status" },
 };
 

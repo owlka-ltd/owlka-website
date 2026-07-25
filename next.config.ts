@@ -1,5 +1,42 @@
 import type { NextConfig } from "next";
 
+// Baseline security headers for every route.
+//
+// Why: until 2026-07-25 this site sent none at all. owlka.com is a download
+// page. Anything that can be framed can have a convincing fake "Download for
+// Mac" button positioned over the real one while the address bar still reads
+// owlka.com, and the visitor has no way to tell. frame-ancestors plus
+// X-Frame-Options closes that. The rest are cheap and have no downside here.
+//
+// Deliberately NOT set: a full Content-Security-Policy with script-src. Next's
+// App Router injects inline bootstrap scripts, so a real script-src needs
+// per-request nonces through middleware. That is a separate change with real
+// breakage risk, and shipping a broken CSP is worse than shipping none. This
+// CSP carries frame-ancestors only, which restricts nothing else and cannot
+// break a page. X-Frame-Options is the legacy twin, kept for older browsers
+// that ignore frame-ancestors.
+const SECURITY_HEADERS = [
+  { key: "Content-Security-Policy", value: "frame-ancestors 'none'" },
+  { key: "X-Frame-Options", value: "DENY" },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  {
+    key: "Permissions-Policy",
+    // The marketing site needs none of these. Denying them means an injected
+    // third-party frame or script cannot silently reach for them either.
+    value:
+      "accelerometer=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), usb=(), xr-spatial-tracking=()",
+  },
+  {
+    key: "Strict-Transport-Security",
+    // Vercel already sends HSTS. Pinned here so the guarantee survives a
+    // platform default changing under us. No preload directive: preload is an
+    // effectively irreversible commitment for the whole apex and every
+    // subdomain, and that is Tim's call, not a config default.
+    value: "max-age=63072000; includeSubDomains",
+  },
+];
+
 const nextConfig: NextConfig = {
   // Defense in depth for the Mac download flow. The download button points at a
   // STABLE pointer URL (see src/lib/flags.ts MAC_DMG_URL), so cached HTML is no
@@ -9,6 +46,12 @@ const nextConfig: NextConfig = {
   // future default change cannot reintroduce a stale-link window.
   async headers() {
     return [
+      {
+        // Every route, including /api/*. Header rules are additive in Next, so
+        // the Cache-Control entries below still apply on top of these.
+        source: "/:path*",
+        headers: SECURITY_HEADERS,
+      },
       {
         source: "/download",
         headers: [

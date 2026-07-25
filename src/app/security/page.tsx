@@ -43,7 +43,7 @@ const SECTIONS: Section[] = [
     id: "shape",
     title: "The shape of the product",
     intro:
-      "Owlka is a Mac desktop app and an iPhone app. The desktop app does the real work; the iPhone app is the front seat. The two talk to each other through an encrypted relay that we operate but cannot read.",
+      "Owlka is a desktop app for Mac and Windows plus an iPhone app. The desktop app does the real work; the iPhone app is the front seat. The two talk to each other through an encrypted relay that we operate but cannot read.",
     rows: [
       {
         label: "Your code stays on your desktop",
@@ -155,7 +155,7 @@ const SECTIONS: Section[] = [
     id: "downloads",
     title: "The desktop download",
     intro:
-      "The Mac app is signed and notarised by Apple before it ever reaches you. Your Mac checks the signature on first launch and refuses to run a tampered build.",
+      "Owlka ships a Mac app and a Windows app (beta). Both are code-signed before they ever reach you, and your computer checks the signature before it will run the build.",
     rows: [
       {
         label: "Mac code signing",
@@ -163,9 +163,19 @@ const SECTIONS: Section[] = [
           "The .dmg you download is signed with our Apple Developer certificate and notarised by Apple. macOS Gatekeeper checks both before opening it.",
       },
       {
+        label: "Windows code signing",
+        value:
+          "The .exe you download is code-signed in the name of Owlka Ltd and timestamped, so Windows does not show an unknown-publisher warning. Windows support is still labelled beta because it is new.",
+      },
+      {
         label: "Auto-update (Mac)",
         value:
           "Mac updates are downloaded over HTTPS and the Apple signature is checked again before the new build replaces the old one. An update with a broken or missing signature is refused.",
+      },
+      {
+        label: "Auto-update (Windows): not yet",
+        value:
+          "The Windows beta does not auto-update. It will not fetch a new build and it will not prompt you, so a Windows install stays on the version you first downloaded until you replace it yourself. To update, download the current installer from the download page and run it over the top. We will say so in the app once Windows auto-update ships.",
       },
       {
         label: "What runs locally",

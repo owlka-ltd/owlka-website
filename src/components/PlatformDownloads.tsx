@@ -2,44 +2,77 @@
 
 import { useSyncExternalStore } from "react";
 import { MAC_DMG_URL, WINDOWS_EXE_URL } from "@/lib/flags";
+import {
+  detectOS,
+  isMobileOS,
+  serverSnapshot,
+  subscribeToNothing,
+  type DetectedOS,
+} from "@/lib/os";
+import { IPhoneAppCta, IPhoneAppNote } from "./IPhoneAppLink";
 
 // Both download buttons live here so we can auto-highlight the visitor's OS
 // after hydration without hiding either platform. Mac stays the visual primary
 // (stable, signed) and Windows is the secondary beta. Detection runs client-side
 // only, so the server render is stable and there is no hydration mismatch: the
 // "recommended for your device" hint and highlight ring are added post-mount.
-
-type DetectedOS = "mac" | "windows" | null;
-
-function detectOS(): DetectedOS {
-  if (typeof navigator === "undefined") return null;
-  const ua = navigator.userAgent || "";
-  const platform = navigator.platform || "";
-  if (/Win/i.test(platform) || /Windows/i.test(ua)) return "windows";
-  if (/Mac/i.test(platform) || /Macintosh|Mac OS X/i.test(ua)) return "mac";
-  return null;
-}
-
-// Never-changing store: subscribe is a no-op, the client snapshot reads the OS
-// once and the server snapshot is null. useSyncExternalStore renders null on the
-// server and during hydration, then swaps to the client value after commit, so
-// there is no hydration mismatch and no setState-in-effect.
-const subscribe = () => () => {};
+//
+// Phone and tablet visitors get a different primary action. They cannot install
+// a desktop app at all, and before 2026-07-25 iPhone Safari matched the Mac
+// test (its user agent contains "like Mac OS X") so they were told a 35 MB Mac
+// disk image was "recommended for your Mac". Detection now lives in
+// src/lib/os.ts and is unit-tested against real user-agent strings.
 
 export function PlatformDownloads() {
-  const os = useSyncExternalStore<DetectedOS>(subscribe, detectOS, () => null);
+  const os = useSyncExternalStore<DetectedOS>(
+    subscribeToNothing,
+    detectOS,
+    serverSnapshot,
+  );
 
   const macRecommended = os === "mac";
   const windowsRecommended = os === "windows";
+  const onMobile = isMobileOS(os);
 
   return (
     <>
+      {/* Phone and tablet: the desktop app is not installable here, so lead
+          with the phone app and explain that a computer is still needed. */}
+      {onMobile ? (
+        <div
+          className="mt-12 flex flex-col items-center gap-4"
+          data-testid="mobile-visitor-block"
+        >
+          {os === "ios" ? (
+            <IPhoneAppCta />
+          ) : (
+            <p className="text-lg font-medium">
+              Owlka does not have an Android app yet.
+            </p>
+          )}
+          <p className="text-sm text-muted max-w-md text-center">
+            {os === "ios" ? <IPhoneAppNote /> : null} Owlka also needs the
+            desktop app running on your own Mac or PC, which is where Claude
+            actually runs. Open this page on that computer to install it, or use
+            the links below.
+          </p>
+        </div>
+      ) : null}
+
       {/* Mac: stable, signed, the default */}
-      <div className="mt-12 flex flex-col items-center gap-4">
+      <div
+        className={`${onMobile ? "mt-10" : "mt-12"} flex flex-col items-center gap-4`}
+      >
         <a
           href={MAC_DMG_URL}
-          className={`inline-flex items-center justify-center gap-3 h-14 px-9 rounded-pill bg-mark text-bg text-lg font-semibold shadow-sm hover:opacity-95 transition ${
-            macRecommended ? "ring-2 ring-mark/40 ring-offset-2 ring-offset-bg" : ""
+          className={`inline-flex items-center justify-center gap-3 h-14 px-9 rounded-pill text-lg font-semibold shadow-sm hover:opacity-95 transition ${
+            onMobile
+              ? "border border-border bg-surface text-text"
+              : "bg-mark text-bg"
+          } ${
+            macRecommended
+              ? "ring-2 ring-mark/40 ring-offset-2 ring-offset-bg"
+              : ""
           }`}
           data-testid="download-mac-dmg"
         >
@@ -48,12 +81,17 @@ export function PlatformDownloads() {
         </a>
         <p className="text-sm text-muted max-w-md text-center">
           {macRecommended ? (
-            <span className="font-medium text-mark">Recommended for your Mac. </span>
+            <span className="font-medium text-mark">
+              Recommended for your Mac.{" "}
+            </span>
           ) : null}
           Universal binary, signed and notarised by Apple. Runs on Apple Silicon
           and Intel Macs (macOS 13+). Free to download. Linux to follow.
           Questions to{" "}
-          <a href="mailto:support@owlka.com" className="text-mark hover:underline">
+          <a
+            href="mailto:support@owlka.com"
+            className="text-mark hover:underline"
+          >
             support@owlka.com
           </a>
           .
@@ -65,7 +103,9 @@ export function PlatformDownloads() {
         <a
           href={WINDOWS_EXE_URL}
           className={`inline-flex items-center justify-center gap-3 h-14 px-9 rounded-pill border border-border bg-surface text-text text-lg font-semibold shadow-sm hover:opacity-95 transition ${
-            windowsRecommended ? "ring-2 ring-mark/40 ring-offset-2 ring-offset-bg" : ""
+            windowsRecommended
+              ? "ring-2 ring-mark/40 ring-offset-2 ring-offset-bg"
+              : ""
           }`}
           data-testid="download-windows-exe"
         >
@@ -80,12 +120,24 @@ export function PlatformDownloads() {
         </span>
         <p className="text-sm text-muted max-w-md text-center">
           {windowsRecommended ? (
-            <span className="font-medium text-mark">Recommended for your PC. </span>
+            <span className="font-medium text-mark">
+              Recommended for your PC.{" "}
+            </span>
           ) : null}
           Beta. Windows support is new. Signed and ready for 64-bit Windows 10
           and 11. Free to download.
         </p>
       </div>
+
+      {/* Desktop visitors still need to know where the phone app comes from. */}
+      {onMobile ? null : (
+        <p
+          className="mt-10 text-sm text-muted max-w-md mx-auto text-center"
+          data-testid="iphone-app-note"
+        >
+          <IPhoneAppNote />
+        </p>
+      )}
     </>
   );
 }

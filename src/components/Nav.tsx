@@ -1,10 +1,35 @@
 "use client";
 
+import { useSyncExternalStore } from "react";
 import Link from "next/link";
 import { OwlkaMark } from "./OwlkaMark";
-import { MAC_DMG_URL } from "@/lib/flags";
+import { MAC_DMG_URL, WINDOWS_EXE_URL } from "@/lib/flags";
+import {
+  detectOS,
+  serverSnapshot,
+  subscribeToNothing,
+  type DetectedOS,
+} from "@/lib/os";
+
+// What the header CTA points at, given the visitor's OS. Resolved after
+// hydration; the server render and first paint always use the /download page,
+// which is correct for everybody.
+function ctaTarget(os: DetectedOS): { href: string; download: boolean } {
+  if (os === "mac") return { href: MAC_DMG_URL, download: true };
+  if (os === "windows") return { href: WINDOWS_EXE_URL, download: true };
+  // Phones, tablets, Linux and anything unrecognised go to the download page,
+  // which explains the options rather than pushing a file they cannot open.
+  return { href: "/download", download: false };
+}
 
 export function Nav() {
+  const os = useSyncExternalStore<DetectedOS>(
+    subscribeToNothing,
+    detectOS,
+    serverSnapshot,
+  );
+  const cta = ctaTarget(os);
+
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-xl bg-bg/75 border-b border-border/60">
       <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
@@ -34,14 +59,19 @@ export function Nav() {
           </Link>
         </nav>
 
-        {/* Nav CTA downloads the Mac dmg directly (matching the middle button
-            on /download). A plain <Link href="/download"> was a no-op when the
-            user was already on /download, so it appeared "dead". Mac-first
-            launch => link the nav CTA straight to the Mac dmg. */}
+        {/* Nav CTA is platform-aware. It used to hard-link the Mac dmg on every
+            page for every visitor, which was a Mac-first launch decision that
+            expired when Windows shipped on 2026-07-20: a Windows or iPhone
+            visitor tapping "Download" got a 35 MB Mac disk image they cannot
+            open. It also cannot go back to a plain <Link href="/download">,
+            because that was a no-op for anyone already on /download and so read
+            as a dead button. Resolution: give Mac and Windows visitors their own
+            artifact, and send everyone else to /download. */}
         <a
-          href={MAC_DMG_URL}
-          download
+          href={cta.href}
+          {...(cta.download ? { download: true } : {})}
           className="inline-flex items-center h-9 px-4 rounded-pill bg-mark text-surface text-sm font-medium shadow-md shadow-mark/20 hover:shadow-lg hover:shadow-mark/30 hover:-translate-y-0.5 transition-all"
+          data-testid="nav-download-cta"
         >
           Download
         </a>

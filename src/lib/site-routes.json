@@ -1,0 +1,16 @@
+{
+  "comment": "Every public page route the sitemap advertises, excluding '/' which is emitted separately with priority 1.0. Lives as JSON, not as a literal inside src/app/sitemap.ts, so src/lib/__tests__/sitemap.test.mjs can assert each entry has a real page on disk without compiling TypeScript. Adding a route here without adding src/app/<route>/page.tsx fails that test. On 2026-07-25 this list still advertised /pricing, which had 404'd live for some time, and omitted /download and /status.",
+  "routes": [
+    "/download",
+    "/how-it-works",
+    "/ai-use",
+    "/privacy",
+    "/security",
+    "/terms",
+    "/support",
+    "/faq",
+    "/docs",
+    "/enterprise",
+    "/status"
+  ]
+}

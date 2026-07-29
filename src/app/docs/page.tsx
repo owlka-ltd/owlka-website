@@ -292,7 +292,7 @@ export default function DocsPage() {
               </h2>
               <p className="mb-6 text-text/80">
                 Your first 30 days are free, with no payment details needed to
-                start. After that, Owlka is £4.99 per month or £50 per year,
+                start. After that, Owlka is £4.99 per month or £49.99 per year,
                 with every feature included. You bring your own Claude Pro or
                 Max subscription from Anthropic.
               </p>

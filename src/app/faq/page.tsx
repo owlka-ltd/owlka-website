@@ -249,8 +249,8 @@ const SECTIONS: Section[] = [
           <>
             Your first 30 days are free, and you do not need to enter any
             payment details to start, so nothing can charge you automatically
-            when the trial ends. After that, Owlka is £4.99 per month or £50
-            per year. There is one plan with every feature included, and one
+            when the trial ends. After that, Owlka is £4.99 per month or
+            £49.99 per year. There is one plan with every feature included, and one
             account covers two phones and two computers. Payment happens on
             this website, never inside the iPhone app; billing is not live
             yet, and once it is you will be able to cancel at any time. You do

@@ -73,7 +73,7 @@ const faqs: FAQ[] = [
       <>
         Your first 30 days are <span className="font-medium">free</span>,
         with no payment details needed to start. After that, Owlka is
-        £4.99 per month or £50 per year, with every feature included and
+        £4.99 per month or £49.99 per year, with every feature included and
         one account covering two phones and two computers. You also need
         your own Claude Pro or Max subscription from Anthropic, which
         Owlka does not resell.

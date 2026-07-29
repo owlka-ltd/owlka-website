@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { PromoVideoFigure } from "@/components/PromoVideo";
+import { PROMO_CARDS, PROMO_CONTROL } from "@/lib/media";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const LAST_UPDATED = "2026-05-29";
@@ -193,6 +195,15 @@ export default function HowItWorksPage() {
                 </li>
               ))}
             </ol>
+
+            {/* The stay-in-control promo: watching agents from the sofa,
+                pausing them with one tap, choosing how many reviewers check
+                the work. It acts out step 3. Click to play, with sound. */}
+            <PromoVideoFigure
+              clip={PROMO_CONTROL}
+              caption="Twenty seconds of step 3: watch, steer, and pause from wherever you are."
+              className="mt-10"
+            />
           </section>
 
           {SECTIONS.map((section) => (
@@ -261,7 +272,16 @@ export default function HowItWorksPage() {
               </div>
             </dl>
 
-            <p className="mt-3 text-sm text-muted leading-relaxed">
+            {/* The approval-card promo: a real plain-English card, approved
+                with one tap. It shows exactly the guardrail described
+                above. Click to play, with sound. */}
+            <PromoVideoFigure
+              clip={PROMO_CARDS}
+              caption="What an approval card looks like when Owlka pauses to ask first."
+              className="mt-10"
+            />
+
+            <p className="mt-6 text-sm text-muted leading-relaxed">
               The full version of both points is on the{" "}
               <Link
                 href="/ai-use"

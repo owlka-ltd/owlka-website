@@ -9,7 +9,7 @@ const LAST_UPDATED = "2026-07-29";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Owlka is free for your first 30 days, no payment details needed. After that it is £4.99 a month or £50 a year, with every feature included and one account covering two phones and two computers.",
+    "Owlka is free for your first 30 days, no payment details needed. After that it is £4.99 a month or £49.99 a year, with every feature included and one account covering two phones and two computers.",
   alternates: { canonical: "/pricing" },
   openGraph: {
     type: "article",
@@ -17,14 +17,14 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/pricing`,
     title: "Pricing",
     description:
-      "30 days free, no payment details needed. Then £4.99 a month or £50 a year. Every feature included, one account covers two phones and two computers.",
+      "30 days free, no payment details needed. Then £4.99 a month or £49.99 a year. Every feature included, one account covers two phones and two computers.",
     locale: "en_US",
   },
   twitter: {
     card: "summary",
     title: "Pricing",
     description:
-      "30 days free, no payment details needed. Then £4.99 a month or £50 a year. Every feature included.",
+      "30 days free, no payment details needed. Then £4.99 a month or £49.99 a year. Every feature included.",
   },
 };
 
@@ -57,7 +57,7 @@ export default function PricingPage() {
             <p className="mt-3 text-muted leading-relaxed">
               Last updated {LAST_UPDATED}. One plan, every feature. Your first
               30 days are free and you do not need to enter any payment details
-              to start. After that, Owlka is £4.99 a month or £50 a year.
+              to start. After that, Owlka is £4.99 a month or £49.99 a year.
             </p>
           </header>
 
@@ -85,7 +85,7 @@ export default function PricingPage() {
                 </p>
                 <div className="mt-3 flex items-baseline gap-2">
                   <span className="text-4xl font-semibold tracking-tight">
-                    £50
+                    £49.99
                   </span>
                   <span className="text-sm text-muted">per year</span>
                 </div>

@@ -40,7 +40,7 @@ export function Pricing() {
                 £4.99
               </span>
               <span className="text-sm text-surface/70">
-                per month, or £50 per year
+                per month, or £49.99 per year
               </span>
             </div>
             <div className="mt-1 text-sm text-surface/70 space-y-1">

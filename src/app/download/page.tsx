@@ -12,20 +12,20 @@ import { SITE_NAME, SITE_URL } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Download Owlka for Mac and Windows",
   description:
-    "Download Owlka for Mac or Windows (beta). The Owlka desktop app runs on your computer, talks to Claude under your own login, and pairs with the Owlka iPhone app. Free to download.",
+    "Download Owlka for Mac or Windows (beta). The Owlka desktop app runs on your computer, talks to Claude under your own login, and pairs with the Owlka iPhone app. Free for your first 30 days.",
   alternates: { canonical: "/download" },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
     url: `${SITE_URL}/download`,
     title: "Download Owlka for Mac and Windows",
-    description: "Owlka for Mac and Windows (beta). Free to download.",
+    description: "Owlka for Mac and Windows (beta). Free for your first 30 days.",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: "Download Owlka for Mac and Windows",
-    description: "Owlka for Mac and Windows (beta). Free to download.",
+    description: "Owlka for Mac and Windows (beta). Free for your first 30 days.",
   },
 };
 
@@ -64,7 +64,7 @@ export default function DownloadPage() {
             <Step
               n="3"
               title="Pair your phone"
-              body="Scan a one-time QR with the Owlka iPhone app. Pair as many phones as you like (family welcome)."
+              body="Scan a one-time QR with the Owlka iPhone app. One account covers two phones and two computers."
             />
           </div>
 

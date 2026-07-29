@@ -57,6 +57,9 @@ export function Nav() {
           <Link href="/security" className="hover:text-text transition-colors">
             Security
           </Link>
+          <Link href="/pricing" className="hover:text-text transition-colors">
+            Pricing
+          </Link>
         </nav>
 
         {/* Nav CTA is platform-aware. It used to hard-link the Mac dmg on every

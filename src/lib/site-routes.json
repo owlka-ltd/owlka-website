@@ -3,6 +3,7 @@
   "routes": [
     "/download",
     "/how-it-works",
+    "/pricing",
     "/ai-use",
     "/privacy",
     "/security",

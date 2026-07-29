@@ -12,11 +12,12 @@ export function Pricing() {
             Pricing
           </p>
           <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
-            Free to download.
+            30 days free. Then £4.99 a month.
           </h2>
           <p className="mt-5 text-lg text-text/70 leading-relaxed">
-            No charge for Owlka, no card on file. You bring your own Claude plan
-            for the model.
+            No payment details needed to start, so nothing can charge you when
+            the trial ends. One plan with every feature included, and one
+            account covers two phones and two computers.
           </p>
         </div>
 
@@ -36,26 +37,29 @@ export function Pricing() {
 
             <div className="mt-4 flex items-baseline gap-2">
               <span className="text-5xl font-semibold tracking-tight text-surface">
-                Free
+                £4.99
               </span>
-              <span className="text-sm text-surface/70">to download</span>
+              <span className="text-sm text-surface/70">
+                per month, or £50 per year
+              </span>
             </div>
             <div className="mt-1 text-sm text-surface/70 space-y-1">
-              <p>No card on file. No usage meter on you.</p>
+              <p>Your first 30 days are free. No card needed to start.</p>
             </div>
 
             <p className="mt-6 text-[15px] leading-relaxed text-surface/85">
-              The Owlka Mac app and the Owlka iPhone app, the encrypted relay
-              between them, and persistent on-device memory, all free to
-              download. Use your own Claude Pro or Max login on the Mac for the
-              underlying model.
+              One plan, everything included. The Owlka desktop app, the Owlka
+              iPhone app, the encrypted relay between them, and persistent
+              on-device memory. Use your own Claude Pro or Max login on your
+              computer for the underlying model.
             </p>
 
             <ul className="mt-8 space-y-3 text-sm text-surface/90">
               {[
-                "Owlka for Mac",
-                "Owlka for iPhone (pair as many phones as you like)",
-                "Persistent cross-session memory on your Mac",
+                "Owlka for Mac and Windows",
+                "Owlka for iPhone",
+                "One account covers two phones and two computers",
+                "Persistent cross-session memory on your computer",
                 "Automated code reviewer",
                 "Guardrails that ask before risky actions",
               ].map((f) => (
@@ -73,11 +77,15 @@ export function Pricing() {
               href="/download"
               className="mt-10 inline-flex w-full items-center justify-center h-11 px-5 rounded-pill text-sm font-medium transition bg-surface text-mark hover:opacity-90"
             >
-              Download for Mac
+              Start your free 30 days
             </Link>
 
             <p className="mt-4 text-xs text-surface/70 text-center">
-              You only need an Anthropic account for Claude itself.
+              Payment happens on this website, never inside the iPhone app.{" "}
+              <Link href="/pricing" className="underline hover:opacity-90">
+                Full pricing details
+              </Link>
+              .
             </p>
           </motion.div>
         </div>

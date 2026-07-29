@@ -141,8 +141,9 @@ const faqs: FAQ[] = [
     q: "How do I cancel?",
     a: (
       <>
-        Owlka is free to download, so there is no subscription to cancel on
-        the Owlka side today. Your Anthropic plan is separate and you cancel
+        Owlka billing is not live yet, so there is no subscription to cancel
+        on the Owlka side today; once billing arrives on the website you will
+        be able to cancel there at any time. Your Anthropic plan is separate and you cancel
         it from the Anthropic billing portal at{" "}
         <a
           href="https://console.anthropic.com"
@@ -225,7 +226,7 @@ export default function DocsPage() {
                 to your device, the token sits in the iOS Keychain, and every
                 model call is billed to your Anthropic account, not ours. If
                 you cancel your Anthropic plan, your sessions stop. Owlka
-                itself is free to download.
+                itself has its own price, separate from your Anthropic bill.
               </p>
               <p>
                 This means Apple&rsquo;s reviewer, your IT team, and you all
@@ -290,9 +291,10 @@ export default function DocsPage() {
                 What you get
               </h2>
               <p className="mb-6 text-text/80">
-                Owlka is free to download and use. No card on file, no charge,
-                no usage meter on you. You bring your own Claude Pro or Max
-                subscription from Anthropic.
+                Your first 30 days are free, with no payment details needed to
+                start. After that, Owlka is £4.99 per month or £50 per year,
+                with every feature included. You bring your own Claude Pro or
+                Max subscription from Anthropic.
               </p>
               <ul className="list-disc pl-6 space-y-2 text-text/80">
                 <li>Owlka iPhone app, paired with your Mac.</li>

@@ -6,7 +6,7 @@ import { SITE_NAME, SITE_URL } from "@/lib/seo";
 import { COMPANY_NAME } from "@/lib/company";
 import { IPhoneAppNote } from "@/components/IPhoneAppLink";
 
-const LAST_UPDATED = "2026-06-09";
+const LAST_UPDATED = "2026-07-29";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -247,16 +247,22 @@ const SECTIONS: Section[] = [
         q: "How much does Owlka cost?",
         a: (
           <>
-            Owlka is free to download and use. No card on file, no charge, no
-            usage meter on you. You do need your own Claude Pro or Max
-            subscription from Anthropic, which Owlka does not resell. See the{" "}
+            Your first 30 days are free, and you do not need to enter any
+            payment details to start, so nothing can charge you automatically
+            when the trial ends. After that, Owlka is £4.99 per month or £50
+            per year. There is one plan with every feature included, and one
+            account covers two phones and two computers. Payment happens on
+            this website, never inside the iPhone app; billing is not live
+            yet, and once it is you will be able to cancel at any time. You do
+            need your own Claude Pro or Max subscription from Anthropic, which
+            Owlka does not resell. See the{" "}
             <Link
-              href="/#pricing"
+              href="/pricing"
               className="underline hover:text-text transition-colors"
             >
-              pricing section
+              pricing page
             </Link>{" "}
-            for the current details.
+            for the full details.
           </>
         ),
       },
@@ -292,10 +298,10 @@ const SECTIONS: Section[] = [
             iPhone. In the desktop app, choose to pair a phone. A one-time QR
             code appears. In the iPhone app, choose to pair a new desktop and
             scan the code. The two devices exchange public keys directly, and
-            the code expires straight after. You can pair as many phones with a
-            Mac as you like, and one phone can pair with several Macs. Each pair
-            is partitioned, so one person&rsquo;s sessions are never visible to
-            another.
+            the code expires straight after. One account covers two phones and
+            two computers, and any of your phones can pair with any of your
+            computers. Each pair is partitioned, so one person&rsquo;s sessions
+            are never visible to another.
           </>
         ),
       },

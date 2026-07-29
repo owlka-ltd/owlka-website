@@ -2,9 +2,10 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { PROMO_HERO } from "@/lib/media";
 import { AuroraBackground } from "./AuroraBackground";
 import { DeviceFrame } from "./DeviceFrame";
-import { OwlkaSessionScreen } from "./OwlkaSessionScreen";
+import { PromoVideo } from "./PromoVideo";
 
 export function Hero() {
   return (
@@ -163,9 +164,15 @@ export function Hero() {
               }}
             />
 
+            {/* The one-minute hero promo, playing inside the phone frame.
+                It autoplays muted (autoplay with sound is banned sitewide);
+                native controls let the visitor unmute for the voiceover.
+                The clip is 9:16, so the frame's screen aspect matches it
+                exactly and the box is reserved before the video loads: no
+                layout shift. */}
             <div className="relative mx-auto max-w-[300px] sm:max-w-[330px] @container">
-              <DeviceFrame>
-                <OwlkaSessionScreen />
+              <DeviceFrame aspect="9 / 16">
+                <PromoVideo clip={PROMO_HERO} autoPlay />
               </DeviceFrame>
             </div>
           </motion.div>

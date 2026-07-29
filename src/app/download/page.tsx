@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { PlatformDownloads } from "@/components/PlatformDownloads";
+import { PromoVideoFigure } from "@/components/PromoVideo";
+import { PROMO_INSTALL } from "@/lib/media";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 // Windows availability + URLs are the single source of truth in @/lib/flags.
 // Windows is a code-signed BETA; the Mac build is the stable, signed default.
@@ -67,6 +69,15 @@ export default function DownloadPage() {
               body="Scan a one-time QR with the Owlka iPhone app. One account covers two phones and two computers."
             />
           </div>
+
+          {/* The install walkthrough promo: download, open, sign in to
+              Claude, then real work. Sits under the three steps it acts
+              out. Click to play, with sound. */}
+          <PromoVideoFigure
+            clip={PROMO_INSTALL}
+            caption="From download to real work in half a minute."
+            className="mt-12"
+          />
 
           <div className="mt-16 rounded-card border border-border bg-surface p-6 sm:p-8 text-left">
             <h2 className="text-xl font-semibold tracking-tight">

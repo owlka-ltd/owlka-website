@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { PromoVideoFigure } from "@/components/PromoVideo";
+import { PROMO_SECURITY } from "@/lib/media";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const LAST_UPDATED = "2026-05-18";
@@ -276,6 +278,15 @@ export default function SecurityPage() {
               the encrypted relay, and what we honestly cannot do.
             </p>
           </header>
+
+          {/* The security promo: E2EE between phone and desktop, memory that
+              stays on your own machine. Click to play, with sound; below the
+              header so it never delays the compliance content. */}
+          <PromoVideoFigure
+            clip={PROMO_SECURITY}
+            caption="Thirty seconds on how Owlka keeps your work on your own machine."
+            className="mb-12"
+          />
 
           <nav
             aria-label="On this page"

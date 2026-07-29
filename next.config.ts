@@ -22,10 +22,13 @@ const SECURITY_HEADERS = [
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   {
     key: "Permissions-Policy",
-    // The marketing site needs none of these. Denying them means an injected
-    // third-party frame or script cannot silently reach for them either.
+    // The marketing site needs none of these, with one exception: autoplay is
+    // allowed for SELF ONLY, because the homepage hero plays the (muted) promo
+    // video without a tap. `autoplay=()` would silently block it in every
+    // browser that honours the header. Everything else stays denied, so an
+    // injected third-party frame or script cannot silently reach for them.
     value:
-      "accelerometer=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), usb=(), xr-spatial-tracking=()",
+      "accelerometer=(), autoplay=(self), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), usb=(), xr-spatial-tracking=()",
   },
   {
     key: "Strict-Transport-Security",

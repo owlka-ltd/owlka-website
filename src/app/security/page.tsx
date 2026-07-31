@@ -219,9 +219,9 @@ const SECTIONS: Section[] = [
           "We can see that your phone and your desktop talked, when they talked, and how much data they exchanged. We cannot see what they said. If hiding even that metadata matters to you, an internet-based assistant is the wrong shape.",
       },
       {
-        label: "Anthropic sees what Claude sees",
+        label: "What you send to Claude goes to Anthropic, not to us",
         value:
-          "Claude itself runs under your own Anthropic account, on your desktop, talking to Anthropic directly. Whatever you type to Claude reaches Anthropic. Their privacy terms govern that traffic, not ours. Anthropic is not an Owlka sub-processor because the data never passes through us, and Owlka has no partnership with Anthropic.",
+          "Owlka is not in this path at all. Claude is Anthropic's software: the Owlka desktop app launches it on your own machine, under your own Anthropic account, and it connects to Anthropic directly. So everything you send to Claude reaches Anthropic, and Anthropic's privacy terms govern that traffic rather than ours. Anthropic is not an Owlka sub-processor, because none of your Claude traffic ever passes through us. Owlka has no partnership with Anthropic.",
       },
       {
         label: "No SOC 2 or ISO 27001 in Owlka's own name yet",

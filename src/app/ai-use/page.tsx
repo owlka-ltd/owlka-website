@@ -148,9 +148,9 @@ const SECTIONS: Section[] = [
           "Owlka does not train any model on your prompts, your code, or the work Claude produces for you. Your use of Claude itself is governed by your own agreement with Anthropic.",
       },
       {
-        label: "Anthropic sees what Claude sees",
+        label: "What you send to Claude goes to Anthropic, not to us",
         value:
-          "Claude runs under your own Anthropic account and talks to Anthropic directly. Whatever you send to Claude reaches Anthropic under their terms, not ours.",
+          "Owlka is not in this path. Claude is Anthropic's software, and it runs on your own machine under your own Anthropic account, so everything you send to Claude reaches Anthropic under Anthropic's terms rather than ours.",
       },
     ],
   },

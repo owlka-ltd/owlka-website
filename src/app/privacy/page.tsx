@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Owlka handles your data. Plain English. Last updated 2026-07-25.",
+    "How Owlka handles your data. Plain English. Last updated 2026-07-31.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -29,7 +29,7 @@ export default function PrivacyPage() {
             <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
               Privacy Policy
             </h1>
-            <p className="mt-4 text-sm text-muted">Last updated 2026-07-25</p>
+            <p className="mt-4 text-sm text-muted">Last updated 2026-07-31</p>
           </header>
 
           <div className="prose prose-neutral max-w-none text-text/85 leading-relaxed space-y-8">
@@ -87,19 +87,17 @@ export default function PrivacyPage() {
                   not derived from your name or your Apple ID.
                 </li>
                 <li>
-                  <strong>Usage analytics. Off by default in the App Store
-                  app. On by default in a TestFlight beta build.</strong> Owlka
-                  can record which screens and features you use (for example
-                  that the chat screen was opened), tagged with a random
-                  per-install identifier and the app version, so we can see
-                  which parts of the app people actually use. These events never
-                  contain your messages, your files, or your commands, only
-                  fixed screen and feature names. In the App Store build this is
-                  off until you switch it on. In a TestFlight beta build it
-                  starts switched on, and the first time you open the app we
-                  show a notice saying so with a one-tap off switch. Either way
-                  you control it any time in Settings, and we keep these events
-                  for 90 days.
+                  <strong>Usage analytics. On by default, in every version of
+                  the app.</strong> Owlka can record which screens and features
+                  you use (for example that the chat screen was opened), tagged
+                  with a random per-install identifier and the app version, so
+                  we can see which parts of the app people actually use. These
+                  events never contain your messages, your files, or your
+                  commands, only fixed screen and feature names. The first time
+                  you open the app we show a notice telling you this is on, with
+                  a one-tap off switch. You can change it at any time under More,
+                  then Account &amp; Subscription, and we keep these events for
+                  90 days.
                 </li>
                 <li>
                   <strong>Crash and diagnostic reports, opt-in and off by

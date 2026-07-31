@@ -229,25 +229,29 @@ export function Hero() {
               }}
             />
 
-            {/* The one-minute hero promo, playing inside the phone frame.
-                It autoplays muted (autoplay with sound is banned sitewide);
-                native controls let the visitor unmute for the voiceover.
-                The clip is 9:16, so the frame's screen aspect matches it
-                exactly and the box is reserved before the video loads: no
+            {/* The one-minute hero promo. It autoplays muted (autoplay with
+                sound is banned sitewide); native controls let the visitor
+                unmute for the voiceover. Either box carries its aspect ratio
+                up front, so the space is reserved before the video loads: no
                 layout shift.
 
-                DELIBERATELY still portrait while the four in-body placements
-                went 16:9 (2026-07-31). The h1 two columns left of here reads
-                "The most powerful iPhone app in the world" over "The power of
-                Claude, in your pocket" — a letterboxed landscape clip in a
-                phone bezel would argue with its own headline, and this column
-                is ~1fr of a 1.05fr/1fr grid, so 16:9 lands at roughly 330x186
-                next to a 5.25rem headline. Going wide here means restructuring
-                the hero, which is a homepage redesign, not a format swap. */}
-            <div className="relative mx-auto max-w-[300px] sm:max-w-[330px] @container">
+                Two containers, because the two shapes need genuinely
+                different chrome: below lg the 9:16 clip sits in the iPhone
+                bezel, which is the illustration of the headline beside it; at
+                lg and above the 16:9 clip fills the column in a plain card,
+                because a letterboxed clip inside a phone bezel would look like
+                a mistake. Only one of them ever downloads anything. Each
+                PromoVideo emits a single media-gated <source>, so the hidden
+                one has no matching source and fetches neither video nor
+                poster. The `lg` here is the same 1024px as WIDE_MEDIA in
+                @/lib/media, and it is also where this grid goes two-column. */}
+            <div className="relative mx-auto max-w-[300px] sm:max-w-[330px] @container lg:hidden">
               <DeviceFrame aspect="9 / 16">
-                <PromoVideo clip={PROMO_HERO} autoPlay />
+                <PromoVideo clip={PROMO_HERO} shape="portrait" autoPlay />
               </DeviceFrame>
+            </div>
+            <div className="relative hidden aspect-[16/9] overflow-hidden rounded-[24px] border border-border bg-surface shadow-[0_40px_80px_-30px_rgba(15,15,20,0.45)] lg:block">
+              <PromoVideo clip={PROMO_HERO} shape="wide" autoPlay />
             </div>
           </motion.div>
         </div>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { IOS_APP_STORE_AVAILABLE, WINDOWS_AVAILABLE } from "@/lib/flags";
+import { IOS_APP_STORE_AVAILABLE, IOS_APP_STORE_URL, WINDOWS_AVAILABLE } from "@/lib/flags";
 import { AppleMark, AppStoreBadge, WindowsMark } from "./PlatformMarks";
 
 // A compact "what does this run on" strip for the home page. Its whole job is
@@ -44,7 +44,11 @@ export function PlatformAvailability({ className = "" }: { className?: string })
           list is `w-max mx-auto` so the rows share one left edge and the marks
           line up in a column, instead of each row centring on its own width
           and leaving the logos ragged. */}
-      <ul className="mt-6 flex flex-col items-start w-max mx-auto sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:justify-center gap-x-10 gap-y-5">
+      {/* `max-w-full` clamps the `w-max` (width: max-content) list, which by
+          definition never wraps and never shrinks. It fits today, but nothing
+          stops a longer label pushing horizontal scroll onto the whole
+          document, and no test would catch it. */}
+      <ul className="mt-6 flex flex-col items-start w-max max-w-full mx-auto sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:justify-center gap-x-10 gap-y-5">
         <PlatformRow
           mark={<AppleMark className="w-6 h-6 shrink-0" />}
           name="macOS"
@@ -61,7 +65,14 @@ export function PlatformAvailability({ className = "" }: { className?: string })
           />
         ) : null}
 
-        {IOS_APP_STORE_AVAILABLE ? (
+        {/* Gate on BOTH constants, matching AppStoreBadge's own guard and
+            IPhoneAppLink. AppStoreBadge returns null unless the URL is set too,
+            so gating on the boolean alone renders an EMPTY <li>: the iPhone row
+            would vanish from the page instead of falling back to the TestFlight
+            row, and a screen reader would announce an empty list item. Going
+            live is documented as a two-line change, so a half-completed flip is
+            exactly the plausible operator error. */}
+        {IOS_APP_STORE_AVAILABLE && IOS_APP_STORE_URL ? (
           <li className="flex items-center" data-testid="platform-iphone">
             <AppStoreBadge />
           </li>

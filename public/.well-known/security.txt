@@ -1,0 +1,9 @@
+# Owlka Ltd security contact (RFC 9116).
+# If you have found a vulnerability in Owlka, please write to the address
+# below. Put "security" in the subject line so it is routed quickly.
+
+Contact: mailto:support@owlka.com
+Expires: 2027-08-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://owlka.com/.well-known/security.txt
+Policy: https://owlka.com/security#report

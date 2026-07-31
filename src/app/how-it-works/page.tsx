@@ -127,12 +127,12 @@ const SECTIONS: Section[] = [
   },
   {
     id: "speech",
-    title: "Speech stays on your phone",
+    title: "Talk instead of typing",
     rows: [
       {
         label: "Dictate, don't type",
         value:
-          "Press and hold to speak. Speech-to-text runs on your phone using Apple's on-device Speech framework. The audio never leaves your phone; only the transcribed text is sealed and sent to your Mac, exactly like a typed message.",
+          "Tap the microphone and speak. Owlka does not transcribe on the device: the recording goes to ElevenLabs, using an ElevenLabs key you add yourself on your Mac, and comes back as text. With no key added, the button is greyed out and nothing is recorded. The security page explains exactly where the audio travels.",
       },
     ],
   },
@@ -180,14 +180,17 @@ export default function HowItWorksPage() {
                     >
                       {step.n}
                     </span>
-                    <div>
+                    {/* min-w-0: without it this flex child cannot shrink below
+                        its min-content width, and the card overflowed the
+                        viewport by 23px at 320px with a 20px root font. */}
+                    <div className="min-w-0">
                       <p className="text-xs font-semibold uppercase tracking-wider text-mark">
                         {step.tag}
                       </p>
                       <h3 className="mt-1 text-lg font-semibold tracking-tight">
                         {step.title}
                       </h3>
-                      <p className="mt-2 text-muted leading-relaxed">
+                      <p className="mt-2 text-muted leading-relaxed break-words">
                         {step.body}
                       </p>
                     </div>

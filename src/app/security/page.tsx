@@ -6,7 +6,7 @@ import { PromoVideoFigure } from "@/components/PromoVideo";
 import { PROMO_SECURITY } from "@/lib/media";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 
-const LAST_UPDATED = "2026-05-18";
+const LAST_UPDATED = "2026-08-01";
 
 export const metadata: Metadata = {
   title: "Security",
@@ -106,7 +106,7 @@ const SECTIONS: Section[] = [
     id: "relay",
     title: "The content-blind relay, in plain English",
     intro:
-      "The relay is the only piece of Owlka infrastructure your devices talk to. Here is exactly what it does and does not do.",
+      "The relay is the piece of Owlka infrastructure your devices talk to while you work. Here is exactly what it does and does not do.",
     rows: [
       {
         label: "What it sees",
@@ -126,30 +126,50 @@ const SECTIONS: Section[] = [
       {
         label: "Where it runs",
         value:
-          "On a small server we operate, fronted by Cloudflare for DDoS protection and TLS. The server stores no decryption key.",
+          "On a small server we operate, reachable only through a Cloudflare tunnel. Cloudflare terminates TLS at relay.owlka.com and forwards the sealed traffic to the relay, so the connection from your device is protected by Cloudflare's certificate and the origin is not exposed directly. The server stores no decryption key.",
+      },
+      {
+        label: "The one other Owlka server",
+        value:
+          "The relay is not quite the only Owlka machine your desktop contacts. It also asks our download host, download.owlka.com, whether a newer version exists, once at startup and every six hours after that, and fetches the terminal software it needs there on first run. Those are plain file downloads. Nothing about your work is sent to make them.",
       },
     ],
   },
   {
     id: "speech",
-    title: "Speech stays on the device",
+    title: "The microphone, and where your voice goes",
     intro:
-      "When you dictate to Owlka, the audio never leaves your phone.",
+      "Owlka does not transcribe speech on your device. If you use Owlka's microphone button, your audio is sent to ElevenLabs, a third-party speech company, and transcribed there. That only happens if you have added your own ElevenLabs key, and the button does nothing until you do.",
     rows: [
       {
-        label: "On-device transcription",
+        label: "Nothing happens without a key you add yourself",
         value:
-          "Owlka uses Apple's on-device Speech framework. Your phone transcribes your voice locally and produces text. The audio recording is never sent to Apple, to Owlka, or to anyone else.",
+          "Owlka ships no ElevenLabs key and does not provide one. Until you paste your own ElevenLabs API key into Connectors on the desktop app, the microphone button stays greyed out, no recording is made, and your microphone is never opened. Delete the key and the feature switches off again.",
       },
       {
-        label: "Only the text travels",
+        label: "Where your audio actually travels",
         value:
-          "Once the transcript exists on your phone, it is sealed with your pair's keypair and sent to your desktop, exactly like a typed message. We see the same sealed bytes we would see for typed input.",
+          "From the iPhone app, the recording is sealed with your pair's keypair, sent to your own desktop, and your desktop passes it to ElevenLabs using your key. From the desktop app, the recording goes straight from your machine to ElevenLabs. Either way the request is billed to your own ElevenLabs account and governed by ElevenLabs' terms, not ours.",
+      },
+      {
+        label: "The spoken reply goes there too",
+        value:
+          "When Owlka reads a reply back to you out loud, the text of that reply is sent to ElevenLabs to be turned into speech. So it is not only your voice that reaches ElevenLabs; the text being read aloud does as well.",
+      },
+      {
+        label: "We never receive the recording",
+        value:
+          "Our relay carries the audio from your phone to your desktop as sealed bytes it cannot open, and the desktop app then talks to ElevenLabs directly. No recording and no transcript ever arrives on an Owlka server.",
+      },
+      {
+        label: "There is no on-device transcription",
+        value:
+          "Until August 2026 this page said Owlka transcribed your speech on your phone using Apple's Speech framework. That was wrong, and we have corrected it rather than leave it standing. Owlka does not transcribe on the device on any platform. If you want dictation that does not involve ElevenLabs, use your keyboard's own microphone key rather than Owlka's. That one is Apple's feature under Apple's terms, and we make no claim about where it sends your audio.",
       },
       {
         label: "Permission",
         value:
-          "iOS prompts you the first time you tap the microphone button. You can revoke microphone access at any time in Settings, Privacy and Security, Microphone.",
+          "Your device prompts you the first time Owlka opens the microphone. You can revoke microphone access at any time in your system settings, and you can disconnect ElevenLabs at any time in Connectors on the desktop app.",
       },
     ],
   },
@@ -172,7 +192,7 @@ const SECTIONS: Section[] = [
       {
         label: "Auto-update (Mac)",
         value:
-          "Mac updates are downloaded over HTTPS and the Apple signature is checked again before the new build replaces the old one. An update with a broken or missing signature is refused.",
+          "Mac updates are downloaded over HTTPS and their signature is checked before the new build replaces the old one. The signature checked at that moment is ours, not Apple's: every release is signed with an Owlka release key that is kept outside the app, and an update that does not verify against it is refused. Apple's own signature and notarisation ticket travel inside the app bundle, so what ends up installed is still the notarised build Apple approved.",
       },
       {
         label: "Auto-update (Windows)",
@@ -182,7 +202,7 @@ const SECTIONS: Section[] = [
       {
         label: "What runs locally",
         value:
-          "The Owlka desktop app, the Claude tools under your own Anthropic subscription, and a small local helper that maintains the encrypted channel to the relay. Nothing else.",
+          "The Owlka desktop app, which keeps the encrypted channel to the relay open itself rather than through a separate helper. The Claude tools, under your own Anthropic subscription. A small approval hook that Claude runs before any gated action, so the decision you make is enforced on your own machine. Terminal multiplexer software that hosts your sessions. A Python interpreter, and up to three small Python helpers that give Claude Owlka's memory and connector features. All of it runs on your computer under your own user account.",
       },
     ],
   },
@@ -214,9 +234,9 @@ const SECTIONS: Section[] = [
       "We would rather lose a sale than mislead you. The items below are limits of the product and the company as they stand today.",
     rows: [
       {
-        label: "We can see metadata, not content",
+        label: "We see metadata, and we see approval notifications",
         value:
-          "We can see that your phone and your desktop talked, when they talked, and how much data they exchanged. We cannot see what they said. If hiding even that metadata matters to you, an internet-based assistant is the wrong shape.",
+          "We can see that your phone and your desktop talked, when they talked, and how much data they exchanged. We cannot see what they said: your messages are sealed on the device and the relay has no way to open them. There is one real exception, and it is worth stating clearly. When Owlka holds an action for your approval and pushes a notification to your phone, the text of that notification crosses our relay unsealed, because a push notification has to be readable to be delivered. That text is the short headline describing what Claude wants to do, the reason it was held for you, and, when no headline was written, the command itself. Your conversation is not in it, but it is not nothing. If hiding even that matters to you, an internet-based assistant is the wrong shape.",
       },
       {
         label: "What you send to Claude goes to Anthropic, not to us",
@@ -242,7 +262,7 @@ const SECTIONS: Section[] = [
       {
         label: "Contact",
         value:
-          "If you find a security issue, please email security@owlka.com with details.",
+          "If you find a security issue, please email support@owlka.com with details and put \"security\" in the subject line. It reaches the same small team; we would rather publish an address that works than one that looks the part and bounces.",
       },
       {
         label: "Response time",
@@ -348,10 +368,10 @@ export default function SecurityPage() {
             <p>
               Questions about anything on this page? Email{" "}
               <a
-                href="mailto:security@owlka.com"
+                href="mailto:support@owlka.com"
                 className="underline hover:text-text transition-colors"
               >
-                security@owlka.com
+                support@owlka.com
               </a>
               .
             </p>

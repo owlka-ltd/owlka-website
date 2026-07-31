@@ -117,7 +117,7 @@ const faqs: FAQ[] = [
         Settings. If the in-app flow is unavailable, email{" "}
         <Link
           href="mailto:support@owlka.com"
-          className="text-mark hover:underline"
+          className="text-mark hover:underline break-all"
         >
           support@owlka.com
         </Link>{" "}
@@ -152,7 +152,7 @@ const faqs: FAQ[] = [
         Email{" "}
         <Link
           href="mailto:support@owlka.com"
-          className="text-mark hover:underline"
+          className="text-mark hover:underline break-all"
         >
           support@owlka.com
         </Link>{" "}
@@ -162,7 +162,7 @@ const faqs: FAQ[] = [
         one working day. For known incidents, check{" "}
         <a
           href="https://status.owlka.com"
-          className="text-mark hover:underline"
+          className="text-mark hover:underline break-all"
           target="_blank"
           rel="noreferrer"
         >
@@ -200,7 +200,7 @@ export default function SupportPage() {
             <p className="text-2xl font-semibold tracking-tight">
               <Link
                 href="mailto:support@owlka.com"
-                className="text-mark hover:underline"
+                className="text-mark hover:underline break-all"
               >
                 support@owlka.com
               </Link>
@@ -209,7 +209,7 @@ export default function SupportPage() {
               For known issues and live incident reports, see{" "}
               <a
                 href="https://status.owlka.com"
-                className="text-mark hover:underline"
+                className="text-mark hover:underline break-all"
                 target="_blank"
                 rel="noreferrer"
               >

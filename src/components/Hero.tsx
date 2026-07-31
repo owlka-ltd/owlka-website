@@ -234,7 +234,16 @@ export function Hero() {
                 native controls let the visitor unmute for the voiceover.
                 The clip is 9:16, so the frame's screen aspect matches it
                 exactly and the box is reserved before the video loads: no
-                layout shift. */}
+                layout shift.
+
+                DELIBERATELY still portrait while the four in-body placements
+                went 16:9 (2026-07-31). The h1 two columns left of here reads
+                "The most powerful iPhone app in the world" over "The power of
+                Claude, in your pocket" — a letterboxed landscape clip in a
+                phone bezel would argue with its own headline, and this column
+                is ~1fr of a 1.05fr/1fr grid, so 16:9 lands at roughly 330x186
+                next to a 5.25rem headline. Going wide here means restructuring
+                the hero, which is a homepage redesign, not a format swap. */}
             <div className="relative mx-auto max-w-[300px] sm:max-w-[330px] @container">
               <DeviceFrame aspect="9 / 16">
                 <PromoVideo clip={PROMO_HERO} autoPlay />

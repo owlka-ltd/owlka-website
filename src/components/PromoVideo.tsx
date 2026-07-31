@@ -15,10 +15,12 @@ type Props = {
 };
 
 /**
- * A promo clip from the approved final14/final15 set (see @/lib/media).
+ * A promo clip from the approved promo set (see @/lib/media).
  *
- * All clips are 9:16 portrait. The wrapper carries a fixed aspect-ratio so
- * the element reserves its box before any media loads: zero layout shift.
+ * Clips come in two shapes and each one carries its own `aspect`: the home
+ * hero is 9:16 portrait, the in-body placements are 16:9 landscape. The box
+ * is built from `clip.aspect`, so it always reserves the right space before
+ * any media loads (zero layout shift) and can never disagree with the file.
  *
  * Autoplay notes, learned the hard way so the next reader does not have to:
  * - React does not render the `muted` attribute into SSR HTML (long-standing
@@ -31,8 +33,13 @@ type Props = {
  *   autoplays where `autoPlay` is passed, and always muted.
  */
 /**
- * Standard below-the-fold presentation: a phone-shaped rounded card at a
- * sensible width with an optional one-line caption. Click to play, with sound.
+ * Standard below-the-fold presentation: a rounded card with an optional
+ * one-line caption. Click to play, with sound.
+ *
+ * Width follows the clip's shape. A 16:9 clip fills the max-w-3xl text column
+ * it sits in (720px at desktop, edge to edge with the prose above it, exactly
+ * as an editorial figure should); a 9:16 clip stays capped at a phone-ish
+ * 300px, because a full-column portrait video is a wall.
  */
 export function PromoVideoFigure({
   clip,
@@ -43,8 +50,9 @@ export function PromoVideoFigure({
   caption?: string;
   className?: string;
 }) {
+  const width = clip.aspect === "16 / 9" ? "" : "max-w-[300px]";
   return (
-    <figure className={`mx-auto w-full max-w-[300px] ${className}`}>
+    <figure className={`mx-auto w-full ${width} ${className}`}>
       <div className="overflow-hidden rounded-[24px] border border-border bg-surface shadow-lg">
         <PromoVideo clip={clip} />
       </div>
@@ -72,8 +80,11 @@ export function PromoVideo({ clip, autoPlay = false, className = "" }: Props) {
   return (
     <video
       ref={ref}
-      className={`block h-full w-full object-cover ${className}`}
-      style={{ aspectRatio: "9 / 16" }}
+      // object-contain, not object-cover: the box is built from the clip's own
+      // aspect so the two agree and it renders identically, but if they ever
+      // drift the video letterboxes visibly instead of being silently cropped.
+      className={`block h-full w-full object-contain ${className}`}
+      style={{ aspectRatio: clip.aspect }}
       src={clip.src}
       poster={clip.poster}
       aria-label={clip.label}

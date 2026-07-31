@@ -12,28 +12,64 @@ import { IOS_APP_STORE_AVAILABLE, IOS_APP_STORE_URL } from "@/lib/flags";
 // WHAT THESE ARE, AND WHAT THEY ARE NOT
 //
 // These are PLATFORM marks, used to say "Owlka runs on macOS" and "Owlka runs
-// on Windows". That is compatibility signalling next to a real, working
-// download link for that platform. They are NOT store badges and must never be
-// used as one: a store badge is a promise that you can get the app from that
-// store, and the only store badge in this file is the App Store badge below,
-// which is hard-gated on the app actually being listed.
+// on Windows". That is compatibility signalling: it answers "will this work on
+// my machine", not "where do I get it".
 //
-// There is deliberately NO Google Play badge and no Play mark anywhere in this
-// codebase. Google's Play badge guidelines only permit the badge for an app
-// that is publicly listed on Play, and as of 2026-07-31 a live fetch of
-// play.google.com for com.owlka.app returned HTTP 404 in both GB and US,
-// byte-identical to the 404 for a package id that does not exist. Do not add
-// one on the strength of an internal doc claiming publication. Verify the
-// public listing returns 200 first.
+// They are not store badges and do not substitute for one. The two are
+// different jobs, not different permission levels: a mark names a platform, a
+// badge is the store's own call-to-action lockup. If you want a store badge,
+// import the vendor's committed artwork from StoreBadges.tsx. Never dress a
+// mark up to stand in for a badge, and never redraw a badge as a mark.
 //
-// Both marks render as a single flat `currentColor` fill: monochrome, no
-// gradient, no recolouring, aspect ratio fixed by the square viewBox. Set the
-// colour by setting text colour on the parent.
+// A store badge does NOT require a live listing in order to be SHOWN. Per
+// Tim's direction on 2026-07-31, with both phone apps submitted for review,
+// StoreBadges.tsx renders each store's official lockup at full brand strength
+// in a clearly-labelled "Coming soon" state: non-interactive, never a link,
+// not focusable, with the caption as real adjacent text. The flags in
+// src/lib/flags.ts decide whether the badge is a LINK, not whether it exists.
+//
+// STORE BADGES LIVE IN StoreBadges.tsx, NOT HERE (policy updated 2026-07-31).
+//
+// An earlier version of this comment said there was deliberately no Google Play
+// badge and no Play mark anywhere in the codebase, on the grounds that a live
+// fetch of play.google.com for com.owlka.app returned HTTP 404 in GB and US.
+// The 404 was real and still is. What changed is the state of the apps: both
+// the iPhone and the Android build were submitted for review on 2026-07-31, so
+// both listings are genuinely pending rather than hypothetical, and Tim's
+// direction is to use the stores' brand recognition rather than hold the badges
+// back until approval lands.
+//
+// The rule that replaces it:
+//
+//   - Both stores' OFFICIAL badge artwork is committed under public/ and served
+//     from our own origin. Never hotlink from apple.com or google.com.
+//   - Neither badge is ever REDRAWN or recoloured. If you need a store badge,
+//     import it; do not hand-draw one as an SVG.
+//   - A badge only becomes a LINK when its listing is actually live, gated on
+//     the flags in src/lib/flags.ts. Until then it renders unlinked with a
+//     visible "Coming soon" caption. Verify the public listing returns 200
+//     before flipping a flag: an internal note saying "submitted" is not a
+//     listing.
+//
+// The AppStoreBadge below stays here because IPhoneAppLink uses it for the LIVE
+// case. The pending-approval presentation, for both stores, is StoreBadges.tsx.
+//
+// The Apple and Windows marks render as a single flat `currentColor` fill:
+// monochrome, no gradient, no recolouring, aspect ratio fixed by the square
+// viewBox. Set the colour by setting text colour on the parent.
+//
+// PlayMark is the exception and CANNOT follow that pattern. Google's Play mark
+// is a four-colour logo and recolouring it is exactly the modification their
+// guidelines forbid, so it ships as their own unmodified PNG rather than as a
+// `currentColor` path. It will be the one piece of colour in a row of
+// monochrome marks. That is correct; do not "fix" it by tracing it into an SVG.
 //
 // Accessibility: every mark here is `aria-hidden`. That is intentional and is
 // the correct pattern, NOT an oversight. Each mark is only ever rendered
-// immediately beside a visible text label naming the same platform ("macOS",
-// "Windows", "Download for Mac"). Labelling the mark as well would make a
+// immediately beside a visible text label naming the same platform — the "Runs
+// on" strip pairs them with "Mac / iOS", "Windows" and "Android", and the
+// download buttons with "Download for Mac" and "Download for Windows".
+// Labelling the mark as well would make a
 // screen reader announce the platform twice. If you ever place a mark with no
 // adjacent text, give it `role="img"` and an `aria-label` at the call site
 // instead of removing the text.
@@ -45,6 +81,29 @@ export function AppleMark({ className = "w-5 h-5" }: { className?: string }) {
     <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden>
       <path d="M17.05 12.04c-.03-2.9 2.37-4.3 2.48-4.37-1.36-1.98-3.47-2.25-4.22-2.28-1.8-.18-3.51 1.06-4.42 1.06-.93 0-2.32-1.04-3.82-1.01-1.96.03-3.78 1.14-4.78 2.89-2.05 3.56-.52 8.81 1.46 11.7.97 1.42 2.12 3 3.62 2.95 1.46-.06 2.01-.94 3.77-.94 1.76 0 2.26.94 3.79.91 1.57-.03 2.56-1.43 3.52-2.86 1.11-1.64 1.57-3.23 1.59-3.31-.04-.02-3.04-1.17-3.07-4.74zM14.34 3.97c.81-.98 1.35-2.34 1.2-3.69-1.16.05-2.57.78-3.4 1.75-.75.86-1.4 2.24-1.22 3.56 1.29.1 2.61-.66 3.42-1.62z" />
     </svg>
+  );
+}
+
+/**
+ * The Google Play mark. Google's own unmodified artwork
+ * (gstatic.com/images/branding/product/2x/play_prism_64dp.png), committed at
+ * public/google-play-mark.png and served from our own origin.
+ *
+ * This is the MARK, not the "Get it on Google Play" badge. The mark identifies
+ * the platform in the "Runs on" strip; the badge is the call to action and
+ * lives in StoreBadges.tsx, gated on the listing being live.
+ */
+export function PlayMark({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <Image
+      src="/google-play-mark.png"
+      alt=""
+      width={128}
+      height={128}
+      className={className}
+      aria-hidden
+      unoptimized
+    />
   );
 }
 

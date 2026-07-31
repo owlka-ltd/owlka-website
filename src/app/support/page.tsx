@@ -234,7 +234,7 @@ export default function SupportPage() {
                   12 (Monterey) or later, Apple Silicon or Intel.
                 </li>
                 <li>
-                  <span className="font-semibold">Windows desktop (beta):</span>{" "}
+                  <span className="font-semibold">Windows desktop:</span>{" "}
                   64-bit Windows 10 or 11. The Windows build is code-signed. It
                   does not auto-update yet, so you update it by downloading the
                   current installer again.

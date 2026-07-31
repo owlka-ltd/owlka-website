@@ -37,7 +37,15 @@ export function HowItWorks() {
           <p className="text-sm font-medium text-mark uppercase tracking-wider mb-4">
             How it works
           </p>
-          <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
+          {/* break-words is a safety valve, not a style choice. At Chrome's
+              largest default font size (20px, "Very large" in Settings) on a
+              320px phone, "conversation." alone is wider than the column and
+              pushed the whole DOCUMENT to 326px, giving the home page a 6px
+              horizontal scroll. overflow-wrap only engages when a word cannot
+              otherwise fit: measured at the default 16px font at 320, 375 and
+              768 the rendered heading box is byte-identical with and without
+              it. Pre-existing, found by the hero overflow measurement. */}
+          <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight break-words">
             Three pieces. One conversation.
           </h2>
           <p className="mt-5 text-lg text-text/70 leading-relaxed">

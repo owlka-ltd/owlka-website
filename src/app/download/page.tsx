@@ -7,27 +7,28 @@ import { PromoVideoFigure } from "@/components/PromoVideo";
 import { PROMO_INSTALL } from "@/lib/media";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 // Windows availability + URLs are the single source of truth in @/lib/flags.
-// Windows is a code-signed BETA; the Mac build is the stable, signed default.
+// Both desktop builds are code-signed. Windows left beta on 2026-07-31 after it
+// was verified on real Windows hardware, so neither build carries a beta label.
 // The download buttons themselves live in the PlatformDownloads client
 // component so we can auto-highlight the visitor's OS without hiding either one.
 
 export const metadata: Metadata = {
   title: "Download Owlka for Mac and Windows",
   description:
-    "Download Owlka for Mac or Windows (beta). The Owlka desktop app runs on your computer, talks to Claude under your own login, and pairs with the Owlka iPhone app. Free for your first 30 days.",
+    "Download Owlka for Mac or Windows. The Owlka desktop app runs on your computer, talks to Claude under your own login, and pairs with the Owlka iPhone app. Free for your first 30 days.",
   alternates: { canonical: "/download" },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
     url: `${SITE_URL}/download`,
     title: "Download Owlka for Mac and Windows",
-    description: "Owlka for Mac and Windows (beta). Free for your first 30 days.",
+    description: "Owlka for Mac and Windows. Free for your first 30 days.",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: "Download Owlka for Mac and Windows",
-    description: "Owlka for Mac and Windows (beta). Free for your first 30 days.",
+    description: "Owlka for Mac and Windows. Free for your first 30 days.",
   },
 };
 
@@ -46,8 +47,7 @@ export default function DownloadPage() {
           <p className="mt-6 text-lg sm:text-xl text-text/75 leading-relaxed max-w-2xl mx-auto">
             One installer. Open it, install Owlka, and launch. The app pairs
             with the Owlka iPhone app over an encrypted middleman so you can
-            pick up your work from the sofa. Mac is the signed, stable build;
-            Windows is a new beta.
+            pick up your work from the sofa. Both builds are code-signed.
           </p>
 
           <PlatformDownloads />

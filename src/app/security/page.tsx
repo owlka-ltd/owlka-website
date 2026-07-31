@@ -157,7 +157,7 @@ const SECTIONS: Section[] = [
     id: "downloads",
     title: "The desktop download",
     intro:
-      "Owlka ships a Mac app and a Windows app (beta). Both are code-signed before they ever reach you, and your computer checks the signature before it will run the build.",
+      "Owlka ships a Mac app and a Windows app. Both are code-signed before they ever reach you, and your computer checks the signature before it will run the build.",
     rows: [
       {
         label: "Mac code signing",
@@ -167,7 +167,7 @@ const SECTIONS: Section[] = [
       {
         label: "Windows code signing",
         value:
-          "The .exe you download is code-signed in the name of Owlka Ltd and timestamped, so Windows does not show an unknown-publisher warning. Windows support is still labelled beta because it is new.",
+          "The .exe you download is code-signed in the name of Owlka Ltd and timestamped, so Windows does not show an unknown-publisher warning.",
       },
       {
         label: "Auto-update (Mac)",
@@ -177,7 +177,7 @@ const SECTIONS: Section[] = [
       {
         label: "Auto-update (Windows): not yet",
         value:
-          "The Windows beta does not auto-update. It will not fetch a new build and it will not prompt you, so a Windows install stays on the version you first downloaded until you replace it yourself. To update, download the current installer from the download page and run it over the top. We will say so in the app once Windows auto-update ships.",
+          "The Windows build does not auto-update. It will not fetch a new build and it will not prompt you, so a Windows install stays on the version you first downloaded until you replace it yourself. To update, download the current installer from the download page and run it over the top. We will say so in the app once Windows auto-update ships.",
       },
       {
         label: "What runs locally",

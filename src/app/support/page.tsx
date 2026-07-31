@@ -235,9 +235,10 @@ export default function SupportPage() {
                 </li>
                 <li>
                   <span className="font-semibold">Windows desktop:</span>{" "}
-                  64-bit Windows 10 or 11. The Windows build is code-signed. It
-                  does not auto-update yet, so you update it by downloading the
-                  current installer again.
+                  64-bit Windows 10 or 11. The Windows build is code-signed and
+                  updates itself, like the Mac build. Installs from version
+                  0.1.59 or earlier predate the updater, so those need one
+                  manual re-download, after which they update themselves too.
                 </li>
                 <li>
                   <span className="font-semibold">Claude subscription:</span>{" "}

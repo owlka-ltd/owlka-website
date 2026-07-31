@@ -175,9 +175,9 @@ const SECTIONS: Section[] = [
           "Mac updates are downloaded over HTTPS and the Apple signature is checked again before the new build replaces the old one. An update with a broken or missing signature is refused.",
       },
       {
-        label: "Auto-update (Windows): not yet",
+        label: "Auto-update (Windows)",
         value:
-          "The Windows build does not auto-update. It will not fetch a new build and it will not prompt you, so a Windows install stays on the version you first downloaded until you replace it yourself. To update, download the current installer from the download page and run it over the top. We will say so in the app once Windows auto-update ships.",
+          "The Windows build updates itself, like the Mac build. It checks our signed update feed over HTTPS, and the signature on a new build is verified before it replaces the old one. An update with a broken or missing signature is refused. One exception: installs from version 0.1.59 or earlier predate the updater and never check the feed, so those need one manual re-download from the download page, after which they update themselves like any other.",
       },
       {
         label: "What runs locally",

@@ -50,6 +50,14 @@ export const MAC_DMG_URL = "https://download.owlka.com/mac/latest.dmg";
 // issued the listing: a dead App Store link on the download page is a
 // conversion hole that looks like a working button.
 //
+// As with Google Play below, this flag controls whether the App Store badge is
+// a LINK, not whether it is shown. The iPhone app was submitted to Apple for
+// review on 2026-07-31, so the home page hero renders Apple's official
+// "Download on the App Store" lockup at full strength via StoreBadges.tsx,
+// non-interactive and captioned "Coming soon", until this flag flips. The
+// AppStoreBadge in PlatformMarks.tsx is the separate LIVE-only variant used by
+// IPhoneAppLink: that one returns null while the flag is false.
+//
 // Typed `boolean` rather than left as the literal `false` so the "available"
 // branches type-check and stay compiled while the flag is off.
 export const IOS_APP_STORE_AVAILABLE: boolean = false;
@@ -64,12 +72,23 @@ export const IOS_APP_STORE_URL: string | null = null;
 // HTTP 404, the same response Play gives for a package that was never
 // published.
 //
-// These two constants exist so the home page can show a Google Play mark
-// HONESTLY. While the flag is false the mark renders muted, with a visible and
-// screen-reader-readable "Coming soon" label, and is not a link. Google's Play
-// badge guidelines only permit the official "Get it on Google Play" lockup for
-// an app that is publicly listed, and a badge that links nowhere is a lie to
-// the visitor on top of a guideline breach.
+// These two constants control whether the Google Play badge is a LINK. They do
+// not control whether it is SHOWN.
+//
+// While the flag is false, StoreBadges.tsx renders Google's official "Get it on
+// Google Play" lockup at full brand strength, non-interactive: it is a <span>,
+// never an <a>, it takes no focus, and it carries a visible and screen-reader-
+// readable "Coming soon" caption directly underneath. Tim directed that
+// presentation on 2026-07-31, to use the store's brand recognition while the
+// listing is pending. It is honest because the caption is a statement of fact
+// with a date behind it, not a placeholder: the Android app (owlka-ltd/
+// owlka-android v1.0.0) was submitted to Google for review that day. The
+// visitor is told plainly that they cannot get it yet, and nothing on the page
+// offers them a route that dead-ends.
+//
+// Flipping the flag is what turns that same badge into a real store link and
+// drops the caption. Nothing about the badge's artwork, size or position
+// changes.
 //
 // TO GO LIVE, the same two lines as iOS above: set ANDROID_PLAY_STORE_URL to
 // the real play.google.com listing URL and flip ANDROID_PLAY_STORE_AVAILABLE to

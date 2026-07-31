@@ -95,7 +95,7 @@ export function Hero() {
             >
               <Link
                 href="/download"
-                className="group inline-flex items-center justify-center gap-2 h-12 px-7 rounded-pill bg-mark text-surface text-base font-medium hover:opacity-90 transition-all shadow-lg shadow-mark/30 hover:shadow-xl hover:shadow-mark/40 hover:-translate-y-0.5"
+                className="group inline-flex items-center justify-center gap-2 min-h-12 py-2 px-7 rounded-pill bg-mark text-surface text-base font-medium hover:opacity-90 transition-all shadow-lg shadow-mark/30 hover:shadow-xl hover:shadow-mark/40 hover:-translate-y-0.5"
               >
                 <AppleMark className="w-4 h-4" />
                 Download for Mac
@@ -130,18 +130,26 @@ export function Hero() {
                   one with the Apple Silicon, notarisation and system
                   requirement detail a Mac visitor should read.
 
-                  min-h-12 py-2, NOT h-12. This label is the longest in the row,
-                  so it is the button that wraps first. A fixed h-12 is a 48px
-                  box the text is free to spill out of: an earlier draft of this
-                  button carried a Beta chip as well, and at Chrome's largest
-                  default font size (20px, "Very large" in Settings, an
-                  accessibility setting real people turn on) the label needed
-                  three line boxes and overflowed the pill by 12px top and
-                  bottom. The chip has since gone, which happens to shorten the
-                  label, but the fix stays structural rather than depending on
-                  the text staying short. A minimum height plus vertical padding
-                  keeps the resting size identical to the Mac button beside it
-                  and lets the button grow instead of the text escaping. */}
+                  min-h-12 py-2, NOT h-12 — and the same goes for all three
+                  buttons in this row. A fixed h-12 is a 48px box the text is
+                  free to spill out of: an earlier draft of this button carried
+                  a Beta chip as well, and at Chrome's largest default font
+                  size (20px, "Very large" in Settings, an accessibility
+                  setting real people turn on) the label needed three line
+                  boxes and overflowed the pill by 12px top and bottom. The
+                  chip has since gone, which happens to shorten the label, but
+                  the fix stays structural rather than depending on the text
+                  staying short.
+
+                  The other two buttons were converted for the same reason
+                  after measurement, not on principle: at font 20 / 320px "See
+                  what people built" measured scrollHeight 59 against
+                  clientHeight 58, a real 1px spill on a pre-existing h-12 that
+                  main also has. Leaving either sibling on a fixed height just
+                  parks the same bug one word away. A minimum height plus
+                  vertical padding keeps the resting size of all three
+                  identical at the default font and lets each grow instead of
+                  the text escaping. */}
               <a
                 href={WINDOWS_EXE_URL}
                 className="inline-flex items-center justify-center gap-2 min-h-12 py-2 px-6 rounded-pill bg-surface border border-border text-base font-medium transition-all shadow-lg shadow-black/5 hover:border-mark/40 hover:shadow-xl hover:-translate-y-0.5"
@@ -152,7 +160,7 @@ export function Hero() {
               </a>
               <Link
                 href="#examples"
-                className="inline-flex items-center justify-center h-12 px-7 rounded-pill bg-surface/80 backdrop-blur-md border border-border text-base font-medium hover:border-mark/40 hover:bg-surface transition-colors"
+                className="inline-flex items-center justify-center min-h-12 py-2 px-7 rounded-pill bg-surface/80 backdrop-blur-md border border-border text-base font-medium hover:border-mark/40 hover:bg-surface transition-colors"
               >
                 See what people built
               </Link>
@@ -167,9 +175,15 @@ export function Hero() {
               Free for your first 30 days, no card needed. Bring your own Claude plan. Mac and Windows.
             </motion.p>
 
-            {/* The phone stores. Neither app is listed yet, so these render
-                muted and unclickable with a "Coming soon" label rather than a
-                live store badge. See src/components/StoreBadges.tsx. */}
+            {/* The phone stores. Both apps were submitted for review on
+                2026-07-31, so these render each store's OFFICIAL badge lockup
+                at full brand strength, in a clearly-labelled coming-soon
+                state: non-interactive, never a link, not focusable, with a
+                visible "Coming soon" caption as real adjacent text. That is
+                deliberate (Tim's direction) — it uses the stores' brand
+                recognition while saying plainly that the listing is not open
+                yet. Flipping the flag in src/lib/flags.ts turns the same badge
+                into a real store link. See src/components/StoreBadges.tsx. */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

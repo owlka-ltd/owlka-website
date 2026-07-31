@@ -12,11 +12,21 @@ import { IOS_APP_STORE_AVAILABLE, IOS_APP_STORE_URL } from "@/lib/flags";
 // WHAT THESE ARE, AND WHAT THEY ARE NOT
 //
 // These are PLATFORM marks, used to say "Owlka runs on macOS" and "Owlka runs
-// on Windows". That is compatibility signalling next to a real, working
-// download link for that platform. They are NOT store badges and must never be
-// used as one: a store badge is a promise that you can get the app from that
-// store, and the only store badge in this file is the App Store badge below,
-// which is hard-gated on the app actually being listed.
+// on Windows". That is compatibility signalling: it answers "will this work on
+// my machine", not "where do I get it".
+//
+// They are not store badges and do not substitute for one. The two are
+// different jobs, not different permission levels: a mark names a platform, a
+// badge is the store's own call-to-action lockup. If you want a store badge,
+// import the vendor's committed artwork from StoreBadges.tsx. Never dress a
+// mark up to stand in for a badge, and never redraw a badge as a mark.
+//
+// A store badge does NOT require a live listing in order to be SHOWN. Per
+// Tim's direction on 2026-07-31, with both phone apps submitted for review,
+// StoreBadges.tsx renders each store's official lockup at full brand strength
+// in a clearly-labelled "Coming soon" state: non-interactive, never a link,
+// not focusable, with the caption as real adjacent text. The flags in
+// src/lib/flags.ts decide whether the badge is a LINK, not whether it exists.
 //
 // STORE BADGES LIVE IN StoreBadges.tsx, NOT HERE (policy updated 2026-07-31).
 //
@@ -56,8 +66,10 @@ import { IOS_APP_STORE_AVAILABLE, IOS_APP_STORE_URL } from "@/lib/flags";
 //
 // Accessibility: every mark here is `aria-hidden`. That is intentional and is
 // the correct pattern, NOT an oversight. Each mark is only ever rendered
-// immediately beside a visible text label naming the same platform ("macOS",
-// "Windows", "Download for Mac"). Labelling the mark as well would make a
+// immediately beside a visible text label naming the same platform — the "Runs
+// on" strip pairs them with "Mac / iOS", "Windows" and "Android", and the
+// download buttons with "Download for Mac" and "Download for Windows".
+// Labelling the mark as well would make a
 // screen reader announce the platform twice. If you ever place a mark with no
 // adjacent text, give it `role="img"` and an `aria-label` at the call site
 // instead of removing the text.

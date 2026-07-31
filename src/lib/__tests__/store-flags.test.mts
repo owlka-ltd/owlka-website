@@ -133,8 +133,20 @@ test("an unapproved store badge is never a link", () => {
   // keep. The rendered DOM is checked by the CDP measurement run; this pins the
   // source so the two states cannot be collapsed into one branch.
   const src = readFileSync(resolve(ROOT, "src/components/StoreBadges.tsx"), "utf8");
-  const soon = src.slice(src.indexOf("  return (\n    <span"));
-  assert.ok(soon.length > 0, "the pending-approval branch was not found");
+  // Anchor on the branch's own `soonTestId`, not on exact source indentation,
+  // and fail loudly when it is not found. The previous anchor was a literal
+  // "  return (\n    <span" fed straight into slice(): any reformat makes
+  // indexOf return -1, slice(-1) hands back the file's last character, and a
+  // one-character string trivially satisfies both `length > 0` and the
+  // not-an-anchor check. The test would have gone green while asserting
+  // nothing. It only failed closed by luck, on the "Coming soon" match.
+  const at = src.search(/return \(\s*<span[^>]*data-testid=\{soonTestId\}/);
+  assert.notEqual(
+    at,
+    -1,
+    "the pending-approval branch was not found in StoreBadges.tsx: it must still be a <span> carrying data-testid={soonTestId}. If that branch was intentionally reshaped, update this anchor — do not delete the assertion.",
+  );
+  const soon = src.slice(at);
   assert.ok(
     !/<a[\s>]/.test(soon),
     "the pending-approval branch renders an anchor: an unapproved listing must not be clickable.",

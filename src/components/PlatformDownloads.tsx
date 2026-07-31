@@ -65,9 +65,13 @@ export function PlatformDownloads() {
       <div
         className={`${onMobile ? "mt-10" : "mt-12"} flex flex-col items-center gap-4`}
       >
+        {/* min-h-14 py-2, NOT h-14, for the same reason as the Windows button
+            below. This label is shorter and does not wrap today, but the two
+            buttons are the same control at the same size and leaving one of
+            them on a fixed height just parks the same bug one word away. */}
         <a
           href={MAC_DMG_URL}
-          className={`inline-flex items-center justify-center gap-3 h-14 px-9 rounded-pill text-lg font-semibold shadow-sm hover:opacity-95 transition ${
+          className={`inline-flex items-center justify-center gap-3 min-h-14 py-2 px-9 rounded-pill text-lg font-semibold shadow-sm hover:opacity-95 transition ${
             onMobile
               ? "border border-border bg-surface text-text"
               : "bg-mark text-bg"
@@ -103,9 +107,19 @@ export function PlatformDownloads() {
 
       {/* Windows: code-signed, out of beta since 2026-07-31 */}
       <div className="mt-10 flex flex-col items-center gap-3">
+        {/* min-h-14 py-2, NOT h-14. "Download for Windows" is the longer of the
+            two labels here, so it is the button that wraps first: at a 320px
+            viewport with the browser's default font raised to 20px (Chrome's
+            "Very large" accessibility setting) it needs two lines. A fixed
+            h-14 is a 56px box that does not grow, so the second line escaped
+            it and the text rendered above and below the pill. min-h keeps the
+            same 56px floor, and the padding lets the box grow with its own
+            content. Do not "fix" this back to h-14 because the label happens
+            to fit today: the whole point is that it no longer depends on the
+            label staying short. Same treatment as the hero row in Hero.tsx. */}
         <a
           href={WINDOWS_EXE_URL}
-          className={`inline-flex items-center justify-center gap-3 h-14 px-9 rounded-pill border border-border bg-surface text-text text-lg font-semibold shadow-sm hover:opacity-95 transition ${
+          className={`inline-flex items-center justify-center gap-3 min-h-14 py-2 px-9 rounded-pill border border-border bg-surface text-text text-lg font-semibold shadow-sm hover:opacity-95 transition ${
             windowsRecommended
               ? "ring-2 ring-mark/40 ring-offset-2 ring-offset-bg"
               : ""

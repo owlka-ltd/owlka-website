@@ -221,11 +221,11 @@ const SECTIONS: Section[] = [
         q: "What platforms does Owlka support?",
         a: (
           <>
-            A Mac desktop app, a Windows desktop app (beta), and an iPhone app.
-            The Mac app is signed and notarised by Apple and runs on Apple
-            Silicon and Intel Macs. The Windows build is code-signed and runs on
-            64-bit Windows 10 and 11; it is labelled beta because Windows support
-            is new. <IPhoneAppNote /> Grab either desktop build on the{" "}
+            A Mac desktop app, a Windows desktop app, and an iPhone app. The Mac
+            app is signed and notarised by Apple and runs on Apple Silicon and
+            Intel Macs. The Windows build is code-signed and runs on 64-bit
+            Windows 10 and 11. <IPhoneAppNote /> Grab either desktop build on
+            the{" "}
             <Link
               href="/download"
               className="underline hover:text-text transition-colors"

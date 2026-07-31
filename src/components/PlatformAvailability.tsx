@@ -1,27 +1,40 @@
-import Link from "next/link";
-import { IOS_APP_STORE_AVAILABLE, IOS_APP_STORE_URL, WINDOWS_AVAILABLE } from "@/lib/flags";
-import { AppleMark, AppStoreBadge, WindowsMark } from "./PlatformMarks";
+import { AppleMark, PlayMark, WindowsMark } from "./PlatformMarks";
 
 // A compact "what does this run on" strip for the home page. Its whole job is
 // to let a visitor answer "will this work on my machine" without scrolling to
 // the download page, using the platform marks people already recognise.
 //
-// It is INFORMATIONAL, not a download surface. The marks are compatibility
-// signalling ("Owlka runs on macOS") sitting beside a plain statement of what
-// is actually available. Deliberately not wired to the .dmg/.exe: firing a
-// 35 MB download off a small logo on the home page is a surprise, and the
-// download page one click away exists to do that properly, with the version,
-// signing and beta caveats a visitor should read first.
+// It is INFORMATIONAL, not a download surface. Deliberately not wired to the
+// .dmg/.exe: firing a 35 MB download off a small logo on the home page is a
+// surprise, and the download page one click away exists to do that properly,
+// with the version, signing and system requirements a visitor should read
+// first.
 //
-// Every row states its REAL availability. macOS and Windows ship today. The
-// iPhone row says TestFlight, because that is what it is: as of 2026-07-31 an
-// iTunes lookup on com.owlkaltd.app returns zero results in GB and US. Flip
-// IOS_APP_STORE_AVAILABLE in src/lib/flags.ts when Apple issues the listing and
-// this row renders Apple's official App Store badge instead, with no copy to
-// hunt down.
+// SHAPE (Tim, 2026-07-31, on a screenshot of the live strip): a mark and a
+// name, nothing else. He asked for the grey subtitles to go, for the two Apple
+// rows to collapse into one because he did not want the same logo twice, and
+// for Google Play to be here alongside the others.
 //
-// Deliberately absent: Android and Google Play. See the note in
-// PlatformMarks.tsx for the evidence and the rule.
+// What that means, and where the detail went:
+//
+//  - The subtitles are gone. "Signed and notarised", the Windows one and
+//    "TestFlight beta" no longer appear here. None of it is LOST: /download
+//    still carries the full story for every platform, and the iPhone half of it
+//    still comes from IPhoneAppNote / IPhoneAppCta in IPhoneAppLink.tsx, which
+//    remain the single source of truth for how to get the iPhone app. This
+//    strip is now a compatibility answer only.
+//  - Mac and iOS share one row and one Apple mark.
+//  - Android is named "Android", not "Google Play", because every other row
+//    here names a PLATFORM you run the app on, and mixing a store name into
+//    that list answers a different question. The mark is the Play mark, which
+//    is the part carrying the recognition Tim asked for. The store itself, with
+//    its official badge, is in the hero strip (StoreBadges.tsx).
+//
+// Rows are no longer gated on availability flags. This is a "what platforms
+// does Owlka cover" statement, and all four are covered: Mac and Windows ship,
+// the iPhone app is in TestFlight with an App Store submission in review, and
+// the Android app is in review at Google. Availability, which is a different
+// and more perishable claim, is stated on /download and in the hero.
 //
 // Layout: stacks vertically on a narrow phone, becomes a centred wrapping row
 // from `sm` up. Nothing is fixed-width, so it cannot overflow a small viewport.
@@ -51,69 +64,40 @@ export function PlatformAvailability({ className = "" }: { className?: string })
       <ul className="mt-6 flex flex-col items-start w-max max-w-full mx-auto sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:justify-center gap-x-10 gap-y-5">
         <PlatformRow
           mark={<AppleMark className="w-6 h-6 shrink-0" />}
-          name="macOS"
-          detail="Signed and notarised"
-          testId="platform-mac"
+          name="Mac / iOS"
+          testId="platform-apple"
         />
-
-        {WINDOWS_AVAILABLE ? (
-          <PlatformRow
-            mark={<WindowsMark className="w-6 h-6 shrink-0" />}
-            name="Windows"
-            detail="Code-signed beta"
-            testId="platform-windows"
-          />
-        ) : null}
-
-        {/* Gate on BOTH constants, matching AppStoreBadge's own guard and
-            IPhoneAppLink. AppStoreBadge returns null unless the URL is set too,
-            so gating on the boolean alone renders an EMPTY <li>: the iPhone row
-            would vanish from the page instead of falling back to the TestFlight
-            row, and a screen reader would announce an empty list item. Going
-            live is documented as a two-line change, so a half-completed flip is
-            exactly the plausible operator error. */}
-        {IOS_APP_STORE_AVAILABLE && IOS_APP_STORE_URL ? (
-          <li className="flex items-center" data-testid="platform-iphone">
-            <AppStoreBadge />
-          </li>
-        ) : (
-          <PlatformRow
-            mark={<AppleMark className="w-6 h-6 shrink-0" />}
-            name="iPhone"
-            detail={
-              <Link
-                href="/download"
-                className="hover:text-mark hover:underline underline-offset-4 transition-colors"
-              >
-                TestFlight beta
-              </Link>
-            }
-            testId="platform-iphone"
-          />
-        )}
+        <PlatformRow
+          mark={<WindowsMark className="w-6 h-6 shrink-0" />}
+          name="Windows"
+          testId="platform-windows"
+        />
+        <PlatformRow
+          mark={<PlayMark className="w-6 h-6 shrink-0" />}
+          name="Android"
+          testId="platform-android"
+        />
       </ul>
     </section>
   );
 }
 
+// The mark is decorative: it is aria-hidden inside PlatformMarks, and the name
+// beside it is real text, so a screen reader announces "Mac / iOS" once rather
+// than naming the platform twice.
 function PlatformRow({
   mark,
   name,
-  detail,
   testId,
 }: {
   mark: React.ReactNode;
   name: string;
-  detail: React.ReactNode;
   testId: string;
 }) {
   return (
     <li className="flex items-center gap-3" data-testid={testId}>
       <span className="text-text/85">{mark}</span>
-      <span className="flex flex-col leading-tight">
-        <span className="text-base font-medium text-text">{name}</span>
-        <span className="text-sm text-muted">{detail}</span>
-      </span>
+      <span className="text-base font-medium text-text">{name}</span>
     </li>
   );
 }

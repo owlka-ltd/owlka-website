@@ -14,7 +14,8 @@ import { AppleMark, WindowsMark } from "./PlatformMarks";
 
 // Both download buttons live here so we can auto-highlight the visitor's OS
 // after hydration without hiding either platform. Mac stays the visual primary
-// (stable, signed) and Windows is the secondary beta. Detection runs client-side
+// (the older and more widely run build) and Windows sits below it, no longer
+// carrying a beta label since 2026-07-31. Detection runs client-side
 // only, so the server render is stable and there is no hydration mismatch: the
 // "recommended for your device" hint and highlight ring are added post-mount.
 //
@@ -100,7 +101,7 @@ export function PlatformDownloads() {
         </p>
       </div>
 
-      {/* Windows: beta, code-signed */}
+      {/* Windows: code-signed, out of beta since 2026-07-31 */}
       <div className="mt-10 flex flex-col items-center gap-3">
         <a
           href={WINDOWS_EXE_URL}
@@ -114,20 +115,15 @@ export function PlatformDownloads() {
           <WindowsMark />
           Download for Windows
         </a>
-        <span
-          className="inline-flex items-center gap-1.5 rounded-pill bg-tint-mark px-3 py-1 text-xs font-semibold uppercase tracking-wider text-mark"
-          data-testid="windows-beta-badge"
-        >
-          Beta
-        </span>
         <p className="text-sm text-muted max-w-md text-center">
           {windowsRecommended ? (
             <span className="font-medium text-mark">
               Recommended for your PC.{" "}
             </span>
           ) : null}
-          Beta. Windows support is new. Signed and ready for 64-bit Windows 10
-          and 11. Free for your first 30 days.
+          Signed by Owlka Ltd and ready for 64-bit Windows 10 and 11, so Windows
+          does not show an unknown-publisher warning. Free for your first 30
+          days.
         </p>
       </div>
 

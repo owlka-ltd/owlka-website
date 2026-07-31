@@ -510,21 +510,21 @@ export default function PrivacyPage() {
                   <strong>Legitimate interests.</strong> Processing relay
                   metadata to keep the relay working and to detect abuse, and
                   handling support correspondence you send us. Also the usage
-                  analytics that a TestFlight beta build starts with switched
+                  analytics that every version of the app starts with switched
                   on, described in the next bullet.
                 </li>
                 <li>
                   <strong>Consent.</strong> Crash and diagnostics reporting is
                   off everywhere until you switch it on, and is processed only
-                  on your consent. Usage analytics is off by default in the App
-                  Store app and is likewise processed only on your consent
-                  there. We will not claim consent where we do not have it: a
-                  TestFlight beta build starts with usage analytics switched on,
-                  so for beta testers who have not switched it off we are
-                  relying on our legitimate interest in finding out whether a
-                  pre-release build works, not on consent. You are told at first
-                  run and can switch it off in Settings at any time, and you can
-                  object to that processing by emailing us.
+                  on your consent. Usage analytics works differently, and we
+                  will not claim consent where we do not have it: every version
+                  of the app starts with usage analytics switched on, so for
+                  anyone who has not switched it off we are relying on our
+                  legitimate interest in finding out which parts of the app
+                  people use and whether a build works, not on consent. You are
+                  told at first run, you can switch it off at any time under
+                  More, then Account &amp; Subscription, and you can object to
+                  that processing by emailing us.
                 </li>
                 <li>
                   <strong>Legal obligation.</strong> Where we are required to

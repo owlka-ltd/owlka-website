@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Owlka handles your data. Plain English. Last updated 2026-07-25.",
+    "How Owlka handles your data. Plain English. Last updated 2026-07-31.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -29,7 +29,7 @@ export default function PrivacyPage() {
             <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
               Privacy Policy
             </h1>
-            <p className="mt-4 text-sm text-muted">Last updated 2026-07-25</p>
+            <p className="mt-4 text-sm text-muted">Last updated 2026-07-31</p>
           </header>
 
           <div className="prose prose-neutral max-w-none text-text/85 leading-relaxed space-y-8">
@@ -87,19 +87,17 @@ export default function PrivacyPage() {
                   not derived from your name or your Apple ID.
                 </li>
                 <li>
-                  <strong>Usage analytics. Off by default in the App Store
-                  app. On by default in a TestFlight beta build.</strong> Owlka
-                  can record which screens and features you use (for example
-                  that the chat screen was opened), tagged with a random
-                  per-install identifier and the app version, so we can see
-                  which parts of the app people actually use. These events never
-                  contain your messages, your files, or your commands, only
-                  fixed screen and feature names. In the App Store build this is
-                  off until you switch it on. In a TestFlight beta build it
-                  starts switched on, and the first time you open the app we
-                  show a notice saying so with a one-tap off switch. Either way
-                  you control it any time in Settings, and we keep these events
-                  for 90 days.
+                  <strong>Usage analytics. On by default, in every version of
+                  the app.</strong> Owlka can record which screens and features
+                  you use (for example that the chat screen was opened), tagged
+                  with a random per-install identifier and the app version, so
+                  we can see which parts of the app people actually use. These
+                  events never contain your messages, your files, or your
+                  commands, only fixed screen and feature names. The first time
+                  you open the app we show a notice telling you this is on, with
+                  a one-tap off switch. You can change it at any time under More,
+                  then Account &amp; Subscription, and we keep these events for
+                  90 days.
                 </li>
                 <li>
                   <strong>Crash and diagnostic reports, opt-in and off by
@@ -512,21 +510,21 @@ export default function PrivacyPage() {
                   <strong>Legitimate interests.</strong> Processing relay
                   metadata to keep the relay working and to detect abuse, and
                   handling support correspondence you send us. Also the usage
-                  analytics that a TestFlight beta build starts with switched
+                  analytics that every version of the app starts with switched
                   on, described in the next bullet.
                 </li>
                 <li>
                   <strong>Consent.</strong> Crash and diagnostics reporting is
                   off everywhere until you switch it on, and is processed only
-                  on your consent. Usage analytics is off by default in the App
-                  Store app and is likewise processed only on your consent
-                  there. We will not claim consent where we do not have it: a
-                  TestFlight beta build starts with usage analytics switched on,
-                  so for beta testers who have not switched it off we are
-                  relying on our legitimate interest in finding out whether a
-                  pre-release build works, not on consent. You are told at first
-                  run and can switch it off in Settings at any time, and you can
-                  object to that processing by emailing us.
+                  on your consent. Usage analytics works differently, and we
+                  will not claim consent where we do not have it: every version
+                  of the app starts with usage analytics switched on, so for
+                  anyone who has not switched it off we are relying on our
+                  legitimate interest in finding out which parts of the app
+                  people use and whether a build works, not on consent. You are
+                  told at first run, you can switch it off at any time under
+                  More, then Account &amp; Subscription, and you can object to
+                  that processing by emailing us.
                 </li>
                 <li>
                   <strong>Legal obligation.</strong> Where we are required to

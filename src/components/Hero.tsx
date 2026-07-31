@@ -5,6 +5,7 @@ import Link from "next/link";
 import { PROMO_HERO } from "@/lib/media";
 import { AuroraBackground } from "./AuroraBackground";
 import { DeviceFrame } from "./DeviceFrame";
+import { AppleMark } from "./PlatformMarks";
 import { PromoVideo } from "./PromoVideo";
 
 export function Hero() {
@@ -94,7 +95,7 @@ export function Hero() {
                 href="/download"
                 className="group inline-flex items-center justify-center gap-2 h-12 px-7 rounded-pill bg-mark text-surface text-base font-medium hover:opacity-90 transition-all shadow-lg shadow-mark/30 hover:shadow-xl hover:shadow-mark/40 hover:-translate-y-0.5"
               >
-                <AppleGlyph />
+                <AppleMark className="w-4 h-4" />
                 Download for Mac
                 <svg
                   className="w-4 h-4 transition-transform group-hover:translate-x-0.5"
@@ -201,15 +202,3 @@ function Check() {
   );
 }
 
-function AppleGlyph() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="w-4 h-4"
-      fill="currentColor"
-      aria-hidden
-    >
-      <path d="M17.05 12.04c-.03-2.9 2.37-4.3 2.48-4.37-1.36-1.98-3.47-2.25-4.22-2.28-1.8-.18-3.51 1.06-4.42 1.06-.93 0-2.32-1.04-3.82-1.01-1.96.03-3.78 1.14-4.78 2.89-2.05 3.56-.52 8.81 1.46 11.7.97 1.42 2.12 3 3.62 2.95 1.46-.06 2.01-.94 3.77-.94 1.76 0 2.26.94 3.79.91 1.57-.03 2.56-1.43 3.52-2.86 1.11-1.64 1.57-3.23 1.59-3.31-.04-.02-3.04-1.17-3.07-4.74zM14.34 3.97c.81-.98 1.35-2.34 1.2-3.69-1.16.05-2.57.78-3.4 1.75-.75.86-1.4 2.24-1.22 3.56 1.29.1 2.61-.66 3.42-1.62z" />
-    </svg>
-  );
-}

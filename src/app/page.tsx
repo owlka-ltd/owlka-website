@@ -4,6 +4,7 @@ import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Marquee } from "@/components/Marquee";
 import { Nav } from "@/components/Nav";
+import { PlatformAvailability } from "@/components/PlatformAvailability";
 import {
   DEFAULT_TITLE,
   HOME_DESCRIPTION,
@@ -94,6 +95,7 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <PlatformAvailability className="pb-16 sm:pb-20" />
         <Marquee />
         <HowItWorks />
         <CaseStudies />

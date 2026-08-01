@@ -433,9 +433,10 @@ export default function PrivacyPage() {
                 Account deletion
               </h2>
               <p>
-                You can delete your Owlka account from inside the app. Open
-                More, then the Beta (free) page, and tap &ldquo;Delete my
-                account and data.&rdquo; The app will:
+                You can delete your Owlka account from inside the app. On
+                iPhone, open More, then Subscription. On Android, open More,
+                then Account. On either, tap &ldquo;Delete my account and
+                data.&rdquo; The app will:
               </p>
               <ul className="list-disc pl-6 space-y-2 mt-3">
                 <li>

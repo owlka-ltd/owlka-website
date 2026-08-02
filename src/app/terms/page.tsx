@@ -197,7 +197,11 @@ export default async function TermsPage() {
               Legal
             </p>
           </header>
-          <div className="prose prose-neutral max-w-none">
+          {/* break-words: the Terms contain long unbreakable tokens (the
+              privacy-policy URL, the registered-office address, support@),
+              which overflowed a 320px viewport by up to 91px at a 20px root
+              font. Pre-existing; measured and fixed 2026-08-01. */}
+          <div className="prose prose-neutral max-w-none break-words">
             {renderMarkdown(text)}
           </div>
           <section className="mt-12 border-t border-border pt-8">

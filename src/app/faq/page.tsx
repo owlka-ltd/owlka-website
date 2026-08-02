@@ -152,10 +152,17 @@ const SECTIONS: Section[] = [
         q: "What about dictation?",
         a: (
           <>
-            When you dictate, your phone transcribes your voice locally using
-            Apple&rsquo;s on-device Speech framework. The audio never leaves
-            your phone. Only the transcribed text is sealed and sent to your
-            Mac, exactly like a typed message.
+            Owlka does not transcribe speech on your device. If you tap
+            Owlka&rsquo;s microphone button, the recording is sent to
+            ElevenLabs and transcribed there, using an ElevenLabs key you add
+            yourself on your Mac. Until you add one the button is greyed out
+            and your microphone is never opened. From the phone, the audio
+            travels sealed to your own Mac first, and your Mac is what talks to
+            ElevenLabs, so no recording reaches an Owlka server. The{" "}
+            <Link href="/security#speech" className="underline">
+              security page
+            </Link>{" "}
+            sets out the full path.
           </>
         ),
       },

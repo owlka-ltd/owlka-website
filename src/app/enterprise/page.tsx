@@ -51,19 +51,57 @@ const ENDPOINTS: Endpoint[] = [
       "The signed Mac app download and its updates. Only needs to be reachable when someone installs or updates Owlka.",
   },
   {
-    domain: "api.owlka.com",
+    domain: "claude.com",
     protocol: "HTTPS",
     port: "443",
     purpose:
-      "Account and pairing support requests from the apps. Standard request/response HTTPS, no WebSocket.",
+      "Signing in to Claude. Owlka runs Anthropic's Claude tools under the user's own account, and the sign-in page is served here. Without this domain the app installs but nobody can log in to Claude, so it is not optional.",
+  },
+  {
+    domain: "claude.ai",
+    protocol: "HTTPS",
+    port: "443",
+    purpose:
+      "Anthropic's official installer for the Claude tools, fetched once when Owlka first sets itself up on a machine.",
+  },
+  {
+    domain: "api.anthropic.com",
+    protocol: "HTTPS",
+    port: "443",
+    purpose:
+      "Claude itself. Everything your team sends to Claude goes from the desktop straight to Anthropic under your own Anthropic account. This traffic never touches Owlka's servers.",
+  },
+  {
+    domain: "github.com",
+    protocol: "HTTPS",
+    port: "443",
+    purpose:
+      "First-run setup only. If the machine has no suitable Python, Owlka downloads a standard prebuilt Python from GitHub. The file itself comes from objects.githubusercontent.com, so allow that host too. Not used again afterwards.",
+  },
+  {
+    domain: "api.elevenlabs.io",
+    protocol: "HTTPS",
+    port: "443",
+    purpose:
+      "Only if your team uses the microphone. Owlka's voice features send audio to ElevenLabs using an ElevenLabs key each user supplies. Leave this blocked and voice simply stays unavailable; nothing else is affected.",
   },
 ];
 
 const COPY_BLOCK = `Please allow the following domains through our proxy/firewall so I can use Owlka:
 
-  relay.owlka.com      TCP 443   HTTPS + WebSocket (wss) — the live connection, must allow WebSocket upgrades
-  download.owlka.com   TCP 443   HTTPS — the signed Mac app download and updates
-  api.owlka.com        TCP 443   HTTPS — account and pairing requests
+Required:
+  relay.owlka.com               TCP 443   HTTPS + WebSocket (wss), the live connection. Must allow WebSocket upgrades
+  download.owlka.com            TCP 443   HTTPS, the signed Mac app download and its updates
+  claude.com                    TCP 443   HTTPS, signing in to Claude. Without this nobody can log in
+  api.anthropic.com             TCP 443   HTTPS, Claude itself, under our own Anthropic account
+
+First-run setup only:
+  claude.ai                     TCP 443   HTTPS, Anthropic's official installer for the Claude tools
+  github.com                    TCP 443   HTTPS, a prebuilt Python, only if this machine has none
+  objects.githubusercontent.com TCP 443   HTTPS, the file host for that download
+
+Only if we use voice:
+  api.elevenlabs.io             TCP 443   HTTPS, speech transcription. Block it and voice is simply unavailable
 
 All traffic is on port 443 over HTTPS/WebSocket. TLS inspection can stay enabled:
 Owlka's message content is end-to-end encrypted at the application layer, so the
@@ -83,7 +121,7 @@ export default function EnterprisePage() {
             >
               &larr; Back to Owlka
             </Link>
-            <h1 className="mt-4 text-4xl font-semibold tracking-tight">
+            <h1 className="mt-4 text-4xl font-semibold tracking-tight break-words">
               Network requirements for IT teams
             </h1>
             <p className="mt-3 text-muted leading-relaxed">
@@ -115,15 +153,20 @@ export default function EnterprisePage() {
                     i > 0 ? "border-t border-border" : ""
                   }`}
                 >
-                  <dt>
-                    <span className="block font-medium font-mono text-[15px]">
+                  {/* min-w-0 + break-words: domain names are long unbreakable
+                      tokens, and without these the grid column refuses to
+                      shrink and the row overflows a 320px viewport. */}
+                  <dt className="min-w-0">
+                    <span className="block font-medium font-mono text-[15px] break-words">
                       {e.domain}
                     </span>
                     <span className="mt-1 block text-sm text-muted">
                       {e.protocol} · port {e.port}
                     </span>
                   </dt>
-                  <dd className="text-muted leading-relaxed">{e.purpose}</dd>
+                  <dd className="min-w-0 text-muted leading-relaxed break-words">
+                    {e.purpose}
+                  </dd>
                 </div>
               ))}
             </dl>
@@ -180,7 +223,7 @@ export default function EnterprisePage() {
               Copy the block below and send it to whoever manages your proxy or
               firewall. It has everything they need.
             </p>
-            <pre className="mt-6 overflow-x-auto rounded-[18px] border border-border bg-surface p-6 text-sm leading-relaxed text-text whitespace-pre-wrap">
+            <pre className="mt-6 overflow-x-auto rounded-[18px] border border-border bg-surface p-6 text-sm leading-relaxed text-text whitespace-pre-wrap break-words">
               {COPY_BLOCK}
             </pre>
           </section>

@@ -10,10 +10,12 @@ import {
   type DetectedOS,
 } from "@/lib/os";
 import { IPhoneAppCta, IPhoneAppNote } from "./IPhoneAppLink";
+import { AppleMark, WindowsMark } from "./PlatformMarks";
 
 // Both download buttons live here so we can auto-highlight the visitor's OS
 // after hydration without hiding either platform. Mac stays the visual primary
-// (stable, signed) and Windows is the secondary beta. Detection runs client-side
+// (the older and more widely run build) and Windows sits below it, no longer
+// carrying a beta label since 2026-07-31. Detection runs client-side
 // only, so the server render is stable and there is no hydration mismatch: the
 // "recommended for your device" hint and highlight ring are added post-mount.
 //
@@ -63,9 +65,13 @@ export function PlatformDownloads() {
       <div
         className={`${onMobile ? "mt-10" : "mt-12"} flex flex-col items-center gap-4`}
       >
+        {/* min-h-14 py-2, NOT h-14, for the same reason as the Windows button
+            below. This label is shorter and does not wrap today, but the two
+            buttons are the same control at the same size and leaving one of
+            them on a fixed height just parks the same bug one word away. */}
         <a
           href={MAC_DMG_URL}
-          className={`inline-flex items-center justify-center gap-3 h-14 px-9 rounded-pill text-lg font-semibold shadow-sm hover:opacity-95 transition ${
+          className={`inline-flex items-center justify-center gap-3 min-h-14 py-2 px-9 rounded-pill text-lg font-semibold shadow-sm hover:opacity-95 transition ${
             onMobile
               ? "border border-border bg-surface text-text"
               : "bg-mark text-bg"
@@ -76,7 +82,7 @@ export function PlatformDownloads() {
           }`}
           data-testid="download-mac-dmg"
         >
-          <AppleGlyph />
+          <AppleMark />
           Download for Mac
         </a>
         <p className="text-sm text-muted max-w-md text-center">
@@ -99,34 +105,39 @@ export function PlatformDownloads() {
         </p>
       </div>
 
-      {/* Windows: beta, code-signed */}
+      {/* Windows: code-signed, out of beta since 2026-07-31 */}
       <div className="mt-10 flex flex-col items-center gap-3">
+        {/* min-h-14 py-2, NOT h-14. "Download for Windows" is the longer of the
+            two labels here, so it is the button that wraps first: at a 320px
+            viewport with the browser's default font raised to 20px (Chrome's
+            "Very large" accessibility setting) it needs two lines. A fixed
+            h-14 is a 56px box that does not grow, so the second line escaped
+            it and the text rendered above and below the pill. min-h keeps the
+            same 56px floor, and the padding lets the box grow with its own
+            content. Do not "fix" this back to h-14 because the label happens
+            to fit today: the whole point is that it no longer depends on the
+            label staying short. Same treatment as the hero row in Hero.tsx. */}
         <a
           href={WINDOWS_EXE_URL}
-          className={`inline-flex items-center justify-center gap-3 h-14 px-9 rounded-pill border border-border bg-surface text-text text-lg font-semibold shadow-sm hover:opacity-95 transition ${
+          className={`inline-flex items-center justify-center gap-3 min-h-14 py-2 px-9 rounded-pill border border-border bg-surface text-text text-lg font-semibold shadow-sm hover:opacity-95 transition ${
             windowsRecommended
               ? "ring-2 ring-mark/40 ring-offset-2 ring-offset-bg"
               : ""
           }`}
           data-testid="download-windows-exe"
         >
-          <WindowsGlyph />
+          <WindowsMark />
           Download for Windows
         </a>
-        <span
-          className="inline-flex items-center gap-1.5 rounded-pill bg-tint-mark px-3 py-1 text-xs font-semibold uppercase tracking-wider text-mark"
-          data-testid="windows-beta-badge"
-        >
-          Beta
-        </span>
         <p className="text-sm text-muted max-w-md text-center">
           {windowsRecommended ? (
             <span className="font-medium text-mark">
               Recommended for your PC.{" "}
             </span>
           ) : null}
-          Beta. Windows support is new. Signed and ready for 64-bit Windows 10
-          and 11. Free for your first 30 days.
+          Signed by Owlka Ltd and ready for 64-bit Windows 10 and 11, so Windows
+          does not show an unknown-publisher warning. Free for your first 30
+          days.
         </p>
       </div>
 
@@ -143,18 +154,4 @@ export function PlatformDownloads() {
   );
 }
 
-function WindowsGlyph() {
-  return (
-    <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor" aria-hidden>
-      <path d="M3 5.1l7.5-1.02v7.23H3V5.1zm0 13.8l7.5 1.02v-7.14H3v6.12zm8.4 1.14L21 21.5v-8.55h-9.6v7.09zM11.4 3.96L21 2.5v8.55h-9.6V3.96z" />
-    </svg>
-  );
-}
 
-function AppleGlyph() {
-  return (
-    <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor" aria-hidden>
-      <path d="M17.05 12.04c-.03-2.9 2.37-4.3 2.48-4.37-1.36-1.98-3.47-2.25-4.22-2.28-1.8-.18-3.51 1.06-4.42 1.06-.93 0-2.32-1.04-3.82-1.01-1.96.03-3.78 1.14-4.78 2.89-2.05 3.56-.52 8.81 1.46 11.7.97 1.42 2.12 3 3.62 2.95 1.46-.06 2.01-.94 3.77-.94 1.76 0 2.26.94 3.79.91 1.57-.03 2.56-1.43 3.52-2.86 1.11-1.64 1.57-3.23 1.59-3.31-.04-.02-3.04-1.17-3.07-4.74zM14.34 3.97c.81-.98 1.35-2.34 1.2-3.69-1.16.05-2.57.78-3.4 1.75-.75.86-1.4 2.24-1.22 3.56 1.29.1 2.61-.66 3.42-1.62z" />
-    </svg>
-  );
-}

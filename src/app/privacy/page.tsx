@@ -127,19 +127,19 @@ export default function PrivacyPage() {
                 </li>
                 <li>
                   <strong>Support correspondence.</strong> If you contact us
-                  through the in-app support form or email support@owlka.com or
-                  security@owlka.com, we keep that thread, including your name,
-                  email, and any logs you choose to attach, so we can help you.
+                  through the in-app support form or email support@owlka.com, we
+                  keep that thread, including your name, email, and any logs you
+                  choose to attach, so we can help you.
                 </li>
                 <li>
-                  <strong>Apple subscription receipt, not collected during
-                  the public beta.</strong> Owlka is free during the public
-                  beta, so Apple does not send us a receipt. If we ever switch
-                  on a paid subscription, Apple will send us an anonymised
-                  receipt confirming your subscription is active; we never see
-                  your card details or Apple ID. This policy will be updated
-                  with a new &ldquo;Last updated&rdquo; date before that
-                  change goes live.
+                  <strong>Payment details: none, today.</strong> Owlka costs
+                  &pound;4.99 a month or &pound;49.99 a year after a free first
+                  30 days, but billing is not switched on yet, so we currently
+                  collect no payment information of any kind. When billing does
+                  start it will run through this website rather than through
+                  Apple, and we will update this policy with a new &ldquo;Last
+                  updated&rdquo; date, naming our payment processor, before any
+                  charge is taken.
                 </li>
               </ul>
             </section>
@@ -156,25 +156,25 @@ export default function PrivacyPage() {
                   cannot read them.
                 </li>
                 <li>
-                  <strong>Speech audio, in the default voice mode.</strong>{" "}
-                  When you dictate to Owlka in the default mode, the audio is
-                  transcribed on the device using Apple&rsquo;s on-device
-                  Speech framework. It never leaves your phone and we never
-                  receive a recording. If you separately turn on{" "}
-                  <strong>Live voice</strong> in Settings, your audio is sent,
-                  end-to-end encrypted, to your own paired Mac, which performs
-                  the transcription and speech using an ElevenLabs key that
-                  lives on your Mac. In that mode the audio leaves your phone
-                  only to reach your own Mac; our relay still cannot read it,
-                  and Owlka never receives the recording. ElevenLabs acts as a
-                  processor reached by your Mac, under its own terms.
+                  <strong>Speech audio.</strong> Owlka does not transcribe
+                  speech on your device. If you use Owlka&rsquo;s microphone
+                  button, the recording is sent to ElevenLabs and transcribed
+                  there. This is possible only once you have added your own
+                  ElevenLabs API key on your desktop; with no key the button is
+                  greyed out and your microphone is never opened. From the
+                  iPhone app the recording travels end-to-end encrypted to your
+                  own paired Mac, which passes it to ElevenLabs using your key;
+                  from the desktop app it goes straight to ElevenLabs. When
+                  Owlka speaks a reply aloud, the text of that reply is sent to
+                  ElevenLabs as well. Our relay cannot read any of it and Owlka
+                  never receives the recording or the transcript. ElevenLabs
+                  acts as a processor reached by your own machine with your own
+                  key, under its own terms.
                 </li>
                 <li>
-                  <strong>Location.</strong> Owlka does not track your location.
-                  Your phone only sends a location when you explicitly ask a
-                  location-aware question (for example &ldquo;what coffee shops
-                  are nearby&rdquo;). In that case the location is included in
-                  the encrypted message to your desktop and is not visible to us.
+                  <strong>Location.</strong> Owlka never accesses your location.
+                  The app contains no location code and asks for no location
+                  permission, so there is nothing to collect, send, or store.
                 </li>
                 <li>
                   <strong>Your Anthropic login.</strong> Owlka never sees,
@@ -284,10 +284,12 @@ export default function PrivacyPage() {
                   tokens, session tokens). It cannot read packet contents.
                 </li>
                 <li>
-                  <strong>ElevenLabs.</strong> Only if you turn on Live voice.
-                  Your Mac uses ElevenLabs to transcribe and speak; the key
-                  lives on your Mac. Your audio reaches ElevenLabs via your own
-                  Mac, not via Owlka&rsquo;s servers.
+                  <strong>ElevenLabs.</strong> Only if you have added your own
+                  ElevenLabs API key on your desktop. Your desktop then uses
+                  ElevenLabs to transcribe what you say and to speak replies
+                  aloud; the key stays on your desktop. Your audio reaches
+                  ElevenLabs via your own machine and your own account, not via
+                  Owlka&rsquo;s servers.
                 </li>
                 <li>
                   <strong>Vercel.</strong> Vercel hosts owlka.com. It logs
@@ -311,10 +313,19 @@ export default function PrivacyPage() {
               OWLKA_METRICS_RETENTION_DAYS), logging.rs (14 day log rotation
               sweep), parking.rs (31 day PARK_MAX_AGE).
 
-              Two rows are NOT enforced in code today and are a commitment
-              rather than a description: support correspondence, and the
-              inactivity clean-up of dormant accounts. Do not merge this page
-              without Tim confirming both periods.
+              2026-08-01: the two rows that were commitments rather than
+              descriptions have been corrected to describe what the code
+              actually does. There is NO inactivity sweeper for dormant
+              accounts (no such job exists in the relay), and support
+              correspondence has NO automatic expiry (contact.rs and
+              debug_logs.rs contain no retention code at all). Do not
+              reintroduce a period here that nothing enforces. If a sweeper
+              ships later, state its real period and cite the file.
+
+              Also corrected: account deletion is immediate in the live
+              database but off-box snapshots are kept ~28 days
+              (scripts/backup/hetzner-snapshot.sh), so "immediately and
+              permanently" was not accurate on its own.
             */}
             <section>
               <h2 className="text-2xl font-semibold mb-4">
@@ -330,9 +341,12 @@ export default function PrivacyPage() {
                   <strong>Your account (name, email, device tokens, session
                   token): for as long as you have an Owlka account.</strong> We
                   do not put a timer on it because it is what keeps your account
-                  working. Delete your account and it goes, immediately and
-                  permanently. If an account has not connected for 24 months we
-                  will delete it and tell you first at the email address we hold.
+                  working, and we do not currently delete dormant accounts on a
+                  schedule. Delete your account and it is removed from our live
+                  database straight away. We also take encrypted backups of that
+                  database and keep them for about 28 days, so a deleted account
+                  can persist in a backup for up to that long before the backup
+                  itself expires.
                 </li>
                 <li>
                   <strong>Device pairing identifiers: until you unpair or delete
@@ -366,9 +380,12 @@ export default function PrivacyPage() {
                   days.</strong> We cannot read it while it waits.
                 </li>
                 <li>
-                  <strong>Support correspondence: 24 months from the last
-                  message in the thread.</strong> We keep it that long so we can
-                  pick up a recurring problem, then delete it.
+                  <strong>Support correspondence: kept until we delete it by
+                  hand.</strong> We are not going to claim a tidy period here,
+                  because nothing automatically expires it today. If you have
+                  written to us, or sent us diagnostic logs through the support
+                  form, assume we still hold that thread. Ask us to delete it and
+                  we will.
                 </li>
               </ul>
               <p className="mt-3">
@@ -454,10 +471,10 @@ export default function PrivacyPage() {
                   fully torn down.
                 </li>
                 <li>
-                  Walk you through cancelling any active Owlka subscription in
-                  Apple Settings (none exists during the public beta). When a
-                  paid plan is live, Apple handles the actual cancellation and
-                  any refund.
+                  There is no Owlka subscription to cancel today, because
+                  billing is not switched on. When it is, you will cancel from
+                  this website rather than in Apple Settings, since Owlka is not
+                  sold through in-app purchase.
                 </li>
               </ul>
               <p className="mt-3">
@@ -503,9 +520,9 @@ export default function PrivacyPage() {
                 <li>
                   <strong>Contract.</strong> Processing your account data (name,
                   email) and device identifiers so we can deliver the account
-                  and the Service you have signed up for. If and when we switch
-                  on a paid subscription, we will also process the anonymised
-                  Apple receipt on this basis.
+                  and the Service you have signed up for. When billing is
+                  switched on, the subscription and payment records needed to
+                  run it will be processed on this basis too.
                 </li>
                 <li>
                   <strong>Legitimate interests.</strong> Processing relay

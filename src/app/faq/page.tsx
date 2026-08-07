@@ -152,10 +152,17 @@ const SECTIONS: Section[] = [
         q: "What about dictation?",
         a: (
           <>
-            When you dictate, your phone transcribes your voice locally using
-            Apple&rsquo;s on-device Speech framework. The audio never leaves
-            your phone. Only the transcribed text is sealed and sent to your
-            Mac, exactly like a typed message.
+            Owlka does not transcribe speech on your device. If you tap
+            Owlka&rsquo;s microphone button, the recording is sent to
+            ElevenLabs and transcribed there, using an ElevenLabs key you add
+            yourself on your Mac. Until you add one the button is greyed out
+            and your microphone is never opened. From the phone, the audio
+            travels sealed to your own Mac first, and your Mac is what talks to
+            ElevenLabs, so no recording reaches an Owlka server. The{" "}
+            <Link href="/security#speech" className="underline">
+              security page
+            </Link>{" "}
+            sets out the full path.
           </>
         ),
       },
@@ -221,11 +228,11 @@ const SECTIONS: Section[] = [
         q: "What platforms does Owlka support?",
         a: (
           <>
-            A Mac desktop app, a Windows desktop app (beta), and an iPhone app.
-            The Mac app is signed and notarised by Apple and runs on Apple
-            Silicon and Intel Macs. The Windows build is code-signed and runs on
-            64-bit Windows 10 and 11; it is labelled beta because Windows support
-            is new. <IPhoneAppNote /> Grab either desktop build on the{" "}
+            A Mac desktop app, a Windows desktop app, and an iPhone app. The Mac
+            app is signed and notarised by Apple and runs on Apple Silicon and
+            Intel Macs. The Windows build is code-signed and runs on 64-bit
+            Windows 10 and 11. <IPhoneAppNote /> Grab either desktop build on
+            the{" "}
             <Link
               href="/download"
               className="underline hover:text-text transition-colors"

@@ -2,10 +2,13 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { WINDOWS_EXE_URL } from "@/lib/flags";
 import { PROMO_HERO } from "@/lib/media";
 import { AuroraBackground } from "./AuroraBackground";
 import { DeviceFrame } from "./DeviceFrame";
+import { AppleMark, WindowsMark } from "./PlatformMarks";
 import { PromoVideo } from "./PromoVideo";
+import { PhoneStores } from "./StoreBadges";
 
 export function Hero() {
   return (
@@ -88,13 +91,13 @@ export function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-10 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
+              className="mt-10 flex flex-col sm:flex-row sm:flex-wrap gap-3 justify-center lg:justify-start"
             >
               <Link
                 href="/download"
-                className="group inline-flex items-center justify-center gap-2 h-12 px-7 rounded-pill bg-mark text-surface text-base font-medium hover:opacity-90 transition-all shadow-lg shadow-mark/30 hover:shadow-xl hover:shadow-mark/40 hover:-translate-y-0.5"
+                className="group inline-flex items-center justify-center gap-2 min-h-12 py-2 px-7 rounded-pill bg-mark text-surface text-base font-medium hover:opacity-90 transition-all shadow-lg shadow-mark/30 hover:shadow-xl hover:shadow-mark/40 hover:-translate-y-0.5"
               >
-                <AppleGlyph />
+                <AppleMark className="w-4 h-4" />
                 Download for Mac
                 <svg
                   className="w-4 h-4 transition-transform group-hover:translate-x-0.5"
@@ -111,9 +114,53 @@ export function Hero() {
                   />
                 </svg>
               </Link>
+              {/* Windows is a real, shipping, code-signed build, and burying it
+                  behind /download was the reason nobody could see that. It
+                  therefore sits directly beside the Mac button, same height,
+                  same shadow and lift, so it reads as a peer download rather
+                  than a secondary link. Mac keeps the filled brand colour
+                  because it is the older and more widely run of the two, not
+                  because Windows is provisional: Windows left beta on
+                  2026-07-31 after Dharminder ran it on real hardware through a
+                  fresh install, an in-app update and pairing.
+
+                  This links straight at the .exe, not at /download, because the
+                  label promises a download. The Mac button next to it goes to
+                  /download, which is unchanged deliberately: that page is the
+                  one with the Apple Silicon, notarisation and system
+                  requirement detail a Mac visitor should read.
+
+                  min-h-12 py-2, NOT h-12 — and the same goes for all three
+                  buttons in this row. A fixed h-12 is a 48px box the text is
+                  free to spill out of: an earlier draft of this button carried
+                  a Beta chip as well, and at Chrome's largest default font
+                  size (20px, "Very large" in Settings, an accessibility
+                  setting real people turn on) the label needed three line
+                  boxes and overflowed the pill by 12px top and bottom. The
+                  chip has since gone, which happens to shorten the label, but
+                  the fix stays structural rather than depending on the text
+                  staying short.
+
+                  The other two buttons were converted for the same reason
+                  after measurement, not on principle: at font 20 / 320px "See
+                  what people built" measured scrollHeight 59 against
+                  clientHeight 58, a real 1px spill on a pre-existing h-12 that
+                  main also has. Leaving either sibling on a fixed height just
+                  parks the same bug one word away. A minimum height plus
+                  vertical padding keeps the resting size of all three
+                  identical at the default font and lets each grow instead of
+                  the text escaping. */}
+              <a
+                href={WINDOWS_EXE_URL}
+                className="inline-flex items-center justify-center gap-2 min-h-12 py-2 px-6 rounded-pill bg-surface border border-border text-base font-medium transition-all shadow-lg shadow-black/5 hover:border-mark/40 hover:shadow-xl hover:-translate-y-0.5"
+                data-testid="hero-download-windows"
+              >
+                <WindowsMark className="w-4 h-4" />
+                Download for Windows
+              </a>
               <Link
                 href="#examples"
-                className="inline-flex items-center justify-center h-12 px-7 rounded-pill bg-surface/80 backdrop-blur-md border border-border text-base font-medium hover:border-mark/40 hover:bg-surface transition-colors"
+                className="inline-flex items-center justify-center min-h-12 py-2 px-7 rounded-pill bg-surface/80 backdrop-blur-md border border-border text-base font-medium hover:border-mark/40 hover:bg-surface transition-colors"
               >
                 See what people built
               </Link>
@@ -125,8 +172,26 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.55 }}
               className="mt-4 text-sm text-muted text-center lg:text-left"
             >
-              Free for your first 30 days, no card needed. Bring your own Claude plan. Mac, plus Windows in beta.
+              Free for your first 30 days, no card needed. Bring your own Claude plan. Mac and Windows.
             </motion.p>
+
+            {/* The phone stores. Both apps were submitted for review on
+                2026-07-31, so these render each store's OFFICIAL badge lockup
+                at full brand strength, in a clearly-labelled coming-soon
+                state: non-interactive, never a link, not focusable, with a
+                visible "Coming soon" caption as real adjacent text. That is
+                deliberate (Tim's direction) — it uses the stores' brand
+                recognition while saying plainly that the listing is not open
+                yet. Flipping the flag in src/lib/flags.ts turns the same badge
+                into a real store link. See src/components/StoreBadges.tsx. */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.62 }}
+              className="mt-7 flex flex-col items-center lg:items-start"
+            >
+              <PhoneStores />
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0 }}
@@ -164,16 +229,29 @@ export function Hero() {
               }}
             />
 
-            {/* The one-minute hero promo, playing inside the phone frame.
-                It autoplays muted (autoplay with sound is banned sitewide);
-                native controls let the visitor unmute for the voiceover.
-                The clip is 9:16, so the frame's screen aspect matches it
-                exactly and the box is reserved before the video loads: no
-                layout shift. */}
-            <div className="relative mx-auto max-w-[300px] sm:max-w-[330px] @container">
+            {/* The one-minute hero promo. It autoplays muted (autoplay with
+                sound is banned sitewide); native controls let the visitor
+                unmute for the voiceover. Either box carries its aspect ratio
+                up front, so the space is reserved before the video loads: no
+                layout shift.
+
+                Two containers, because the two shapes need genuinely
+                different chrome: below lg the 9:16 clip sits in the iPhone
+                bezel, which is the illustration of the headline beside it; at
+                lg and above the 16:9 clip fills the column in a plain card,
+                because a letterboxed clip inside a phone bezel would look like
+                a mistake. Only one of them ever downloads anything. Each
+                PromoVideo emits a single media-gated <source>, so the hidden
+                one has no matching source and fetches neither video nor
+                poster. The `lg` here is the same 1024px as WIDE_MEDIA in
+                @/lib/media, and it is also where this grid goes two-column. */}
+            <div className="relative mx-auto max-w-[300px] sm:max-w-[330px] @container lg:hidden">
               <DeviceFrame aspect="9 / 16">
-                <PromoVideo clip={PROMO_HERO} autoPlay />
+                <PromoVideo clip={PROMO_HERO} shape="portrait" autoPlay />
               </DeviceFrame>
+            </div>
+            <div className="relative hidden aspect-[16/9] overflow-hidden rounded-[24px] border border-border bg-surface shadow-[0_40px_80px_-30px_rgba(15,15,20,0.45)] lg:block">
+              <PromoVideo clip={PROMO_HERO} shape="wide" autoPlay />
             </div>
           </motion.div>
         </div>
@@ -201,15 +279,3 @@ function Check() {
   );
 }
 
-function AppleGlyph() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="w-4 h-4"
-      fill="currentColor"
-      aria-hidden
-    >
-      <path d="M17.05 12.04c-.03-2.9 2.37-4.3 2.48-4.37-1.36-1.98-3.47-2.25-4.22-2.28-1.8-.18-3.51 1.06-4.42 1.06-.93 0-2.32-1.04-3.82-1.01-1.96.03-3.78 1.14-4.78 2.89-2.05 3.56-.52 8.81 1.46 11.7.97 1.42 2.12 3 3.62 2.95 1.46-.06 2.01-.94 3.77-.94 1.76 0 2.26.94 3.79.91 1.57-.03 2.56-1.43 3.52-2.86 1.11-1.64 1.57-3.23 1.59-3.31-.04-.02-3.04-1.17-3.07-4.74zM14.34 3.97c.81-.98 1.35-2.34 1.2-3.69-1.16.05-2.57.78-3.4 1.75-.75.86-1.4 2.24-1.22 3.56 1.29.1 2.61-.66 3.42-1.62z" />
-    </svg>
-  );
-}

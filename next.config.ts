@@ -41,6 +41,22 @@ const SECURITY_HEADERS = [
 ];
 
 const nextConfig: NextConfig = {
+  // /pricing was removed for launch (no mention of charging anywhere on the
+  // site, per Tim, 2026-09-03). A hard 404 would strand anyone with an old
+  // link (search results, bookmarks); a page asserting "Owlka is free" would
+  // be a pricing commitment nobody has signed off on. A redirect to the page
+  // that actually converts makes no claim about price at all. Permanent
+  // (308): if pricing content ever comes back, add a new /pricing page,
+  // which naturally overrides this rule, rather than flipping this flag.
+  async redirects() {
+    return [
+      {
+        source: "/pricing",
+        destination: "/download",
+        permanent: true,
+      },
+    ];
+  },
   // Defense in depth for the Mac download flow. The download button points at a
   // STABLE pointer URL (see src/lib/flags.ts MAC_DMG_URL), so cached HTML is no
   // longer harmful, but we still force the pages that carry the download CTA to

@@ -68,53 +68,15 @@ const faqs: FAQ[] = [
     ),
   },
   {
-    q: "How much does Owlka cost?",
-    a: (
-      <>
-        Your first 30 days are <span className="font-medium">free</span>,
-        with no payment details needed to start. After that, Owlka is
-        £4.99 per month or £49.99 per year, with every feature included and
-        one account covering two phones and two computers. You also need
-        your own Claude Pro or Max subscription from Anthropic, which
-        Owlka does not resell.
-      </>
-    ),
-  },
-  {
-    q: "How do I cancel?",
-    a: (
-      <>
-        Billing is not live yet, so there is no Owlka subscription to
-        cancel today. Once billing arrives on the website, you will be
-        able to cancel there at any time. If you also want to remove the
-        app, delete it from your iPhone home screen.
-      </>
-    ),
-  },
-  {
-    q: "What happens to my data if I cancel?",
-    a: (
-      <>
-        Cancellation stops the next bill. It does not delete anything by
-        itself. Your local data on your desktop (Claude memory, project
-        files) stays exactly where it was. The keys on your phone stay in
-        the iOS Keychain. The desktop and phone apps remain installed.
-        If you want a clean wipe, use the in-app Delete account flow
-        before cancelling, or after, and the app will wipe the local
-        data and tell the relay to drop your device records.
-      </>
-    ),
-  },
-  {
     q: "How do I delete my account?",
     a: (
       <>
         Open the iPhone app, tap{" "}
         <span className="font-medium">Settings, Account, Delete account</span>
-        . The app will wipe local data on your phone, send a delete
-        signal to the relay so the relay forgets your device records, and
-        walk you through cancelling any active Owlka subscription in Apple
-        Settings. If the in-app flow is unavailable, email{" "}
+        . The app will wipe local data on your phone and send a delete
+        signal to the relay so the relay forgets your device records. If
+        you also want to remove the app, delete it from your iPhone home
+        screen. If the in-app flow is unavailable, email{" "}
         <Link
           href="mailto:support@owlka.com"
           className="text-mark hover:underline break-all"

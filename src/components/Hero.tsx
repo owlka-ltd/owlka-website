@@ -172,7 +172,7 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.55 }}
               className="mt-4 text-sm text-muted text-center lg:text-left"
             >
-              Free for your first 30 days, no card needed. Bring your own Claude plan. Mac and Windows.
+              Bring your own Claude plan. Mac and Windows.
             </motion.p>
 
             {/* The phone stores. Both apps were submitted for review on

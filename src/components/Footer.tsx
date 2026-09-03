@@ -98,11 +98,6 @@ export function Footer() {
                     AI Use
                   </Link>
                 </li>
-                <li>
-                  <Link href="/pricing" className="hover:text-text transition-colors">
-                    Pricing
-                  </Link>
-                </li>
               </ul>
             </div>
           </div>

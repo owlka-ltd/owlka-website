@@ -15,20 +15,20 @@ import { SITE_NAME, SITE_URL } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Download Owlka for Mac and Windows",
   description:
-    "Download Owlka for Mac or Windows. The Owlka desktop app runs on your computer, talks to Claude under your own login, and pairs with the Owlka iPhone app. Free for your first 30 days.",
+    "Download Owlka for Mac or Windows. The Owlka desktop app runs on your computer, talks to Claude under your own login, and pairs with the Owlka iPhone app.",
   alternates: { canonical: "/download" },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
     url: `${SITE_URL}/download`,
     title: "Download Owlka for Mac and Windows",
-    description: "Owlka for Mac and Windows. Free for your first 30 days.",
+    description: "Owlka for Mac and Windows.",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: "Download Owlka for Mac and Windows",
-    description: "Owlka for Mac and Windows. Free for your first 30 days.",
+    description: "Owlka for Mac and Windows.",
   },
 };
 

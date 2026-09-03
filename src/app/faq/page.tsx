@@ -11,7 +11,7 @@ const LAST_UPDATED = "2026-07-29";
 export const metadata: Metadata = {
   title: "FAQ",
   description:
-    "Frequently asked questions about Owlka. What it is, how it works, whether the relay can read your messages, whether it uses your Claude subscription or an API key, supported platforms, pricing, and privacy.",
+    "Frequently asked questions about Owlka. What it is, how it works, whether the relay can read your messages, whether it uses your Claude subscription or an API key, supported platforms, and privacy.",
   alternates: { canonical: "/faq" },
   openGraph: {
     type: "article",
@@ -19,14 +19,14 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/faq`,
     title: "FAQ",
     description:
-      "Answers to the most common questions about Owlka. How it works, how it stays private, what it costs, and which platforms it runs on.",
+      "Answers to the most common questions about Owlka. How it works, how it stays private, and which platforms it runs on.",
     locale: "en_US",
   },
   twitter: {
     card: "summary",
     title: "FAQ",
     description:
-      "Answers to the most common questions about Owlka. How it works, how it stays private, what it costs, and which platforms it runs on.",
+      "Answers to the most common questions about Owlka. How it works, how it stays private, and which platforms it runs on.",
   },
 };
 
@@ -222,7 +222,7 @@ const SECTIONS: Section[] = [
   },
   {
     id: "platforms",
-    title: "Platforms and pricing",
+    title: "Platforms",
     items: [
       {
         q: "What platforms does Owlka support?",
@@ -247,29 +247,6 @@ const SECTIONS: Section[] = [
               Support
             </Link>
             .
-          </>
-        ),
-      },
-      {
-        q: "How much does Owlka cost?",
-        a: (
-          <>
-            Your first 30 days are free, and you do not need to enter any
-            payment details to start, so nothing can charge you automatically
-            when the trial ends. After that, Owlka is £4.99 per month or
-            £49.99 per year. There is one plan with every feature included, and one
-            account covers two phones and two computers. Payment happens on
-            this website, never inside the iPhone app; billing is not live
-            yet, and once it is you will be able to cancel at any time. You do
-            need your own Claude Pro or Max subscription from Anthropic, which
-            Owlka does not resell. See the{" "}
-            <Link
-              href="/pricing"
-              className="underline hover:text-text transition-colors"
-            >
-              pricing page
-            </Link>{" "}
-            for the full details.
           </>
         ),
       },
@@ -368,8 +345,8 @@ export default function FAQPage() {
             </h1>
             <p className="mt-3 text-muted">
               Last updated {LAST_UPDATED}. The short answers to the questions
-              we hear most about Owlka: what it is, how it stays private, what
-              it costs, and which platforms it runs on. Each answer links to the
+              we hear most about Owlka: what it is, how it stays private, and
+              which platforms it runs on. Each answer links to the
               page with the full detail.
             </p>
           </header>

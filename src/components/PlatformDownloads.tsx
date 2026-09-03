@@ -92,8 +92,7 @@ export function PlatformDownloads() {
             </span>
           ) : null}
           Universal binary, signed and notarised by Apple. Runs on Apple Silicon
-          and Intel Macs (macOS 13+). Free for your first 30 days. Linux to
-          follow.
+          and Intel Macs (macOS 13+). Linux to follow.
           Questions to{" "}
           <a
             href="mailto:support@owlka.com"
@@ -136,8 +135,7 @@ export function PlatformDownloads() {
             </span>
           ) : null}
           Signed by Owlka Ltd and ready for 64-bit Windows 10 and 11, so Windows
-          does not show an unknown-publisher warning. Free for your first 30
-          days.
+          does not show an unknown-publisher warning.
         </p>
       </div>
 

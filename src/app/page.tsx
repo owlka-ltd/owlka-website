@@ -22,9 +22,6 @@ const CaseStudies = dynamic(() =>
 const WhyOwlka = dynamic(() =>
   import("@/components/WhyOwlka").then((m) => ({ default: m.WhyOwlka })),
 );
-const Pricing = dynamic(() =>
-  import("@/components/Pricing").then((m) => ({ default: m.Pricing })),
-);
 const Footer = dynamic(() =>
   import("@/components/Footer").then((m) => ({ default: m.Footer })),
 );
@@ -100,7 +97,6 @@ export default function Home() {
         <HowItWorks />
         <CaseStudies />
         <WhyOwlka />
-        <Pricing />
       </main>
       <Footer />
     </>

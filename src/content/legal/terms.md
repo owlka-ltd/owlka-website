@@ -8,7 +8,7 @@ These Terms of Service (the "Terms") form a legal agreement between you ("you", 
 
 BY DOWNLOADING, INSTALLING, ACCESSING, OR USING THE SERVICE YOU AGREE TO THESE TERMS. IF YOU DO NOT AGREE, DO NOT USE THE SERVICE AND UNINSTALL THE APPS.
 
-The Service is provided free of charge today. No payment details are collected, and there is no subscription to cancel. The disclaimers and limitations in these Terms are a material part of the bargain. Read sections 9 (No warranty), 10 (Limitation of liability), 11 (User indemnity), and 12 (Limitation period) before you use the Service.
+The Service is provided free of charge. The disclaimers and limitations in these Terms are a material part of the bargain. Read sections 9 (No warranty), 10 (Limitation of liability), 11 (User indemnity), and 12 (Limitation period) before you use the Service.
 
 ---
 
@@ -21,16 +21,6 @@ If you use the Service on behalf of an organisation, you represent that you have
 ## 2. Early-stage software, no service level
 
 The software is new and still developing. It may contain bugs, errors, and security defects. Features may change, degrade, be added, removed, or be discontinued at any time, with or without notice. We do not commit to any service level, uptime, response time, recovery time, or availability target. We may suspend, throttle, or terminate the Service in whole or in part at our sole discretion. You acknowledge that the early-stage nature of the Service is a material factor in the disclaimers and limitations below.
-
-## 2A. Price, free period, and billing
-
-The Service is provided at no charge today, and we do not ask for payment details.
-
-Billing is not live at the date above. Until we switch it on, the Service is provided at no charge, we collect no payment details, and nothing renews. We will update these Terms, with a new "Last updated" date, before any charge takes effect.
-
-When billing does start, payment is taken through the owlka.com website only. There is no in-app purchase in the Owlka iPhone app, and you will not be asked to pay inside it. You will be able to cancel at any time from the website, and cancelling stops the next renewal rather than refunding the period already paid, except where the law requires otherwise.
-
-The Owlka subscription covers Owlka: the apps, the encrypted relay, and the features listed on our pricing page. It does not include, and we do not resell, any Anthropic or other model-provider subscription, which you buy separately and directly (see section 6).
 
 ## 3. Licence
 
@@ -114,7 +104,7 @@ TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW:
 
 (a) IN NO EVENT WILL OWLKA, ITS OWNERS, EMPLOYEES, CONTRACTORS, AGENTS, LICENSORS, OR SUPPLIERS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES; OR FOR ANY LOSS OF PROFITS, REVENUE, BUSINESS, OPPORTUNITY, GOODWILL, REPUTATION, USE, DATA, CONTENT, OR OTHER INTANGIBLE LOSS; OR FOR BUSINESS INTERRUPTION, COST OF SUBSTITUTE GOODS OR SERVICES, OR THE COST OF DEFECT REMEDIATION; ARISING OUT OF OR IN CONNECTION WITH THE SERVICE, THESE TERMS, OR ANY ACT OR OMISSION RELATED TO THE SERVICE, WHETHER IN CONTRACT, TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY, STATUTE, OR OTHERWISE, AND WHETHER OR NOT OWLKA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
-(b) IN NO EVENT WILL OWLKA'S TOTAL AGGREGATE LIABILITY ARISING OUT OF OR IN CONNECTION WITH THE SERVICE OR THESE TERMS EXCEED THE GREATER OF (i) THE TOTAL AMOUNT YOU PAID OWLKA FOR THE SERVICE IN THE TWELVE MONTHS IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CLAIM, OR (ii) FIFTY POUNDS STERLING (GBP 50). WHILE THE SERVICE IS PROVIDED AT NO CHARGE, OR DURING YOUR FREE PERIOD, THE TWELVE-MONTH AMOUNT WILL BE ZERO AND THIS CAP WILL DEFAULT TO GBP 50.
+(b) IN NO EVENT WILL OWLKA'S TOTAL AGGREGATE LIABILITY ARISING OUT OF OR IN CONNECTION WITH THE SERVICE OR THESE TERMS EXCEED THE GREATER OF (i) THE TOTAL AMOUNT YOU PAID OWLKA FOR THE SERVICE IN THE TWELVE MONTHS IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CLAIM, OR (ii) FIFTY POUNDS STERLING (GBP 50). BECAUSE THE SERVICE IS PROVIDED AT NO CHARGE, THE TWELVE-MONTH AMOUNT WILL BE ZERO AND THIS CAP WILL DEFAULT TO GBP 50.
 
 (c) THE FOREGOING LIMITATIONS APPLY EVEN IF ANY LIMITED REMEDY IN THESE TERMS IS FOUND TO HAVE FAILED OF ITS ESSENTIAL PURPOSE. EACH PROVISION OF THESE TERMS THAT LIMITS LIABILITY, DISCLAIMS WARRANTIES, OR EXCLUDES DAMAGES IS A SEPARATELY NEGOTIATED ALLOCATION OF RISK AND IS A FUNDAMENTAL BASIS OF THE BARGAIN BETWEEN YOU AND OWLKA.
 

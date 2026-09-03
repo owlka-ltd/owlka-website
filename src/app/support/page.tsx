@@ -74,9 +74,12 @@ const faqs: FAQ[] = [
         Open the iPhone app, tap{" "}
         <span className="font-medium">Settings, Account, Delete account</span>
         . The app will wipe local data on your phone and send a delete
-        signal to the relay so the relay forgets your device records. If
-        you also want to remove the app, delete it from your iPhone home
-        screen. If the in-app flow is unavailable, email{" "}
+        signal to the relay so the relay forgets your device records. Your
+        local data on your desktop (Claude memory, project files) is not
+        touched by this and stays exactly where it was; that only goes if
+        you remove it yourself on your machine. If you also want to remove
+        the app, delete it from your iPhone home screen. If the in-app flow
+        is unavailable, email{" "}
         <Link
           href="mailto:support@owlka.com"
           className="text-mark hover:underline break-all"

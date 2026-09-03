@@ -45,15 +45,24 @@ const nextConfig: NextConfig = {
   // site, per Tim, 2026-09-03). A hard 404 would strand anyone with an old
   // link (search results, bookmarks); a page asserting "Owlka is free" would
   // be a pricing commitment nobody has signed off on. A redirect to the page
-  // that actually converts makes no claim about price at all. Permanent
-  // (308): if pricing content ever comes back, add a new /pricing page,
-  // which naturally overrides this rule, rather than flipping this flag.
+  // that actually converts makes no claim about price at all.
+  //
+  // If pricing content ever comes back: REMOVE this redirect entry first,
+  // then add src/app/pricing/page.tsx. Adding the page alone is not enough —
+  // verified 2026-09-03 that with both present, the build succeeds with no
+  // conflict, but this redirects() rule still wins at runtime and the new
+  // page is silently unreachable.
+  //
+  // Temporary (307), not permanent (308): Tim framed this as a launch-time
+  // decision, which means reversible. A 308 is cached hard by browsers per
+  // spec, so a visitor who hits /pricing during this window could keep being
+  // redirected locally even after this rule is removed server-side.
   async redirects() {
     return [
       {
         source: "/pricing",
         destination: "/download",
-        permanent: true,
+        permanent: false,
       },
     ];
   },

@@ -14,10 +14,15 @@ import {
 
 // Canonical Terms of Service text. Single source of truth.
 // The iOS app bundles an identical copy of this file at
-// TerminalApp/TerminalApp/Owlka/TERMS.md. An integrity check script
-// (scripts/check_terms_parity.mjs) exists that compares the two files
-// by SHA-256, but nothing currently runs it automatically. It must be
-// run by hand, or wired into CI/pre-commit, to actually catch drift.
+// TerminalApp/TerminalApp/Owlka/TERMS.md. scripts/check_terms_parity.mjs
+// compares the two by SHA-256 and is wired into the `prebuild` script in
+// package.json, so a local build fails rather than shipping terms that
+// have drifted from the app's.
+//
+// Know its one blind spot: it looks for the iOS copy in a sibling
+// checkout, and EXITS 0 WHEN IT CANNOT FIND ONE. On a build host with
+// only this repo (Vercel), it therefore passes without comparing
+// anything. Drift is caught on a developer machine, not in the deploy.
 const TERMS_PATH = path.join(process.cwd(), "src/content/legal/terms.md");
 
 async function loadTerms(): Promise<{ text: string; sha256: string }> {

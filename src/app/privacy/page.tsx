@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Owlka handles your data. Plain English. Last updated 2026-07-31.",
+    "How Owlka handles your data. Plain English. Last updated 2026-09-03.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -29,7 +29,7 @@ export default function PrivacyPage() {
             <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
               Privacy Policy
             </h1>
-            <p className="mt-4 text-sm text-muted">Last updated 2026-07-31</p>
+            <p className="mt-4 text-sm text-muted">Last updated 2026-09-03</p>
           </header>
 
           <div className="prose prose-neutral max-w-none text-text/85 leading-relaxed space-y-8">
@@ -132,14 +132,13 @@ export default function PrivacyPage() {
                   choose to attach, so we can help you.
                 </li>
                 <li>
-                  <strong>Payment details: none, today.</strong> Owlka costs
-                  &pound;4.99 a month or &pound;49.99 a year after a free first
-                  30 days, but billing is not switched on yet, so we currently
-                  collect no payment information of any kind. When billing does
-                  start it will run through this website rather than through
-                  Apple, and we will update this policy with a new &ldquo;Last
-                  updated&rdquo; date, naming our payment processor, before any
-                  charge is taken.
+                  <strong>Payment details: none, today.</strong> Owlka is
+                  provided at no charge today, and billing is not switched on,
+                  so we currently collect no payment information of any kind.
+                  When billing does start it will run through this website
+                  rather than through Apple, and we will update this policy
+                  with a new &ldquo;Last updated&rdquo; date, naming our
+                  payment processor, before any charge is taken.
                 </li>
               </ul>
             </section>

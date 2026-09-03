@@ -2,13 +2,13 @@
 
 **Version:** 2.0
 **Effective date:** 2026-05-23
-**Last updated:** 2026-08-01
+**Last updated:** 2026-09-03
 
 These Terms of Service (the "Terms") form a legal agreement between you ("you", "your") and Owlka ("Owlka", "we", "us", "our"). They govern your access to and use of the Owlka iPhone app, the Owlka desktop app for macOS, the owlka.com website, the encrypted relay that links the apps, and any other software, services, or content we make available (together, the "Service").
 
 BY DOWNLOADING, INSTALLING, ACCESSING, OR USING THE SERVICE YOU AGREE TO THESE TERMS. IF YOU DO NOT AGREE, DO NOT USE THE SERVICE AND UNINSTALL THE APPS.
 
-The Service is offered free for the first 30 days, after which it is a paid subscription of GBP 4.99 per month or GBP 49.99 per year. Billing is not yet live, and until it is, no charge is made and no payment details are collected. The disclaimers and limitations in these Terms are a material part of the bargain. Read sections 9 (No warranty), 10 (Limitation of liability), 11 (User indemnity), and 12 (Limitation period) before you use the Service.
+The Service is provided free of charge today. No payment details are collected, and there is no subscription to cancel. The disclaimers and limitations in these Terms are a material part of the bargain. Read sections 9 (No warranty), 10 (Limitation of liability), 11 (User indemnity), and 12 (Limitation period) before you use the Service.
 
 ---
 
@@ -24,7 +24,7 @@ The software is new and still developing. It may contain bugs, errors, and secur
 
 ## 2A. Price, free period, and billing
 
-The Service costs GBP 4.99 per month or GBP 49.99 per year. Your first 30 days are free, and we do not ask for payment details to begin that period.
+The Service is provided at no charge today, and we do not ask for payment details.
 
 Billing is not live at the date above. Until we switch it on, the Service is provided at no charge, we collect no payment details, and nothing renews. We will update these Terms, with a new "Last updated" date, before any charge takes effect.
 

@@ -28,7 +28,7 @@ async function loadTerms(): Promise<{ text: string; sha256: string }> {
 export const metadata: Metadata = {
   title: "Terms of Service",
   description:
-    "The terms that govern your use of Owlka. As-is, beta software, UK law. Last updated 2026-05-23.",
+    "The terms that govern your use of Owlka. As-is, beta software, UK law. Last updated 2026-09-03.",
   alternates: { canonical: "/terms" },
 };
 

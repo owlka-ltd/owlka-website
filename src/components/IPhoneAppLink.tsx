@@ -34,8 +34,8 @@ export function IPhoneAppNote({ className }: { className?: string }) {
   }
   return (
     <span className={className}>
-      The Owlka iPhone app is not on the App Store yet. It is in TestFlight
-      beta, so email{" "}
+      The Owlka iPhone app is not on the App Store yet. It is available
+      through TestFlight, so email{" "}
       <a href={CONTACT} className="text-mark hover:underline">
         support@owlka.com
       </a>{" "}

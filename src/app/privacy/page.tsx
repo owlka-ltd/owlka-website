@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Owlka handles your data. Plain English. Last updated 2026-07-31.",
+    "How Owlka handles your data. Plain English. Last updated 2026-09-03.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -29,7 +29,7 @@ export default function PrivacyPage() {
             <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
               Privacy Policy
             </h1>
-            <p className="mt-4 text-sm text-muted">Last updated 2026-07-31</p>
+            <p className="mt-4 text-sm text-muted">Last updated 2026-09-03</p>
           </header>
 
           <div className="prose prose-neutral max-w-none text-text/85 leading-relaxed space-y-8">
@@ -132,14 +132,8 @@ export default function PrivacyPage() {
                   choose to attach, so we can help you.
                 </li>
                 <li>
-                  <strong>Payment details: none, today.</strong> Owlka costs
-                  &pound;4.99 a month or &pound;49.99 a year after a free first
-                  30 days, but billing is not switched on yet, so we currently
-                  collect no payment information of any kind. When billing does
-                  start it will run through this website rather than through
-                  Apple, and we will update this policy with a new &ldquo;Last
-                  updated&rdquo; date, naming our payment processor, before any
-                  charge is taken.
+                  <strong>Payment details: none.</strong> Owlka is provided at
+                  no charge, so we collect no payment information of any kind.
                 </li>
               </ul>
             </section>
@@ -267,9 +261,7 @@ export default function PrivacyPage() {
                   <strong>Apple.</strong> Apple distributes the iPhone app and
                   provides Sign in with Apple. When you sign in, Apple confirms
                   your identity and passes us your name and email. Apple also
-                  delivers our push notifications. If we ever switch on a paid
-                  subscription, Apple will handle billing under its own privacy
-                  policy.
+                  delivers our push notifications.
                 </li>
                 <li>
                   <strong>Cloudflare.</strong> Cloudflare fronts the encrypted
@@ -470,12 +462,6 @@ export default function PrivacyPage() {
                   Apple&rsquo;s token-revocation service so the sign-in grant is
                   fully torn down.
                 </li>
-                <li>
-                  There is no Owlka subscription to cancel today, because
-                  billing is not switched on. When it is, you will cancel from
-                  this website rather than in Apple Settings, since Owlka is not
-                  sold through in-app purchase.
-                </li>
               </ul>
               <p className="mt-3">
                 Deletion always takes effect on your device even if a server
@@ -520,9 +506,7 @@ export default function PrivacyPage() {
                 <li>
                   <strong>Contract.</strong> Processing your account data (name,
                   email) and device identifiers so we can deliver the account
-                  and the Service you have signed up for. When billing is
-                  switched on, the subscription and payment records needed to
-                  run it will be processed on this basis too.
+                  and the Service you have signed up for.
                 </li>
                 <li>
                   <strong>Legitimate interests.</strong> Processing relay

@@ -14,9 +14,10 @@ import {
 
 // Canonical Terms of Service text. Single source of truth.
 // The iOS app bundles an identical copy of this file at
-// TerminalApp/Owlka/Legal/TERMS.md. An integrity check
-// (scripts/check_terms_parity.mjs) verifies the two files
-// match by SHA-256 on every build.
+// TerminalApp/TerminalApp/Owlka/TERMS.md. An integrity check script
+// (scripts/check_terms_parity.mjs) exists that compares the two files
+// by SHA-256, but nothing currently runs it automatically. It must be
+// run by hand, or wired into CI/pre-commit, to actually catch drift.
 const TERMS_PATH = path.join(process.cwd(), "src/content/legal/terms.md");
 
 async function loadTerms(): Promise<{ text: string; sha256: string }> {
@@ -28,7 +29,7 @@ async function loadTerms(): Promise<{ text: string; sha256: string }> {
 export const metadata: Metadata = {
   title: "Terms of Service",
   description:
-    "The terms that govern your use of Owlka. As-is, beta software, UK law. Last updated 2026-05-23.",
+    "The terms that govern your use of Owlka. As-is software, UK law. Last updated 2026-09-03.",
   alternates: { canonical: "/terms" },
 };
 

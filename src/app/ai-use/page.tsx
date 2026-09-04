@@ -4,7 +4,7 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 
-const LAST_UPDATED = "2026-07-03";
+const LAST_UPDATED = "2026-09-04";
 
 export const metadata: Metadata = {
   title: "AI Use",
@@ -159,9 +159,9 @@ const SECTIONS: Section[] = [
     title: "Age rating",
     rows: [
       {
-        label: "Rated 17+",
+        label: "Rated 4+",
         value:
-          "Owlka is rated 17+ on the App Store because Claude can discuss any topic you ask about. Decide whether that is right for you before you start.",
+          "Owlka's declared App Store age rating is 4+. The rating covers what the app itself contains, and Owlka ships no content of its own. Claude can still discuss any topic you ask it about, so decide whether that is right for you before you start.",
       },
     ],
   },

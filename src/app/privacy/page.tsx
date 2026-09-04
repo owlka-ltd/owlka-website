@@ -592,8 +592,8 @@ export default function PrivacyPage() {
             <section>
               <h2 className="text-2xl font-semibold mb-4">Children</h2>
               <p>
-                Owlka is not directed at children and is age-rated accordingly
-                on the App Store. We do not knowingly collect personal data from
+                Owlka is not directed at children. Our declared App Store age
+                rating is 13+. We do not knowingly collect personal data from
                 children under 13 (or under 16 where local law sets the higher
                 floor). If you believe a child has provided us with personal
                 data, email{" "}

@@ -159,9 +159,9 @@ const SECTIONS: Section[] = [
     title: "Age rating",
     rows: [
       {
-        label: "Rated 17+",
+        label: "Rated 13+",
         value:
-          "Owlka is rated 17+ on the App Store because Claude can discuss any topic you ask about. Decide whether that is right for you before you start.",
+          "Owlka's declared App Store age rating is 13+. We set it higher than the content questionnaire requires, because Claude can discuss any topic you ask it about. Decide whether that is right for you before you start.",
       },
     ],
   },

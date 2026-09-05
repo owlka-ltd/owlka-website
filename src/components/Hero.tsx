@@ -83,8 +83,8 @@ export function Hero() {
               className="mt-4 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg text-text/60 leading-relaxed"
             >
               Wrapped in memory that lasts across sessions, automatic reviewers
-              that check the work, and guardrails that pause and ask, in plain
-              English, before risky actions touch your Mac.
+              that check the work, and a hold you control: when Owlka asks, in
+              plain English, nothing happens on your Mac until you answer.
             </motion.p>
 
             <motion.div
@@ -208,7 +208,7 @@ export function Hero() {
               </span>
               <span className="hidden sm:inline text-border">·</span>
               <span className="inline-flex items-center gap-1.5">
-                <Check /> Asks before risky actions
+                <Check /> Nothing happens until you answer
               </span>
             </motion.div>
           </div>

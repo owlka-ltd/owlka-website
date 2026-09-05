@@ -96,12 +96,12 @@ export default function DownloadPage() {
                 ours.
               </Feature>
               <Feature>
-                Automated code reviewers that challenge every change before it
-                lands.
+                Automated code reviewers that challenge changes before they
+                land, at the level of checking you choose.
               </Feature>
               <Feature>
-                Guardrails that pause on risky actions and ask first, in plain
-                English, so accidents are far less likely.
+                A hold you control: when Owlka asks, in plain English, the
+                command waits on your Mac until you answer.
               </Feature>
             </ul>
           </div>

@@ -19,7 +19,7 @@ const features = [
   {
     title: "Automated code reviewers",
     body:
-      "Every change is challenged by a reviewer agent before it lands. Catches the bugs you would never have seen.",
+      "Changes are challenged by a reviewer agent before they land, at the level of checking you choose. Catches the bugs you would never have seen.",
     span: "",
     tone: "surface",
     icon: (
@@ -31,9 +31,9 @@ const features = [
     ),
   },
   {
-    title: "Guardrails before risky actions",
+    title: "When Owlka asks, nothing happens until you answer",
     body:
-      "Risky actions pause and ask first, explained in plain English so you know what you're allowing before you tap. It's not foolproof, but it makes an accidental mess far less likely.",
+      "You set how much Owlka asks about, from anything it judges hard to undo down to nothing at all. When it does ask, the action is held on your own Mac, in plain English, and if your phone is off or Owlka itself crashes it stays held and never runs.",
     span: "",
     tone: "surface",
     icon: (

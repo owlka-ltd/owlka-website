@@ -208,7 +208,7 @@ export function Hero() {
               </span>
               <span className="hidden sm:inline text-border">·</span>
               <span className="inline-flex items-center gap-1.5">
-                <Check /> Nothing happens until you answer
+                <Check /> When Owlka asks, nothing runs
               </span>
             </motion.div>
           </div>

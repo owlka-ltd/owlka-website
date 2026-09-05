@@ -33,7 +33,7 @@ const features = [
   {
     title: "When Owlka asks, nothing happens until you answer",
     body:
-      "You set how much Owlka asks about, from every command and file change down to nothing at all. When it does ask, the action is held on your own Mac, in plain English, and if your phone is off or Owlka itself crashes it stays held and never runs.",
+      "You set how much Owlka asks about, from anything it judges hard to undo down to nothing at all. When it does ask, the action is held on your own Mac, in plain English, and if your phone is off or Owlka itself crashes it stays held and never runs.",
     span: "",
     tone: "surface",
     icon: (

@@ -58,7 +58,7 @@ const faqs: FAQ[] = [
         adds a safety layer: a permission classifier that holds an action
         and asks you first, a kill switch, plain-English decision prompts,
         and the rest of the Owlka shell. You choose how much it asks about,
-        from every change down to nothing at all. What it can hold are
+        from anything it judges hard to undo down to nothing at all. What it can hold are
         terminal commands, file edits and agent runs; reading, searching
         and your connected apps such as Gmail and Calendar are not held.
         When Owlka does ask, nothing happens until you answer. It reduces

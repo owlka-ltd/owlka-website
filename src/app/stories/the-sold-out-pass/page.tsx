@@ -60,10 +60,7 @@ export default function TheSoldOutPassPage() {
             <h1 className="mt-3 text-4xl sm:text-[42px] font-semibold tracking-tight leading-tight">
               {TITLE}
             </h1>
-            <p className="mt-5 text-lg text-text/70 leading-relaxed">
-              {STANDFIRST}
-            </p>
-            <p className="mt-4 text-sm text-muted">
+            <p className="mt-5 text-sm text-muted">
               <time dateTime={PUBLISHED}>7 September 2026</time>
             </p>
           </header>

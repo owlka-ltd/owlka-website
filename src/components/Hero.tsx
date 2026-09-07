@@ -87,6 +87,22 @@ export function Hero() {
               English, before risky actions touch your Mac.
             </motion.p>
 
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.36, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-5 max-w-xl mx-auto lg:mx-0 text-sm font-semibold text-muted"
+            >
+              For anyone wondering why I built Owlka,{" "}
+              <Link
+                href="/stories/the-sold-out-pass"
+                className="text-text/70 underline underline-offset-4 decoration-border hover:text-mark transition-colors"
+              >
+                this story
+              </Link>{" "}
+              explains it.
+            </motion.p>
+
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}

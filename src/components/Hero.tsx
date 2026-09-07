@@ -91,7 +91,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.36, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-5 max-w-xl mx-auto lg:mx-0 text-sm text-muted"
+              className="mt-5 max-w-xl mx-auto lg:mx-0 text-sm font-semibold text-muted"
             >
               For anyone wondering why I built Owlka,{" "}
               <Link

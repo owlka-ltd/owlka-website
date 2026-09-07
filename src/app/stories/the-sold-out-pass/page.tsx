@@ -80,17 +80,6 @@ export default function TheSoldOutPassPage() {
               much) any more.
             </p>
 
-            <figure className="not-prose my-10 overflow-hidden rounded-card border border-border bg-surface">
-              <Image
-                src="/stories/sold-out-pass.jpg"
-                alt={PHOTO_ALT}
-                width={1536}
-                height={2048}
-                className="w-full h-auto"
-                priority
-              />
-            </figure>
-
             <h2 className="pt-4 text-2xl font-semibold tracking-tight text-text">
               Our Saturday
             </h2>
@@ -169,6 +158,16 @@ export default function TheSoldOutPassPage() {
               And the person who most doubted the hours I put into this now
               understands them.
             </p>
+
+            <figure className="not-prose my-10 overflow-hidden rounded-card border border-border bg-surface">
+              <Image
+                src="/stories/sold-out-pass.jpg"
+                alt={PHOTO_ALT}
+                width={1536}
+                height={2048}
+                className="w-full h-auto"
+              />
+            </figure>
           </div>
 
           <footer className="mt-16 border-t border-border pt-6 text-sm text-muted">

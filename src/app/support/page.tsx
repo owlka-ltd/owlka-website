@@ -196,7 +196,7 @@ export default function SupportPage() {
                 </li>
                 <li>
                   <span className="font-semibold">Mac desktop:</span> macOS
-                  12 (Monterey) or later, Apple Silicon or Intel.
+                  13 (Ventura) or later, Apple Silicon or Intel.
                 </li>
                 <li>
                   <span className="font-semibold">Windows desktop:</span>{" "}

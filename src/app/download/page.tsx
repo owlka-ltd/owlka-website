@@ -58,10 +58,17 @@ export default function DownloadPage() {
               title="Install Owlka"
               body="Drag Owlka into Applications and open it. macOS asks once if you trust the app."
             />
+            {/* Step 2 describes what the app ACTUALLY does, and the customer
+                installs nothing. Owlka runs Anthropic's own Claude Code
+                installer itself on every launch (user-level, no sudo), so the
+                only thing left for a customer to do is sign in to their own
+                Anthropic account. Two earlier errors this copy must not
+                regress into: it is Claude Code, NOT the Claude desktop app, and
+                there is no "install it yourself" step to walk anyone through. */}
             <Step
               n="2"
-              title="Sign in to Claude"
-              body="Owlka uses the official Claude app on your Mac. The app walks you through it if you don't have it yet."
+              title="Connect to Claude"
+              body="Nothing for you to install. Owlka sets up Claude Code on your Mac by itself. You just sign in with your own Anthropic account: a page opens in your browser and you paste the code it shows back into Owlka."
             />
             <Step
               n="3"

@@ -74,8 +74,9 @@ const SECTIONS: Section[] = [
             Owlka relay. Anything you type or say on the phone is sealed, sent
             phone to relay to Mac, and the Mac forwards it to the local{" "}
             <span className="font-medium">claude</span> command-line tool.
-            Claude does the work on your Mac and the reply is sealed and streamed
-            back the same way.
+            Owlka drives that tool for you; you never open a terminal or type
+            into it. Claude does the work on your Mac and the reply is sealed
+            and streamed back the same way.
           </>
         ),
       },
@@ -177,8 +178,9 @@ const SECTIONS: Section[] = [
         a: (
           <>
             Your subscription. The Owlka desktop app runs the local{" "}
-            <span className="font-medium">claude</span> command-line tool, which
-            uses your own Claude Pro or Max login on your Mac. Anthropic API
+            <span className="font-medium">claude</span> command-line tool on
+            your behalf, which uses your own Claude Pro or Max login on your
+            Mac. Anthropic API
             tokens are never read or used. The desktop app scrubs every
             API-key-flavoured environment variable before it starts the Claude
             tool, so your usage runs through your subscription, not a metered

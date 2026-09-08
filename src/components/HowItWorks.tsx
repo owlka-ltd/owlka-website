@@ -10,7 +10,7 @@ const steps: { n: string; title: string; body: string; kind: Kind }[] = [
     n: "01",
     title: "Your Claude on your Mac.",
     body:
-      "Owlka runs on your Mac. It launches the official Claude app under your own Anthropic login and keeps your code, your memory, and your work on your own machine. Nothing about your project lives on our servers.",
+      "Owlka runs on your Mac. It launches the official Claude Code tools under your own Anthropic login and keeps your code, your memory, and your work on your own machine. Nothing about your project lives on our servers.",
     kind: "ship",
   },
   {

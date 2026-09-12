@@ -55,11 +55,16 @@ const faqs: FAQ[] = [
       <>
         Owlka has two modes you can switch between in Settings.{" "}
         <span className="font-medium">Owl Claude</span> is the default. It
-        adds a safety layer: a permission classifier that pauses on
-        risky and irreversible actions and asks you first, a kill
-        switch, plain-English decision prompts, and the rest of the Owlka
-        shell. It reduces the chance of a bad action slipping through, but
-        it does not catch everything, so keep an eye on what you approve. <span className="font-medium">Raw Claude</span> is a
+        adds a safety layer: a permission classifier that holds an action
+        and asks you first, a kill switch, plain-English decision prompts,
+        and the rest of the Owlka shell. You choose how much it asks about,
+        from anything it judges hard to undo down to nothing at all. What it can hold are
+        terminal commands, file edits and agent runs; reading, searching
+        and your connected apps such as Gmail and Calendar are not held.
+        When Owlka does ask, nothing happens until you answer. It reduces
+        the chance of a bad action slipping through, but it does not catch
+        everything, so keep an eye on what you approve.{" "}
+        <span className="font-medium">Raw Claude</span> is a
         direct passthrough to the Claude tools on your desktop with the
         safety layer switched off. Raw is for power users who want every
         keystroke to land verbatim; turning it on shows a confirmation

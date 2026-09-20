@@ -61,9 +61,9 @@ const faqs: FAQ[] = [
         from anything it judges hard to undo down to nothing at all. What it can hold are
         terminal commands, file edits and agent runs. Reading and searching
         are not held, including inside connected apps such as Gmail and
-        Calendar. Sending or publishing through them is different: an email
-        or a message going to someone else is always held and always asks
-        you, even if you have turned everything else off.
+        Calendar. Sending through a connected app is different: a Gmail
+        email or a Slack message going to someone else is always held and
+        always asks you, even if you have turned everything else off.
         When Owlka does ask, nothing happens until you answer. It reduces
         the chance of a bad action slipping through, but it does not catch
         everything, so keep an eye on what you approve.{" "}

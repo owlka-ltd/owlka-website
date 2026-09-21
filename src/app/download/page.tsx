@@ -56,7 +56,7 @@ export default function DownloadPage() {
             <Step
               n="1"
               title="Install Owlka"
-              body="Drag Owlka into Applications and open it. macOS asks once if you trust the app."
+              body="Mac: open the .dmg and drag Owlka into Applications. macOS asks once if you trust it. Windows: run the installer and follow the prompts."
             />
             {/* Step 2 describes what the app ACTUALLY does, and the customer
                 installs nothing. Owlka runs Anthropic's own Claude Code

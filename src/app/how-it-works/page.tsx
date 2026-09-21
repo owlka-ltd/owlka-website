@@ -44,9 +44,9 @@ const STEPS: Step[] = [
   {
     n: "1",
     tag: "Setup",
-    title: "Install Owlka for Mac",
+    title: "Install Owlka",
     body:
-      "Download the signed Mac app from owlka.com/download. Drag it into Applications and launch it. Owlka launches the official Claude tools under your own Anthropic login and keeps your code, terminal, and project memory on your computer.",
+      "Download Owlka from owlka.com/download. Mac: open the .dmg and drag Owlka into Applications. Windows: run the installer. Owlka then launches the official Claude tools under your own Anthropic login and keeps your code, terminal, and project memory on your computer.",
   },
   {
     n: "2",

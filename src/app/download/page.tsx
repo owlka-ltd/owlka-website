@@ -56,7 +56,7 @@ export default function DownloadPage() {
             <Step
               n="1"
               title="Install Owlka"
-              body="Drag Owlka into Applications and open it. macOS asks once if you trust the app."
+              body="Mac: open the .dmg and drag Owlka into Applications. macOS asks once if you trust it. Windows: run the installer and follow the prompts."
             />
             {/* Step 2 describes what the app ACTUALLY does, and the customer
                 installs nothing. Owlka runs Anthropic's own Claude Code
@@ -68,7 +68,7 @@ export default function DownloadPage() {
             <Step
               n="2"
               title="Connect to Claude"
-              body="Nothing for you to install. Owlka sets up Claude Code on your Mac by itself. You just sign in with your own Anthropic account: a page opens in your browser and you paste the code it shows back into Owlka."
+              body="Nothing for you to install. Owlka sets up Claude Code on your computer by itself. You just sign in with your own Anthropic account: a page opens in your browser and you paste the code it shows back into Owlka."
             />
             <Step
               n="3"
@@ -92,14 +92,14 @@ export default function DownloadPage() {
             </h2>
             <ul className="mt-5 space-y-3 text-text/80">
               <Feature>
-                A real Claude session running on your Mac, under your own
+                A real Claude session running on your computer, under your own
                 login.
               </Feature>
               <Feature>
                 The Owlka iPhone app, so you can keep working from anywhere.
               </Feature>
               <Feature>
-                Persistent cross-session memory that lives on your Mac, not on
+                Persistent cross-session memory that lives on your computer, not on
                 ours.
               </Feature>
               <Feature>
@@ -108,7 +108,7 @@ export default function DownloadPage() {
               </Feature>
               <Feature>
                 A hold you control: when Owlka asks, in plain English, the
-                command waits on your Mac until you answer.
+                command waits on your computer until you answer.
               </Feature>
             </ul>
           </div>

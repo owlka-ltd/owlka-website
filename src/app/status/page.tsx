@@ -30,7 +30,7 @@ export default function StatusPage() {
             <p className="mt-3 text-muted">
               Live operational status, refreshed every minute. Owlka does
               not run a per-user backend that has to be online for you.
-              Your Mac runs the work, your phone talks to it through the
+              Your computer runs the work, your phone talks to it through the
               encrypted middleman. The components below are the only
               Owlka-operated pieces that have to be up.
             </p>

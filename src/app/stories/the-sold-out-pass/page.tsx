@@ -174,7 +174,7 @@ export default function TheSoldOutPassPage() {
                 href="/download"
                 className="underline hover:text-text transition-colors"
               >
-                Download Owlka for Mac
+                Download Owlka
               </Link>
               . Questions? Email{" "}
               <a

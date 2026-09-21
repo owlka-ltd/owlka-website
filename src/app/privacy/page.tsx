@@ -70,7 +70,7 @@ export default function PrivacyPage() {
                 <li>
                   <strong>Your name and email, if you sign in with Apple.</strong>{" "}
                   Signing in is optional. You can use Owlka by tapping
-                  &ldquo;Not now&rdquo; and pairing a Mac without an account.
+                  &ldquo;Not now&rdquo; and pairing a computer without an account.
                   If you do sign in with Apple, Apple gives us your name and
                   email, and we store them on our relay server so we can keep
                   your account, route push notifications to your devices, and
@@ -157,7 +157,7 @@ export default function PrivacyPage() {
                   ElevenLabs API key on your desktop; with no key the button is
                   greyed out and your microphone is never opened. From the
                   iPhone app the recording travels end-to-end encrypted to your
-                  own paired Mac, which passes it to ElevenLabs using your key;
+                  own paired computer, which passes it to ElevenLabs using your key;
                   from the desktop app it goes straight to ElevenLabs. When
                   Owlka speaks a reply aloud, the text of that reply is sent to
                   ElevenLabs as well. Our relay cannot read any of it and Owlka
@@ -197,7 +197,7 @@ export default function PrivacyPage() {
               <p>
                 Owlka is built around the idea that one desktop can pair with
                 many phones, and one phone can pair with many desktops. A
-                household Mac mini might be paired with two people&rsquo;s
+                household desktop might be paired with two people&rsquo;s
                 phones. One person&rsquo;s phone might be paired with both a
                 home desktop and a work laptop. Each phone-and-desktop pair is
                 a separate boundary.

@@ -284,7 +284,7 @@ async function probe(p: Probe): Promise<Component> {
 function describeOk(id: string, latency_ms: number, notes: string[]): string {
   switch (id) {
     case "relay":
-      return `Passing sealed packets between phones and Macs. ${latency_ms} ms.`;
+      return `Passing sealed packets between phones and computers. ${latency_ms} ms.`;
     case "downloads":
       return notes.length > 0
         ? `Downloadable now: ${notes.join(", ")}. ${latency_ms} ms.`

@@ -41,14 +41,14 @@ const ENDPOINTS: Endpoint[] = [
     protocol: "HTTPS, then WebSocket (wss)",
     port: "443",
     purpose:
-      "The live connection between the Mac app and the iPhone app. The desktop and phone each hold an outbound WebSocket open to the relay so messages flow in real time. This is the one endpoint that must allow WebSocket upgrades.",
+      "The live connection between the desktop app and the iPhone app. The desktop and phone each hold an outbound WebSocket open to the relay so messages flow in real time. This is the one endpoint that must allow WebSocket upgrades.",
   },
   {
     domain: "download.owlka.com",
     protocol: "HTTPS",
     port: "443",
     purpose:
-      "The signed Mac app download and its updates. Only needs to be reachable when someone installs or updates Owlka.",
+      "The signed desktop app downloads and their updates. Only needs to be reachable when someone installs or updates Owlka.",
   },
   {
     domain: "claude.com",
@@ -91,7 +91,7 @@ const COPY_BLOCK = `Please allow the following domains through our proxy/firewal
 
 Required:
   relay.owlka.com               TCP 443   HTTPS + WebSocket (wss), the live connection. Must allow WebSocket upgrades
-  download.owlka.com            TCP 443   HTTPS, the signed Mac app download and its updates
+  download.owlka.com            TCP 443   HTTPS, the signed desktop app downloads and their updates
   claude.com                    TCP 443   HTTPS, signing in to Claude. Without this nobody can log in
   api.anthropic.com             TCP 443   HTTPS, Claude itself, under our own Anthropic account
 
@@ -183,7 +183,7 @@ export default function EnterprisePage() {
             </h2>
             <p className="mt-3 text-muted leading-relaxed">
               Owlka works behind TLS-inspecting (man-in-the-middle) proxies. The
-              message content that travels between the Mac app and the iPhone
+              message content that travels between the desktop app and the iPhone
               app is end-to-end encrypted at the application layer, on top of
               the transport TLS your proxy terminates. So a proxy can decrypt
               and inspect the transport TLS as usual, but it still cannot read

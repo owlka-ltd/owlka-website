@@ -37,15 +37,15 @@ const faqs: FAQ[] = [
     q: "How do I switch between pairs?",
     a: (
       <>
-        One phone can be paired with several desktops at once (home Mac
-        mini and work laptop, for example), and one desktop can be paired
+        One phone can be paired with several desktops at once (home desktop
+        and work laptop, for example), and one desktop can be paired
         with several phones (two members of a household). On the iPhone
         app, tap the desktop name at the top of the screen to open the
         desktop picker, then choose the desktop you want to talk to.
         Switching desktops switches the whole context, including memory,
         skills, and connected accounts, because each pair is partitioned.
         The wife&rsquo;s phone never sees the husband&rsquo;s sessions
-        even when both are paired with the same household Mac.
+        even when both are paired with the same household desktop.
       </>
     ),
   },

@@ -9,7 +9,7 @@ const LAST_UPDATED = "2026-07-03";
 export const metadata: Metadata = {
   title: "AI Use",
   description:
-    "What Owlka's AI can and cannot do, in plain English. AI replies can be wrong, and Claude has deep control of your Mac. Read this before you start.",
+    "What Owlka's AI can and cannot do, in plain English. AI replies can be wrong, and Claude has deep control of your computer. Read this before you start.",
   alternates: { canonical: "/ai-use" },
   openGraph: {
     type: "article",
@@ -17,14 +17,14 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/ai-use`,
     title: "AI Use",
     description:
-      "What Owlka's AI can and cannot do, in plain English. AI replies can be wrong, and Claude has deep control of your Mac.",
+      "What Owlka's AI can and cannot do, in plain English. AI replies can be wrong, and Claude has deep control of your computer.",
     locale: "en_US",
   },
   twitter: {
     card: "summary",
     title: "AI Use",
     description:
-      "What Owlka's AI can and cannot do, in plain English. AI replies can be wrong, and Claude has deep control of your Mac.",
+      "What Owlka's AI can and cannot do, in plain English. AI replies can be wrong, and Claude has deep control of your computer.",
   },
 };
 
@@ -43,7 +43,7 @@ const SECTIONS: Section[] = [
     id: "what-it-is",
     title: "What Owlka is",
     intro:
-      "Owlka pairs your iPhone with your own Mac so you can drive Claude Code from the sofa. The replies you see in the app are written by Claude, running on your Mac under your own Anthropic login. Owlka is the screen and the keyboard; Claude does the thinking and the work.",
+      "Owlka pairs your iPhone with your own computer so you can drive Claude Code from the sofa. The replies you see in the app are written by Claude, running on your computer under your own Anthropic login. Owlka is the screen and the keyboard; Claude does the thinking and the work.",
     rows: [
       {
         label: "Claude writes the replies",
@@ -53,7 +53,7 @@ const SECTIONS: Section[] = [
       {
         label: "It runs on your machine",
         value:
-          "Claude runs on your own Mac under your own Claude subscription. Your code, your files, and your project memory stay on your Mac. Owlka never copies them to a server.",
+          "Claude runs on your own computer under your own Claude subscription. Your code, your files, and your project memory stay on your computer. Owlka never copies them to a server.",
       },
     ],
   },
@@ -82,14 +82,14 @@ const SECTIONS: Section[] = [
   },
   {
     id: "machine-control",
-    title: "Risk 2: Claude has deep control of your Mac",
+    title: "Risk 2: Claude has deep control of your computer",
     intro:
       "Owlka is not a chatbot in a sandbox. Claude Code can run real commands on your real machine. That is the whole point of the product, and it is also the biggest risk.",
     rows: [
       {
         label: "Claude can change and delete files",
         value:
-          "Claude Code can read, create, edit, move, and delete files on your Mac, run terminal commands, install software, and make network requests. A mistaken or misunderstood instruction can damage your work, including deleting files or directories. This can happen even when you meant well, because the AI can misjudge what you wanted.",
+          "Claude Code can read, create, edit, move, and delete files on your computer, run terminal commands, install software, and make network requests. A mistaken or misunderstood instruction can damage your work, including deleting files or directories. This can happen even when you meant well, because the AI can misjudge what you wanted.",
       },
       {
         label: "Used at your own risk",
@@ -99,7 +99,7 @@ const SECTIONS: Section[] = [
       {
         label: "Safety rails help but do not remove the risk",
         value:
-          "Claude asks before some risky actions, and you can run reviewer agents on your Mac that read each change before it lands. These reduce the chance of a bad action slipping through, but they do not make Owlka safe to use without paying attention. The final responsibility for what runs on your Mac is yours.",
+          "Claude asks before some risky actions, and you can run reviewer agents on your computer that read each change before it lands. These reduce the chance of a bad action slipping through, but they do not make Owlka safe to use without paying attention. The final responsibility for what runs on your computer is yours.",
       },
     ],
   },
@@ -140,7 +140,7 @@ const SECTIONS: Section[] = [
       {
         label: "End-to-end encrypted",
         value:
-          "Messages between your phone and your Mac are encrypted on the sending device before they leave it. Our relay forwards sealed packets and cannot read them. We do not hold the keys.",
+          "Messages between your phone and your computer are encrypted on the sending device before they leave it. Our relay forwards sealed packets and cannot read them. We do not hold the keys.",
       },
       {
         label: "No training on your work",
@@ -187,7 +187,7 @@ export default function AIUsePage() {
               Last updated {LAST_UPDATED}. Owlka works with Claude Code, an
               AI coding agent. This page explains, in plain English, what that means
               for you: where the AI can get things wrong, and how much
-              control it has over your Mac. Please read it before you start.
+              control it has over your computer. Please read it before you start.
             </p>
           </header>
 

@@ -1,10 +1,10 @@
 {
-  "version": "2026-05-19",
+  "version": "2026-09-21",
   "connectors": [
     {
       "slug": "shell",
       "name": "Shell",
-      "description": "Run shell commands on your Mac",
+      "description": "Run shell commands on your computer",
       "icon": "shell",
       "status": "live",
       "pair": { "type": "builtin", "payload": {} }

@@ -48,7 +48,7 @@ const SECTIONS: Section[] = [
         a: (
           <>
             Owlka is an iPhone app that lets you drive Claude running on
-            your own Mac, no terminal and no coding background needed. The Mac
+            your own computer, no terminal and no coding background needed. The computer
             does the real work and the phone is the front seat. The two talk to each other through an end-to-end encrypted
             relay that we operate but cannot read. Your code, your terminal,
             and your project memory stay on your own machine. Want the longer
@@ -67,25 +67,25 @@ const SECTIONS: Section[] = [
         q: "How does it work?",
         a: (
           <>
-            You install the Owlka desktop app on your Mac and the Owlka app on
-            your iPhone. The Mac app shows a one-time QR code. You scan it from
+            You install the Owlka desktop app on your computer and the Owlka app on
+            your iPhone. The desktop app shows a one-time QR code. You scan it from
             the phone, which exchanges the encryption keys directly between the
-            two devices. After that, your phone and your Mac both connect to the
+            two devices. After that, your phone and your computer both connect to the
             Owlka relay. Anything you type or say on the phone is sealed, sent
-            phone to relay to Mac, and the Mac forwards it to the local{" "}
+            phone to relay to computer, and the computer forwards it to the local{" "}
             <span className="font-medium">claude</span> command-line tool.
             Owlka drives that tool for you; you never open a terminal or type
-            into it. Claude does the work on your Mac and the reply is sealed
+            into it. Claude does the work on your computer and the reply is sealed
             and streamed back the same way.
           </>
         ),
       },
       {
-        q: "Do I need both a Mac and an iPhone?",
+        q: "Do I need both a computer and an iPhone?",
         a: (
           <>
-            Yes. Owlka is a Mac desktop app and an iPhone app working together.
-            The Mac runs Claude and holds your files. The iPhone is how you talk
+            Yes. Owlka is a desktop app and an iPhone app working together.
+            The computer runs Claude and holds your files. The iPhone is how you talk
             to it from anywhere. Neither half does anything useful on its own.
           </>
         ),
@@ -100,7 +100,7 @@ const SECTIONS: Section[] = [
         q: "Can the relay read my messages?",
         a: (
           <>
-            No. Every message is encrypted on your phone or your Mac before it
+            No. Every message is encrypted on your phone or your computer before it
             leaves the device, and only your paired devices hold the keys. The
             relay looks at the recipient label on the outside of each sealed
             envelope and forwards it by key prefix. It does not open envelopes,
@@ -122,7 +122,7 @@ const SECTIONS: Section[] = [
         q: "What can Owlka actually see?",
         a: (
           <>
-            We can see connection metadata: that a phone and a Mac talked, when,
+            We can see connection metadata: that a phone and a computer talked, when,
             the per-pair public-key identifiers, the IP addresses, and the byte
             size of each sealed packet. We cannot see what you said, your
             files, your tool arguments, or your tool output. If hiding even that
@@ -144,7 +144,7 @@ const SECTIONS: Section[] = [
           <>
             No. Owlka does not train any model on your prompts, your code, or
             the work Claude produces for you. Your use of Claude itself is
-            governed by your own agreement with Anthropic, because your Mac
+            governed by your own agreement with Anthropic, because your computer
             talks to Anthropic directly under your own account.
           </>
         ),
@@ -156,9 +156,9 @@ const SECTIONS: Section[] = [
             Owlka does not transcribe speech on your device. If you tap
             Owlka&rsquo;s microphone button, the recording is sent to
             ElevenLabs and transcribed there, using an ElevenLabs key you add
-            yourself on your Mac. Until you add one the button is greyed out
+            yourself on your computer. Until you add one the button is greyed out
             and your microphone is never opened. From the phone, the audio
-            travels sealed to your own Mac first, and your Mac is what talks to
+            travels sealed to your own computer first, and your computer is what talks to
             ElevenLabs, so no recording reaches an Owlka server. The{" "}
             <Link href="/security#speech" className="underline">
               security page
@@ -180,7 +180,7 @@ const SECTIONS: Section[] = [
             Your subscription. The Owlka desktop app runs the local{" "}
             <span className="font-medium">claude</span> command-line tool on
             your behalf, which uses your own Claude Pro or Max login on your
-            Mac. Anthropic API
+            computer. Anthropic API
             tokens are never read or used. The desktop app scrubs every
             API-key-flavoured environment variable before it starts the Claude
             tool, so your usage runs through your subscription, not a metered
@@ -196,7 +196,7 @@ const SECTIONS: Section[] = [
             Claude Pro or Max subscription. Owlka never sees, copies, or stores
             your Anthropic login. It lives where the Claude tools put it on your
             machine, under your operating system&rsquo;s user permissions, and
-            your Mac talks to Anthropic directly. We never see your Claude
+            your computer talks to Anthropic directly. We never see your Claude
             traffic.
           </>
         ),
@@ -207,7 +207,7 @@ const SECTIONS: Section[] = [
           <>
             Yes. Claude, like every large language model, can sound confident
             and be wrong, invent facts, or write code that looks right but is
-            not. It also has deep control of your Mac and can create, edit, and
+            not. It also has deep control of your computer and can create, edit, and
             delete files. Treat replies as drafts, keep backups, and read
             changes before you approve them. The full picture is on the{" "}
             <Link
@@ -277,10 +277,10 @@ const SECTIONS: Section[] = [
     title: "Pairing and connections",
     items: [
       {
-        q: "How do I pair my phone with my Mac?",
+        q: "How do I pair my phone with my computer?",
         a: (
           <>
-            Install the Owlka desktop app on your Mac and the Owlka app on your
+            Install the Owlka desktop app on your computer and the Owlka app on your
             iPhone. In the desktop app, choose to pair a phone. A one-time QR
             code appears. In the iPhone app, choose to pair a new desktop and
             scan the code. The two devices exchange public keys directly, and
@@ -292,15 +292,15 @@ const SECTIONS: Section[] = [
         ),
       },
       {
-        q: "What happens if my Mac sleeps or disconnects?",
+        q: "What happens if my computer sleeps or disconnects?",
         a: (
           <>
-            Claude runs on your Mac, so your Mac needs to be awake and online
+            Claude runs on your computer, so your computer needs to be awake and online
             for new work to happen. If the phone briefly drops off Wi-Fi, the
             relay queues sealed packets for a short window, so the phone can
             pick up where it left off when it reconnects. The relay does not
             store conversation history, so this is a short queue, not a backup.
-            If your Mac is asleep or offline, new prompts wait until it is
+            If your computer is asleep or offline, new prompts wait until it is
             reachable again.
           </>
         ),
@@ -313,7 +313,7 @@ const SECTIONS: Section[] = [
             key, and sealed packets from it are refused after that. To remove
             everything, open the iPhone app and go to Settings, Account, Delete
             account. The app wipes local data on your phone and tells the relay
-            to forget your device records. Anything stored on your own Mac is
+            to forget your device records. Anything stored on your own computer is
             yours to manage on your machine. Full steps are in the{" "}
             <Link
               href="/privacy"

@@ -8,16 +8,16 @@ type Kind = "voice" | "review" | "memory" | "ship";
 const steps: { n: string; title: string; body: string; kind: Kind }[] = [
   {
     n: "01",
-    title: "Your Claude on your Mac.",
+    title: "Your Claude on your computer.",
     body:
-      "Owlka runs on your Mac. It launches the official Claude Code tools under your own Anthropic login and keeps your code, your memory, and your work on your own machine. Nothing about your project lives on our servers.",
+      "Owlka runs on your computer. It launches the official Claude Code tools under your own Anthropic login and keeps your code, your memory, and your work on your own machine. Nothing about your project lives on our servers.",
     kind: "ship",
   },
   {
     n: "02",
     title: "An encrypted middleman that can't read your messages.",
     body:
-      "Your phone and your Mac talk through an encrypted middleman. We pass sealed messages back and forth. We can't open them. Only your phone and your Mac hold the keys, so the conversation stays between you and your Claude.",
+      "Your phone and your computer talk through an encrypted middleman. We pass sealed messages back and forth. We can't open them. Only your phone and your computer hold the keys, so the conversation stays between you and your Claude.",
     kind: "review",
   },
   {
@@ -49,7 +49,7 @@ export function HowItWorks() {
             Three pieces. One conversation.
           </h2>
           <p className="mt-5 text-lg text-text/70 leading-relaxed">
-            Owlka runs Claude on your Mac, talks to your iPhone through an
+            Owlka runs Claude on your computer, talks to your iPhone through an
             encrypted middleman, and keeps the work on your own machine.
           </p>
         </div>

@@ -11,7 +11,7 @@ const LAST_UPDATED = "2026-05-29";
 export const metadata: Metadata = {
   title: "How it works",
   description:
-    "How Owlka works in plain English. Pair your phone to your Mac with a QR code, drive your Mac's Claude from anywhere, end-to-end encrypted. The relay only sees scrambled bytes.",
+    "How Owlka works in plain English. Pair your phone to your computer with a QR code, drive your computer's Claude from anywhere, end-to-end encrypted. The relay only sees scrambled bytes.",
   alternates: { canonical: "/how-it-works" },
   openGraph: {
     type: "article",
@@ -19,14 +19,14 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/how-it-works`,
     title: "How it works",
     description:
-      "Pair your phone to your Mac with a QR code, drive your Mac's Claude from anywhere, end-to-end encrypted.",
+      "Pair your phone to your computer with a QR code, drive your computer's Claude from anywhere, end-to-end encrypted.",
     locale: "en_US",
   },
   twitter: {
     card: "summary",
     title: "How it works",
     description:
-      "Pair your phone to your Mac with a QR code, drive your Mac's Claude from anywhere, end-to-end encrypted.",
+      "Pair your phone to your computer with a QR code, drive your computer's Claude from anywhere, end-to-end encrypted.",
   },
 };
 
@@ -46,21 +46,21 @@ const STEPS: Step[] = [
     tag: "Setup",
     title: "Install Owlka for Mac",
     body:
-      "Download the signed Mac app from owlka.com/download. Drag it into Applications and launch it. Owlka launches the official Claude tools under your own Anthropic login and keeps your code, terminal, and project memory on your Mac.",
+      "Download the signed Mac app from owlka.com/download. Drag it into Applications and launch it. Owlka launches the official Claude tools under your own Anthropic login and keeps your code, terminal, and project memory on your computer.",
   },
   {
     n: "2",
     tag: "Setup",
     title: "Pair your phone with a QR code",
     body:
-      "The Mac app shows a one-time QR code. Scan it from the Owlka iPhone app. Pairing is one tap, and the code expires straight after. That scan is what hands the encryption keys over, face to face, so nothing secret ever crosses our servers in the clear.",
+      "The desktop app shows a one-time QR code. Scan it from the Owlka iPhone app. Pairing is one tap, and the code expires straight after. That scan is what hands the encryption keys over, face to face, so nothing secret ever crosses our servers in the clear.",
   },
   {
     n: "3",
     tag: "Setup",
     title: "Use Claude anywhere",
     body:
-      "Your phone is now a thin client for the Mac. Talk by voice or type, watch what Claude is doing live, approve a change, kick off a build, or pause it, all from the sofa. Pick up the same conversation on every paired phone.",
+      "Your phone is now a thin client for your computer. Talk by voice or type, watch what Claude is doing live, approve a change, kick off a build, or pause it, all from the sofa. Pick up the same conversation on every paired phone.",
   },
 ];
 
@@ -78,12 +78,12 @@ const SECTIONS: Section[] = [
     id: "three-pieces",
     title: "Three pieces, one conversation",
     intro:
-      "Owlka is a Mac app and an iPhone app. The Mac does the real work; the phone is the front seat. The two talk through an encrypted middleman we run but cannot read.",
+      "Owlka is a desktop app and an iPhone app. The desktop does the real work; the phone is the front seat. The two talk through an encrypted middleman we run but cannot read.",
     rows: [
       {
-        label: "Your Claude, on your Mac",
+        label: "Your Claude, on your computer",
         value:
-          "Owlka runs on your Mac and launches the official Claude tools under your own Anthropic login. Your code, your memory, and your work stay on your own machine. Nothing about your project lives on our servers.",
+          "Owlka runs on your computer and launches the official Claude tools under your own Anthropic login. Your code, your memory, and your work stay on your own machine. Nothing about your project lives on our servers.",
       },
       {
         label: "Your iPhone, your conversation",
@@ -93,7 +93,7 @@ const SECTIONS: Section[] = [
       {
         label: "An encrypted middleman",
         value:
-          "Your phone and your Mac talk through a relay we host. It queues sealed packets and forwards them on, so a phone that drops off Wi-Fi can pick up where it left off. It cannot open the packets.",
+          "Your phone and your computer talk through a relay we host. It queues sealed packets and forwards them on, so a phone that drops off Wi-Fi can pick up where it left off. It cannot open the packets.",
       },
     ],
   },
@@ -101,17 +101,17 @@ const SECTIONS: Section[] = [
     id: "encryption",
     title: "End-to-end encrypted, in plain English",
     intro:
-      "The conversation stays between your phone and your Mac. Here is what that actually means.",
+      "The conversation stays between your phone and your computer. Here is what that actually means.",
     rows: [
       {
         label: "Sealed on the device",
         value:
-          "Every message is encrypted on your phone or your Mac before it leaves the device. Only your paired devices hold the keys, so only they can open the messages.",
+          "Every message is encrypted on your phone or your computer before it leaves the device. Only your paired devices hold the keys, so only they can open the messages.",
       },
       {
         label: "The relay sees scrambled bytes",
         value:
-          "The relay carries sealed packets back and forth. It can see that your phone and Mac talked, when, and roughly how much data they exchanged. It cannot see what they said. There is no Owlka-side key that would let it.",
+          "The relay carries sealed packets back and forth. It can see that your phone and computer talked, when, and roughly how much data they exchanged. It cannot see what they said. There is no Owlka-side key that would let it.",
       },
       {
         label: "Keys are handed over at pairing",
@@ -121,7 +121,7 @@ const SECTIONS: Section[] = [
       {
         label: "We hold no master key",
         value:
-          "If you lose your Mac and all your paired phones, we cannot recover your conversation history. By design, there is no Owlka-side way to decrypt it.",
+          "If you lose your computer and all your paired phones, we cannot recover your conversation history. By design, there is no Owlka-side way to decrypt it.",
       },
     ],
   },
@@ -132,7 +132,7 @@ const SECTIONS: Section[] = [
       {
         label: "Dictate, don't type",
         value:
-          "Tap the microphone and speak. Owlka does not transcribe on the device: the recording goes to ElevenLabs, using an ElevenLabs key you add yourself on your Mac, and comes back as text. With no key added, the button is greyed out and nothing is recorded. The security page explains exactly where the audio travels.",
+          "Tap the microphone and speak. Owlka does not transcribe on the device: the recording goes to ElevenLabs, using an ElevenLabs key you add yourself on your computer, and comes back as text. With no key added, the button is greyed out and nothing is recorded. The security page explains exactly where the audio travels.",
       },
     ],
   },
@@ -155,7 +155,7 @@ export default function HowItWorksPage() {
               How it works
             </h1>
             <p className="mt-3 text-muted">
-              Last updated {LAST_UPDATED}. Owlka runs Claude on your Mac,
+              Last updated {LAST_UPDATED}. Owlka runs Claude on your computer,
               talks to your iPhone through an encrypted middleman, and keeps
               the work on your own machine. Here is the whole thing, start to
               finish.
@@ -247,14 +247,14 @@ export default function HowItWorksPage() {
             </h2>
             <p className="mt-3 text-muted leading-relaxed">
               Owlka is powerful because Claude can do real work on your real
-              Mac. Two things are worth understanding before you rely on it.
+              computer. Two things are worth understanding before you rely on it.
             </p>
 
             <dl className="mt-6 rounded-[18px] border border-border bg-surface">
               <div className="grid gap-2 p-6 sm:grid-cols-[14rem_1fr] sm:gap-8">
                 <dt className="font-medium">AI replies can be wrong</dt>
                 <dd className="text-muted leading-relaxed">
-                  Claude runs on your own Mac and writes the replies you see.
+                  Claude runs on your own computer and writes the replies you see.
                   Like every AI model, it can hallucinate, invent facts, and
                   write code that looks right but is not. Treat replies as
                   drafts and verify anything important. Owlka is not for
@@ -263,10 +263,10 @@ export default function HowItWorksPage() {
               </div>
               <div className="grid gap-2 border-t border-border p-6 sm:grid-cols-[14rem_1fr] sm:gap-8">
                 <dt className="font-medium">
-                  Claude has deep control of your Mac
+                  Claude has deep control of your computer
                 </dt>
                 <dd className="text-muted leading-relaxed">
-                  Claude can run real commands on your Mac: it can
+                  Claude can run real commands on your computer: it can
                   create, edit, and delete files and run programs. A
                   misunderstood instruction can damage your work, including
                   deleting files. You use Owlka at your own risk, so keep
@@ -303,7 +303,7 @@ export default function HowItWorksPage() {
                 href="/download"
                 className="underline hover:text-text transition-colors"
               >
-                Download Owlka for Mac
+                Download Owlka
               </Link>
               . Want the cryptographic detail? See{" "}
               <Link

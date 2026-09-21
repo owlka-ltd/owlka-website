@@ -84,7 +84,7 @@ export function Hero() {
             >
               Wrapped in memory that lasts across sessions, automatic reviewers
               that check the work, and a hold you control: when Owlka asks, in
-              plain English, nothing happens on your Mac until you answer.
+              plain English, nothing happens on your computer until you answer.
             </motion.p>
 
             <motion.p

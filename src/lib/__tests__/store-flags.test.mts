@@ -101,12 +101,21 @@ test("badge artwork is served from our own origin, never hotlinked", () => {
   }
 });
 
-test("both stores are currently marked not-live", () => {
-  // Guards the honesty claim the page makes. If this fails because a listing
-  // genuinely went live, delete the matching line: confirm the public listing
-  // returns HTTP 200 first.
+test("the App Store is still marked not-live", () => {
+  // Guards the honesty claim the page makes. If this fails because the listing
+  // genuinely went live, delete this test: confirm the public listing returns
+  // HTTP 200 first.
   assert.equal(IOS_APP_STORE_AVAILABLE, false);
-  assert.equal(ANDROID_PLAY_STORE_AVAILABLE, false);
+});
+
+test("Google Play is live and links to Owlka's own listing", () => {
+  // Went live 2026-09-27 (listing verified HTTP 200 in GB and US). Pins the
+  // exact package so the badge cannot quietly point at the wrong app.
+  assert.equal(ANDROID_PLAY_STORE_AVAILABLE, true);
+  assert.equal(
+    ANDROID_PLAY_STORE_URL,
+    "https://play.google.com/store/apps/details?id=com.owlka.app",
+  );
 });
 
 test("no redrawn vendor mark in the store strip", () => {

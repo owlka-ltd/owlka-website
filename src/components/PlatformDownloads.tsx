@@ -11,6 +11,7 @@ import {
 } from "@/lib/os";
 import { IPhoneAppCta, IPhoneAppNote } from "./IPhoneAppLink";
 import { AppleMark, WindowsMark } from "./PlatformMarks";
+import { GooglePlayBadge } from "./StoreBadges";
 
 // Both download buttons live here so we can auto-highlight the visitor's OS
 // after hydration without hiding either platform. Mac stays the visual primary
@@ -48,9 +49,7 @@ export function PlatformDownloads() {
           {os === "ios" ? (
             <IPhoneAppCta />
           ) : (
-            <p className="text-lg font-medium">
-              Owlka does not have an Android app yet.
-            </p>
+            <GooglePlayBadge />
           )}
           <p className="text-sm text-muted max-w-md text-center">
             {os === "ios" ? <IPhoneAppNote /> : null} Owlka also needs the

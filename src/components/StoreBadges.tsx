@@ -10,17 +10,19 @@ import {
 // The two PHONE store badges, on the home page hero.
 //
 // Tim asked for the App Store and Google Play marks in the hero, to use the
-// stores' brand recognition. Both apps are SUBMITTED and awaiting review as of
-// 2026-07-31: the iPhone app went to Apple that evening, and Dharminder sent
-// the Android app (owlka-ltd/owlka-android v1.0.0) to Google. Neither listing
-// is live yet, so neither badge links anywhere.
+// stores' brand recognition. Each badge has two states, chosen by the flags in
+// src/lib/flags.ts:
 //
-// "Coming soon" here is therefore a statement of fact with a date behind it,
-// not a placeholder standing in for a feature nobody has started. The badge is
-// the vendor's own artwork, at full strength, and the caption underneath says
-// plainly that the listing is not open yet. The moment a store approves, one
-// line in src/lib/flags.ts turns that same badge into a live link and the
-// caption disappears.
+//  - LIVE: the badge links to the listing, no caption. Google Play has been in
+//    this state since 2026-09-27, when the Android listing went live.
+//  - PENDING: the badge is shown unlinked with a "Coming soon" caption. The App
+//    Store badge stays in this state until Apple approves the iPhone app.
+//
+// "Coming soon" is a statement of fact about a submitted app, not a
+// placeholder. The badge is the vendor's own artwork, at full strength, and the
+// caption says plainly that the listing is not open yet. When a store
+// approves, one line in src/lib/flags.ts turns that same badge into a live link
+// and the caption disappears.
 //
 // Two rules this file keeps:
 //

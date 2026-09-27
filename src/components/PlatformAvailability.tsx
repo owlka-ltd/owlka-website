@@ -33,7 +33,7 @@ import { AppleMark, PlayMark, WindowsMark } from "./PlatformMarks";
 // Rows are no longer gated on availability flags. This is a "what platforms
 // does Owlka cover" statement, and all four are covered: Mac and Windows ship,
 // the iPhone app is in TestFlight with an App Store submission in review, and
-// the Android app is in review at Google. Availability, which is a different
+// the Android app is live on Google Play. Availability, which is a different
 // and more perishable claim, is stated on /download and in the hero.
 //
 // Layout: stacks vertically on a narrow phone, becomes a centred wrapping row

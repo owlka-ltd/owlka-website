@@ -63,38 +63,20 @@ export const MAC_DMG_URL = "https://download.owlka.com/mac/latest.dmg";
 export const IOS_APP_STORE_AVAILABLE: boolean = false;
 export const IOS_APP_STORE_URL: string | null = null;
 
-// The Owlka Android app is NOT on Google Play yet.
+// The Owlka Android app is LIVE on Google Play.
 //
-// The app itself exists: owlka-ltd/owlka-android, version 1.0.0. It is the
-// listing that does not. Verified 2026-07-31 by fetching
-// play.google.com/store/apps/details for both plausible package ids
-// (com.owlka.app and com.owlkaltd.app) in the GB storefront: both returned
-// HTTP 404, the same response Play gives for a package that was never
-// published.
+// Verified 2026-09-27 by fetching
+// play.google.com/store/apps/details?id=com.owlka.app in both the GB and US
+// storefronts: HTTP 200, page title "Owlka – Apps on Google Play". (On
+// 2026-07-31 the same URL returned 404; the app was then in review.)
 //
-// These two constants control whether the Google Play badge is a LINK. They do
-// not control whether it is SHOWN.
+// These two constants control whether the Google Play badge is a LINK. With
+// the flag on, StoreBadges.tsx renders Google's official "Get it on Google
+// Play" lockup as a link to the listing with no "Coming soon" caption, and the
+// download page offers the same badge to Android visitors.
 //
-// While the flag is false, StoreBadges.tsx renders Google's official "Get it on
-// Google Play" lockup at full brand strength, non-interactive: it is a <span>,
-// never an <a>, it takes no focus, and it carries a visible and screen-reader-
-// readable "Coming soon" caption directly underneath. Tim directed that
-// presentation on 2026-07-31, to use the store's brand recognition while the
-// listing is pending. It is honest because the caption is a statement of fact
-// with a date behind it, not a placeholder: the Android app (owlka-ltd/
-// owlka-android v1.0.0) was submitted to Google for review that day. The
-// visitor is told plainly that they cannot get it yet, and nothing on the page
-// offers them a route that dead-ends.
-//
-// Flipping the flag is what turns that same badge into a real store link and
-// drops the caption. Nothing about the badge's artwork, size or position
-// changes.
-//
-// TO GO LIVE, the same two lines as iOS above: set ANDROID_PLAY_STORE_URL to
-// the real play.google.com listing URL and flip ANDROID_PLAY_STORE_AVAILABLE to
-// true. The official badge artwork is already committed at
-// public/google-play-badge.png, so nothing else needs touching. Verify the
-// public listing actually returns HTTP 200 first: an internal release note
-// saying "published" is not the same thing as a live listing.
-export const ANDROID_PLAY_STORE_AVAILABLE: boolean = false;
-export const ANDROID_PLAY_STORE_URL: string | null = null;
+// If the listing is ever withdrawn, set the flag back to false: the badge then
+// returns to its non-interactive "Coming soon" state and nothing dead-ends.
+export const ANDROID_PLAY_STORE_AVAILABLE: boolean = true;
+export const ANDROID_PLAY_STORE_URL: string | null =
+  "https://play.google.com/store/apps/details?id=com.owlka.app";

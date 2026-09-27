@@ -106,6 +106,25 @@ export function PhoneStores({ className = "" }: { className?: string }) {
 }
 
 /**
+ * The Google Play badge on its own, for the download page's Android visitors.
+ * Same component and same two states as the hero strip, so the flag in
+ * src/lib/flags.ts governs both places at once.
+ */
+export function GooglePlayBadge() {
+  return (
+    <StoreBadge
+      badge={GOOGLE_BADGE}
+      store="Google Play"
+      live={Boolean(ANDROID_PLAY_STORE_AVAILABLE && ANDROID_PLAY_STORE_URL)}
+      href={ANDROID_PLAY_STORE_URL}
+      liveAlt="Get Owlka on Google Play"
+      liveTestId="download-google-play-badge"
+      soonTestId="download-google-play-coming-soon"
+    />
+  );
+}
+
+/**
  * One store, in whichever of its two states applies.
  *
  * LIVE: the badge is a link to the listing, with the vendor's own call to

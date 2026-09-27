@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
+import { PortraitVideoFigure } from "@/components/PromoVideo";
+import { STORY_SOLD_OUT_PASS } from "@/lib/media";
 
 const TITLE = "How Owlka booked a sold-out pass";
 const STANDFIRST =
@@ -64,6 +66,12 @@ export default function TheSoldOutPassPage() {
               <time dateTime={PUBLISHED}>7 September 2026</time>
             </p>
           </header>
+
+          <PortraitVideoFigure
+            clip={STORY_SOLD_OUT_PASS}
+            caption="The story as a one-minute film. Played by actors; the conversation is the real one, lightly edited for spelling, grammar and length."
+            className="mb-12"
+          />
 
           <div className="space-y-6 text-[17px] text-text/80 leading-relaxed">
             <p>

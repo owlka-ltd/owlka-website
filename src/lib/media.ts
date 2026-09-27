@@ -99,3 +99,25 @@ export const PROMO_CONTROL = clip(
   "control",
   "Staying in control with Owlka: watch agents from anywhere, pause them with one tap, and choose how many automated reviewers check the work",
 );
+
+// ---------------------------------------------------------------------------
+// Story films. Same hosting rules as the promo set above (versioned,
+// immutable directory on the download host; masters are NOT in this repo).
+// These are portrait-only, so both renditions point at the same 9:16 file and
+// the page shows them in a 9:16 frame at every width (PortraitVideoFigure).
+const MEDIA_BASE_STORIES = "https://download.owlka.com/media/stories";
+
+function portraitOnly(dir: string, name: string, label: string): PromoClip {
+  const r = {
+    src: `${MEDIA_BASE_STORIES}/${dir}/${name}.mp4`,
+    poster: `${MEDIA_BASE_STORIES}/${dir}/${name}-poster.jpg`,
+  };
+  return { wide: r, portrait: r, label };
+}
+
+/** 60s film of the Chessington story (ad cut v10, 2026-09-27). */
+export const STORY_SOLD_OUT_PASS = portraitOnly(
+  "sold-out-pass-v10",
+  "sold-out-pass",
+  "A one-minute film of this story: the sold-out ride access pass, the real Owlka conversation on the phone, and the booking coming through",
+);

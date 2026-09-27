@@ -172,3 +172,31 @@ export function PromoVideoFigure({
     </figure>
   );
 }
+
+/**
+ * A portrait-only film (e.g. a story cut) in a 9:16 frame at every width.
+ * Same player as PromoVideoFigure; only the frame differs, because these clips
+ * have no 16:9 rendition to switch to on desktop.
+ */
+export function PortraitVideoFigure({
+  clip,
+  caption,
+  className = "",
+}: {
+  clip: PromoClip;
+  caption?: string;
+  className?: string;
+}) {
+  return (
+    <figure className={`not-prose mx-auto w-full max-w-[340px] ${className}`}>
+      <div className="relative aspect-[9/16] overflow-hidden rounded-[24px] border border-border bg-surface shadow-lg">
+        <PromoVideo clip={clip} />
+      </div>
+      {caption && (
+        <figcaption className="mt-3 text-center text-sm text-muted leading-relaxed">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}

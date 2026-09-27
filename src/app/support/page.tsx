@@ -80,7 +80,10 @@ const faqs: FAQ[] = [
     a: (
       <>
         Open the iPhone app, tap{" "}
-        <span className="font-medium">Settings, Account, Delete account</span>
+        <span className="font-medium">
+          More, then Subscription, then &ldquo;Delete my account and
+          data&rdquo;
+        </span>
         . The app will wipe local data on your phone and send a delete
         signal to the relay so the relay forgets your device records. Your
         local data on your desktop (Claude memory, project files) is not
@@ -133,14 +136,12 @@ const faqs: FAQ[] = [
         your iOS version, your desktop OS version, and the Owlka build
         number (Settings, About in the app). We aim to acknowledge within
         one working day. For known incidents, check{" "}
-        <a
-          href="https://status.owlka.com"
+        <Link
+          href="/status"
           className="text-mark hover:underline break-all"
-          target="_blank"
-          rel="noreferrer"
         >
-          status.owlka.com
-        </a>
+          owlka.com/status
+        </Link>
         .
       </>
     ),
@@ -180,15 +181,13 @@ export default function SupportPage() {
             </p>
             <p className="mt-3 text-sm text-text/70 leading-relaxed">
               For known issues and live incident reports, see{" "}
-              <a
-                href="https://status.owlka.com"
+              <Link
+                href="/status"
                 className="text-mark hover:underline break-all"
-                target="_blank"
-                rel="noreferrer"
               >
-                status.owlka.com
-              </a>{" "}
-              (status page launches alongside the app).
+                owlka.com/status
+              </Link>
+              .
             </p>
           </div>
 

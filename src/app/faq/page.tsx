@@ -311,8 +311,8 @@ const SECTIONS: Section[] = [
           <>
             Unpairing a phone from the desktop app invalidates that phone&rsquo;s
             key, and sealed packets from it are refused after that. To remove
-            everything, open the iPhone app and go to Settings, Account, Delete
-            account. The app wipes local data on your phone and tells the relay
+            everything, open the iPhone app, go to More, then Subscription, and
+            tap &ldquo;Delete my account and data&rdquo;. The app wipes local data on your phone and tells the relay
             to forget your device records. Anything stored on your own computer is
             yours to manage on your machine. Full steps are in the{" "}
             <Link

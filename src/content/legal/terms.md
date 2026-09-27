@@ -134,7 +134,7 @@ To the maximum extent permitted by applicable law, any claim or cause of action 
 
 ## 13. Termination
 
-You may stop using the Service at any time by uninstalling the apps. You may delete your account from inside the iPhone app under Settings, Account, Delete account, or by emailing support@owlka.com.
+You may stop using the Service at any time by uninstalling the apps. You may delete your account from inside the iPhone app under More, then Subscription, then "Delete my account and data", or by emailing support@owlka.com.
 
 Owlka may suspend, restrict, or terminate your access to all or part of the Service, with or without cause and with or without notice, including if we reasonably believe you have breached these Terms, if continued provision would expose us to legal or security risk, if a third-party provider on which the Service depends becomes unavailable, or if we discontinue the Service. We will give you reasonable notice where the circumstances allow.
 

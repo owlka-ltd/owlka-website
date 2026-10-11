@@ -9,9 +9,12 @@
 //   node scripts/check_terms_parity.mjs
 //
 // Exit 0 if identical, exit 1 if mismatched. The script searches a
-// list of likely paths for the iOS-side copy; if none exist (e.g.
-// running before the iOS-side PR merges) it warns and exits 0 so
-// CI does not block on a not-yet-landed counterpart.
+// list of likely paths for the iOS-side copy.
+//
+// If none exist: in CI / hosted builds (CI or VERCEL env set), where the
+// private iOS repo is never checked out, it prints a notice and exits 0.
+// Anywhere else (a local run) a missing iOS copy is an ERROR, exit 1, so a
+// moved file can never make the check pass without comparing anything.
 
 import { readFileSync, existsSync } from "node:fs";
 import { createHash } from "node:crypto";
@@ -21,7 +24,8 @@ const WEBSITE = resolve("src/content/legal/terms.md");
 
 const IOS_CANDIDATES = [
   // Same machine, sibling checkout.
-  resolve("..", "TerminalApp", "TerminalApp", "Owlka", "TERMS.md"),
+  // iOS repo (owlka-ltd/Owlka) checked out next to this one.
+  resolve("..", "Owlka", "Owlka", "Owlka", "TERMS.md"),
   // Optional explicit override.
   process.env.OWLKA_IOS_TERMS_PATH,
 ].filter((p) => typeof p === "string");
@@ -52,10 +56,18 @@ for (const candidate of IOS_CANDIDATES) {
 }
 
 if (!foundIos) {
-  console.log(
-    "ios copy not found in any candidate path (this is OK if the iOS-side PR has not landed yet).",
+  const hosted = Boolean(process.env.CI || process.env.VERCEL);
+  const tried = IOS_CANDIDATES.map((p) => `  ${p}`).join("\n");
+  if (hosted) {
+    console.log(
+      `NOTICE: iOS terms copy not found, skipping parity (hosted build, iOS repo not present). Tried:\n${tried}`,
+    );
+    process.exit(0);
+  }
+  console.error(
+    `ERROR: iOS terms copy not found, so NOTHING was compared. Tried:\n${tried}\nCheck out owlka-ltd/Owlka beside this repo or set OWLKA_IOS_TERMS_PATH.`,
   );
-  process.exit(0);
+  process.exit(1);
 }
 
 if (mismatch) {

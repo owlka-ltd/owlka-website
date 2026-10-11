@@ -14,7 +14,7 @@ import {
 
 // Canonical Terms of Service text. Single source of truth.
 // The iOS app bundles an identical copy of this file at
-// TerminalApp/TerminalApp/Owlka/TERMS.md. scripts/check_terms_parity.mjs
+// Owlka/Owlka/TERMS.md (iOS repo). scripts/check_terms_parity.mjs
 // compares the two by SHA-256 and is wired into the `prebuild` script in
 // package.json, so a local build fails rather than shipping terms that
 // have drifted from the app's.

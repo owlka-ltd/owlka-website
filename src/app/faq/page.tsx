@@ -6,7 +6,7 @@ import { SITE_NAME, SITE_URL } from "@/lib/seo";
 import { COMPANY_NAME } from "@/lib/company";
 import { IPhoneAppNote } from "@/components/IPhoneAppLink";
 
-const LAST_UPDATED = "2026-07-29";
+const LAST_UPDATED = "2026-10-13";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -173,6 +173,17 @@ const SECTIONS: Section[] = [
     id: "claude",
     title: "Claude and your subscription",
     items: [
+      {
+        q: "How much does Owlka cost?",
+        a: (
+          <>
+            Owlka is free. There is nothing to buy in the app or on this site.
+            You do need your own Claude plan, which you buy directly from
+            Anthropic. Owlka does not sell it, bill for it, or earn anything
+            from it.
+          </>
+        ),
+      },
       {
         q: "Does Owlka use my Claude subscription or an API key?",
         a: (

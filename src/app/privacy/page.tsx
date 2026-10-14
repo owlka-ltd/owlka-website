@@ -42,7 +42,8 @@ export default function PrivacyPage() {
                 companion app for your iPhone. Your conversations, code, and
                 memory live on your own desktop. The two apps talk through an
                 encrypted relay that
-                we cannot read. We do not sell or share your data. We do not
+                we cannot read. We do not sell your data, and we share it only as
+                this policy describes. We do not
                 run advertising trackers. We do not use anything you build to
                 train any model.
               </p>
@@ -96,7 +97,7 @@ export default function PrivacyPage() {
                   commands, only fixed screen and feature names. The first time
                   you open the app we show a notice telling you this is on, with
                   a one-tap off switch. You can change it at any time under More,
-                  then Account &amp; Subscription, and we keep these events for
+                  then Account, and we keep these events for
                   90 days.
                 </li>
                 <li>
@@ -195,10 +196,11 @@ export default function PrivacyPage() {
                 Data shared with AI services
               </h2>
               <p>
-                Owlka works by passing what you write to an AI. The app asks
-                your permission before it sends anything, and you can withdraw
-                that permission in the app at any time under More. This is
-                exactly what is shared, who receives it, and when.
+                Owlka works by passing what you write to an AI. Before the
+                iPhone app sends your messages to Anthropic, it asks your
+                permission, and you can withdraw that permission at any time
+                under More, then Sharing with Anthropic. This is exactly what is
+                shared, who receives it, and when.
               </p>
               <ul className="list-disc pl-6 space-y-2 mt-3">
                 <li>
@@ -214,15 +216,18 @@ export default function PrivacyPage() {
                 </li>
                 <li>
                   <strong>OpenAI, Google AI and Perplexity.</strong> Only if you
-                  add your own API key for one of them, and only after the app
-                  asks your permission. When Claude asks that provider for a
+                  choose to add your own API key for one of them. If you add it
+                  in the iPhone app, the app asks your permission first. If you
+                  add it in the Owlka desktop app, adding the key is how you turn
+                  that service on. When Claude asks that provider for a
                   second opinion, it receives the question or proposed action
                   Claude writes. It is sent from your own computer using your
                   own key.
                 </li>
                 <li>
-                  <strong>ElevenLabs.</strong> Only if you add your own API key
-                  and allow it in the app. When you use Live voice, it receives
+                  <strong>ElevenLabs.</strong> Only if you choose to add your own
+                  ElevenLabs API key, in the iPhone app or the Owlka desktop
+                  app. When you use Live voice, it receives
                   your recording and the text of the reply to be spoken, sent
                   from your own computer using your own key.
                 </li>
@@ -497,7 +502,7 @@ export default function PrivacyPage() {
               </h2>
               <p>
                 You can delete your Owlka account from inside the app. On
-                iPhone, open More, then Subscription. On Android, open More,
+                iPhone, open More, then Account. On Android, open More,
                 then Account. On either, tap &ldquo;Delete my account and
                 data.&rdquo; The app will:
               </p>
@@ -579,7 +584,7 @@ export default function PrivacyPage() {
                   legitimate interest in finding out which parts of the app
                   people use and whether a build works, not on consent. You are
                   told at first run, you can switch it off at any time under
-                  More, then Account &amp; Subscription, and you can object to
+                  More, then Account, and you can object to
                   that processing by emailing us.
                 </li>
                 <li>

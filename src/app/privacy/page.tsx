@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Owlka handles your data. Plain English. Last updated 2026-09-03.",
+    "How Owlka handles your data. Plain English. Last updated 2026-10-14.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -29,7 +29,7 @@ export default function PrivacyPage() {
             <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
               Privacy Policy
             </h1>
-            <p className="mt-4 text-sm text-muted">Last updated 2026-09-03</p>
+            <p className="mt-4 text-sm text-muted">Last updated 2026-10-14</p>
           </header>
 
           <div className="prose prose-neutral max-w-none text-text/85 leading-relaxed space-y-8">
@@ -188,6 +188,60 @@ export default function PrivacyPage() {
                   apps or websites.
                 </li>
               </ul>
+            </section>
+
+            <section id="ai-services">
+              <h2 className="text-2xl font-semibold mb-4">
+                Data shared with AI services
+              </h2>
+              <p>
+                Owlka works by passing what you write to an AI. The app asks
+                your permission before it sends anything, and you can withdraw
+                that permission in the app at any time under More. This is
+                exactly what is shared, who receives it, and when.
+              </p>
+              <ul className="list-disc pl-6 space-y-2 mt-3">
+                <li>
+                  <strong>Anthropic (Claude).</strong> Every time you send a
+                  message, Anthropic receives the message you typed, any photos
+                  or files you attached, and what Claude reads or produces on
+                  your computer while it works on your request. That includes
+                  the contents of files it opens, the output of commands it
+                  runs, and anything it reads from services you have connected.
+                  It is sent from your own computer, by Claude Code, under your
+                  own Anthropic account. It does not pass through Owlka in a
+                  form we can read.
+                </li>
+                <li>
+                  <strong>OpenAI, Google AI and Perplexity.</strong> Only if you
+                  add your own API key for one of them, and only after the app
+                  asks your permission. When Claude asks that provider for a
+                  second opinion, it receives the question or proposed action
+                  Claude writes. It is sent from your own computer using your
+                  own key.
+                </li>
+                <li>
+                  <strong>ElevenLabs.</strong> Only if you add your own API key
+                  and allow it in the app. When you use Live voice, it receives
+                  your recording and the text of the reply to be spoken, sent
+                  from your own computer using your own key.
+                </li>
+              </ul>
+              <p className="mt-4">
+                Owlka does not use any of this to train models or for
+                advertising, and we do not sell it. Each provider handles what it
+                receives under its own privacy policy and your own agreement with
+                it:{" "}
+                <a href="https://www.anthropic.com/legal/privacy" className="underline">Anthropic</a>,{" "}
+                <a href="https://openai.com/policies/privacy-policy" className="underline">OpenAI</a>,{" "}
+                <a href="https://policies.google.com/privacy" className="underline">Google</a>,{" "}
+                <a href="https://www.perplexity.ai/hub/legal/privacy-policy" className="underline">Perplexity</a>{" "}
+                and{" "}
+                <a href="https://elevenlabs.io/privacy-policy" className="underline">ElevenLabs</a>.
+                We only support established providers whose published privacy
+                commitments protect your personal data to a standard equal to
+                this policy.
+              </p>
             </section>
 
             <section>

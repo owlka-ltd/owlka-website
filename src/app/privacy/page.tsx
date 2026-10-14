@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Owlka handles your data. Plain English. Last updated 2026-10-14.",
+    "How Owlka handles your data. Plain English. Last updated 2026-10-15.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -29,7 +29,7 @@ export default function PrivacyPage() {
             <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
               Privacy Policy
             </h1>
-            <p className="mt-4 text-sm text-muted">Last updated 2026-10-14</p>
+            <p className="mt-4 text-sm text-muted">Last updated 2026-10-15</p>
           </header>
 
           <div className="prose prose-neutral max-w-none text-text/85 leading-relaxed space-y-8">
@@ -210,9 +210,12 @@ export default function PrivacyPage() {
                   your computer while it works on your request. That includes
                   the contents of files it opens, the output of commands it
                   runs, and anything it reads from services you have connected.
-                  It is sent from your own computer, by Claude Code, under your
-                  own Anthropic account. It does not pass through Owlka in a
-                  form we can read.
+                  It is sent from your own computer, by Claude Code, under
+                  whichever of your connected Anthropic accounts is active. If
+                  you connect more than one Anthropic account and choose Auto,
+                  Owlka switches to another of your own accounts when one reaches
+                  its usage limit. It does not pass through Owlka in a form we
+                  can read.
                 </li>
                 <li>
                   <strong>OpenAI, Google AI and Perplexity.</strong> Only if you
@@ -246,6 +249,92 @@ export default function PrivacyPage() {
                 We only support established providers whose published privacy
                 commitments protect your personal data to a standard equal to
                 this policy.
+              </p>
+            </section>
+
+            <section id="connected-services">
+              <h2 className="text-2xl font-semibold mb-4">
+                Services you connect
+              </h2>
+              <p>
+                You can connect your own accounts with other services so Claude
+                can work with them for you. Nothing is connected unless you do
+                it, and you can disconnect any service at any time. When you
+                connect one, the app tells you what Claude can do there. Claude
+                reads from and acts in a connected service only through the
+                access you granted, and only when your conversation calls for
+                it. Anything Claude reads from a connected service becomes part
+                of your conversation, which is sent to Anthropic as described
+                above. Sign-in details for these services are kept on your own
+                computer, not on our servers.
+              </p>
+              <ul className="list-disc pl-6 space-y-2 mt-3">
+                  <li>
+                    <strong>Google (Gmail, Calendar, Drive).</strong> Claude can read email, calendar events and files, and can send email and create drafts, manage email labels, create, change or delete calendar events, and respond to invitations.
+                  </li>
+                  <li>
+                    <strong>Microsoft 365 (Outlook, Calendar, OneDrive).</strong> Claude can read email, calendar events and files, and can send email and create calendar events.
+                  </li>
+                  <li>
+                    <strong>GitHub.</strong> Claude can read repositories, issues, pull requests and code, and can create issues and comment on pull requests.
+                  </li>
+                  <li>
+                    <strong>Slack.</strong> Claude can read channels, threads, messages and members, and can send messages, drafts and reactions.
+                  </li>
+                  <li>
+                    <strong>Trello.</strong> Claude can read boards, lists and cards, and can create and move cards, add comments.
+                  </li>
+                  <li>
+                    <strong>Atlassian (Jira, Confluence).</strong> Claude can read issues and pages, and can create and update issues, add comments, create pages.
+                  </li>
+                  <li>
+                    <strong>Notion, Linear, Asana, Airtable, ClickUp, Todoist, monday.com.</strong> Claude can read pages, databases, projects, tasks and records, and can create and update pages, tasks, items and records, add comments.
+                  </li>
+                  <li>
+                    <strong>Figma, Miro.</strong> Claude can read design files, boards and comments, and can add comments, create boards and board items.
+                  </li>
+                  <li>
+                    <strong>Calendly, Zoom.</strong> Claude can read event types, bookings, meetings and recordings, and can create or cancel bookings and booking links, create or change meetings.
+                  </li>
+                  <li>
+                    <strong>WordPress.com.</strong> Claude can read sites, posts and comments, and can create drafts, update posts, reply to comments.
+                  </li>
+                  <li>
+                    <strong>Box, Dropbox.</strong> Claude can read folders and files, and can create folders and text files, add comments, create shared links.
+                  </li>
+                  <li>
+                    <strong>DocuSign.</strong> Claude can read envelopes and templates, and can send reminders.
+                  </li>
+                  <li>
+                    <strong>HubSpot, Zendesk Support, Intercom, Mailchimp.</strong> Claude can read contacts, records, tickets, conversations, audiences and campaigns, and can create and update records, tickets, contacts and members, add notes and comments, and reply to conversations.
+                  </li>
+                  <li>
+                    <strong>Stripe, Xero.</strong> Claude can read balances, customers, payments, invoices, contacts and reports, and can add notes, create contacts and create draft invoices.
+                  </li>
+                  <li>
+                    <strong>Sentry, Vercel, Cloudflare, Supabase.</strong> Claude can read projects, issues, deployments, domains, DNS records and database tables, and can update issues, add comments, redeploy, change DNS records, purge cache, run database queries.
+                  </li>
+                  <li>
+                    <strong>Typeform.</strong> Claude can read forms and responses, and can rename forms.
+                  </li>
+                  <li>
+                    <strong>Discord, Telegram, WhatsApp.</strong> Claude can read chats, channels and messages, and can send messages, replies and files.
+                  </li>
+                  <li>
+                    <strong>Bluesky, Mastodon, LinkedIn, Threads, Facebook and Instagram, Pinterest, YouTube, TikTok.</strong> Claude can read your profile, posts, comments and statistics, and can publish posts, photos, replies and comments, and update video details.
+                  </li>
+                  <li>
+                    <strong>Your own service (Add your own).</strong> Claude can read whatever that service offers, and can whatever that service allows, on your behalf.
+                  </li>
+              </ul>
+              <p className="mt-4">
+                When you add your own service, the app asks you to confirm
+                before anything is connected. Each service handles what Claude
+                sends it under that service&rsquo;s own privacy policy and your
+                own account with it. We only support established services whose
+                published privacy commitments protect your personal data to a
+                standard equal to this policy, and a service you add yourself is
+                one you have chosen.
               </p>
             </section>
 

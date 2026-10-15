@@ -350,6 +350,33 @@ export default function PrivacyPage() {
                     <strong>Bluesky, Mastodon, LinkedIn, Threads, Facebook and Instagram, Pinterest, YouTube, TikTok.</strong> Claude can read your profile, posts, comments and statistics, and can publish posts, photos, replies and comments, and update video details.
                   </li>
                   <li>
+                    <strong>Wix, Webflow.</strong> Claude can read your sites, pages, CMS content, forms and site data such as store, bookings and blog, and can create and change sites, pages and content, upload images, invite people to your Webflow site or workspace, and publish your site and its content.
+                  </li>
+                  <li>
+                    <strong>Netlify.</strong> Claude can read your sites, deploys, forms, environment variables, request logs and team details, and can create sites, deploy and publish them, and change site settings, access controls, forms, form submissions, extensions and environment variables.
+                  </li>
+                  <li>
+                    <strong>Neon.</strong> Claude can read your projects, branches, databases and the data in them, and can create, change and delete projects, branches, databases and storage, and run database queries that change data.
+                  </li>
+                  <li>
+                    <strong>PostHog.</strong> Claude can read your product analytics, events, people, dashboards, feature flags, experiments, surveys and errors, and can create and change dashboards, insights, feature flags, experiments, surveys and workflows, and send the messages, replies, surveys and reports you set up in PostHog.
+                  </li>
+                  <li>
+                    <strong>Zapier.</strong> Claude can read the actions and connected accounts you set up in Zapier and run them, which reads from and writes to those other apps, including sending messages or emails if you enabled actions that do.
+                  </li>
+                  <li>
+                    <strong>Attio, Close.</strong> Claude can read records, leads, contacts, opportunities, lists, notes, tasks, emails, calls and meeting notes, and can create and update records, notes and tasks and add comments in Attio, create, update and delete leads, contacts, opportunities, notes and tasks in Close, save email drafts in Close, and schedule calls in Close, including calls made by a Close voice agent.
+                  </li>
+                  <li>
+                    <strong>Granola, Fireflies.</strong> Claude can read your meeting notes, summaries and transcripts, and, in Fireflies, can rename, move and share meetings and create soundbites.
+                  </li>
+                  <li>
+                    <strong>Jam.</strong> Claude can read your bug reports with their logs, network requests, screenshots and video, and can comment on, update, organise and delete them, and create recording links.
+                  </li>
+                  <li>
+                    <strong>Egnyte.</strong> Claude can read your folders, files and comments, and ask Egnyte&rsquo;s own AI assistant about them, and can upload files, create folders, add comments and file details, and create share links.
+                  </li>
+                  <li>
                     <strong>Your own service (Add your own).</strong> Claude can read whatever that service offers, and can whatever that service allows, on your behalf.
                   </li>
               </ul>

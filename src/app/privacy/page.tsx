@@ -359,7 +359,7 @@ export default function PrivacyPage() {
                     <strong>Neon.</strong> Claude can read your projects, branches, databases and the data in them, and can create, change and delete projects, branches, databases and storage, and run database queries that change data.
                   </li>
                   <li>
-                    <strong>PostHog.</strong> Claude can read your product analytics, events, people, dashboards, feature flags, experiments, surveys and errors, and can create and change dashboards, insights, feature flags, experiments, surveys and workflows, and send the messages, replies, surveys and reports you set up in PostHog.
+                    <strong>PostHog.</strong> Claude can read your product analytics, events, people, dashboards, feature flags, experiments, surveys and errors, and can create and change dashboards, insights, feature flags, experiments, surveys and workflows, create and send broadcasts and ticket replies, launch surveys, send scheduled reports, run and publish workflows that send messages, send data to the destinations you connect, and publish canvases.
                   </li>
                   <li>
                     <strong>Zapier.</strong> Claude can read the actions and connected accounts you set up in Zapier and run them, which reads from and writes to those other apps, including sending messages or emails if you enabled actions that do.
@@ -377,7 +377,7 @@ export default function PrivacyPage() {
                     <strong>Egnyte.</strong> Claude can read your folders, files and comments, and ask Egnyte&rsquo;s own AI assistant about them, and can upload files, create folders, add comments and file details, and create share links.
                   </li>
                   <li>
-                    <strong>Your own service (Add your own).</strong> Claude can read whatever that service offers, and can whatever that service allows, on your behalf.
+                    <strong>Your own service (Add your own).</strong> Claude can read whatever that service offers, and can do whatever that service allows, on your behalf.
                   </li>
               </ul>
               <p className="mt-4">

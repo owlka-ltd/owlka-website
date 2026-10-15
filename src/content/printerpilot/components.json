@@ -1,0 +1,1682 @@
+{
+  "provenance": "Wheels installed from PrinterPilot hub/requirements-cad.lock (62 hash-pinned packages, branch cad-kernel-pack at 3a34802), metadata read 2026-10-12. Not read from a built pack, because none has been built.",
+  "python": [
+    {
+      "name": "anytree",
+      "version": "2.13.0",
+      "declaredLicence": "Apache-2.0",
+      "home": "https://github.com/c0fec0de/anytree",
+      "licenceFiles": [
+        "anytree-2.13.0/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/anytree/2.13.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/bc/a8/eb55fab589c56f9b6be2b3fd6997aa04bb6f3da93b01154ce6fc8e799db2/anytree-2.13.0.tar.gz",
+        "filename": "anytree-2.13.0.tar.gz",
+        "sha256": "c9d3aa6825fdd06af7ebb05b4ef291d2db63e62bb1f9b7d9b71354be9d362714"
+      }
+    },
+    {
+      "name": "asttokens",
+      "version": "3.0.2",
+      "declaredLicence": "Apache 2.0",
+      "home": "https://github.com/gristlabs/asttokens",
+      "licenceFiles": [
+        "asttokens-3.0.2/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/asttokens/3.0.2/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/25/1e/faf0f247f6f881b98fc4d6d07e14085cb89d13665084e6d6ac1dc2c03d0b/asttokens-3.0.2.tar.gz",
+        "filename": "asttokens-3.0.2.tar.gz",
+        "sha256": "3ecdbd8f2cc195f53ccada3a613538bb5f9ef6f6869129f13e03c30a677b8fe2"
+      }
+    },
+    {
+      "name": "bd_materials",
+      "version": "0.2.4",
+      "declaredLicence": null,
+      "home": "https://github.com/bernhard-42/bd_materials",
+      "licenceFiles": [],
+      "pypiPage": "https://pypi.org/project/bd_materials/0.2.4/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/19/28/940946d9cc9f1489c3d3f0c6a8f2acaf2a1240ba1cf24df69ac385f9c0d7/bd_materials-0.2.4.tar.gz",
+        "filename": "bd_materials-0.2.4.tar.gz",
+        "sha256": "daea82953c18cef04be9f8519c75518d230df1b78457f4a92a7da8725e533bb8"
+      }
+    },
+    {
+      "name": "build123d",
+      "version": "0.13.0",
+      "declaredLicence": "Apache-2.0",
+      "home": "https://github.com/gumyr/build123d",
+      "licenceFiles": [
+        "build123d-0.13.0/licenses/LICENSE.txt",
+        "build123d-0.13.0/licenses/NOTICE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/build123d/0.13.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/4b/6c/47b531b579d5238e4627b5113375d8f7a7145a24b3447413be318422ee71/build123d-0.13.0.tar.gz",
+        "filename": "build123d-0.13.0.tar.gz",
+        "sha256": "97c5577a777ff7219714b10f70f253c7109e84bb3ec621eea5d4597b4c7656b4"
+      }
+    },
+    {
+      "name": "cadquery-ocp-novtk",
+      "version": "8.0.1.1.0",
+      "declaredLicence": "Apache-2.0",
+      "home": null,
+      "licenceFiles": [],
+      "pypiPage": "https://pypi.org/project/cadquery-ocp-novtk/8.0.1.1.0/",
+      "sdist": null
+    },
+    {
+      "name": "cadquery-ocp-proxy",
+      "version": "8.0.1.1.0",
+      "declaredLicence": "Apache-2.0",
+      "home": null,
+      "licenceFiles": [],
+      "pypiPage": "https://pypi.org/project/cadquery-ocp-proxy/8.0.1.1.0/",
+      "sdist": null
+    },
+    {
+      "name": "certifi",
+      "version": "2026.7.22",
+      "declaredLicence": "MPL-2.0",
+      "home": "https://github.com/certifi/python-certifi",
+      "licenceFiles": [
+        "certifi-2026.7.22/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/certifi/2026.7.22/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/a3/c2/24167ea9858356b47a87a50d39908bfdb72ceeefe0041586e704e5376b3a/certifi-2026.7.22.tar.gz",
+        "filename": "certifi-2026.7.22.tar.gz",
+        "sha256": "741e2c3b351ddf169a738da9f2c048608ff7f2c5cc02f1ebc6b118bb090d5d55"
+      }
+    },
+    {
+      "name": "charset-normalizer",
+      "version": "3.5.2",
+      "declaredLicence": "MIT",
+      "home": null,
+      "licenceFiles": [
+        "charset_normalizer-3.5.2/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/charset-normalizer/3.5.2/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/33/1c/f41d4e74c28ab327ff3acd36053f7ea506c55872d7a90b0fa71aa3ab0c89/charset_normalizer-3.5.2.tar.gz",
+        "filename": "charset_normalizer-3.5.2.tar.gz",
+        "sha256": "39de2a259fc954455c57274dc94c79d5842774e1247a016aff30bc0efed0f4ef"
+      }
+    },
+    {
+      "name": "cloudpickle",
+      "version": "3.1.2",
+      "declaredLicence": "BSD-3-Clause",
+      "home": "https://github.com/cloudpipe/cloudpickle",
+      "licenceFiles": [
+        "cloudpickle-3.1.2/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/cloudpickle/3.1.2/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/27/fb/576f067976d320f5f0114a8d9fa1215425441bb35627b1993e5afd8111e5/cloudpickle-3.1.2.tar.gz",
+        "filename": "cloudpickle-3.1.2.tar.gz",
+        "sha256": "7fda9eb655c9c230dab534f1983763de5835249750e85fbcef43aaa30a9a2414"
+      }
+    },
+    {
+      "name": "dataclasses-json",
+      "version": "0.6.7",
+      "declaredLicence": "MIT",
+      "home": "https://github.com/lidatong/dataclasses-json",
+      "licenceFiles": [
+        "dataclasses_json-0.6.7/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/dataclasses-json/0.6.7/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/64/a4/f71d9cf3a5ac257c993b5ca3f93df5f7fb395c725e7f1e6479d2514173c3/dataclasses_json-0.6.7.tar.gz",
+        "filename": "dataclasses_json-0.6.7.tar.gz",
+        "sha256": "b6b3e528266ea45b9535223bc53ca645f5208833c29229e847b3f26a1cc55fc0"
+      }
+    },
+    {
+      "name": "Deprecated",
+      "version": "1.3.1",
+      "declaredLicence": "MIT",
+      "home": "https://github.com/laurent-laporte-pro/deprecated",
+      "licenceFiles": [
+        "deprecated-1.3.1/licenses/LICENSE.rst.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/Deprecated/1.3.1/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/49/85/12f0a49a7c4ffb70572b6c2ef13c90c88fd190debda93b23f026b25f9634/deprecated-1.3.1.tar.gz",
+        "filename": "deprecated-1.3.1.tar.gz",
+        "sha256": "b1b50e0ff0c1fddaa5708a2c6b0a6588bb09b892825ab2b214ac9ea9d92a5223"
+      }
+    },
+    {
+      "name": "executing",
+      "version": "2.3.0",
+      "declaredLicence": "MIT",
+      "home": "https://github.com/alexmojaki/executing",
+      "licenceFiles": [
+        "executing-2.3.0/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/executing/2.3.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/52/92/8a611141e42930c0f194f7504063ab87dfe970cf1a5af28e7703df448734/executing-2.3.0.tar.gz",
+        "filename": "executing-2.3.0.tar.gz",
+        "sha256": "15919cb5d667e5cb4e099511971d00d659573fff2dd5c4e6cd8b71636c7858d2"
+      }
+    },
+    {
+      "name": "ezdxf",
+      "version": "1.4.4",
+      "declaredLicence": "MIT License",
+      "home": "https://github.com/mozman/ezdxf",
+      "licenceFiles": [
+        "ezdxf-1.4.4/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/ezdxf/1.4.4/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/5e/d7/1b7be8db364f1c4838dfc1a40ca96577aba405deabf896a4eb3aaeb15a62/ezdxf-1.4.4.tar.gz",
+        "filename": "ezdxf-1.4.4.tar.gz",
+        "sha256": "da5a5e0e6bdbb6656f9c017b47edc7eafceb419d61a2b5de64ffb344c168e593"
+      }
+    },
+    {
+      "name": "fonttools",
+      "version": "4.66.1",
+      "declaredLicence": "MIT",
+      "home": "http://github.com/fonttools/fonttools",
+      "licenceFiles": [
+        "fonttools-4.66.1/licenses/LICENSE.txt",
+        "fonttools-4.66.1/licenses/LICENSE.external.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/fonttools/4.66.1/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/87/b6/126c659ab7e0e03e01a5f5d223abf7b2c0691ae92718085a212a3924a2a3/fonttools-4.66.1.tar.gz",
+        "filename": "fonttools-4.66.1.tar.gz",
+        "sha256": "64967c6ddb0d4c610dfd8cb1485981b2d27972ddfb7d4bbbd9e199d2a089c450"
+      }
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "declaredLicence": "BSD-3-Clause",
+      "home": "https://github.com/kjd/idna",
+      "licenceFiles": [
+        "idna-3.20/licenses/LICENSE.md.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/idna/3.20/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/f5/08/8eea9d4b8302028f3abb2c0813953f7aec26d33b7a8960ed760e65ff29fa/idna-3.20.tar.gz",
+        "filename": "idna-3.20.tar.gz",
+        "sha256": "a7db850025b95ded1eae8a46181a1a6c56c92c96f0e2b005d9ff8dc0210cab44"
+      }
+    },
+    {
+      "name": "ipython",
+      "version": "9.17.1",
+      "declaredLicence": "BSD-3-Clause",
+      "home": "https://ipython.org",
+      "licenceFiles": [
+        "ipython-9.17.1/licenses/COPYING.rst.txt",
+        "ipython-9.17.1/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/ipython/9.17.1/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/b9/32/99451b1283ec5d92ad77073f12e1c667dc10775384d8f15c2914207149dd/ipython-9.17.1.tar.gz",
+        "filename": "ipython-9.17.1.tar.gz",
+        "sha256": "8919be8c27f20a6f4423145028063f6637b42a03ce57665bb12015ee1f073529"
+      }
+    },
+    {
+      "name": "ipython_pygments_lexers",
+      "version": "1.1.1",
+      "declaredLicence": "BSD License",
+      "home": "https://github.com/ipython/ipython-pygments-lexers",
+      "licenceFiles": [
+        "ipython_pygments_lexers-1.1.1/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/ipython_pygments_lexers/1.1.1/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/ef/4c/5dd1d8af08107f88c7f741ead7a40854b8ac24ddf9ae850afbcf698aa552/ipython_pygments_lexers-1.1.1.tar.gz",
+        "filename": "ipython_pygments_lexers-1.1.1.tar.gz",
+        "sha256": "09c0138009e56b6854f9535736f4171d855c8c08a563a0dcd8022f78355c7e81"
+      }
+    },
+    {
+      "name": "jedi",
+      "version": "0.20.0",
+      "declaredLicence": "MIT",
+      "home": "https://github.com/davidhalter/jedi",
+      "licenceFiles": [
+        "jedi-0.20.0/AUTHORS.txt",
+        "jedi-0.20.0/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/jedi/0.20.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/46/b7/a3635f6a2d7cf5b5dd98064fc1d5fbbafcb25477bcea204a3a92145d158b/jedi-0.20.0.tar.gz",
+        "filename": "jedi-0.20.0.tar.gz",
+        "sha256": "c3f4ccbd276696f4b19c54618d4fb18f9fc24b0aef02acf704b23f487daa1011"
+      }
+    },
+    {
+      "name": "joblib",
+      "version": "1.6.0",
+      "declaredLicence": "BSD-3-Clause",
+      "home": "https://joblib.readthedocs.io",
+      "licenceFiles": [
+        "joblib-1.6.0/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/joblib/1.6.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/d5/1d/537ab090f302b838943a1b56497dd53059b9a9b46a074936470173a2e207/joblib-1.6.0.tar.gz",
+        "filename": "joblib-1.6.0.tar.gz",
+        "sha256": "2ccc96785b12046c08fd6d55839c12857831b54a3c1673ffadd2f04bfc4eda03"
+      }
+    },
+    {
+      "name": "lib3mf",
+      "version": "2.5.0",
+      "declaredLicence": "BSD License",
+      "home": null,
+      "licenceFiles": [
+        "lib3mf-2.5.0/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/lib3mf/2.5.0/",
+      "sdist": null
+    },
+    {
+      "name": "lxml",
+      "version": "6.1.3",
+      "declaredLicence": "BSD-3-Clause",
+      "home": "https://lxml.de/",
+      "licenceFiles": [
+        "lxml-6.1.3/licenses/LICENSE.txt",
+        "lxml-6.1.3/licenses/LICENSES.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/lxml/6.1.3/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/23/ad/28ecd7cb894d172f3c9c80a075eeeb2017ac62e3632cee05a5f9493547eb/lxml-6.1.3.tar.gz",
+        "filename": "lxml-6.1.3.tar.gz",
+        "sha256": "45222d94ddd511536f3b2f7d9deae3b2339b4ce0f075f1ca25703b07cad9dd21"
+      }
+    },
+    {
+      "name": "manifold3d",
+      "version": "3.5.4",
+      "declaredLicence": "Apache Software License",
+      "home": "https://github.com/elalish/manifold",
+      "licenceFiles": [
+        "manifold3d-3.5.4/licenses/AUTHORS.txt",
+        "manifold3d-3.5.4/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/manifold3d/3.5.4/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/f3/0f/1f7e51a8f9a6f25e837159c5bf7c95a3ae948aa12e1c5fdeee0fd90ca5f9/manifold3d-3.5.4.tar.gz",
+        "filename": "manifold3d-3.5.4.tar.gz",
+        "sha256": "5bd88c482c6fd7fc01aa7b715b3e31c2585ee98343d5559d286ba30db0d0b6f0"
+      }
+    },
+    {
+      "name": "marshmallow",
+      "version": "3.26.2",
+      "declaredLicence": "MIT License",
+      "home": "https://github.com/marshmallow-code/marshmallow",
+      "licenceFiles": [
+        "marshmallow-3.26.2/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/marshmallow/3.26.2/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/55/79/de6c16cc902f4fc372236926b0ce2ab7845268dcc30fb2fbb7f71b418631/marshmallow-3.26.2.tar.gz",
+        "filename": "marshmallow-3.26.2.tar.gz",
+        "sha256": "bbe2adb5a03e6e3571b573f42527c6fe926e17467833660bebd11593ab8dfd57"
+      }
+    },
+    {
+      "name": "matplotlib-inline",
+      "version": "0.2.2",
+      "declaredLicence": "BSD-3-Clause",
+      "home": "https://github.com/ipython/matplotlib-inline",
+      "licenceFiles": [
+        "matplotlib_inline-0.2.2/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/matplotlib-inline/0.2.2/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/bd/c0/9f7c9a46090390368a4d7bcb76bb87a4a36c421e4c0792cdb53486ffac7a/matplotlib_inline-0.2.2.tar.gz",
+        "filename": "matplotlib_inline-0.2.2.tar.gz",
+        "sha256": "72f3fe8fce36b70d4a5b612f899090cd0401deddc4ea90e1572b9f4bfb058c79"
+      }
+    },
+    {
+      "name": "mpmath",
+      "version": "1.3.0",
+      "declaredLicence": "BSD",
+      "home": "http://mpmath.org/",
+      "licenceFiles": [
+        "mpmath-1.3.0/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/mpmath/1.3.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/e0/47/dd32fa426cc72114383ac549964eecb20ecfd886d1e5ccf5340b55b02f57/mpmath-1.3.0.tar.gz",
+        "filename": "mpmath-1.3.0.tar.gz",
+        "sha256": "7a28eb2a9774d00c7bc92411c19a89209d5da7c4c9a9e227be8330a23a25b91f"
+      }
+    },
+    {
+      "name": "mypy_extensions",
+      "version": "1.1.0",
+      "declaredLicence": "MIT",
+      "home": "https://github.com/python/mypy_extensions",
+      "licenceFiles": [
+        "mypy_extensions-1.1.0/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/mypy_extensions/1.1.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/a2/6e/371856a3fb9d31ca8dac321cda606860fa4548858c0cc45d9d1d4ca2628b/mypy_extensions-1.1.0.tar.gz",
+        "filename": "mypy_extensions-1.1.0.tar.gz",
+        "sha256": "52e68efc3284861e772bbcd66823fde5ae21fd2fdb51c62a211403730b916558"
+      }
+    },
+    {
+      "name": "narwhals",
+      "version": "2.27.1",
+      "declaredLicence": "MIT",
+      "home": "https://github.com/narwhals-dev/narwhals",
+      "licenceFiles": [
+        "narwhals-2.27.1/licenses/LICENSE.md.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/narwhals/2.27.1/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/bf/21/f64d6b2dbea7bf3f8c38cdc786dcc6ef012ca3d173ad208c782c9a7bedf6/narwhals-2.27.1.tar.gz",
+        "filename": "narwhals-2.27.1.tar.gz",
+        "sha256": "aed93076a3ea42d9c32c88e4eb5ea422a21937011cbe1f480f9572a523c82094"
+      }
+    },
+    {
+      "name": "networkx",
+      "version": "3.6.1",
+      "declaredLicence": "BSD-3-Clause",
+      "home": "https://networkx.org/",
+      "licenceFiles": [
+        "networkx-3.6.1/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/networkx/3.6.1/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/6a/51/63fe664f3908c97be9d2e4f1158eb633317598cfa6e1fc14af5383f17512/networkx-3.6.1.tar.gz",
+        "filename": "networkx-3.6.1.tar.gz",
+        "sha256": "26b7c357accc0c8cde558ad486283728b65b6a95d85ee1cd66bafab4c8168509"
+      }
+    },
+    {
+      "name": "numpy",
+      "version": "2.4.6",
+      "declaredLicence": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+      "home": "https://numpy.org",
+      "licenceFiles": [
+        "numpy-2.4.6/licenses/LICENSE.txt",
+        "numpy-2.4.6/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt",
+        "numpy-2.4.6/licenses/numpy/_core/src/common/pythoncapi-compat/COPYING.txt",
+        "numpy-2.4.6/licenses/numpy/_core/src/highway/LICENSE.txt",
+        "numpy-2.4.6/licenses/numpy/_core/src/npysort/x86-simd-sort/LICENSE.md.txt",
+        "numpy-2.4.6/licenses/numpy/_core/src/umath/svml/LICENSE.txt",
+        "numpy-2.4.6/licenses/numpy/fft/pocketfft/LICENSE.md.txt",
+        "numpy-2.4.6/licenses/numpy/linalg/lapack_lite/LICENSE.txt",
+        "numpy-2.4.6/licenses/numpy/ma/LICENSE.txt",
+        "numpy-2.4.6/licenses/numpy/random/LICENSE.md.txt",
+        "numpy-2.4.6/licenses/numpy/random/src/distributions/LICENSE.md.txt",
+        "numpy-2.4.6/licenses/numpy/random/src/mt19937/LICENSE.md.txt",
+        "numpy-2.4.6/licenses/numpy/random/src/pcg64/LICENSE.md.txt",
+        "numpy-2.4.6/licenses/numpy/random/src/philox/LICENSE.md.txt",
+        "numpy-2.4.6/licenses/numpy/random/src/sfc64/LICENSE.md.txt",
+        "numpy-2.4.6/licenses/numpy/random/src/splitmix64/LICENSE.md.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/numpy/2.4.6/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/d0/ad/fed0499ce6a338d2a03ebae59cd15093910c8875328855781952abf6c2fe/numpy-2.4.6.tar.gz",
+        "filename": "numpy-2.4.6.tar.gz",
+        "sha256": "f3a3570c4a2a16746ac2c31a7c7c7b0c186b95ce902e33db6f28094ed7387dda"
+      }
+    },
+    {
+      "name": "ocp_gordon",
+      "version": "0.3.1",
+      "declaredLicence": "Apache-2.0",
+      "home": "https://github.com/gongfan99/ocp_gordon",
+      "licenceFiles": [
+        "ocp_gordon-0.3.1/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/ocp_gordon/0.3.1/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/35/b2/66ed6601660648ad5bf84a571460cd57e9db4b28c6833c55e229211a418d/ocp_gordon-0.3.1.tar.gz",
+        "filename": "ocp_gordon-0.3.1.tar.gz",
+        "sha256": "e55e695fd421e4dc10fe91636e7f2fa376ad81572faaf74e7bbed4b78c7918b7"
+      }
+    },
+    {
+      "name": "ocpsvg",
+      "version": "0.7.0",
+      "declaredLicence": null,
+      "home": null,
+      "licenceFiles": [
+        "ocpsvg-0.7.0/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/ocpsvg/0.7.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/77/93/6731a317aca67604914e69f4d92d544c5637c89d8fd54e5dde9ddbc93561/ocpsvg-0.7.0.tar.gz",
+        "filename": "ocpsvg-0.7.0.tar.gz",
+        "sha256": "e8a03495e873943398df61e1cd02bd0d6f0f206665a2c9f86430b75bd2ecc152"
+      }
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "declaredLicence": "Apache-2.0 OR BSD-2-Clause",
+      "home": "https://github.com/pypa/packaging",
+      "licenceFiles": [
+        "packaging-26.3/licenses/LICENSE.txt",
+        "packaging-26.3/licenses/LICENSE.APACHE.txt",
+        "packaging-26.3/licenses/LICENSE.BSD.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/packaging/26.3/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/7d/fa/3944b40b07da9ce895c0e6303a5ab7d53da063554f534556b134a54d6093/packaging-26.3.tar.gz",
+        "filename": "packaging-26.3.tar.gz",
+        "sha256": "94edc256424af38762eb31306eed28beb9f0efc50a8837492c9d6fd6004aed79"
+      }
+    },
+    {
+      "name": "parso",
+      "version": "0.8.7",
+      "declaredLicence": "MIT",
+      "home": "https://github.com/davidhalter/parso",
+      "licenceFiles": [
+        "parso-0.8.7/AUTHORS.txt",
+        "parso-0.8.7/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/parso/0.8.7/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/30/4b/90c937815137d43ce71ba043cd3566221e9df6b9c805f24b5d138c9d40a7/parso-0.8.7.tar.gz",
+        "filename": "parso-0.8.7.tar.gz",
+        "sha256": "eaaac4c9fdd5e9e8852dc778d2d7405897ec510f2a298071453e5e3a07914bb1"
+      }
+    },
+    {
+      "name": "pexpect",
+      "version": "4.9.0",
+      "declaredLicence": "ISC license",
+      "home": "https://pexpect.readthedocs.io/",
+      "licenceFiles": [
+        "pexpect-4.9.0/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/pexpect/4.9.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/42/92/cc564bf6381ff43ce1f4d06852fc19a2f11d180f23dc32d9588bee2f149d/pexpect-4.9.0.tar.gz",
+        "filename": "pexpect-4.9.0.tar.gz",
+        "sha256": "ee7d41123f3c9911050ea2c2dac107568dc43b2d3b0c7557a33212c398ead30f"
+      }
+    },
+    {
+      "name": "pillow",
+      "version": "12.2.0",
+      "declaredLicence": "MIT-CMU",
+      "home": "https://python-pillow.github.io",
+      "licenceFiles": [
+        "pillow-12.2.0/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/pillow/12.2.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/8c/21/c2bcdd5906101a30244eaffc1b6e6ce71a31bd0742a01eb89e660ebfac2d/pillow-12.2.0.tar.gz",
+        "filename": "pillow-12.2.0.tar.gz",
+        "sha256": "a830b1a40919539d07806aa58e1b114df53ddd43213d9c8b75847eee6c0182b5"
+      }
+    },
+    {
+      "name": "platformdirs",
+      "version": "4.13.0",
+      "declaredLicence": "MIT",
+      "home": "https://github.com/tox-dev/platformdirs",
+      "licenceFiles": [
+        "platformdirs-4.13.0/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/platformdirs/4.13.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/80/a8/66d45abadff219e36e2a824181b8f6a67e7ed4572934d6252c71c29d5731/platformdirs-4.13.0.tar.gz",
+        "filename": "platformdirs-4.13.0.tar.gz",
+        "sha256": "1aa0b0d3f224c1f07c295121e312a5a24a180d6ae5a8425ea1784b3e3863e9c0"
+      }
+    },
+    {
+      "name": "prompt_toolkit",
+      "version": "3.0.53",
+      "declaredLicence": "BSD License",
+      "home": "https://github.com/prompt-toolkit/python-prompt-toolkit",
+      "licenceFiles": [
+        "prompt_toolkit-3.0.53/licenses/AUTHORS.rst.txt",
+        "prompt_toolkit-3.0.53/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/prompt_toolkit/3.0.53/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/7d/ea/39b988c938f75cb75d7045b5c69f8bfed47ee2152c8837fb403de29d6fb8/prompt_toolkit-3.0.53.tar.gz",
+        "filename": "prompt_toolkit-3.0.53.tar.gz",
+        "sha256": "9ec8a0ad96d5c56148b3f914aa79c1564c3fde5d2e6b876e7bc327e353cf8fa6"
+      }
+    },
+    {
+      "name": "psutil",
+      "version": "7.2.2",
+      "declaredLicence": "BSD-3-Clause",
+      "home": "https://github.com/giampaolo/psutil",
+      "licenceFiles": [
+        "psutil-7.2.2/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/psutil/7.2.2/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/aa/c6/d1ddf4abb55e93cebc4f2ed8b5d6dbad109ecb8d63748dd2b20ab5e57ebe/psutil-7.2.2.tar.gz",
+        "filename": "psutil-7.2.2.tar.gz",
+        "sha256": "0746f5f8d406af344fd547f1c8daa5f5c33dbc293bb8d6a16d80b4bb88f59372"
+      }
+    },
+    {
+      "name": "ptyprocess",
+      "version": "0.7.0",
+      "declaredLicence": "UNKNOWN",
+      "home": "https://github.com/pexpect/ptyprocess",
+      "licenceFiles": [
+        "ptyprocess-0.7.0/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/ptyprocess/0.7.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/20/e5/16ff212c1e452235a90aeb09066144d0c5a6a8c0834397e03f5224495c4e/ptyprocess-0.7.0.tar.gz",
+        "filename": "ptyprocess-0.7.0.tar.gz",
+        "sha256": "5c5d0a3b48ceee0b48485e0c26037c0acd7d29765ca3fbb5cb3831d347423220"
+      }
+    },
+    {
+      "name": "pure_eval",
+      "version": "0.2.4",
+      "declaredLicence": "MIT",
+      "home": "http://github.com/alexmojaki/pure_eval",
+      "licenceFiles": [
+        "pure_eval-0.2.4/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/pure_eval/0.2.4/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/da/9f/abfd2959e9261dd5217ca8551d4de211ca6ab26fe9b72cf44731ff6c4442/pure_eval-0.2.4.tar.gz",
+        "filename": "pure_eval-0.2.4.tar.gz",
+        "sha256": "260c2774686e651b79f8b8e7fc9d80b3599ea6a66334b47d5f4abb69fc2c0ea1"
+      }
+    },
+    {
+      "name": "pygltflib",
+      "version": "1.16.5",
+      "declaredLicence": "MIT License",
+      "home": "https://gitlab.com/dodgyville/pygltflib",
+      "licenceFiles": [
+        "pygltflib-1.16.5/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/pygltflib/1.16.5/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/22/e8/f8232abdf9c085333689b0a428dcd1d0f83edd1ecafa6ed878a633d8c9d5/pygltflib-1.16.5.tar.gz",
+        "filename": "pygltflib-1.16.5.tar.gz",
+        "sha256": "1f15740d5a7aaf71a5083e285af6b361184958e255659132f4ba8fe4f3d21ea9"
+      }
+    },
+    {
+      "name": "Pygments",
+      "version": "2.21.0",
+      "declaredLicence": "BSD-2-Clause",
+      "home": "https://pygments.org",
+      "licenceFiles": [
+        "pygments-2.21.0/licenses/AUTHORS.txt",
+        "pygments-2.21.0/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/Pygments/2.21.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/49/2e/ced460408999b33da6b31b0021b0f37d329e202d4169aeb164493778f25b/pygments-2.21.0.tar.gz",
+        "filename": "pygments-2.21.0.tar.gz",
+        "sha256": "610ca751c9bc2492b38eb9a38a7fbc93edbbb2d7182edaf34e66ae493dee5c8c"
+      }
+    },
+    {
+      "name": "pyparsing",
+      "version": "3.3.3",
+      "declaredLicence": "MIT",
+      "home": "https://github.com/pyparsing/pyparsing/",
+      "licenceFiles": [
+        "pyparsing-3.3.3/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/pyparsing/3.3.3/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/e4/11/b213bebff182584360cb8d17c72c1677fec5c5c228de439e63bcf8ab1c8f/pyparsing-3.3.3.tar.gz",
+        "filename": "pyparsing-3.3.3.tar.gz",
+        "sha256": "928ae7e20211f3b6f3915a72f06a0cfd29ab9d24279dd6346b6b1a7146397d36"
+      }
+    },
+    {
+      "name": "requests",
+      "version": "2.34.2",
+      "declaredLicence": "Apache-2.0",
+      "home": "https://github.com/psf/requests",
+      "licenceFiles": [
+        "requests-2.34.2/licenses/LICENSE.txt",
+        "requests-2.34.2/licenses/NOTICE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/requests/2.34.2/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/ac/c3/e2a2b89f2d3e2179abd6d00ebd70bff6273f37fb3e0cc209f48b39d00cbf/requests-2.34.2.tar.gz",
+        "filename": "requests-2.34.2.tar.gz",
+        "sha256": "f288924cae4e29463698d6d60bc6a4da69c89185ad1e0bcc4104f584e960b9ed"
+      }
+    },
+    {
+      "name": "scikit-learn",
+      "version": "1.9.1",
+      "declaredLicence": "BSD-3-Clause",
+      "home": "https://scikit-learn.org",
+      "licenceFiles": [
+        "scikit_learn-1.9.1/licenses/COPYING.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/scikit-learn/1.9.1/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/d2/eb/eaf5e07fcc0da7149b0e084f24e54edd7441b9a89ce7e034032ae97fe3a0/scikit_learn-1.9.1.tar.gz",
+        "filename": "scikit_learn-1.9.1.tar.gz",
+        "sha256": "629cada3e33e2b9bf376cdc7614a47a4140b8aedc1d836579e359736fbd82977"
+      }
+    },
+    {
+      "name": "scipy",
+      "version": "1.17.1",
+      "declaredLicence": "Copyright (c) 2001-2002 Enthought, Inc. 2003, SciPy Developers.",
+      "home": "https://scipy.org/",
+      "licenceFiles": [
+        "scipy-1.17.1/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/scipy/1.17.1/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/7a/97/5a3609c4f8d58b039179648e62dd220f89864f56f7357f5d4f45c29eb2cc/scipy-1.17.1.tar.gz",
+        "filename": "scipy-1.17.1.tar.gz",
+        "sha256": "95d8e012d8cb8816c226aef832200b1d45109ed4464303e997c5b13122b297c0"
+      }
+    },
+    {
+      "name": "stack-data",
+      "version": "0.6.3",
+      "declaredLicence": "MIT",
+      "home": "http://github.com/alexmojaki/stack_data",
+      "licenceFiles": [
+        "stack_data-0.6.3/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/stack-data/0.6.3/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/28/e3/55dcc2cfbc3ca9c29519eb6884dd1415ecb53b0e934862d3559ddcb7e20b/stack_data-0.6.3.tar.gz",
+        "filename": "stack_data-0.6.3.tar.gz",
+        "sha256": "836a778de4fec4dcd1dcd89ed8abff8a221f58308462e1c4aa2a3cf30148f0b9"
+      }
+    },
+    {
+      "name": "svgelements",
+      "version": "1.9.6",
+      "declaredLicence": "MIT",
+      "home": "https://github.com/meerk40t/svgelements",
+      "licenceFiles": [
+        "svgelements-1.9.6/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/svgelements/1.9.6/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/5d/29/1c93c94a2289675ba2ff898612f9c9a03f46d69f253bdf4da0dfc08a599d/svgelements-1.9.6.tar.gz",
+        "filename": "svgelements-1.9.6.tar.gz",
+        "sha256": "7c02ad6404cd3d1771fd50e40fbfc0550b0893933466f86a6eb815f3ba3f37f7"
+      }
+    },
+    {
+      "name": "svgpathtools",
+      "version": "1.8.0",
+      "declaredLicence": "MIT",
+      "home": "https://github.com/mathandy/svgpathtools",
+      "licenceFiles": [
+        "svgpathtools-1.8.0/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/svgpathtools/1.8.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/d9/d9/f051605af785d3fa9f0c80038f63027879b96e6da3d4c90b712ba7a0adc9/svgpathtools-1.8.0.tar.gz",
+        "filename": "svgpathtools-1.8.0.tar.gz",
+        "sha256": "e5fc4a7b5aae744e4a9de698e0ff54a9d3769c578d1e420cc452eedcaf1650fb"
+      }
+    },
+    {
+      "name": "svgwrite",
+      "version": "1.4.3",
+      "declaredLicence": "MIT License",
+      "home": "http://github.com/mozman/svgwrite.git",
+      "licenceFiles": [
+        "svgwrite-1.4.3/LICENSE.TXT.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/svgwrite/1.4.3/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/16/c1/263d4e93b543390d86d8eb4fc23d9ce8a8d6efd146f9427364109004fa9b/svgwrite-1.4.3.zip",
+        "filename": "svgwrite-1.4.3.zip",
+        "sha256": "a8fbdfd4443302a6619a7f76bc937fc683daf2628d9b737c891ec08b8ce524c3"
+      }
+    },
+    {
+      "name": "sympy",
+      "version": "1.14.0",
+      "declaredLicence": "BSD",
+      "home": "https://sympy.org",
+      "licenceFiles": [
+        "sympy-1.14.0/licenses/AUTHORS.txt",
+        "sympy-1.14.0/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/sympy/1.14.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/83/d3/803453b36afefb7c2bb238361cd4ae6125a569b4db67cd9e79846ba2d68c/sympy-1.14.0.tar.gz",
+        "filename": "sympy-1.14.0.tar.gz",
+        "sha256": "d3d3fe8df1e5a0b42f0e7bdf50541697dbe7d23746e894990c030e2b05e72517"
+      }
+    },
+    {
+      "name": "threadpoolctl",
+      "version": "3.7.0",
+      "declaredLicence": "BSD-3-Clause",
+      "home": "https://github.com/joblib/threadpoolctl",
+      "licenceFiles": [
+        "threadpoolctl-3.7.0/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/threadpoolctl/3.7.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/00/dc/6c58154c1c65f758ea979e7139cb76993a9cfc662d14e9be3c4a667cfb77/threadpoolctl-3.7.0.tar.gz",
+        "filename": "threadpoolctl-3.7.0.tar.gz",
+        "sha256": "61348cfb77d53b9242e0017029244b559b810c142ced65b4e21eeca1843959a7"
+      }
+    },
+    {
+      "name": "threejs-materials",
+      "version": "1.2.4",
+      "declaredLicence": "Apache-2.0",
+      "home": "https://github.com/bernhard-42/threejs-materials",
+      "licenceFiles": [
+        "threejs_materials-1.2.4/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/threejs-materials/1.2.4/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/d2/c5/82f0653b022eaf48ac1ebfdc9679130c1039184d2f14d8ba6080855a0d29/threejs_materials-1.2.4.tar.gz",
+        "filename": "threejs_materials-1.2.4.tar.gz",
+        "sha256": "1b7322b554fe21aa704e5f44f5d03116c6d7f1010fbe1439e32feb65fa2cd5bb"
+      }
+    },
+    {
+      "name": "traitlets",
+      "version": "5.16.1",
+      "declaredLicence": "BSD 3-Clause License",
+      "home": "https://github.com/ipython/traitlets",
+      "licenceFiles": [
+        "traitlets-5.16.1/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/traitlets/5.16.1/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/2c/2e/a7fbfe268c8a3b32546930c0297c101d65a4a14c304ad5790a9f478f0e4e/traitlets-5.16.1.tar.gz",
+        "filename": "traitlets-5.16.1.tar.gz",
+        "sha256": "ed900c2b631aa3a112811139fa97b8d2c3bad5e989656bba4b7e52c7852c18c1"
+      }
+    },
+    {
+      "name": "trianglesolver",
+      "version": "1.2",
+      "declaredLicence": "MIT",
+      "home": "http://pypi.python.org/pypi/trianglesolver",
+      "licenceFiles": [
+        "trianglesolver-1.2/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/trianglesolver/1.2/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/6f/52/18f909fcc652b2a4de75a274aa3de0d567a5d592b13d57e65b76c550bdf1/trianglesolver-1.2.tar.gz",
+        "filename": "trianglesolver-1.2.tar.gz",
+        "sha256": "4af18aade579d5c0d64389b3e65aeaf06cff26319762ccd859e3268559a76aea"
+      }
+    },
+    {
+      "name": "trimesh",
+      "version": "5.1.1",
+      "declaredLicence": "The MIT License (MIT)",
+      "home": "https://github.com/mikedh/trimesh",
+      "licenceFiles": [
+        "trimesh-5.1.1/licenses/LICENSE.md.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/trimesh/5.1.1/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/ab/bf/a7efaef127e0f1a228a03e5d00c04f5aeb2c25a60adb4d47003d4d0855bc/trimesh-5.1.1.tar.gz",
+        "filename": "trimesh-5.1.1.tar.gz",
+        "sha256": "56070be44cd97ac87544c9bd3da4b7a298c6f728e83183aeb1f3524d673d5fac"
+      }
+    },
+    {
+      "name": "typing-inspect",
+      "version": "0.9.0",
+      "declaredLicence": "MIT",
+      "home": "https://github.com/ilevkivskyi/typing_inspect",
+      "licenceFiles": [
+        "typing_inspect-0.9.0/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/typing-inspect/0.9.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/dc/74/1789779d91f1961fa9438e9a8710cdae6bd138c80d7303996933d117264a/typing_inspect-0.9.0.tar.gz",
+        "filename": "typing_inspect-0.9.0.tar.gz",
+        "sha256": "b23fc42ff6f6ef6954e4852c1fb512cdd18dbea03134f91f856a95ccc9461f78"
+      }
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "declaredLicence": "PSF-2.0",
+      "home": "https://github.com/python/typing_extensions",
+      "licenceFiles": [
+        "typing_extensions-4.16.0/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/typing_extensions/4.16.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/f6/cc/6253133b5bb138fc3306cebfbda2c520f545d36b5be2c7255cc528bb45d6/typing_extensions-4.16.0.tar.gz",
+        "filename": "typing_extensions-4.16.0.tar.gz",
+        "sha256": "dc983d19a509c94dba722ee6abd33940f7c05a89e243c47e907eb4db6f1a43e5"
+      }
+    },
+    {
+      "name": "urllib3",
+      "version": "2.8.0",
+      "declaredLicence": "MIT",
+      "home": null,
+      "licenceFiles": [
+        "urllib3-2.8.0/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/urllib3/2.8.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/e3/05/b17359e1cefb4f909b5e40b1b90a496d987258916dbbf88e842c729f510e/urllib3-2.8.0.tar.gz",
+        "filename": "urllib3-2.8.0.tar.gz",
+        "sha256": "63bf2ead4c879426ebf22ef2a781eeb4aa3b4ae798a0435506f8687fd5bb9b63"
+      }
+    },
+    {
+      "name": "wcwidth",
+      "version": "0.9.2",
+      "declaredLicence": "MIT License",
+      "home": "https://github.com/jquast/wcwidth",
+      "licenceFiles": [
+        "wcwidth-0.9.2/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/wcwidth/0.9.2/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/f0/b4/7830542634bb2d3e62aa3b586a72d5b3b6c91c3168929e7000ef3fed041d/wcwidth-0.9.2.tar.gz",
+        "filename": "wcwidth-0.9.2.tar.gz",
+        "sha256": "ae0ef90b90f6af38b54f1fe6d58662ec33b3cb4b8391958a62416d654231727b"
+      }
+    },
+    {
+      "name": "webcolors",
+      "version": "24.8.0",
+      "declaredLicence": "BSD-3-Clause",
+      "home": "https://github.com/ubernostrum/webcolors",
+      "licenceFiles": [
+        "webcolors-24.8.0/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/webcolors/24.8.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/fe/f8/53150a5bda7e042840b14f0236e1c0a4819d403658e3d453237983addfac/webcolors-24.8.0.tar.gz",
+        "filename": "webcolors-24.8.0.tar.gz",
+        "sha256": "08b07af286a01bcd30d583a7acadf629583d1f79bfef27dd2c2c5c263817277d"
+      }
+    },
+    {
+      "name": "wrapt",
+      "version": "2.5.0",
+      "declaredLicence": "BSD-2-Clause",
+      "home": "https://github.com/GrahamDumpleton/wrapt",
+      "licenceFiles": [
+        "wrapt-2.5.0/licenses/LICENSE.txt"
+      ],
+      "pypiPage": "https://pypi.org/project/wrapt/2.5.0/",
+      "sdist": {
+        "url": "https://files.pythonhosted.org/packages/3e/d2/a254a26d8ceaea87e0eee2e89fcfe53ddc1858418647493bb2937549ab6f/wrapt-2.5.0.tar.gz",
+        "filename": "wrapt-2.5.0.tar.gz",
+        "sha256": "c48cdb6c904dca76d9915a579e4a5fab6b0c25f650c1019ce78a78effaf7a345"
+      }
+    }
+  ],
+  "native": [
+    {
+      "package": "OCP",
+      "library": "libIex.33.3.4.15.dylib",
+      "sizeKb": 941,
+      "upstreamUsual": "OpenEXR: BSD-3-Clause",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libIlmThread.33.3.4.15.dylib",
+      "sizeKb": 99,
+      "upstreamUsual": "OpenEXR: BSD-3-Clause",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libImath.30.3.2.2.dylib",
+      "sizeKb": 365,
+      "upstreamUsual": "Imath: BSD-3-Clause",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libLerc.4.dylib",
+      "sizeKb": 589,
+      "upstreamUsual": "LERC: Apache-2.0",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libOpenEXR.33.3.4.15.dylib",
+      "sizeKb": 1139,
+      "upstreamUsual": "OpenEXR: BSD-3-Clause",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libOpenEXRCore.33.3.4.15.dylib",
+      "sizeKb": 387,
+      "upstreamUsual": "OpenEXR: BSD-3-Clause",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKBO.8.0.1.dylib",
+      "sizeKb": 2650,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKBRep.8.0.1.dylib",
+      "sizeKb": 2764,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKBin.8.0.1.dylib",
+      "sizeKb": 238,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKBinL.8.0.1.dylib",
+      "sizeKb": 438,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKBinTObj.8.0.1.dylib",
+      "sizeKb": 138,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKBinXCAF.8.0.1.dylib",
+      "sizeKb": 244,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKBool.8.0.1.dylib",
+      "sizeKb": 4396,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKCAF.8.0.1.dylib",
+      "sizeKb": 701,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKCDF.8.0.1.dylib",
+      "sizeKb": 418,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKDE.8.0.1.dylib",
+      "sizeKb": 259,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKDECascade.8.0.1.dylib",
+      "sizeKb": 191,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKDEGLTF.8.0.1.dylib",
+      "sizeKb": 628,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKDEIGES.8.0.1.dylib",
+      "sizeKb": 4248,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKDEOBJ.8.0.1.dylib",
+      "sizeKb": 301,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKDEPLY.8.0.1.dylib",
+      "sizeKb": 182,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKDESTEP.8.0.1.dylib",
+      "sizeKb": 9458,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKDESTL.8.0.1.dylib",
+      "sizeKb": 218,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKDEVRML.8.0.1.dylib",
+      "sizeKb": 737,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKExpress.8.0.1.dylib",
+      "sizeKb": 545,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKFeat.8.0.1.dylib",
+      "sizeKb": 1321,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKFillet.8.0.1.dylib",
+      "sizeKb": 2730,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKG2d.8.0.1.dylib",
+      "sizeKb": 598,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKG3d.8.0.1.dylib",
+      "sizeKb": 1700,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKGeomAlgo.8.0.1.dylib",
+      "sizeKb": 5367,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKGeomBase.8.0.1.dylib",
+      "sizeKb": 5662,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKHLR.8.0.1.dylib",
+      "sizeKb": 1313,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKHelix.8.0.1.dylib",
+      "sizeKb": 168,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKLCAF.8.0.1.dylib",
+      "sizeKb": 1022,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKMath.8.0.1.dylib",
+      "sizeKb": 2209,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKMesh.8.0.1.dylib",
+      "sizeKb": 1125,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKMeshVS.8.0.1.dylib",
+      "sizeKb": 477,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKOffset.8.0.1.dylib",
+      "sizeKb": 2453,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKOpenGl.8.0.1.dylib",
+      "sizeKb": 1564,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKPrim.8.0.1.dylib",
+      "sizeKb": 480,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKRWMesh.8.0.1.dylib",
+      "sizeKb": 286,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKService.8.0.1.dylib",
+      "sizeKb": 1278,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKShHealing.8.0.1.dylib",
+      "sizeKb": 3026,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKStd.8.0.1.dylib",
+      "sizeKb": 1303,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKStdL.8.0.1.dylib",
+      "sizeKb": 510,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKTObj.8.0.1.dylib",
+      "sizeKb": 339,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKTopAlgo.8.0.1.dylib",
+      "sizeKb": 3252,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKV3d.8.0.1.dylib",
+      "sizeKb": 3337,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKVCAF.8.0.1.dylib",
+      "sizeKb": 360,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKXCAF.8.0.1.dylib",
+      "sizeKb": 1061,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKXMesh.8.0.1.dylib",
+      "sizeKb": 86,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKXSBase.8.0.1.dylib",
+      "sizeKb": 2263,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKXml.8.0.1.dylib",
+      "sizeKb": 284,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKXmlL.8.0.1.dylib",
+      "sizeKb": 514,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKXmlTObj.8.0.1.dylib",
+      "sizeKb": 134,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKXmlXCAF.8.0.1.dylib",
+      "sizeKb": 265,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libTKernel.8.0.1.dylib",
+      "sizeKb": 2052,
+      "upstreamUsual": "Open CASCADE Technology: LGPL-2.1 with the Open CASCADE exception (text in OCCT/)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libc++.1.0.dylib",
+      "sizeKb": 1182,
+      "upstreamUsual": "LLVM libc++: Apache-2.0 with LLVM exception",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libdeflate.0.dylib",
+      "sizeKb": 118,
+      "upstreamUsual": "libdeflate: MIT",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libfmt.12.2.0.dylib",
+      "sizeKb": 214,
+      "upstreamUsual": "{fmt}: MIT",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libfreeimage.3.18.0.dylib",
+      "sizeKb": 794,
+      "upstreamUsual": "FreeImage: published by its authors under a CHOICE of licences, including GPL versions and the FreeImage Public License. UNCHECKED which applies to this build. FLAGGED.",
+      "flagged": true
+    },
+    {
+      "package": "OCP",
+      "library": "libfreetype.6.dylib",
+      "sizeKb": 767,
+      "upstreamUsual": "FreeType: FreeType Licence or GPL-2.0",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libjpeg.8.3.2.dylib",
+      "sizeKb": 633,
+      "upstreamUsual": "libjpeg-turbo: IJG / BSD-style / zlib",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libjpegxr.1.1.dylib",
+      "sizeKb": 307,
+      "upstreamUsual": "jxrlib: BSD-style",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libjxrglue.1.1.dylib",
+      "sizeKb": 171,
+      "upstreamUsual": "jxrlib: BSD-style",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "liblcms2.2.dylib",
+      "sizeKb": 406,
+      "upstreamUsual": "Little CMS: MIT",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "liblzma.5.dylib",
+      "sizeKb": 213,
+      "upstreamUsual": "XZ Utils: public domain / 0BSD",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libopenjp2.2.5.4.dylib",
+      "sizeKb": 399,
+      "upstreamUsual": "OpenJPEG: BSD-2-Clause",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libopenjph.0.31.0.dylib",
+      "sizeKb": 367,
+      "upstreamUsual": "OpenJPH: BSD-2-Clause",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libpng16.16.dylib",
+      "sizeKb": 252,
+      "upstreamUsual": "libpng: libpng licence (permissive)",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libraw.25.dylib",
+      "sizeKb": 1119,
+      "upstreamUsual": "LibRaw: published under a choice of LGPL-2.1 or CDDL-1.0. UNCHECKED for this build. FLAGGED.",
+      "flagged": true
+    },
+    {
+      "package": "OCP",
+      "library": "libsharpyuv.0.1.2.dylib",
+      "sizeKb": 84,
+      "upstreamUsual": "libwebp: BSD-3-Clause",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libtiff.6.dylib",
+      "sizeKb": 569,
+      "upstreamUsual": "libtiff: BSD-style",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libwebp.7.2.0.dylib",
+      "sizeKb": 503,
+      "upstreamUsual": "libwebp: BSD-3-Clause",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libwebpmux.3.1.2.dylib",
+      "sizeKb": 103,
+      "upstreamUsual": "libwebp: BSD-3-Clause",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libz.1.3.2.dylib",
+      "sizeKb": 137,
+      "upstreamUsual": "zlib: zlib licence",
+      "flagged": false
+    },
+    {
+      "package": "OCP",
+      "library": "libzstd.1.5.7.dylib",
+      "sizeKb": 812,
+      "upstreamUsual": "zstd: BSD-3-Clause (also offered under GPL-2.0)",
+      "flagged": false
+    },
+    {
+      "package": "PIL",
+      "library": "libXau.6.dylib",
+      "sizeKb": 68,
+      "upstreamUsual": "X.Org: MIT-style",
+      "flagged": false
+    },
+    {
+      "package": "PIL",
+      "library": "libavif.16.4.1.dylib",
+      "sizeKb": 2945,
+      "upstreamUsual": "libavif: BSD-2-Clause",
+      "flagged": false
+    },
+    {
+      "package": "PIL",
+      "library": "libbrotlicommon.1.2.0.dylib",
+      "sizeKb": 196,
+      "upstreamUsual": "Brotli: MIT",
+      "flagged": false
+    },
+    {
+      "package": "PIL",
+      "library": "libbrotlidec.1.2.0.dylib",
+      "sizeKb": 102,
+      "upstreamUsual": "Brotli: MIT",
+      "flagged": false
+    },
+    {
+      "package": "PIL",
+      "library": "libfreetype.6.dylib",
+      "sizeKb": 1100,
+      "upstreamUsual": "FreeType: FreeType Licence or GPL-2.0",
+      "flagged": false
+    },
+    {
+      "package": "PIL",
+      "library": "libharfbuzz.0.dylib",
+      "sizeKb": 1748,
+      "upstreamUsual": "HarfBuzz: MIT-style",
+      "flagged": false
+    },
+    {
+      "package": "PIL",
+      "library": "libjpeg.62.4.0.dylib",
+      "sizeKb": 638,
+      "upstreamUsual": "libjpeg-turbo: IJG / BSD-style / zlib",
+      "flagged": false
+    },
+    {
+      "package": "PIL",
+      "library": "liblcms2.2.dylib",
+      "sizeKb": 512,
+      "upstreamUsual": "Little CMS: MIT",
+      "flagged": false
+    },
+    {
+      "package": "PIL",
+      "library": "liblzma.5.dylib",
+      "sizeKb": 317,
+      "upstreamUsual": "XZ Utils: public domain / 0BSD",
+      "flagged": false
+    },
+    {
+      "package": "PIL",
+      "library": "libopenjp2.2.5.4.dylib",
+      "sizeKb": 650,
+      "upstreamUsual": "OpenJPEG: BSD-2-Clause",
+      "flagged": false
+    },
+    {
+      "package": "PIL",
+      "library": "libpng16.16.dylib",
+      "sizeKb": 336,
+      "upstreamUsual": "libpng: libpng licence (permissive)",
+      "flagged": false
+    },
+    {
+      "package": "PIL",
+      "library": "libsharpyuv.0.dylib",
+      "sizeKb": 84,
+      "upstreamUsual": "libwebp: BSD-3-Clause",
+      "flagged": false
+    },
+    {
+      "package": "PIL",
+      "library": "libtiff.6.dylib",
+      "sizeKb": 752,
+      "upstreamUsual": "libtiff: BSD-style",
+      "flagged": false
+    },
+    {
+      "package": "PIL",
+      "library": "libwebp.7.dylib",
+      "sizeKb": 503,
+      "upstreamUsual": "libwebp: BSD-3-Clause",
+      "flagged": false
+    },
+    {
+      "package": "PIL",
+      "library": "libwebpdemux.2.dylib",
+      "sizeKb": 68,
+      "upstreamUsual": "libwebp: BSD-3-Clause",
+      "flagged": false
+    },
+    {
+      "package": "PIL",
+      "library": "libwebpmux.3.dylib",
+      "sizeKb": 103,
+      "upstreamUsual": "libwebp: BSD-3-Clause",
+      "flagged": false
+    },
+    {
+      "package": "PIL",
+      "library": "libxcb.1.1.0.dylib",
+      "sizeKb": 271,
+      "upstreamUsual": "X.Org: MIT-style",
+      "flagged": false
+    },
+    {
+      "package": "PIL",
+      "library": "libz.1.3.1.zlib-ng.dylib",
+      "sizeKb": 173,
+      "upstreamUsual": "zlib: zlib licence",
+      "flagged": false
+    },
+    {
+      "package": "lib3mf",
+      "library": "lib3mf.dylib",
+      "sizeKb": 7747,
+      "upstreamUsual": "lib3mf: BSD-2-Clause",
+      "flagged": false
+    },
+    {
+      "package": "numpy",
+      "library": "libgcc_s.1.1.dylib",
+      "sizeKb": 155,
+      "upstreamUsual": "GCC runtime: GPL-3.0 with the GCC Runtime Library Exception",
+      "flagged": false
+    },
+    {
+      "package": "numpy",
+      "library": "libgfortran.5.dylib",
+      "sizeKb": 3614,
+      "upstreamUsual": "GCC runtime: GPL-3.0 with the GCC Runtime Library Exception",
+      "flagged": false
+    },
+    {
+      "package": "numpy",
+      "library": "libquadmath.0.dylib",
+      "sizeKb": 362,
+      "upstreamUsual": "GCC runtime: LGPL-2.1 or later",
+      "flagged": false
+    },
+    {
+      "package": "numpy",
+      "library": "libscipy_openblas64_.dylib",
+      "sizeKb": 24647,
+      "upstreamUsual": "not identified",
+      "flagged": false
+    },
+    {
+      "package": "scipy",
+      "library": "libgcc_s.1.1.dylib",
+      "sizeKb": 153,
+      "upstreamUsual": "GCC runtime: GPL-3.0 with the GCC Runtime Library Exception",
+      "flagged": false
+    },
+    {
+      "package": "scipy",
+      "library": "libgfortran.5.dylib",
+      "sizeKb": 1802,
+      "upstreamUsual": "GCC runtime: GPL-3.0 with the GCC Runtime Library Exception",
+      "flagged": false
+    },
+    {
+      "package": "scipy",
+      "library": "libquadmath.0.dylib",
+      "sizeKb": 341,
+      "upstreamUsual": "GCC runtime: LGPL-2.1 or later",
+      "flagged": false
+    },
+    {
+      "package": "scipy",
+      "library": "libscipy_openblas.dylib",
+      "sizeKb": 23152,
+      "upstreamUsual": "not identified",
+      "flagged": false
+    },
+    {
+      "package": "sklearn",
+      "library": "libomp.dylib",
+      "sizeKb": 662,
+      "upstreamUsual": "LLVM OpenMP: Apache-2.0 with LLVM exception",
+      "flagged": false
+    }
+  ]
+}

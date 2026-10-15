@@ -1,0 +1,7 @@
+{
+  "comment": "What PrinterPilot files actually exist to download. null means NOT AVAILABLE and the page says so; a link is rendered only for a non-null entry, and src/lib/__tests__/printerpilot.test.mts refuses an entry that is not https or lacks a sha256. The design tools ship inside each hub installer and are not a separate download (Tim, 2026-10-12). Nothing here has been built or uploaded as of 2026-10-12. To publish a file: upload it, then replace the null with {url, version, sha256, sizeBytes}.",
+  "legalUpdated": "2026-10-12",
+  "macHub": null,
+  "windowsHub": null,
+  "designToolsSource": null
+}

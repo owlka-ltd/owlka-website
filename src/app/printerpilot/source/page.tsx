@@ -138,8 +138,10 @@ export default function PrinterPilotSourcePage() {
           </p>
           <p>
             The OCCT libraries are separate files ({tk.length} <code className="font-mono">libTK*.dylib</code> files under{" "}
-            <code className="font-mono">OCP/.dylibs/</code>), not compiled into PrinterPilot&rsquo;s program, and they sit
-            outside any signed application bundle.
+            <code className="font-mono">OCP/.dylibs/</code>), not compiled into PrinterPilot&rsquo;s program. The Mac app
+            ships a copy of them inside its signed bundle, and the installer places the copy the app actually loads in
+            PrinterPilot&rsquo;s own data folder, outside the application bundle. Design tools you put in that folder
+            yourself are left alone by any later install.
           </p>
           <p>
             <strong className="font-semibold">To replace them:</strong> put a compatible build in the same folder inside

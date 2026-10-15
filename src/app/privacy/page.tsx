@@ -101,6 +101,32 @@ export default function PrivacyPage() {
                   90 days.
                 </li>
                 <li>
+                  <strong>Connection health from the desktop app. On by
+                  default.</strong> The Owlka app on your Mac or Windows PC
+                  sends our relay a small health report when it starts, when
+                  its connection to the relay connects, drops or fails, after
+                  the computer wakes from sleep, and otherwise every 30 minutes.
+                  Each report contains only: the Owlka version; whether the
+                  computer is a Mac or a Windows PC, and its operating system
+                  version; whether it is connected to the relay; the kind of
+                  the last connection problem (refused by the relay, connection
+                  dropped, or could not connect); when the computer last woke
+                  from sleep; whether an update started but Owlka came back on
+                  the old version; and the time of the report. It is linked to
+                  that computer&rsquo;s device identifier and your account, so
+                  we can see when a computer cannot be reached from your phone
+                  and help fix it. It never includes your messages, prompts,
+                  files, file names, folder paths, tab names, email address,
+                  keys, or anything you type. While the computer is offline,
+                  reports wait on the computer (at most 24, none older than 7
+                  days) and are sent when it reconnects. We keep them for up to
+                  30 days, and we rely on our legitimate interest in keeping
+                  your connection working. You can turn it off at any time in
+                  the desktop app under More, then Account, &ldquo;Share
+                  connection health&rdquo;; turning it off also deletes any
+                  reports still waiting to be sent.
+                </li>
+                <li>
                   <strong>Crash and diagnostic reports, opt-in and off by
                   default.</strong> If you turn on &ldquo;Share
                   diagnostics&rdquo; in Settings, Owlka will upload crash and
@@ -449,7 +475,7 @@ export default function PrivacyPage() {
               Retention periods below are the ones the relay actually enforces
               in code, not aspirations. Verified 2026-07-25 against
               owlka-relay: diag.rs (30 day diagnostics sweep), telemetry.rs
-              (90 day ui_events sweep), admin.rs (90 day events sweep,
+              (90 day ui_events sweep, 30 day desktop_health sweep), admin.rs (90 day events sweep,
               OWLKA_METRICS_RETENTION_DAYS), logging.rs (14 day log rotation
               sweep), parking.rs (31 day PARK_MAX_AGE).
 

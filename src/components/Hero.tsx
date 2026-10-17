@@ -9,6 +9,7 @@ import { DeviceFrame } from "./DeviceFrame";
 import { AppleMark, WindowsMark } from "./PlatformMarks";
 import { PromoVideo } from "./PromoVideo";
 import { PhoneStores } from "./StoreBadges";
+import { HeroStory } from "./HeroStory";
 
 export function Hero() {
   return (
@@ -87,21 +88,7 @@ export function Hero() {
               plain English, nothing happens on your computer until you answer.
             </motion.p>
 
-            <motion.p
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.36, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-5 max-w-xl mx-auto lg:mx-0 text-sm font-semibold text-muted"
-            >
-              For anyone wondering why I built Owlka,{" "}
-              <a
-                href="#why-i-built-owlka"
-                className="text-text/70 underline underline-offset-4 decoration-border hover:text-mark transition-colors"
-              >
-                this story
-              </a>{" "}
-              explains it.
-            </motion.p>
+            <HeroStory />
 
             <motion.div
               initial={{ opacity: 0, y: 24 }}

@@ -4,7 +4,6 @@ import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Marquee } from "@/components/Marquee";
 import { Nav } from "@/components/Nav";
-import { WhyIBuiltOwlka } from "@/components/WhyIBuiltOwlka";
 import { PlatformAvailability } from "@/components/PlatformAvailability";
 import {
   DEFAULT_TITLE,
@@ -93,7 +92,6 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <WhyIBuiltOwlka />
         <PlatformAvailability className="pb-16 sm:pb-20" />
         <Marquee />
         <HowItWorks />

@@ -30,6 +30,8 @@ type Study = {
   body: string;
   /** Only something that can be checked. Leave it out rather than guess. */
   metric?: string;
+  /** An outside link to the real thing, opened in a new tab. */
+  link?: { href: string; label: string };
   hue: "mark" | "accent";
   visual: Visual;
 };
@@ -110,6 +112,10 @@ const studies: Study[] = [
     body:
       "A child designed and built their own maze game with Claude Code. You choose your dragon's colour, eyes, size and wings, then race it through ten mazes that grow from 6x6 to 20x15. Times-table questions on the way take seconds off your time, and every level has its own leaderboard.",
     metric: "Free to play in a web browser.",
+    link: {
+      href: "https://timtrailor-hash.github.io/dragon-maze/",
+      label: "Play Dragon Maze",
+    },
     hue: "accent",
     visual: {
       kind: "gallery",
@@ -119,19 +125,19 @@ const studies: Study[] = [
           src: "/screenshots/dragon-maze/maze-play.webp",
           alt: "Dragon Maze level 1: a purple dragon in a 6x6 maze with question tiles and a star at the exit",
           width: 1200,
-          height: 750,
+          height: 760,
         },
         {
           src: "/screenshots/dragon-maze/maths-challenge.webp",
-          alt: "A Dragon Maze maths challenge asking 10 x 6 with three answers to pick from",
+          alt: "A Dragon Maze maths challenge asking 12 x 5 with three answers to pick from",
           width: 1200,
-          height: 750,
+          height: 760,
         },
         {
           src: "/screenshots/dragon-maze/customise.webp",
-          alt: "The Dragon Maze dragon designer, with colour, eyes, size and times-table choices beside the level leaderboard",
+          alt: "The Dragon Maze dragon designer, with colour, eyes, size, wings and times-table choices beside the level leaderboard",
           width: 1200,
-          height: 750,
+          height: 760,
         },
       ],
     },
@@ -222,6 +228,20 @@ export function CaseStudies() {
                         {s.metric}
                       </span>
                     </div>
+                    )}
+                    {s.link && (
+                      <div className="mt-6">
+                        <a
+                          href={s.link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center gap-2 min-h-12 py-2 px-7 rounded-pill bg-mark text-surface text-base font-medium hover:opacity-90 transition-all shadow-lg shadow-mark/30 hover:shadow-xl hover:shadow-mark/40 hover:-translate-y-0.5"
+                          data-testid="case-study-play-link"
+                        >
+                          {s.link.label}
+                          <span className="sr-only"> (opens in a new tab)</span>
+                        </a>
+                      </div>
                     )}
                   </div>
 

@@ -94,12 +94,12 @@ export function Hero() {
               className="mt-5 max-w-xl mx-auto lg:mx-0 text-sm font-semibold text-muted"
             >
               For anyone wondering why I built Owlka,{" "}
-              <Link
-                href="/stories/the-sold-out-pass"
+              <a
+                href="#why-i-built-owlka"
                 className="text-text/70 underline underline-offset-4 decoration-border hover:text-mark transition-colors"
               >
                 this story
-              </Link>{" "}
+              </a>{" "}
               explains it.
             </motion.p>
 

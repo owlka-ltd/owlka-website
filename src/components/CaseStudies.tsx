@@ -86,21 +86,21 @@ const studies: Study[] = [
     },
   },
   {
-    tag: "Personal",
+    tag: "Background service",
     title: "Britain's Got Talent ticket watcher",
     body:
-      "A family kept missing the BGT auditions. They built a persistent watcher that pings the family group chat the instant tickets become reservable, so they're booked before anyone else even knows.",
-    metric: "Tickets reserved minutes before the rest of the public.",
+      "A family kept missing the BGT auditions. So a scheduled job on a home Mac mini checked for tickets in the background and sent an alert the moment they appeared. It was a service that runs quietly, not an app.",
+    metric: "Ran unattended in the background.",
     hue: "mark",
     visual: {
       kind: "notification",
       preview: {
-        app: "BGT WATCHER",
+        app: "TICKET ALERT",
         appColor: "#FF2D7A",
         time: "now",
-        title: "Tickets just dropped",
+        title: "Tickets may be available",
         body:
-          "Britain's Got Talent audition tickets live on Applause Store right now. Tap here to reserve before they go.",
+          "The ticket watcher found Britain's Got Talent audition tickets. Open the booking page to check.",
       },
     },
   },

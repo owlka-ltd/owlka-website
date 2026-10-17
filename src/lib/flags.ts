@@ -60,8 +60,11 @@ export const MAC_DMG_URL = "https://download.owlka.com/mac/latest.dmg";
 //
 // Typed `boolean` rather than left as the literal `false` so the "available"
 // branches type-check and stay compiled while the flag is off.
-export const IOS_APP_STORE_AVAILABLE: boolean = false;
-export const IOS_APP_STORE_URL: string | null = null;
+// LIVE since 2026-10-14 (listing id 6782651539; the URL returned HTTP 200 on
+// 2026-10-17), so the badge is now a link with no "Coming soon" caption.
+export const IOS_APP_STORE_AVAILABLE: boolean = true;
+export const IOS_APP_STORE_URL: string | null =
+  "https://apps.apple.com/app/owlka/id6782651539";
 
 // The Owlka Android app is LIVE on Google Play.
 //

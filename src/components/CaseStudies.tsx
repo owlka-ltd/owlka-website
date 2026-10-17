@@ -2,15 +2,19 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { DeviceFrame } from "./DeviceFrame";
 import { GovernorsSessionScreen } from "./GovernorsSessionScreen";
-import { PrinterPilotSessionScreen } from "./PrinterPilotSessionScreen";
+
+type Shot = { src: string; alt: string; width: number; height: number };
 
 type Visual =
   | { kind: "device"; src: string; alt: string; width: number; height: number }
-  | { kind: "deviceHtml"; screen: "governors" | "printer" }
+  | { kind: "deviceHtml"; screen: "governors" }
   | { kind: "notification"; preview: NotificationPreview }
-  | { kind: "appcard"; icon: string; name: string; subtitle: string; build: string };
+  // Real screenshots, one at a time with dots to switch. "phone" sits in the
+  // device frame; "browser" sits in a plain browser window for a web app.
+  | { kind: "gallery"; frame: "phone" | "browser"; shots: Shot[] };
 
 type NotificationPreview = {
   app: string;
@@ -24,7 +28,8 @@ type Study = {
   tag: string;
   title: string;
   body: string;
-  metric: string;
+  /** Only something that can be checked. Leave it out rather than guess. */
+  metric?: string;
   hue: "mark" | "accent";
   visual: Visual;
 };
@@ -32,10 +37,10 @@ type Study = {
 const studies: Study[] = [
   {
     tag: "Education",
-    title: "An Ofsted-grade governors app",
+    title: "An Ofsted-ready governors assistant",
     body:
-      "A school governor built a private assistant for their primary school. It reads the school's own data alongside the latest Ofsted framework, drafts evidence-grade answers for inspection prep, and lets the governing body rehearse the real questions before they're asked.",
-    metric: "Cuts inspection prep from weeks to an afternoon.",
+      "A school governor built a private assistant for their schools. During a live inspection call it hears the inspector's question, answers it from the schools' own minutes, policies and reports, and names the documents it used so the governor can open them on the spot.",
+    metric: "Built for a live Ofsted call.",
     hue: "mark",
     visual: {
       kind: "deviceHtml",
@@ -44,14 +49,40 @@ const studies: Study[] = [
   },
   {
     tag: "Hardware",
-    title: "Live 3D-printer command centre",
+    title: "PrinterPilot, an AI-first 3D printing app",
     body:
-      "A maker runs a small print farm from a garage. They built a native iOS app that talks to Klipper over the home network, streams the toolhead, watches temperature curves, and pauses the print before a bad layer becomes a fire. Notifications when something needs a human.",
-    metric: "Saved 14 prints in the first month.",
+      "Owlka's founder built PrinterPilot with Owlka. It puts CAD design, a slicer built on OrcaSlicer, models from Printables and MakerWorld, and live control of real printers in one iPhone app, with a Mac doing the heavy work. Describe what you want and the AI designs it, finds it or changes the slice settings, then adapts the file to your own printer.",
+    metric: "Runs three printers from Sovol, Snapmaker and Bambu Lab.",
     hue: "accent",
     visual: {
-      kind: "deviceHtml",
-      screen: "printer",
+      kind: "gallery",
+      frame: "phone",
+      shots: [
+        {
+          src: "/screenshots/printerpilot/live-printer.webp",
+          alt: "PrinterPilot showing a Sovol SV08 Max mid-print: the live camera, 71% progress, layer 21 of 67, the finish time and nozzle and bed temperatures",
+          width: 603,
+          height: 1311,
+        },
+        {
+          src: "/screenshots/printerpilot/printables-search.webp",
+          alt: "Printables open inside PrinterPilot, showing search results for flexi dragon with model photos",
+          width: 603,
+          height: 1311,
+        },
+        {
+          src: "/screenshots/printerpilot/slice-preview.webp",
+          alt: "PrinterPilot's layer preview of a sliced file: four dragons on the build plate, with a layer slider and how much of each line type the print uses",
+          width: 603,
+          height: 1311,
+        },
+        {
+          src: "/screenshots/printerpilot/adapt-for-printer.webp",
+          alt: "PrinterPilot after adapting a Bambu Lab A1 file for a Snapmaker U1, listing what it changed, with Ask why underneath",
+          width: 603,
+          height: 1311,
+        },
+      ],
     },
   },
   {
@@ -75,17 +106,34 @@ const studies: Study[] = [
   },
   {
     tag: "Games",
-    title: "Dragon Maze, an indie iOS game",
+    title: "Dragon Maze, a times-tables adventure",
     body:
-      "A parent and their young child built a tile-shifting maze game together. The child sketched the dragons; the parent asked Owlka for a game to wrap them in, with daily seeds, leaderboards, and Game Center sync. They designed, built, signed, and submitted it to TestFlight without ever opening Xcode.",
-    metric: "Shipped a public beta in 11 evenings.",
+      "A child designed and built their own maze game with Claude Code. You choose your dragon's colour, eyes, size and wings, then race it through ten mazes that grow from 6x6 to 20x15. Times-table questions on the way take seconds off your time, and every level has its own leaderboard.",
+    metric: "Free to play in a web browser.",
     hue: "accent",
     visual: {
-      kind: "appcard",
-      icon: "/screenshots/dragon-icon.png",
-      name: "Dragon Maze",
-      subtitle: "Daily-seed maze puzzler",
-      build: "TestFlight · build 47",
+      kind: "gallery",
+      frame: "browser",
+      shots: [
+        {
+          src: "/screenshots/dragon-maze/maze-play.webp",
+          alt: "Dragon Maze level 1: a purple dragon in a 6x6 maze with question tiles and a star at the exit",
+          width: 1200,
+          height: 750,
+        },
+        {
+          src: "/screenshots/dragon-maze/maths-challenge.webp",
+          alt: "A Dragon Maze maths challenge asking 10 x 6 with three answers to pick from",
+          width: 1200,
+          height: 750,
+        },
+        {
+          src: "/screenshots/dragon-maze/customise.webp",
+          alt: "The Dragon Maze dragon designer, with colour, eyes, size and times-table choices beside the level leaderboard",
+          width: 1200,
+          height: 750,
+        },
+      ],
     },
   },
 ];
@@ -99,17 +147,19 @@ export function CaseStudies() {
             What people built
           </p>
           <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
-            Real products, shipped from a phone.
+            Real products, built by talking to AI.
           </h2>
           <p className="mt-5 text-lg text-text/70 leading-relaxed">
-            Every one of these was built with Owlka by someone who is not a
-            developer. No laptop required.
+            Every one of these was built by someone who is not a developer,
+            describing what they wanted to Claude.
           </p>
         </div>
 
         <div className="space-y-6 sm:space-y-8">
           {studies.map((s, i) => {
             const phoneLeft = i % 2 === 1;
+            // A web app's landscape screenshots need a wider column than a phone.
+            const wide = s.visual.kind === "gallery" && s.visual.frame === "browser";
             return (
               <motion.article
                 key={s.title}
@@ -134,7 +184,13 @@ export function CaseStudies() {
                 />
 
                 <div
-                  className={`relative grid grid-cols-1 lg:grid-cols-[1fr_340px] xl:grid-cols-[1fr_380px] gap-10 lg:gap-16 items-center p-8 sm:p-12 lg:p-16 ${
+                  className={`relative grid grid-cols-1 ${
+                    wide
+                      ? phoneLeft
+                        ? "lg:grid-cols-[480px_1fr] xl:grid-cols-[580px_1fr]"
+                        : "lg:grid-cols-[1fr_480px] xl:grid-cols-[1fr_580px]"
+                      : "lg:grid-cols-[1fr_340px] xl:grid-cols-[1fr_380px]"
+                  } gap-10 lg:gap-16 items-center p-8 sm:p-12 lg:p-16 ${
                     phoneLeft ? "lg:[&>*:first-child]:order-2" : ""
                   }`}
                 >
@@ -150,6 +206,7 @@ export function CaseStudies() {
                     <p className="mt-5 text-[17px] text-text/75 leading-relaxed max-w-xl">
                       {s.body}
                     </p>
+                    {s.metric && (
                     <div className="mt-7 inline-flex items-center gap-2 px-4 py-2.5 rounded-pill bg-mark/8 border border-mark/20">
                       <svg
                         viewBox="0 0 16 16"
@@ -165,6 +222,7 @@ export function CaseStudies() {
                         {s.metric}
                       </span>
                     </div>
+                    )}
                   </div>
 
                   <motion.div
@@ -172,7 +230,11 @@ export function CaseStudies() {
                     whileInView={{ opacity: 1, scale: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                    className="relative mx-auto w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[340px]"
+                    className={`relative mx-auto w-full ${
+                      wide
+                        ? "max-w-[580px]"
+                        : "max-w-[280px] sm:max-w-[320px] lg:max-w-[340px]"
+                    }`}
                   >
                     <div
                       aria-hidden
@@ -214,7 +276,6 @@ function VisualRenderer({ visual }: { visual: Visual }) {
       <div className="@container">
         <DeviceFrame>
           {visual.screen === "governors" && <GovernorsSessionScreen />}
-          {visual.screen === "printer" && <PrinterPilotSessionScreen />}
         </DeviceFrame>
       </div>
     );
@@ -228,11 +289,63 @@ function VisualRenderer({ visual }: { visual: Visual }) {
       </div>
     );
   }
+  return <Gallery frame={visual.frame} shots={visual.shots} />;
+}
+
+function Gallery({ frame, shots }: { frame: "phone" | "browser"; shots: Shot[] }) {
+  const [i, setI] = useState(0);
+  // Steps through the screenshots on its own until someone picks one, so a
+  // visitor who never touches the dots still sees every screen. Off for
+  // anyone who has asked their system for reduced motion.
+  const [auto, setAuto] = useState(true);
+  useEffect(() => {
+    if (!auto || shots.length < 2) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const t = window.setInterval(() => setI((n) => (n + 1) % shots.length), 4500);
+    return () => window.clearInterval(t);
+  }, [auto, shots.length]);
+  const shot = shots[i];
+  const screen =
+    frame === "phone" ? (
+      <DeviceFrame src={shot.src} alt={shot.alt} width={shot.width} height={shot.height} />
+    ) : (
+      <div className="rounded-[14px] overflow-hidden border border-black/10 bg-[#1c1c20] shadow-[0_40px_80px_-30px_rgba(15,15,20,0.55)]">
+        <div aria-hidden className="flex items-center gap-1.5 px-3 h-7 bg-[#2a2a30]">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+        </div>
+        <Image
+          src={shot.src}
+          alt={shot.alt}
+          width={shot.width}
+          height={shot.height}
+          className="block w-full h-auto"
+        />
+      </div>
+    );
   return (
-    <div className="@container">
-      <DeviceFrame>
-        <AppStoreCard {...visual} />
-      </DeviceFrame>
+    <div>
+      {screen}
+      {shots.length > 1 && (
+        <div className="mt-5 flex items-center justify-center gap-2">
+          {shots.map((s, n) => (
+            <button
+              key={s.src}
+              type="button"
+              onClick={() => {
+                setAuto(false);
+                setI(n);
+              }}
+              aria-label={`Show screenshot ${n + 1} of ${shots.length}: ${s.alt}`}
+              aria-current={n === i}
+              className={`h-2.5 rounded-full transition-all ${
+                n === i ? "w-6 bg-mark" : "w-2.5 bg-text/25 hover:bg-text/45"
+              }`}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -374,169 +487,5 @@ function CameraSmallGlyph() {
       <path d="M5 3 L4 5 H2 a1 1 0 0 0-1 1 v7 a1 1 0 0 0 1 1 h12 a1 1 0 0 0 1-1 V6 a1 1 0 0 0-1-1 h-2 L11 3 z" />
       <circle cx="8" cy="9" r="2.6" fill="#0d1216" />
     </svg>
-  );
-}
-
-function AppStoreCard({
-  icon,
-  name,
-  subtitle,
-  build,
-}: {
-  icon: string;
-  name: string;
-  subtitle: string;
-  build: string;
-}) {
-  return (
-    <div className="relative h-full w-full bg-gradient-to-b from-[#1c1530] via-[#2a1640] to-[#3b1855] overflow-hidden flex flex-col">
-      {/* twinkle stars */}
-      <div
-        aria-hidden
-        className="absolute inset-0 opacity-60"
-        style={{
-          backgroundImage:
-            "radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.6), transparent), radial-gradient(1px 1px at 70% 20%, rgba(255,255,255,0.5), transparent), radial-gradient(1px 1px at 40% 75%, rgba(255,255,255,0.6), transparent), radial-gradient(1px 1px at 85% 85%, rgba(255,255,255,0.5), transparent)",
-        }}
-      />
-
-      {/* iOS status bar — real signal + wifi + battery glyphs */}
-      <div className="relative shrink-0 h-[5.6%] flex items-end justify-between pb-[1.5%] px-[8%] text-white text-[3.6cqw] font-semibold tracking-tight">
-        <span>9:41</span>
-        <span className="flex items-center gap-[1.4cqw] text-white">
-          <SignalDots />
-          <WifiGlyphLight />
-          <BatteryGlyphLight />
-        </span>
-      </div>
-
-      {/* TestFlight pill */}
-      <div className="relative flex justify-center mt-[3%]">
-        <span className="inline-flex items-center gap-[1.2cqw] h-[4.8cqw] px-[2.4cqw] rounded-full bg-white/12 backdrop-blur-md border border-white/20 text-[2.4cqw] font-semibold uppercase tracking-wider text-white">
-          <span className="w-[1.4cqw] h-[1.4cqw] rounded-full bg-mark animate-pulse-dot" />
-          TestFlight Beta
-        </span>
-      </div>
-
-      {/* icon */}
-      <div className="relative mx-auto mt-[5%] w-[44%] aspect-square rounded-[6cqw] overflow-hidden shadow-2xl shadow-black/40 ring-1 ring-white/10">
-        <Image
-          src={icon}
-          alt={`${name} app icon`}
-          width={300}
-          height={300}
-          className="w-full h-full object-cover"
-        />
-      </div>
-
-      {/* title */}
-      <div className="relative text-center mt-[4%] px-[5%]">
-        <div className="text-white text-[5cqw] font-bold tracking-tight">
-          {name}
-        </div>
-        <div className="text-white/70 text-[2.8cqw] mt-[0.6cqw]">{subtitle}</div>
-      </div>
-
-      {/* feature row — Age / Category / Developer */}
-      <div className="relative mt-[5%] grid grid-cols-3 gap-[1cqw] px-[6%] text-center">
-        <FeatureCell label="Age" value="4+" />
-        <FeatureCell label="Category" value="Puzzle" />
-        <FeatureCell label="Developer" value="T. Trailor" />
-      </div>
-
-      {/* CTA */}
-      <div className="relative mt-[5%] flex justify-center">
-        <span className="inline-flex items-center justify-center h-[7cqw] px-[5cqw] rounded-full bg-white text-[#1c1530] text-[2.8cqw] font-bold shadow-md">
-          Install
-        </span>
-      </div>
-
-      <div className="relative mt-[1.8cqw] text-center text-white/55 text-[2.4cqw] font-medium tracking-wide">
-        {build}
-      </div>
-
-      {/* Daily-seed leaderboard fills the lower half */}
-      <div className="relative mx-[5%] mt-[5%] rounded-[3cqw] bg-white/8 backdrop-blur-md border border-white/12 px-[3.2cqw] py-[2.4cqw] shadow-lg">
-        <div className="flex items-center justify-between mb-[1.4cqw]">
-          <span className="inline-flex items-center gap-[1cqw] text-white text-[2.6cqw] font-semibold">
-            <TrophyGlyph />
-            Daily seed · today
-          </span>
-          <span className="text-[2.2cqw] text-white/55 font-mono">seed #142</span>
-        </div>
-        <ol className="flex flex-col gap-[0.9cqw]">
-          <LeaderRow rank={1} name="MintDragon" score="14,820" you={false} medal="#FFD66B" />
-          <LeaderRow rank={2} name="EmberMaze" score="13,440" you={false} medal="#D7D7D7" />
-          <LeaderRow rank={3} name="PixelPlum" score="12,905" you={false} medal="#C58A5C" />
-          <LeaderRow rank={4} name="you" score="11,720" you={true} />
-          <LeaderRow rank={5} name="Lumen" score="10,488" you={false} />
-        </ol>
-      </div>
-
-      {/* home indicator */}
-      <div className="mt-auto pb-[2%] flex justify-center">
-        <div className="w-[28%] h-[0.5%] rounded-full bg-white/70" />
-      </div>
-    </div>
-  );
-}
-
-function LeaderRow({
-  rank,
-  name,
-  score,
-  you,
-  medal,
-}: {
-  rank: number;
-  name: string;
-  score: string;
-  you: boolean;
-  medal?: string;
-}) {
-  return (
-    <li
-      className={`flex items-center gap-[1.4cqw] rounded-[1.6cqw] px-[1.6cqw] py-[1cqw] text-[2.5cqw] ${
-        you
-          ? "bg-mark/20 ring-1 ring-mark/45 text-white"
-          : "bg-white/4 text-white/85"
-      }`}
-    >
-      <span
-        className="shrink-0 w-[4.4cqw] h-[4.4cqw] rounded-full flex items-center justify-center text-[2.2cqw] font-bold"
-        style={
-          medal
-            ? { background: medal, color: "#1c1530" }
-            : { background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.7)" }
-        }
-      >
-        {rank}
-      </span>
-      <span className="flex-1 truncate font-semibold">
-        {you ? "You" : name}
-      </span>
-      <span className="font-mono font-semibold tracking-tight">{score}</span>
-    </li>
-  );
-}
-
-function TrophyGlyph() {
-  return (
-    <svg viewBox="0 0 16 16" className="w-[2.8cqw] h-[2.8cqw] text-[#FFD66B]" fill="currentColor" aria-hidden>
-      <path d="M4 2h8v3a4 4 0 0 1-4 4 4 4 0 0 1-4-4zm-2 1h2v2a2 2 0 0 1-2-2zm10 0h2a2 2 0 0 1-2 2zM7 10h2v2h2v2H5v-2h2z" />
-    </svg>
-  );
-}
-
-function FeatureCell({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex flex-col items-center border-x border-white/10 first:border-l-0 last:border-r-0">
-      <span className="text-[2cqw] uppercase tracking-wider text-white/55">
-        {label}
-      </span>
-      <span className="text-[2.6cqw] font-semibold text-white mt-[0.4cqw]">
-        {value}
-      </span>
-    </div>
   );
 }

@@ -101,11 +101,11 @@ test("badge artwork is served from our own origin, never hotlinked", () => {
   }
 });
 
-test("the App Store is still marked not-live", () => {
-  // Guards the honesty claim the page makes. If this fails because the listing
-  // genuinely went live, delete this test: confirm the public listing returns
-  // HTTP 200 first.
-  assert.equal(IOS_APP_STORE_AVAILABLE, false);
+test("the App Store is live and links to Owlka's own listing", () => {
+  // Went live 2026-10-14 (listing verified HTTP 200 on 2026-10-17). Pins the
+  // exact listing id so the badge cannot quietly point at the wrong app.
+  assert.equal(IOS_APP_STORE_AVAILABLE, true);
+  assert.equal(IOS_APP_STORE_URL, "https://apps.apple.com/app/owlka/id6782651539");
 });
 
 test("Google Play is live and links to Owlka's own listing", () => {

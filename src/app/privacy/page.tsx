@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Owlka handles your data. Plain English. Last updated 2026-10-15.",
+    "How Owlka handles your data. Plain English. Last updated 2026-10-20.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -29,7 +29,7 @@ export default function PrivacyPage() {
             <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
               Privacy Policy
             </h1>
-            <p className="mt-4 text-sm text-muted">Last updated 2026-10-15</p>
+            <p className="mt-4 text-sm text-muted">Last updated 2026-10-20</p>
           </header>
 
           <div className="prose prose-neutral max-w-none text-text/85 leading-relaxed space-y-8">
@@ -90,11 +90,17 @@ export default function PrivacyPage() {
                 <li>
                   <strong>Usage analytics. On by default, in every version of
                   the app.</strong> Owlka can record which screens and features
-                  you use (for example that the chat screen was opened), tagged
-                  with a random per-install identifier and the app version, so
-                  we can see which parts of the app people actually use. These
-                  events never contain your messages, your files, or your
-                  commands, only fixed screen and feature names. The first time
+                  you use (for example that the chat screen was opened) and how
+                  far you got through setting the app up (for example that
+                  sign-in or pairing with your computer worked, or that it did
+                  not and the kind of problem, such as an expired pairing code).
+                  Each event is tagged with a random per-install identifier,
+                  your account, the kind of phone and the app version, so we can
+                  see which parts of the app people actually use and where
+                  setting it up goes wrong. These events never contain your
+                  messages, your files, your commands, your pairing codes or
+                  anything you type, only fixed screen, feature and step names.
+                  The first time
                   you open the app we show a notice telling you this is on, with
                   a one-tap off switch. You can change it at any time under More,
                   then Account, and we keep these events for

@@ -118,7 +118,10 @@ export default function PrivacyPage() {
                   the last connection problem (refused by the relay, connection
                   dropped, or could not connect); when the computer last woke
                   from sleep; whether an update started but Owlka came back on
-                  the old version; and the time of the report. It is linked to
+                  the old version; when Owlka has just updated itself, the
+                  version it updated from and whether Owlka restarted itself
+                  to apply the update or you restarted it; and the time of the
+                  report. It is linked to
                   that computer&rsquo;s device identifier and your account, so
                   we can see when a computer cannot be reached from your phone
                   and help fix it. It never includes your messages, prompts,
